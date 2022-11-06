@@ -62,7 +62,6 @@ h(Transition, {
     appear?: boolean
 
     /**
-     * Props for customizing transition classes.
      * Параметры для настройки классов перехода.
      * Используйте kebab-case в шаблонах, например enter-from-class="xxx"
      */
@@ -102,7 +101,7 @@ h(Transition, {
   </Transition>
   ```
 
-  Динамический компонент с mode и appear:
+  Динамический компонент, используются параметры mode и appear:
 
   ```vue-html
   <Transition name="fade" mode="out-in" appear>
@@ -110,7 +109,7 @@ h(Transition, {
   </Transition>
   ```
 
-  Обработка событий перехода:
+  Прослушивание событий перехода:
 
   ```vue-html
   <Transition @after-enter="onTransitionComplete">
@@ -122,21 +121,21 @@ h(Transition, {
 
 ## `<TransitionGroup>`
 
-Provides transition effects for **multiple** elements or components in a list.
+Обеспечивает эффекты перехода для **нескольких** элементов или компонентов в списке.
 
 - **Входные параметры:**
 
-  `<TransitionGroup>` accepts the same props as `<Transition>` except `mode`, plus two additional props:
+  `<TransitionGroup>` принимает те же параметры, что и `<Transition>`, за исключением `mode`, плюс два дополнительных параметра:
 
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
     /**
-     * If not defined, renders as a fragment.
+     * Если не определен, то отрисовывется как fragment.
      */
     tag?: string
     /**
-     * For customizing the CSS class applied during move transitions.
-     * Use kebab-case in templates, e.g. move-class="xxx"
+     * Для переопределения CSS-класса, применяемого во время анимаций перемещения.
+     * Используйте kebab-case в шаблонах, например move-class="xxx"
      */
     moveClass?: string
   }
@@ -144,15 +143,15 @@ Provides transition effects for **multiple** elements or components in a list.
 
 - **События:**
 
-  `<TransitionGroup>` emits the same events as `<Transition>`.
+  `<TransitionGroup>` генерирует те же события, что и `<Transition>`.
 
 - **Подробности:**
 
-  By default, `<TransitionGroup>` doesn't render a wrapper DOM element, but one can be defined via the `tag` prop.
+  По умолчанию `<TransitionGroup>` не создаёт DOM-элемент, но его можно задать с помощью параметра `tag`.
 
-  Note that every child in a `<transition-group>` must be [**uniquely keyed**](/guide/essentials/list.html#maintaining-state-with-key) for the animations to work properly.
+  Обратите внимание, что у каждого потомка `<transition-group>` должен быть [**уникальный ключ**](/guide/essentials/list.html#maintaining-state-with-key) для правильной работы анимации.
 
-  `<TransitionGroup>` supports moving transitions via CSS transform. When a child's position on screen has changed after an update, it will get applied a moving CSS class (auto generated from the `name` attribute or configured with the `move-class` prop). If the CSS `transform` property is "transition-able" when the moving class is applied, the element will be smoothly animated to its destination using the [FLIP technique](https://aerotwist.com/blog/flip-your-animations/).
+  `<TransitionGroup>` поддерживает анимации перемещения с помощью CSS трансформаций. Когда позиция потомка на экране измениться после обновления, ему будет добавлен CSS-класс (автоматически сгенерированный из атрибута `name` или заданный параметром `move-class`). Если после применения этого класса CSS-свойство `transform` возможно анимировать, элемент будет плавно перемещён в новую позицию с помощью [техники FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
 - **Пример:**
 
@@ -164,7 +163,7 @@ Provides transition effects for **multiple** elements or components in a list.
   </TransitionGroup>
   ```
 
-- **См. также:** [Guide - TransitionGroup](/guide/built-ins/transition-group.html)
+- **См. также:** [Руководство - TransitionGroup](/guide/built-ins/transition-group.html)
 
 ## `<KeepAlive>`
 
