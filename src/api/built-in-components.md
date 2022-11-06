@@ -20,50 +20,51 @@ h(Transition, {
 
 ## `<Transition>`
 
-Provides animated transition effects to a **single** element or component.
+Обеспечивает эффекты анимированного перехода **одного** элемента или компонента.
 
 - **Входные параметры:**
 
   ```ts
   interface TransitionProps {
     /**
-     * Used to automatically generate transition CSS class names.
-     * e.g. `name: 'fade'` will auto expand to `.fade-enter`,
-     * `.fade-enter-active`, etc.
+     * Используется для автоматической генерации CSS-классов перехода.
+     * Например, `name: 'fade'` автоматически раскроется в `.fade-enter`,
+     * `.fade-enter-active` и т.д.
      */
     name?: string
     /**
-     * Whether to apply CSS transition classes.
-     * Default: true
+     * Применять ли СSS-классы переходов.
+     * По умолчанию: true
      */
     css?: boolean
     /**
-     * Specifies the type of transition events to wait for to
-     * determine transition end timing.
-     * Default behavior is auto detecting the type that has
-     * longer duration.
+     * Указывает тип событий перехода, которое необходимо ждать 
+     * для определения момента окончания перехода.
+     * По умолчанию автоматически выбирается тип с большей длительностью.
      */
     type?: 'transition' | 'animation'
     /**
-     * Specifies explicit durations of the transition.
-     * Default behavior is wait for the first `transitionend`
-     * or `animationend` event on the root transition element.
+     * Определяет длительность перехода.
+     * По умолчанию Vue ждёт первого события `transitionend` 
+     * или `animationend` на корневом элементе перехода.
      */
     duration?: number | { enter: number; leave: number }
     /**
-     * Controls the timing sequence of leaving/entering transitions.
-     * Default behavior is simultaneous.
+     * Управляет последовательностью переходов исчезновения/появления. 
+     * По умолчанию — одновременно.
      */
     mode?: 'in-out' | 'out-in' | 'default'
     /**
      * Whether to apply transition on initial render.
-     * Default: false
+     * Применять ли переход при первой отрисовке.
+     * По умолчанию: false
      */
     appear?: boolean
 
     /**
      * Props for customizing transition classes.
-     * Use kebab-case in templates, e.g. enter-from-class="xxx"
+     * Параметры для настройки классов перехода.
+     * Используйте kebab-case в шаблонах, например enter-from-class="xxx"
      */
     enterFromClass?: string
     enterActiveClass?: string
@@ -88,20 +89,20 @@ Provides animated transition effects to a **single** element or component.
   - `@after-leave`
   - `@after-appear`
   - `@enter-cancelled`
-  - `@leave-cancelled` (`v-show` only)
+  - `@leave-cancelled` (только для `v-show`)
   - `@appear-cancelled`
 
 - **Пример:**
 
-  Simple element:
+  Простой элемент:
 
   ```vue-html
   <Transition>
-    <div v-if="ok">toggled content</div>
+    <div v-if="ok">переключаемое содержимое</div>
   </Transition>
   ```
 
-  Dynamic component, with transition mode + animate on appear:
+  Динамический компонент с mode и appear:
 
   ```vue-html
   <Transition name="fade" mode="out-in" appear>
@@ -109,11 +110,11 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Listening to transition events:
+  Обработка событий перехода:
 
   ```vue-html
   <Transition @after-enter="onTransitionComplete">
-    <div v-show="ok">toggled content</div>
+    <div v-show="ok">переключаемое содержимое</div>
   </Transition>
   ```
 
