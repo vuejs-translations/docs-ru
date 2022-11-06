@@ -5,7 +5,7 @@ pageClass: api
 # Встроенные компоненты {#built-in-components}
 
 :::info Регистрация и использование
-Встроенные компоненты можно использовать в шаблонах без из регистрации. Так же они являются tree-shakeable: они включаются в сборку только тогда, когда они используются.
+Встроенные компоненты можно использовать в шаблонах без их регистрации. Так же они являются "tree-shakeable": они включаются в сборку только тогда, когда они используются.
 
 При использовании в [функции рендеринга](/guide/extras/render-function.html), они должны быть импортированы в явном виде. Например:
 
@@ -198,7 +198,7 @@ h(Transition, {
 
   В любой момент времени в качестве прямого потомка `<KeepAlive>` может быть только один активный экземпляр компонента.
 
-  При переключении компонента внутри `<KeepAlive>` будут вызываться его хуки жизненного цикла `activated` и `deactivated` соответственно, предоставляя альтернативу хукам `mounted` и `unmounted`, которые не вызываются. Это относится как к прямому непосредственному `<KeepAlive>`, так и ко всем его потомкам.
+  При переключении компонента внутри `<KeepAlive>` будут вызываться его хуки жизненного цикла `activated` и `deactivated` соответственно, предоставляя альтернативу хукам `mounted` и `unmounted`, которые не вызываются. Это относится как к непосредственному потомку `<KeepAlive>`, так и ко всем его потомкам.
 
 - **Пример:**
 
@@ -260,21 +260,21 @@ h(Transition, {
 
 ## `<Teleport>`
 
-Renders its slot content to another part of the DOM.
+Перемещает содержимое своего слота в другую часть DOM.
 
 - **Входные параметры:**
 
   ```ts
   interface TeleportProps {
     /**
-     * Required. Specify target container.
-     * Can either be a selector or an actual element.
+     * Обязательный. Задаёт целевой контейнер.
+     * Может быть селектором или настоящим элементом.
      */
     to: string | HTMLElement
     /**
-     * When `true`, the content will remain in its original
-     * location instead of moved into the target container.
-     * Can be changed dynamically.
+     * Если `true`, содержимое останется на своем первоначальном
+     * месте, вместо перемещения в целевой контейнер.
+     * Может изменяться динамически.
      */
     disabled?: boolean
   }
@@ -282,7 +282,7 @@ Renders its slot content to another part of the DOM.
 
 - **Пример:**
 
-  Specifying target container:
+  Указание целевого контейнера:
 
   ```vue-html
   <teleport to="#some-id" />
@@ -290,7 +290,7 @@ Renders its slot content to another part of the DOM.
   <teleport to="[data-teleport]" />
   ```
 
-  Conditionally disabling:
+  Отображение по условию:
 
   ```vue-html
   <teleport to="#popup" :disabled="displayVideoInline">
@@ -298,7 +298,7 @@ Renders its slot content to another part of the DOM.
   </teleport>
   ```
 
-- **См. также:** [Guide - Teleport](/guide/built-ins/teleport.html)
+- **См. также:** [Руководство - Teleport](/guide/built-ins/teleport.html)
 
 ## `<Suspense>` <sup class="vt-badge experimental" />
 
