@@ -2,12 +2,12 @@
 pageClass: api
 ---
 
-# Built-in Components
+# Встроенные компоненты {#built-in-components}
 
 :::info Регистрация и использование
-Built-in components can be used directly in templates without needing to be registered. They are also tree-shakeable: they are only included in the build when they are used.
+Встроенные компоненты можно использовать в шаблонах без из регистрации. Так же они являются tree-shakeable: они включаются в сборку только тогда, когда они используются.
 
-When using them in [render functions](/guide/extras/render-function.html), they need to be imported explicitly. For example:
+При использовании в [функции рендеринга](/guide/extras/render-function.html), они должны быть импортированы в явном виде. Например:
 
 ```js
 import { h, Transition } from 'vue'
