@@ -117,7 +117,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **См. также:** [`<Transition>` Guide](/guide/built-ins/transition.html)
+- **См. также:** [Руководство - Transition](/guide/built-ins/transition.html)
 
 ## `<TransitionGroup>`
 
@@ -167,24 +167,24 @@ h(Transition, {
 
 ## `<KeepAlive>`
 
-Caches dynamically toggled components wrapped inside.
+Кэширует динамически переключаемые компоненты содержащиеся внутри.
 
 - **Входные параметры:**
 
   ```ts
   interface KeepAliveProps {
     /**
-     * If specified, only components with names matched by
-     * `include` will be cached.
+     * Если определено, то только компоненты подходящие
+     * `include` будут кэшированы.
      */
     include?: MatchPattern
     /**
-     * Any component with a name matched by `exclude` will
-     * not be cached.
+     * Любой компонент с именем подходящим `exclude`
+     * не будет кэшироваться.
      */
     exclude?: MatchPattern
     /**
-     * The maximum number of component instances to cache.
+     * Максимальное количество кэшируемых экземпляров компонентов.
      */
     max?: number | string
   }
@@ -194,15 +194,15 @@ Caches dynamically toggled components wrapped inside.
 
 - **Подробности:**
 
-  When wrapped around a dynamic component, `<KeepAlive>` caches the inactive component instances without destroying them.
+  При оборачивании вокруг динамического компонента, `<KeepAlive>` кэширует неактивные экземпляры компонентов, не уничтожая их.
 
-  There can only be one active component instance as the direct child of `<KeepAlive>` at any time.
+  В любой момент времени в качестве прямого потомка `<KeepAlive>` может быть только один активный экземпляр компонента.
 
-  When a component is toggled inside `<KeepAlive>`, its `activated` and `deactivated` lifecycle hooks will be invoked accordingly, providing an alternative to `mounted` and `unmounted`, which are not called. This applies to the direct child of `<KeepAlive>` as well as to all of its descendants.
+  При переключении компонента внутри `<KeepAlive>` будут вызываться его хуки жизненного цикла `activated` и `deactivated` соответственно, предоставляя альтернативу хукам `mounted` и `unmounted`, которые не вызываются. Это относится как к прямому непосредственному `<KeepAlive>`, так и ко всем его потомкам.
 
 - **Пример:**
 
-  Basic usage:
+  Базовое использование:
 
   ```vue-html
   <KeepAlive>
@@ -210,7 +210,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  When used with `v-if` / `v-else` branches, there must be only one component rendered at a time:
+  Когда используется с `v-if` / `v-else` ветвями, одновременно должен отображаться только один компонент:
 
   ```vue-html
   <KeepAlive>
@@ -219,7 +219,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  Used together with `<Transition>`:
+  Использование вместе с `<Transition>`:
 
   ```vue-html
   <Transition>
@@ -229,7 +229,7 @@ Caches dynamically toggled components wrapped inside.
   </Transition>
   ```
 
-  Using `include` / `exclude`:
+  Использование `include` / `exclude`:
 
   ```vue-html
   <!-- comma-delimited string -->
@@ -248,7 +248,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  Usage with `max`:
+  Использование с `max`:
 
   ```vue-html
   <KeepAlive :max="10">
@@ -256,7 +256,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-- **См. также:** [Guide - KeepAlive](/guide/built-ins/keep-alive.html)
+- **См. также:** [Руководство - KeepAlive](/guide/built-ins/keep-alive.html)
 
 ## `<Teleport>`
 
