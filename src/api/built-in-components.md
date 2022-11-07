@@ -128,8 +128,8 @@ h(Transition, {
 
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
-    /**
-     * Если не определен, то рендериться как fragment (не отображается).
+    /*
+     * Если не определен, то рендериться как fragment.
      */
     tag?: string
     /**
