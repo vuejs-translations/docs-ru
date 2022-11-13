@@ -47,22 +47,25 @@
 
 ## ref
 
-Denotes a [template ref](/guide/essentials/template-refs.html).
+Означает [ссылку на элементы шаблона](/guide/essentials/template-refs.html).
 
 - **Ожидает:** `string | Function`
 
 - **Подробности:**
 
-  `ref` is used to register a reference to an element or a child component.
+  --- `ref` is used to register a reference to an element or a child component.
+  +++ Атрибут `ref` используется для регистрации ссылки на элемент или дочерний компонент.
 
-  In Options API, the reference will be registered under the component's `this.$refs` object:
+  --- In Options API, the reference will be registered under the component's `this.$refs` object:
+  +++ В Options API, ссылка будет зарегистрирована в объекте компонента `this.$refs`:
 
   ```vue-html
-  <!-- stored as this.$refs.p -->
+  <!-- Храниться в this.$refs.p -->
   <p ref="p">hello</p>
   ```
 
-  In Composition API, the reference will be stored in a ref with matching name:
+  --- In Composition API, the reference will be stored in a ref with matching name:
+  +++ В Composition API, ссылка будет храниться в ref с соответствующим именем:
 
   ```vue
   <script setup>
@@ -72,23 +75,27 @@ Denotes a [template ref](/guide/essentials/template-refs.html).
   </script>
 
   <template>
-    <p ref="p">hello</p>
+    <p ref="p">Привет</p>
   </template>
   ```
 
-  If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be the child component instance.
+  --- If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be the child component instance.
+  +++ При использовании на обычном DOM-элементе ссылка будет указывать на этот элемент; при использовании на дочернем компоненте ссылка будет указывать на экземпляр дочернего компонента.
 
-  Alternatively `ref` can accept a function value which provides full control over where to store the reference:
+  --- Alternatively `ref` can accept a function value which provides full control over where to store the reference:
+  +++ В качестве альтернативы `ref` может принимать функцию, что даёт полный контроль над тем, где хранить ссылку:
 
   ```vue-html
   <ChildComponent :ref="(el) => child = el" />
   ```
 
-  An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you must wait until the component is mounted before accessing them.
+  --- An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you must wait until the component is mounted before accessing them.
+  +++ Важное замечание о времени регистрации ref-ссылок: поскольку эти ссылки создаются render-функцией, нужно подождать, пока компонент будет смонтирован, прежде чем обращаться к ним.
 
-  `this.$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+  --- `this.$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+  +++ Так же свойство `this.$refs` не реактивно, поэтому не следует использовать его в шаблонах привязки данных.
 
-- **См. также:** [Template Refs](/guide/essentials/template-refs.html)
+- **См. также:** [Ссылки на элементы шаблона](/guide/essentials/template-refs.html)
 
 ## is
 
