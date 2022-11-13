@@ -2,17 +2,21 @@
 
 ## key
 
-The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing the new list of nodes against the old list.
+--- The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing the new list of nodes against the old list.
++++ Специальный атрибут `key` (ключ) в первую очередь используется как подсказка для алгоритма виртуального DOM Vue для идентификации VNode (виртуальных узлов) при вычислении разницы между обновленным списком узлов и старым. 
 
 - **Ожидает:** `number | string | symbol`
 
 - **Подробности:**
 
-  Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed / destroyed.
+  --- Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed / destroyed.
+  +++ Без ключей Vue использует алгоритм, который минимизирует перемещение элемента и пытается изменять/переиспользовать элементы одного типа как можно больше. При использовании ключей Vue переупорядочивает элементы на основании изменения ключей, а элементы с ключами, которые уже отсутствуют, будут всегда удаляться/уничтожаться. 
 
-  Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+  --- Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+  +++ Потомки одного и того же общего родителя должны иметь **уникальные ключи**. Дубликаты ключей будут приводить к ошибкам рендера.
 
-  The most common use case is combined with `v-for`:
+  --- The most common use case is combined with `v-for`:
+  +++ Чаще всего используется в сочетании с `v-for`:
 
   ```vue-html
   <ul>
@@ -20,12 +24,15 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </ul>
   ```
 
-  It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
+  --- It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
+  +++ Так же может использоваться для принудительной замены элемент/компонента вместо его переиспользования. Это может пригодиться, если вы хотите:
 
-  - Properly trigger lifecycle hooks of a component
-  - Trigger transitions
+  --- - Properly trigger lifecycle hooks of a component
+  +++ - Корректно вызвать хуки жизненного цикла компонента
+  --- - Trigger transitions
+  +++ - Запускать анимации перехода
 
-  For example:
+  Например:
 
   ```vue-html
   <transition>
@@ -33,9 +40,10 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </transition>
   ```
 
-  When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  --- When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  +++ При изменении значения `text`, элемент `<span>` будет всегда заменяться, вместо обновления содержимого, поэтому будет запущена анимация перехода.
 
-- **См. также:** [Guide - List Rendering - Maintaining State with `key`](/guide/essentials/list.html#maintaining-state-with-key)
+- **См. также:** [Руководство - Рендер списка - Сохранение состояния с помощью `key`](/guide/essentials/list.html#maintaining-state-with-key)
 
 ## ref
 
