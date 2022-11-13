@@ -99,15 +99,16 @@
 
 ## is
 
-Used for binding [dynamic components](/guide/essentials/component-basics.html#dynamic-components).
+Используется для [динамических компонентов](/guide/essentials/component-basics.html#dynamic-components).
 
 - **Ожидает:** `string | Component`
 
 - **Использование на нативных элементах** <sup class="vt-badge">3.1+</sup>
 
-  When the `is` attribute is used on a native HTML element, it will be interpreted as a [Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), which is a native web platform feature.
+  Когда атрибут `is` используется на нативном HTML-элементе, то он интерпретируется как [пользовательский встроенный элемент](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example). Это нативная возможность веб-платформы.
 
-  There is, however, a use case where you may need Vue to replace a native element with a Vue component, as explained in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats). You can prefix the value of the `is` attribute with `vue:` so that Vue will render the element as a Vue component instead:
+  --- There is, however, a use case where you may need Vue to replace a native element with a Vue component, as explained in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats). You can prefix the value of the `is` attribute with `vue:` so that Vue will render the element as a Vue component instead:
+  +++ Однако, есть случай использования, когда может понадобиться, чтобы Vue заменил нативный элемент на компонент Vue, как это разъясняется в [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats). В таком случае можно добавить значению атрибута `is` префикс `vue:`, чтобы Vue вместо элемента отрисовал компонент Vue:
 
   ```vue-html
   <table>
@@ -117,5 +118,5 @@ Used for binding [dynamic components](/guide/essentials/component-basics.html#dy
 
 - **См. также:**
 
-  - [Built-in Special Element - `<component>`](/api/built-in-special-elements.html#component)
-  - [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
+  - [Специальные встроенные элементы - `<component>`](/api/built-in-special-elements.html#component)
+  - [Динамические компоненты](/guide/essentials/component-basics.html#dynamic-components)
