@@ -1,8 +1,9 @@
-# Composition API: <br>Dependency Injection {#composition-api-dependency-injection}
+# Composition API: <br>Внедрение зависимостей {#composition-api-dependency-injection}
 
 ## provide() {#provide}
 
-Provides a value that can be injected by descendant components.
+--- Provides a value that can be injected by descendant components.
++++ Предоставляет ```значение, которое может быть внедрено дочерними компонентами.
 
 - **Тип:**
 
@@ -12,11 +13,15 @@ Provides a value that can be injected by descendant components.
 
 - **Подробности:**
 
-  `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  --- `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  +++ `provide()` принимает два аргумента: ключ, который может быть строкой или символом, и ```значение для внедрения.
 
-  When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  --- When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  +++ При использовании TypeScript ключ может быть символом, приведенным к `InjectionKey` - предоставляемый Vue тип утилиты, расширяющий `Symbol`, который можно использовать для синхронизации типа значения между `provide()` и `inject()`.
+  *** Vue предоставляет интерфейс InjectionKey — общий тип, расширяющий Symbol. Его можно использовать для синхронизации типа внедряемого значения между провайдером и получателем
 
-  Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  --- Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  +++ Подобно API регистрации хуков жизненного цикла, `provide()` должен вызываться синхронно во время фазы `setup()` компонента.
 
 - **Пример:**
 
@@ -25,21 +30,24 @@ Provides a value that can be injected by descendant components.
   import { ref, provide } from 'vue'
   import { fooSymbol } from './injectionSymbols'
 
-  // provide static value
+  --- // provide static value
+  +++ // предоставить статическое значение
   provide('foo', 'bar')
 
-  // provide reactive value
+  --- // provide reactive value
+  +++ // предоставить реактивное значение
   const count = ref(0)
   provide('count', count)
 
-  // provide with Symbol keys
+  --- // provide with Symbol keys
+  +++ // provide с ключами-символами
   provide(fooSymbol, count)
   </script>
   ```
 
 - **См. также:**
   - [Guide - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [Guide - Типизация Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
 
 ## inject() {#inject}
 
