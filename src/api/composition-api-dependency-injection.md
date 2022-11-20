@@ -51,18 +51,22 @@
 
 ## inject() {#inject}
 
-Injects a value provided by an ancestor component or the application (via `app.provide()`).
+--- Injects a value provided by an ancestor component or the application (via `app.provide()`).
+--- Внедряет значение, предоставленное родительским компонентом или приложением (через `app.provide()`).
 
 - **Тип:**
 
   ```ts
-  // without default value
+  --- // without default value
+  +++ // без значения по умолчанию
   function inject<T>(key: InjectionKey<T> | string): T | undefined
 
-  // with default value
+  --- // with default value
+  +++ // со значением по умолчанию
   function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 
-  // with factory
+  --- // with factory
+  +++ // с фабрикой
   function inject<T>(
     key: InjectionKey<T> | string,
     defaultValue: () => T,
@@ -72,43 +76,55 @@ Injects a value provided by an ancestor component or the application (via `app.p
 
 - **Подробности:**
 
-  The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  --- The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  +++ Первым аргументом является ключ инъекции. Vue пройдет по родительской цепочке вверх, чтобы найти предоставленное значение с соответствующим ключом. Если несколько компонентов в родительской цепочке предоставляют один и тот же ключ, то ближайший к инжектирующему компоненту будет "затенять" те, которые находятся выше по цепочке. Если значение с подходящим ключом не найдено, `inject()` возвращает значение `undefined`, если не указано значение по умолчанию.
 
-  The second argument is optional and is the default value to be used when no matching value was found. It can also be a factory function to return values that are expensive to create. If the default value is a function, then `false` must be passed as the third argument to indicate that the function should be used as the value instead of the factory.
+  --- The second argument is optional and is the default value to be used when no matching value was found. It can also be a factory function to return values that are expensive to create. If the default value is a function, then `false` must be passed as the third argument to indicate that the function should be used as the value instead of the factory.
+  +++ Второй аргумент является необязательным и представляет собой значение по умолчанию, которое будет использоваться, если не было найдено ни одного подходящего значения. Это также может быть фабричная функция для возврата значений, которые дорого создавать. Если значением по умолчанию является функция, то в качестве третьего аргумента необходимо передать `false`, чтобы указать, что в качестве значения должна использоваться функция, а не фабрика.
 
-  Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  --- Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  +++ Подобно API регистрации хуков жизненного цикла, `inject()` должен вызываться синхронно во время фазы `setup()` компонента.
 
-  When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  --- When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  +++ При использовании TypeScript ключ может быть символом, приведенным к `InjectionKey` - предоставляемый Vue тип утилиты, расширяющий `Symbol`, который можно использовать для синхронизации типа значения между `provide()` и `inject()`.
+  *** Vue предоставляет интерфейс InjectionKey — общий тип, расширяющий Symbol. Его можно использовать для синхронизации типа внедряемого значения между провайдером и получателем
 
 - **Пример:**
 
-  Assuming a parent component has provided values as shown in the previous `provide()` example:
+  --- Assuming a parent component has provided values as shown in the previous `provide()` example:
+  +++ Предположим, что родительский компонент предоставил значения, как показано в предыдущем примере `provide()`.
 
   ```vue
   <script setup>
   import { inject } from 'vue'
   import { fooSymbol } from './injectionSymbols'
 
-  // inject static value with default
+  --- // inject static value with default
+  +++ // внедрение статической ```величины со ```значением по умолчанию
   const foo = inject('foo')
 
-  // inject reactive value
+  --- // inject reactive value
+  +++ // внедрение реактивной ```величину
   const count = inject('count')
 
-  // inject with Symbol keys
+  --- // inject with Symbol keys
+  +++ // внедрение с ключами-символами
   const foo2 = inject(fooSymbol)
 
-  // inject with default value
+  --- // inject with default value
+  +++ // внедрение со ```значением по умолчанию
   const bar = inject('foo', 'default value')
 
-  // inject with default value factory
+  --- // inject with default value factory
+  +++ // внедрение с фабрикой ```значения по умолчанию
   const baz = inject('foo', () => new Map())
 
-  // inject with function default value, by passing the 3rd argument
+  --- // inject with function default value, by passing the 3rd argument
+  +++ // внедрение со значением функции по умолчанию, через передачу 3го аргумента
   const fn = inject('function', () => {}, false)
   </script>
   ```
 
 - **См. также:**
   - [Guide - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+  - [Guide - Типизация Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
