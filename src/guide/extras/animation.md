@@ -5,13 +5,13 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# Animation Techniques {#animation-techniques}
+# Техники анимации {#animation-techniques}
 
-Vue provides the [`<Transition>`](/guide/built-ins/transition.html) and [`<TransitionGroup>`](/guide/built-ins/transition-group.html) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.
+Vue предоставляет компоненты [`<Transition>`](/guide/built-ins/transition.html) и [`<TransitionGroup>`](/guide/built-ins/transition-group.html) для обработки переходов между входом/выходом и списком. Однако существует множество других способов использования анимации в Интернете, даже в приложении Vue. Здесь мы рассмотрим несколько дополнительных приемов.
 
-## Class-based Animations {#class-based-animations}
+## Анимация на основе классов {#class-based-animations}
 
-For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
+Для элементов, которые не входят/выходят из DOM, мы можем запускать анимацию, динамически добавляя CSS-класс:
 
 <div class="composition-api">
 
@@ -88,9 +88,9 @@ export default {
 
 <DisabledButton />
 
-## State-driven Animations {#state-driven-animations}
+## Анимация, управляемая состоянием {#state-driven-animations}
 
-Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+Некоторые эффекты перехода могут быть применены путем интерполяции значений, например, путем привязки стиля к элементу во время взаимодействия. Возьмем, например, такой пример:
 
 <div class="composition-api">
 
@@ -141,13 +141,13 @@ export default {
 
 <Colors />
 
-In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate SVG paths using spring physics - after all, they are all attribute data bindings:
+Помимо цвета, вы можете использовать привязки стиля для анимирования трансформации, ширины или высоты. Вы даже можете анимировать SVG-пути, используя физику пружины - в конце концов, это все привязки данных атрибутов:
 
 <ElasticHeader />
 
-## Animating with Watchers {#animating-with-watchers}
+## Анимация с помощью наблюдателей {#animating-with-watchers}
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example, we can animate the number itself:
+При определенном творческом подходе мы можем использовать наблюдатели для анимации чего угодно на основе некоторого числового состояния. Например, мы можем анимировать само число:
 
 <div class="composition-api">
 
