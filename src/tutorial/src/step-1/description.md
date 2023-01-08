@@ -17,9 +17,9 @@
 <details>
 <summary>Подробности настройки учебника</summary>
 
-- Vue предлагает два стиля API: Options API и Composition API. Этот учебник предназначен для работы с обоими - вы можете выбрать предпочитаемый стиль, используя переключатели **API Preference** вверху. <a target="_blank" href="/guide/introduction.html#api-styles">Узнайте больше о стилях API</a>.
+- Vue предлагает два стиля API: Options API и Composition API. Справочник API разработан для работы с любым - вы можете выбрать предпочитаемый стиль, используя переключатели **API Preference** вверху. <a target="_blank" href="/guide/introduction.html#api-styles">Узнайте больше о стилях API</a>.
 
-- Вы также можете переключаться между SFC-режимом или HTML-режимом. В первом будут показаны примеры кода в формате <a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a> (SFC), который используется большинством разработчиков при использовании Vue на этапе сборки. HTML-режим показывает использование без этапа сборки.
+- Вы также можете переключаться между SFC-режимом или HTML-режимом. В первом будут показаны примеры кода в формате <a target="_blank" href="/guide/introduction.html#single-file-components">Однофайловые компоненты</a> (SFC), который используется большинством разработчиков при использовании Vue на этапе сборки. HTML-режим показывает использование без этапа сборки.
 
 </details>
 
