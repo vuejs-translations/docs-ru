@@ -31,7 +31,7 @@ import { ref } from 'vue'
 const message = ref('Привет мир!')
 
 console.log(message.value) // "Привет мир!"
-message.value = 'Changed'
+message.value = 'Изменено'
 ```
 
 Подробности о `reactive()` и `ref()` обсуждаются в <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">Руководство — Основы реактивности</a>.
