@@ -1,6 +1,6 @@
-# Props {#props}
+# Входные параметры {#props}
 
-A child component can accept input from the parent via **props**. First, it needs to declare the props it accepts:
+Дочерний компонент может принимать входные данные от родительского через **props**. Во-первых, ему необходимо объявить реквизиты, которые он принимает:
 
 <div class="composition-api">
 <div class="sfc">
@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 ```
 
-Note `defineProps()` is a compile-time macro and doesn't need to be imported. Once declared, the `msg` prop can be used in the child component's template. It can also be accessed in JavaScript via the returned object of `defineProps()`.
+Обратите внимание, что `defineProps()` является макросом времени компиляции и не нуждается в импорте. После объявления входного параметра `msg` может быть использован в шаблоне дочернего компонента. К нему также можно получить доступ в JavaScript через возвращаемый объект `defineProps()`.
 
 </div>
 
@@ -32,7 +32,7 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template. The received props are passed to `setup()` as the first argument.
+После объявления входного параметра `msg` становится доступным для `this` и может быть использован в шаблоне дочернего компонента. Полученные входные параметры передаются в `setup()` в качестве первого аргумента.
 
 </div>
 
@@ -49,11 +49,11 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template.
+После объявления входного параметра `msg` становится доступным для `this` и может быть использован в шаблоне дочернего компонента.
 
 </div>
 
-The parent can pass the prop to the child just like attributes. To pass a dynamic value, we can also use the `v-bind` syntax:
+Родитель может передать свойство дочернему объекту так же, как и атрибуты. Чтобы передать динамическое значение, можем использовать синтаксис `v-bind`:
 
 <div class="sfc">
 
@@ -70,4 +70,4 @@ The parent can pass the prop to the child just like attributes. To pass a dynami
 
 </div>
 
-Now try it yourself in the editor.
+Теперь попробуйте сделать это самостоятельно в редакторе.
