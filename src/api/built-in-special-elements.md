@@ -101,7 +101,7 @@
   </script>
 
   <template>
-    <!-- Это не сработает, так как 'input' является собственным элементом HTML -->
+    <!-- ЭТО НЕ СРАБОТАЕТ, так как 'input' является собственным элементом HTML -->
     <component :is="tag" v-model="username" />
   </template>
   ```
