@@ -1,4 +1,4 @@
-# Composition API: Жизненный цикл хуков {#composition-api-lifecycle-hooks}
+# Composition API: Хуки жизненного цикла {#composition-api-lifecycle-hooks}
 
 :::info Примечание по использованию
 Все API, перечисленные на этой странице, должны вызываться синхронно на этапе `setup()` компонента. Прочтите [Руководство - Жизненный цикл хуков](/guide/essentials/lifecycle.html) для получения подробностей.
