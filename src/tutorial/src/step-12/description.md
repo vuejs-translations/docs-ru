@@ -21,13 +21,13 @@ const props = defineProps({
 <div class="html">
 
 ```js
-// in child component
+// в дочернем компоненте
 export default {
   props: {
     msg: String
   },
   setup(props) {
-    // access props.msg
+    // доступ props.msg
   }
 }
 ```
@@ -41,7 +41,7 @@ export default {
 <div class="options-api">
 
 ```js
-// in child component
+// в дочернем компоненте
 export default {
   props: {
     msg: String
