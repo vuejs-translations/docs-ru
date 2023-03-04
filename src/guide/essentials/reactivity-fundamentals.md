@@ -342,7 +342,7 @@ console.log(proxy.nested === raw) // false
 
 API `reactive()` имеет два ограничения:
 
-1. Он работает только для объектных типов (объект, массив, и другие [типы коллекций](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections) такие `Map` и `Set`). Он не может хранить [примитивные типы](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) такие как `string`, `number` или `boolean`.
+1. Он работает только для объектных типов (объекты, массивы, и другие [типы коллекций](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections) такие `Map` и `Set`). Он не может хранить [примитивные типы](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) такие как `string`, `number` или `boolean`.
 
 2. Поскольку отслеживание реактивности в Vue работает через доступ к свойствам, необходимо всегда сохранять одну и ту же ссылку на реактивный объект. Это означает, что нельзя легко "заменить" реактивный объект, поскольку связь реактивности с первой ссылкой теряется:
 
