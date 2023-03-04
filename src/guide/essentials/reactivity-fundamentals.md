@@ -446,7 +446,7 @@ function increment() {
 
 <template>
   <button @click="increment">
-    {{ count }} <!-- не нужно .value -->
+    {{ count }} <!-- указывать .value больше не нужно -->
   </button>
 </template>
 ```
