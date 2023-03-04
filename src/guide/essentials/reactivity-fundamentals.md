@@ -562,7 +562,7 @@ export default {
     this.debouncedClick = _.debounce(this.click, 500)
   },
   unmounted() {
-    // также хорошая идея отменить таймер
+    // также хорошая идея отменять таймер
     // когда компонент удаляется
     this.debouncedClick.cancel()
   },
