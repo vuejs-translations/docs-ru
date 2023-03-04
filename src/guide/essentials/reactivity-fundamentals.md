@@ -67,7 +67,7 @@ export default {
 
 <div class="composition-api">
 
-Возожно создать реактивный объект или массив с помощью функции [`reactive()`](/api/reactivity-core.html#reactive) функции:
+Возможно создать реактивный объект или массив с помощью функции [`reactive()`](/api/reactivity-core.html#reactive):
 
 ```js
 import { reactive } from 'vue'
