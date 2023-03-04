@@ -75,7 +75,7 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-Реактивные объекты это [JavaScript Прокси](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) и ведут себя так же, как обычные объекты. Разница в том, что Vue способен отслеживать доступ к свойствам и мутации реактивного объекта. Подробнее о том, как работает система реактивности Vue, объясняется в разделе [Реактивность в деталях](/guide/extras/reactivity-in-depth.html) - но рекомендуется прочитать его после того, как закончите изучать основное руководство.
+Реактивные объекты это [JavaScript Прокси](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) и ведут себя так же, как обычные объекты. Разница в том, что Vue способен отслеживать доступ к свойствам и мутации реактивного объекта. Подробнее о том, как работает система реактивности Vue, объясняется в разделе [Реактивность в деталях](/guide/extras/reactivity-in-depth.html) - но лучше приступать к нему уже после того, как закончите изучать основное руководство.
 
 См. также: [Типизированная реактивность](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
