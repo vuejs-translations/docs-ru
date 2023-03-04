@@ -311,7 +311,7 @@ function mutateDeeply() {
 const raw = {}
 const proxy = reactive(raw)
 
-// прокси НЕ равен оригиналу.
+// прокси НЕ РАВЕН оригиналу.
 console.log(proxy === raw) // false
 ```
 
