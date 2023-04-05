@@ -4,24 +4,24 @@ import ListMove from './transition-demos/ListMove.vue'
 import ListStagger from './transition-demos/ListStagger.vue'
 </script>
 
-# TransitionGroup {#transitiongroup}
+# Переходы в списках {#transitiongroup}
 
-`<TransitionGroup>` is a built-in component designed for animating the insertion, removal, and order change of elements or components that are rendered in a list.
+`<TransitionGroup>` это встроенный компонент, предназначенный для создания анимации при добавлении, удалении и изменении порядка элементов или компонентов, которые отображаются в списке.
 
-## Differences from `<Transition>` {#differences-from-transition}
+## Отличия от `<Transition>` {#differences-from-transition}
 
-`<TransitionGroup>` supports the same props, CSS transition classes, and JavaScript hook listeners as `<Transition>`, with the following differences:
+`<TransitionGroup>` поддерживает те же параметры, классы CSS-перехода, и JavaScript-хук слушатели, что и `<Transition>`, с следующими отличиями:
 
-- By default, it doesn't render a wrapper element. But you can specify an element to be rendered with the `tag` prop.
+- По умолчанию он не отображает элемент-обертку. Однако вы можете указать элемент, который будет отображаться с помощью `tag` атрибута.
 
-- [Transition modes](./transition.html#transition-modes) are not available, because we are no longer alternating between mutually exclusive elements.
+- [Режимы переходов](./transition.html#transition-modes) не доступны, так как мы больше не переключаемся туда-сюда между взаимоисключающими элементами.
 
-- Elements inside are **always required** to have a unique `key` attribute.
+- Элементы внутри **всегда должны** иметь уникальный атрибут `key`.
 
-- CSS transition classes will be applied to individual elements in the list, **not** to the group / container itself.
+- Классы CSS-перехода будут применяться к отдельным элементам в списке, а не к самой группе / контейнеру.
 
 :::tip Совет
-When used in [DOM templates](/guide/essentials/component-basics.html#dom-template-parsing-caveats), it should be referenced as `<transition-group>`.
+При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<transition-group>`.
 :::
 
 ## Enter / Leave Transitions {#enter-leave-transitions}
