@@ -10,7 +10,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 ## Отличия от `<Transition>` {#differences-from-transition}
 
-`<TransitionGroup>` поддерживает те же параметры, классы CSS-перехода, и JavaScript-хук слушатели, что и `<Transition>`, с следующими отличиями:
+`<TransitionGroup>` поддерживает те же параметры, классы CSS-перехода, и JavaScript-хук слушатели, что и `<Transition>`, со следующими отличиями:
 
 - По умолчанию он не отображает элемент-обертку. Однако вы можете указать элемент, который будет отображаться с помощью `tag` атрибута.
 
