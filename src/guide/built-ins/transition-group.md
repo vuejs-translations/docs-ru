@@ -24,9 +24,9 @@ import ListStagger from './transition-demos/ListStagger.vue'
 При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<transition-group>`.
 :::
 
-## Enter / Leave Transitions {#enter-leave-transitions}
+## Анимация добавления / удаления элементов списка {#enter-leave-transitions}
 
-Here is an example of applying enter / leave transitions to a `v-for` list using `<TransitionGroup>`:
+Вот пример анимации перехода добавления / удаления элементов `v-for` списка используя `<TransitionGroup>`:
 
 ```vue-html
 <TransitionGroup name="list" tag="ul">
