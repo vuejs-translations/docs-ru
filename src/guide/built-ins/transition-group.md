@@ -67,7 +67,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
   transform: translateX(30px);
 }
 
-/* убедитесь, что удалющиеся элементы выведены из потока, чтобы 
+/* убедитесь, что удаляющиеся элементы выведены из потока, чтобы 
 анимации перемещения могли быть рассчитаны правильно. */
 .list-leave-active {
   position: absolute;
