@@ -2,36 +2,36 @@
 import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </script>
 
-# KeepAlive {#keepalive}
+# Сохранение состояния {#keepalive}
 
-`<KeepAlive>` is a built-in component that allows us to conditionally cache component instances when dynamically switching between multiple components.
+`<KeepAlive>` это встроенный компонент, который позволяет условно кэшировать экземпляры компонентов при динамическом переключении между несколькими компонентами.
 
-## Basic Usage {#basic-usage}
+## Базовое использование {#basic-usage}
 
-In the Component Basics chapter, we introduced the syntax for [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components), using the `<component>` special element:
+В главе "Основы компонентов" мы представили синтаксис для [Динамических компонентов](/guide/essentials/component-basics.html#dynamic-components), используя специальный элемент `<component>`:
 
 ```vue-html
 <component :is="activeComponent" />
 ```
 
-By default, an active component instance will be unmounted when switching away from it. This will cause any changed state it holds to be lost. When this component is displayed again, a new instance will be created with only the initial state.
+По умолчанию активный экземпляр компонента будет размонтирован при переключении с него. Это приведет к потере любого измененного состояния, которое оно содержит. При повторном отображении этого компонента будет создан новый экземпляр только с начальным состоянием.
 
-In the example below, we have two stateful components - A contains a counter, while B contains a message synced with an input via `v-model`. Try updating the state of one of them, switch away, and then switch back to it:
+В приведенном ниже примере у нас есть два компонента с состоянием: компонент A содержит счетчик, а компонент B содержит сообщение, синхронизированное с введенным значением через `v-model`. Попробуйте обновить состояние одного из них, переключиться на другой компонент, а затем вернуться к нему:
 
 <SwitchComponent />
 
-You'll notice that when switched back, the previous changed state would have been reset.
+Вы заметите, что при обратном переключении предыдущее измененное состояние будет сброшено.
 
-Creating fresh component instance on switch is normally useful behavior, but in this case, we'd really like the two component instances to be preserved even when they are inactive. To solve this problem, we can wrap our dynamic component with the `<KeepAlive>` built-in component:
+Создание нового экземпляра компонента при переключении обычно является полезным поведением, но в этом случае нам бы очень хотелось, чтобы два экземпляра компонента сохраняли свое состояние, даже когда они неактивны. Чтобы решить эту проблему, мы можем обернуть наш динамический компонент встроенным компонентом `<KeepAlive>`:
 
 ```vue-html
-<!-- Inactive components will be cached! -->
+<!-- Неактивные компоненты будут кэшироваться! -->
 <KeepAlive>
   <component :is="activeComponent" />
 </KeepAlive>
 ```
 
-Now, the state will be persisted across component switches:
+Теперь состояние будет сохраняться при переключении компонентов:
 
 <SwitchComponent use-KeepAlive />
 
@@ -47,7 +47,7 @@ Now, the state will be persisted across component switches:
 </div>
 
 :::tip Совет
-When used in [DOM templates](/guide/essentials/component-basics.html#dom-template-parsing-caveats), it should be referenced as `<keep-alive>`.
+При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<keep-alive>`.
 :::
 
 ## Include / Exclude {#include-exclude}
@@ -139,6 +139,6 @@ Note that:
 
 ---
 
-**Related**
+**Связанные**
 
 - [`<KeepAlive>` API reference](/api/built-in-components.html#keepalive)
