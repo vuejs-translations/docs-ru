@@ -50,31 +50,31 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<keep-alive>`.
 :::
 
-## Include / Exclude {#include-exclude}
+## Включение / Исключение {#include-exclude}
 
-By default, `<KeepAlive>` will cache any component instance inside. We can customize this behavior via the `include` and `exclude` props. Both props can be a comma-delimited string, a `RegExp`, or an array containing either types:
+По умолчанию `<KeepAlive>` будет кэшировать любой экземпляр компонента внутри. Мы можем настроить это поведение с помощью свойств `include` и `exclude`. Оба свойства могут быть строками, разделенными запятыми, `RegExp`, или массивами, содержащими элементы типа:
 
 ```vue-html
-<!-- comma-delimited string -->
+<!-- строка с разделителями запятыми -->
 <KeepAlive include="a,b">
   <component :is="view" />
 </KeepAlive>
 
-<!-- regex (use `v-bind`) -->
+<!-- регулярное выражение (используйте `v-bind`) -->
 <KeepAlive :include="/a|b/">
   <component :is="view" />
 </KeepAlive>
 
-<!-- Array (use `v-bind`) -->
+<!-- массив (используйте `v-bind`) -->
 <KeepAlive :include="['a', 'b']">
   <component :is="view" />
 </KeepAlive>
 ```
 
-The match is checked against the component's [`name`](/api/options-misc.html#name) option, so components that need to be conditionally cached by `KeepAlive` must explicitly declare a `name` option.
+Соответствие проверяется параметром [`name`](/api/options-misc.html#name) компонента, поэтому компоненты, которые должны быть условно кэшированы с помощью `KeepAlive` должны явно объявлять параметр `name`.
 
 :::tip Совет
-Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name.
+Начиная с версии 3.2.34, однофайловый компонент, использующий `<script setup>`, будет автоматически определять свой вариант `name` на основе имени файла, устраняя необходимость вручную объявлять имя.
 :::
 
 ## Max Cached Instances {#max-cached-instances}
