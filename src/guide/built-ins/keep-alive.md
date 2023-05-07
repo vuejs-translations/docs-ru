@@ -52,7 +52,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## Включение / Исключение {#include-exclude}
 
-По умолчанию `<KeepAlive>` будет кэшировать любой экземпляр компонента внутри. Мы можем настроить это поведение с помощью свойств `include` и `exclude`. Оба свойства могут быть строками, разделенными запятыми, `RegExp`, или массивами, содержащими элементы типа:
+По умолчанию `<KeepAlive>` будет кэшировать любой экземпляр компонента внутри. Мы можем настроить это поведение с помощью параметров `include` и `exclude`. Оба свойства могут быть строками, разделенными запятыми, `RegExp`, или массивами, содержащими элементы типа:
 
 ```vue-html
 <!-- строка с разделителями запятыми -->
@@ -77,9 +77,9 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 Начиная с версии 3.2.34, однофайловый компонент, использующий `<script setup>`, будет автоматически определять свой вариант `name` на основе имени файла, устраняя необходимость вручную объявлять имя.
 :::
 
-## Max Cached Instances {#max-cached-instances}
+## Максимальное количество кэшированных экземпляров {#max-cached-instances}
 
-We can limit the maximum number of component instances that can be cached via the `max` prop. When `max` is specified, `<KeepAlive>` behaves like an [LRU cache](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>): if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
+Мы можем ограничить максимальное количество экземпляров компонентов, которые можно кэшировать с помощью `max` параметра. Когда `max` задан, `<KeepAlive>` ведет себя как [LRU cache](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>) (наименее недавно использованный): если количество закэшированных экземпляров вот-вот превысит указанное максимальное количество, то наименее недавно использованный закэшированный экземпляр будет уничтожен, чтобы освободить место для нового.
 
 ```vue-html
 <KeepAlive :max="10">
@@ -87,26 +87,26 @@ We can limit the maximum number of component instances that can be cached via th
 </KeepAlive>
 ```
 
-## Lifecycle of Cached Instance {#lifecycle-of-cached-instance}
+## Жизненный цикл кэшированного экземпляра {#lifecycle-of-cached-instance}
 
-When a component instance is removed from the DOM but is part of a component tree cached by `<KeepAlive>`, it goes into a **deactivated** state instead of being unmounted. When a component instance is inserted into the DOM as part of a cached tree, it is **activated**.
+Когда экземпляр компонента удаляется из DOM, но является частью дерева компонентов, кэшированного `<KeepAlive>`, он переходит в состояние **деактивации** вместо того, чтобы быть размонтированным. Когда экземпляр компонента вставляется в DOM как часть кэшированного дерева, он **активируется**.
 
 <div class="composition-api">
 
-A kept-alive component can register lifecycle hooks for these two states using [`onActivated()`](/api/composition-api-lifecycle.html#onactivated) and [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated):
+Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`onActivated()`](/api/composition-api-lifecycle.html#onactivated) и [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated):
 
 ```vue
 <script setup>
 import { onActivated, onDeactivated } from 'vue'
 
 onActivated(() => {
-  // called on initial mount
-  // and every time it is re-inserted from the cache
+  // вызывается при первоначальном монтировании
+  // и каждый раз, когда он повторно вставляется из кэша
 })
 
 onDeactivated(() => {
-  // called when removed from the DOM into the cache
-  // and also when unmounted
+  // вызывается, когда удаляется из DOM в кэш
+  // и также при размонтировании
 })
 </script>
 ```
@@ -114,28 +114,28 @@ onDeactivated(() => {
 </div>
 <div class="options-api">
 
-A kept-alive component can register lifecycle hooks for these two states using [`activated`](/api/options-lifecycle.html#activated) and [`deactivated`](/api/options-lifecycle.html#deactivated) hooks:
+Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`activated`](/api/options-lifecycle.html#activated) и [`deactivated`](/api/options-lifecycle.html#deactivated) хуки:
 
 ```js
 export default {
   activated() {
-    // called on initial mount
-    // and every time it is re-inserted from the cache
+    // вызывается при первоначальном монтировании
+    // и каждый раз, когда он повторно вставляется из кэша
   },
   deactivated() {
-    // called when removed from the DOM into the cache
-    // and also when unmounted
+    // вызывается, когда удаляется из DOM в кэш
+    // и также при размонтировании
   }
 }
 ```
 
 </div>
 
-Note that:
+Обратите внимание, что:
 
-- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> is also called on mount, and <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> on unmount.
+- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> также вызывается при монтировании, и <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> при размонтировании.
 
-- Both hooks work for not only the root component cached by `<KeepAlive>`, but also descendant components in the cached tree.
+- Оба хука работают не только с корневым компонентом, кэшированным `<KeepAlive>`, но и с дочерними компонентами в кэшированном дереве.
 
 ---
 
