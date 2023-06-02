@@ -1,6 +1,6 @@
 # Телепорт {#teleport}
 
- <VueSchoolLink href="https://vueschool.io/lessons/vue-3-teleport" title="Free Vue.js Teleport Lesson"/>
+ <VueSchoolLink href="https://vueschool.io/lessons/vue-3-teleport" title="Бесплатный урок о телепортах во Vue.js"/>
 
 `<Teleport>` это встроенный компонент, который позволяет "телепортировать" часть шаблона компонента в узел DOM, который находится за пределами иерархии DOM этого компонента.
 
