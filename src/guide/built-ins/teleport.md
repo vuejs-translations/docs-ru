@@ -199,4 +199,4 @@ let open = $ref(false)
 **Связанные**
 
 - [Справочник API — `<Teleport>`](/api/built-in-components.html#teleport)
-- [Handling Teleports in SSR](/guide/scaling-up/ssr.html#teleports)
+- [Работа с телепортами в SSR](/guide/scaling-up/ssr.html#teleports)
