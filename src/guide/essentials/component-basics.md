@@ -80,7 +80,7 @@ export default {
     <button @click="count++">
       You clicked me {{ count }} times.
     </button>`
-  // or `template: '#my-template-element'`
+  // или `template: '#my-template-element'`
 }
 ```
 
@@ -129,16 +129,16 @@ import ButtonCounter from './ButtonCounter.vue'
 </script>
 
 <template>
-  <h1>Here is a child component!</h1>
+  <h1>Здесь дочерний компонент!</h1>
   <ButtonCounter />
 </template>
 ```
 
-With `<script setup>`, imported components are automatically made available to the template.
+С помощью `<script setup>`, импортированные компоненты автоматически становятся доступными для шаблона.
 
 </div>
 
-Также можно глобально зарегистрировать компонент, сделав его доступным для всех компонентов данного приложения без необходимости его импорта. Плюсы и минусы глобальной и локальной регистрации обсуждаются в специальном разделе [Component Registration](/guide/components/registration.html).
+Также можно глобально зарегистрировать компонент, сделав его доступным для всех компонентов данного приложения без необходимости его импорта. Плюсы и минусы глобальной и локальной регистрации обсуждаются в специальном разделе [Регистрация компонентов](/guide/components/registration.html).
 
 Компоненты можно использовать повторно столько раз, сколько вы захотите:
 
@@ -196,7 +196,7 @@ export default {
 </template>
 ```
 
-Когда значение передается атрибуту prop, оно становится свойством этого экземпляра компонента. Значение этого свойства доступно в шаблоне и в контексте компонента `this`, как и любое другое свойство компонента.
+Когда значение передается атрибуту _prop_, оно становится свойством этого экземпляра компонента. Значение этого свойства доступно в шаблоне и в контексте компонента `this`, как и любое другое свойство компонента.
 
 </div>
 <div class="composition-api">
@@ -212,16 +212,16 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps` is a compile-time macro that is only available inside `<script setup>` and does not need to be explicitly imported. Declared props are automatically exposed to the template. `defineProps` also returns an object that contains all the props passed to the component, so that we can access them in JavaScript if needed:
+`defineProps` макрос компилятора используемый только внутри `<script setup>` и не нуждается в явном импорте. Объявленные входные параметры автоматически отображаются в шаблоне. `defineProps` также возвращает объект, содержащий все входные параметры, переданные компоненту, чтобы при необходимости мы могли получить к ним доступ в JavaScript:
 
 ```js
 const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-См. также: [Typing Component Props](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+См. также: [Типизирование входных данных](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
-If you are not using `<script setup>`, props should be declared using the `props` option, and the props object will be passed to `setup()` as the first argument:
+Если вы не используете `<script setup>`, входные параметры должны быть объявлены с помощью опции `props`, и объект _props_ будет передан `setup()` в качестве первого аргумента:
 
 ```js
 export default {
@@ -234,9 +234,9 @@ export default {
 
 </div>
 
-Компонент может иметь сколько угодно входных параметров, и по умолчанию любому prop может быть передано любое значение.
+Компонент может иметь сколько угодно входных параметров, и по умолчанию любому входному параметру может быть передано любое значение.
 
-После регистрации prop вы можете передавать ему данные в качестве пользовательского атрибута, как показано ниже:
+После регистрации входного параметра вы можете передавать ему данные в качестве пользовательского атрибута, как показано ниже:
 
 ```vue-html
 <BlogPost title="Мое путешествие с Vue" />
@@ -297,9 +297,9 @@ const posts = ref([
 
 </div>
 
-Обратите внимание, как `v-bind` используется для передачи динамических значений prop. Это особенно полезно, когда вы заранее не знаете, какой именно контент вы собираетесь отобразить.
+Обратите внимание, как `v-bind` используется для передачи динамических значений входному параметру. Это особенно полезно, когда вы заранее не знаете, какой именно контент вы собираетесь отобразить.
 
-Это все, что вам нужно знать о входных данных на данный момент, но как только вы закончите читать эту страницу и почувствуете себя комфортно с ее содержанием, мы рекомендуем вернуться позже, чтобы прочитать полное руководство по [Props](/guide/components/props.html).
+Это все, что вам нужно знать о входных данных на данный момент, но как только вы закончите читать эту страницу и почувствуете себя комфортно с ее содержанием, мы рекомендуем вернуться позже, чтобы прочитать полное руководство по [props](/guide/components/props.html).
 
 ## Прослушивание событий  {#listening-to-events}
 
@@ -348,7 +348,7 @@ const postFontSize = ref(1)
 Теперь давайте добавим кнопку в шаблон компонента `<BlogPost>`:
 
 ```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+<!-- BlogPost.vue, не добавлен <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -369,7 +369,7 @@ const postFontSize = ref(1)
 Тогда дочерний компонент может сгенерировать событие с помощью встроенного [метода](/api/component-instance.html#emit) `$emit`, передавая ему имя события:
 
 ```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+<!-- BlogPost.vue, не добавлен <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -422,7 +422,7 @@ defineEmits(['enlarge-text'])
 
 <div class="composition-api">
 
-Similar to `defineProps`, `defineEmits` is only usable in `<script setup>` and doesn't need to be imported. It returns an `emit` function that is equivalent to the `$emit` method. It can be used to emit events in the `<script setup>` section of a component, where `$emit` isn't directly accessible:
+Как и `defineProps`, `defineEmits` используется только в `<script setup>` и не требует импорта. defineEmits возвращает функцию `emit`, которая эквивалентна методу `$emit`. Еe можно использовать для генерации событий в разделе компонента `<script setup>`, где `$emit` недоступен напрямую:
 
 ```vue
 <script setup>
@@ -432,9 +432,9 @@ emit('enlarge-text')
 </script>
 ```
 
-См. также: [Typing Component Emits](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+См. также: [Типизирование emits](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
-If you are not using `<script setup>`, you can declare emitted events using the `emits` option. You can access the `emit` function as a property of the setup context (passed to `setup()` as the second argument):
+Если вы не используете `<script setup>`, вы можете объявить эмитируемые события с помощью опции `emits`. Вы можете получить доступ к функции `emit` как к свойству контекста настройки (передается в `setup()` в качестве второго аргумента):
 
 ```js
 export default {
