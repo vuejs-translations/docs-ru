@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <button @click="count++">You clicked me {{ count }} times.</button>
+  <button @click="count++">Вы нажали на меня {{ count }} раз.</button>
 </template>
 ```
 
@@ -41,7 +41,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <button @click="count++">You clicked me {{ count }} times.</button>
+  <button @click="count++">Вы нажали на меня {{ count }} раз.</button>
 </template>
 ```
 
@@ -60,7 +60,7 @@ export default {
   },
   template: `
     <button @click="count++">
-      You clicked me {{ count }} times.
+      Вы нажали на меня {{ count }} раз.
     </button>`
 }
 ```
@@ -78,7 +78,7 @@ export default {
   },
   template: `
     <button @click="count++">
-      You clicked me {{ count }} times.
+      Вы нажали на меня {{ count }} раз.
     </button>`
   // или `template: '#my-template-element'`
 }
@@ -239,7 +239,7 @@ export default {
 После регистрации входного параметра вы можете передавать ему данные в качестве пользовательского атрибута, как показано ниже:
 
 ```vue-html
-<BlogPost title="Мое путешествие с Vue" />
+<BlogPost title="Как изучить Vue" />
 <BlogPost title="Ведение блога с помощью Vue" />
 <BlogPost title="Почему Vue так интересен" />
 ```
@@ -254,7 +254,7 @@ export default {
   data() {
     return {
       posts: [
-        { id: 1, title: 'Мое путешествие с Vue' },
+        { id: 1, title: 'Как изучить Vue' },
         { id: 2, title: 'Ведение блога с помощью Vue' },
         { id: 3, title: 'Почему Vue так интересен' }
       ]
@@ -268,9 +268,9 @@ export default {
 
 ```js
 const posts = ref([
-  { id: 1, title: 'My journey with Vue' },
-  { id: 2, title: 'Blogging with Vue' },
-  { id: 3, title: 'Why Vue is so fun' }
+  { id: 1, title: 'Как изучить Vue' },
+  { id: 2, title: 'Ведение блога с помощью Vue' },
+  { id: 3, title: 'Почему Vue так интересен' }
 ])
 ```
 
@@ -373,7 +373,7 @@ const postFontSize = ref(1)
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
-    <button @click="$emit('enlarge-text')">Enlarge text</button>
+    <button @click="$emit('enlarge-text')">Увеличить размер текста</button>
   </div>
 </template>
 ```
@@ -391,7 +391,7 @@ const postFontSize = ref(1)
 
 </div>
 
-Все генерируемые компонентом события можно перечислить в опции <span class="options-api">[`emits`](/api/options-state.html#emits)</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) macro</span>:
+Все генерируемые компонентом события можно перечислить в <span class="options-api">[`emits`](/api/options-state.html#emits)</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits)</span>:
 
 <div class="options-api">
 
