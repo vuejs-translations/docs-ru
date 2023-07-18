@@ -1,29 +1,29 @@
-# Routing {#routing}
+# Роутинг {#routing}
 
-## Client-Side vs. Server-Side Routing {#client-side-vs-server-side-routing}
+## Маршрутизация на стороне клиента и на стороне сервера {#client-side-vs-server-side-routing}
 
-Routing on the server side means the server sending a response based on the URL path that the user is visiting. When we click on a link in a traditional server-rendered web app, the browser receives an HTML response from the server and reloads the entire page with the new HTML.
+Маршрутизация на стороне сервера означает отправку сервером ответа на основе пути URL, по которому идет пользователь. Когда мы щелкаем на ссылке в традиционном веб-приложении с серверным рендерингом, браузер получает HTML-ответ от сервера и перезагружает всю страницу с новым HTML.
 
-In a [Single-Page Application](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA), however, the client-side JavaScript can intercept the navigation, dynamically fetch new data, and update the current page without full page reloads. This typically results in a more snappy user experience, especially for use cases that are more like actual "applications", where the user is expected to perform many interactions over a long period of time.
+Однако в [односторничных приложениях](https://developer.mozilla.org/en-US/docs/Glossary/SPA) (SPA) JavaScript на стороне клиента может перехватывать навигацию, динамически получать новые данные и обновлять текущую страницу без полной перезагрузки страницы. Это, как правило, обеспечивает более быстрое взаимодействие с пользователем, особенно в тех случаях, когда речь идет о реальных "приложениях", в которых пользователь должен выполнять множество взаимодействий в течение длительного времени.
 
-In such SPAs, the "routing" is done on the client side, in the browser. A client-side router is responsible for managing the application's rendered view using browser APIs such as [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) or the [`hashchange` event](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
+В таких SPA "маршрутизация" осуществляется на стороне клиента, в браузере. Маршрутизатор на стороне клиента отвечает за управление отображаемым представлением приложения, используя такие API браузера, как [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) или [событие `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
-## Official Router {#official-router}
+## Официальный маршрутизатор {#official-router}
 
 <!-- TODO update links -->
 <div>
   <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Free Vue Router Course">
-    Watch a Free Video Course on Vue School
+    Посмотрите бесплатный видеокурс от Vue School
   </VueSchoolLink>
 </div>
 
-Vue is well-suited for building SPAs. For most SPAs, it's recommended to use the officially-supported [Vue Router library](https://github.com/vuejs/router). For more details, see Vue Router's [documentation](https://router.vuejs.org/).
+Vue хорошо подходит для создания SPA. Для большинства SPA рекомендуется использовать официально поддерживаемую [библиотеку Vue Router](https://github.com/vuejs/router). Более подробную информацию по Vue Router можно найти в [документации](https://router.vuejs.org/).
 
-## Simple Routing from Scratch {#simple-routing-from-scratch}
+## Простая маршрутизация с нуля {#simple-routing-from-scratch}
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so with [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components) and update the current component state by listening to browser [`hashchange` events](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) or using the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
+Если вам нужна только очень простая маршрутизация и вы не хотите привлекать полнофункциональную библиотеку маршрутизаторов, вы можете обойтись [динамическими компонентами](/guide/essentials/component-basics.html#dynamic-components) и обновлять текущее состояние компонента, прослушивая [`hashchange` события](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) браузера или используя [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
-Here's a bare-bone example:
+Приведем простой пример:
 
 <div class="composition-api">
 
@@ -51,9 +51,9 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <a href="#/">Home</a> |
-  <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Главная страница</a> |
+  <a href="#/about">О нас</a> |
+  <a href="#/non-existent-path">Несуществующая ссылка</a>
   <component :is="currentView" />
 </template>
 ```
@@ -95,9 +95,9 @@ export default {
 </script>
 
 <template>
-  <a href="#/">Home</a> |
-  <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
+  <a href="#/">Главная страница</a> |
+  <a href="#/about">О нас</a> |
+  <a href="#/non-existent-path">Несуществующая ссылка</a>
   <component :is="currentView" />
 </template>
 ```
