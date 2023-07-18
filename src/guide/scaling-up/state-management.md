@@ -1,8 +1,8 @@
-# State Management {#state-management}
+# Управление состоянием {#state-management}
 
-## What is State Management? {#what-is-state-management}
+## Что такое управление состоянием? {#what-is-state-management}
 
-Technically, every Vue component instance already "manages" its own reactive state. Take a simple counter component as an example:
+Технически каждый экземпляр компонента Vue уже "управляет" своим реактивным состоянием. Возьмем для примера простой компонент счетчика:
 
 <div class="composition-api">
 
@@ -10,16 +10,16 @@ Technically, every Vue component instance already "manages" its own reactive sta
 <script setup>
 import { ref } from 'vue'
 
-// state
+// состояние
 const count = ref(0)
 
-// actions
+// действия
 function increment() {
   count.value++
 }
 </script>
 
-<!-- view -->
+<!-- представление -->
 <template>{{ count }}</template>
 ```
 
@@ -29,13 +29,13 @@ function increment() {
 ```vue
 <script>
 export default {
-  // state
+  // состояние
   data() {
     return {
       count: 0
     }
   },
-  // actions
+  // действия
   methods: {
     increment() {
       this.count++
@@ -44,44 +44,44 @@ export default {
 }
 </script>
 
-<!-- view -->
+<!-- представление -->
 <template>{{ count }}</template>
 ```
 
 </div>
 
-It is a self-contained unit with the following parts:
+Это самостоятельный блок, состоящий из следующих частей:
 
-- The **state**, the source of truth that drives our app;
-- The **view**, a declarative mapping of the **state**;
-- The **actions**, the possible ways the state could change in reaction to user inputs from the **view**.
+- **Состояние** - источник истины, который управляет нашим приложением;
+- **Представление** - декларативное отображение **состояния**;
+- **Действия** - возможные способы изменения состояния в ответ на пользовательский ввод из **представления**.
 
-This is a simple representation of the concept of "one-way data flow":
+Это простое представление концепции "одностороннего потока данных":
 
 <p style="text-align: center">
   <img alt="state flow diagram" src="./images/state-flow.png" width="252px" style="margin: 40px auto">
 </p>
 
-However, the simplicity starts to break down when we have **multiple components that share a common state**:
+Однако эта простота начинает нарушаться, когда у нас есть **несколько компонентов, имеющих общее состояние**:
 
-1. Multiple views may depend on the same piece of state.
-2. Actions from different views may need to mutate the same piece of state.
+1. Несколько представлений могут зависеть от одного и того же фрагмента состояния.
+2. Действиям из разных представлений может потребоваться мутировать один и тот же фрагмент состояния.
 
-For case one, a possible workaround is by "lifting" the shared state up to a common ancestor component, and then pass it down as props. However, this quickly gets tedious in component trees with deep hierarchies, leading to another problem known as [Prop Drilling](/guide/components/provide-inject.html#prop-drilling).
+В первом случае возможным обходным путем является "поднятие" общего состояния до общего компонента-предка, а затем передача его вниз в виде входных параметров. Однако это быстро становится утомительным в деревьях компонентов с глубокой иерархией, что приводит к другой проблеме, известной как [проп дриллинг](/guide/components/provide-inject.html#prop-drilling).
 
-For case two, we often find ourselves resorting to solutions such as reaching for direct parent / child instances via template refs, or trying to mutate and synchronize multiple copies of the state via emitted events. Both of these patterns are brittle and quickly lead to unmaintainable code.
+Во втором случае мы часто прибегаем к таким решениям, как обращение к прямым родительским и дочерним экземплярам через шаблонные ссылки или попытка мутировать и синхронизировать несколько копий состояния через эмитируемые события. Оба эти паттерна являются хрупкими и быстро приводят к не поддерживаемому коду.
 
-A simpler and more straightforward solution is to extract the shared state out of the components, and manage it in a global singleton. With this, our component tree becomes a big "view", and any component can access the state or trigger actions, no matter where they are in the tree!
+Более простым и понятным решением является извлечение общего состояния из компонентов и управление им в глобальном синглтоне. Таким образом, наше дерево компонентов превращается в большое "представление", и любой компонент может получить доступ к состоянию или вызвать действия, независимо от того, где он находится в дереве!
 
-## Simple State Management with Reactivity API {#simple-state-management-with-reactivity-api}
+## Простое управление состояниям с помощью Reactivity API {#simple-state-management-with-reactivity-api}
 
 <div class="options-api">
 
-In Options API, reactive data is declared using the `data()` option. Internally, the object returned by `data()` is made reactive via the [`reactive()`](/api/reactivity-core.html#reactive) function, which is also available as a public API.
+В Options API реактивные данные объявляются с помощью функции `data()`. Внутренний объект, возвращаемый функцией `data()`, становится реактивным с помощью функции [`reactive()`](/api/reactivity-core.html#reactive), которая также доступна в виде публичного API.
 
 </div>
 
-If you have a piece of state that should be shared by multiple instances, you can use [`reactive()`](/api/reactivity-core.html#reactive) to create a reactive object, and then import it into multiple components:
+Если у вас есть фрагмент состояния, который должен быть общим для нескольких экземпляров, вы можете использовать функцию [`reactive()`](/api/reactivity-core.html#reactive) для создания реактивного объекта, а затем импортировать его в несколько компонентов:
 
 ```js
 // store.js
@@ -100,7 +100,7 @@ export const store = reactive({
 import { store } from './store.js'
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Из компнента A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -109,7 +109,7 @@ import { store } from './store.js'
 import { store } from './store.js'
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Из компнента B: {{ store.count }}</template>
 ```
 
 </div>
@@ -129,7 +129,7 @@ export default {
 }
 </script>
 
-<template>From A: {{ store.count }}</template>
+<template>Из компнента A: {{ store.count }}</template>
 ```
 
 ```vue
@@ -146,24 +146,24 @@ export default {
 }
 </script>
 
-<template>From B: {{ store.count }}</template>
+<template>Из компнента B: {{ store.count }}</template>
 ```
 
 </div>
 
-Now whenever the `store` object is mutated, both `<ComponentA>` and `<ComponentB>` will update their views automatically - we have a single source of truth now.
+Теперь при каждом изменении объекта `store` и `<ComponentA>` и `<ComponentB>` будут автоматически обновлять свои представления - у нас теперь есть единый источник истины.
 
-However, this also means any component importing `store` can mutate it however they want:
+Однако это также означает, что любой компонент, импортирующий `store`, может мутировать его по своему усмотрению:
 
 ```vue-html{2}
 <template>
   <button @click="store.count++">
-    From B: {{ store.count }}
+    Из компнента B: {{ store.count }}
   </button>
 </template>
 ```
 
-While this works in simple cases, global state that can be arbitrarily mutated by any component is not going to be very maintainable in the long run. To ensure the state-mutating logic is centralized like the state itself, it is recommended to define methods on the store with names that express the intention of the actions:
+Хотя в простых случаях это работает, глобальное состояние, которое может произвольно изменяться любым компонентом, в долгосрочной перспективе будет не очень удобным для обслуживания. Для того чтобы логика изменения состояния была централизованной, как и само состояние, рекомендуется определять методы хранилища с именами, выражающими замысел действий:
 
 ```js{6-8}
 // store.js
@@ -180,7 +180,7 @@ export const store = reactive({
 ```vue-html{2}
 <template>
   <button @click="store.increment()">
-    From B: {{ store.count }}
+    Из компонента B: {{ store.count }}
   </button>
 </template>
 ```
@@ -197,19 +197,19 @@ export const store = reactive({
 </div>
 
 :::tip Совет
-Note the click handler uses `store.increment()` with the parenthesis - this is necessary to call the method with the proper `this` context since it's not a component method.
+Обратите внимание, что в обработчике клика используется `store.increment()` со скобками - это необходимо для вызова метода с правильным контекстом, поскольку `this` не метод компонента.
 :::
 
-Although here we are using a single reactive object as a store, you can also share reactive state created using other [Reactivity APIs](/api/reactivity-core.html) such as `ref()` or `computed()`, or even return global state from a [Composable](/guide/reusability/composables.html):
+Хотя здесь мы используем в качестве хранилища один реактивный объект, вы также можете обмениваться реактивным состоянием, созданным с помощью других [Reactivity API](/api/reactivity-core.html), таких как `ref()` или `computed()`, или даже возвращать глобальное состояние из [Composable](/guide/reusability/composables.html):
 
 ```js
 import { ref } from 'vue'
 
-// global state, created in module scope
+// глобальное состояние, создаваемое в области видимости модуля
 const globalCount = ref(1)
 
 export function useCount() {
-  // local state, created per-component
+  // локальное состояние, создаваемое для каждого компонента
   const localCount = ref(1)
 
   return {
@@ -219,25 +219,25 @@ export function useCount() {
 }
 ```
 
-The fact that Vue's reactivity system is decoupled from the component model makes it extremely flexible.
+Тот факт, что система реактивности Vue отделена от модели компонентов, делает ее чрезвычайно гибкой.
 
-## SSR Considerations {#ssr-considerations}
+## Соображения относительно SSR {#ssr-considerations}
 
-If you are building an application that leverages [Server-Side Rendering (SSR)](./ssr), the above pattern can lead to issues due to the store being a singleton shared across multiple requests. This is discussed in [more details](./ssr#cross-request-state-pollution) in the SSR guide.
+Если вы создаете приложение, использующее серверный рендеринг [Server-Side Rendering (SSR)](./ssr), то описанная выше схема может привести к проблемам, поскольку хранилище является синглтоном, разделяемым на несколько запросов. [Более подробно](./ssr#cross-request-state-pollution) этот вопрос рассматривается в руководстве по SSR.
 
 ## Pinia {#pinia}
 
-While our hand-rolled state management solution will suffice in simple scenarios, there are many more things to consider in large-scale production applications:
+Если в простых сценариях достаточно нашего решения по управлению состоянием, то в крупномасштабных производственных приложениях необходимо учитывать гораздо больше моментов:
 
-- Stronger conventions for team collaboration
-- Integrating with the Vue DevTools, including timeline, in-component inspection, and time-travel debugging
-- Hot Module Replacement
-- Server-Side Rendering support
+- Более строгие соглашения для совместной работы команды
+- Интеграция с инструментами Vue DevTools, включая временную шкалу, внутрикомпонентную проверку и отладку по времени
+- механизм позволяющий модулям в приложении обновляться без перезагрузки страницы (Hot Module Replacement)
+- Поддержка рендеринга на стороне сервера
 
-[Pinia](https://pinia.vuejs.org) is a state management library that implements all of the above. It is maintained by the Vue core team, and works with both Vue 2 and Vue 3.
+[Pinia](https://pinia.vuejs.org) - это библиотека управления состояниями, реализующая все вышеперечисленное. Она поддерживается основной командой Vue и работает как с Vue 2, так и с Vue 3.
 
-Existing users may be familiar with [Vuex](https://vuex.vuejs.org/), the previous official state management library for Vue. With Pinia serving the same role in the ecosystem, Vuex is now in maintenance mode. It still works, but will no longer receive new features. It is recommended to use Pinia for new applications.
+Некоторые пользователи могут быть знакомы с [Vuex](https://vuex.vuejs.org/), предыдущей официальной библиотекой управления состояниями для Vue. Поскольку Pinia играет ту же роль в экосистеме, Vuex перешла в режим обслуживания. Она продолжает работать, но больше не будет получать новых функций. Для новых приложений рекомендуется использовать Pinia.
 
-Pinia started out as an exploration of what the next iteration of Vuex could look like, incorporating many ideas from core team discussions for Vuex 5. Eventually, we realized that Pinia already implements most of what we wanted in Vuex 5, and decided to make it the new recommendation instead.
+Pinia начиналась как исследование того, как может выглядеть следующая итерация Vuex, и включала в себя множество идей из обсуждений основной команды Vuex 5. В конце концов, мы поняли, что Pinia уже реализует большую часть того, что мы хотели видеть в Vuex 5, и решили сделать ее новой рекомендацией.
 
-Compared to Vuex, Pinia provides a simpler API with less ceremony, offers Composition-API-style APIs, and most importantly, has solid type inference support when used with TypeScript.
+По сравнению с Vuex, Pinia обеспечивает более простой API с меньшим количеством формальностей, предлагает API в стиле Composition-API и, что особенно важно, имеет надежную поддержку вывода типов при использовании TypeScript.
