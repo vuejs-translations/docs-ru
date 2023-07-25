@@ -525,7 +525,7 @@ export default {
 <div class="composition-api">
 
 ```vue-html
-<!-- Компонент будет меняться при изменении currentTabComponent -->
+<!-- Компонент будет меняться при изменении currentTab -->
 <component :is="tabs[currentTab]"></component>
 ```
 
