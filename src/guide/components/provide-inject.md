@@ -200,7 +200,7 @@ export default {
 <div class="composition-api">
 
 ```js
-// `значение` будет "значением по умолчанию"
+// `value` будет "значением по умолчанию"
 // если данные, соответствующие "message", не были предоставлены
 const value = inject('message', 'default value')
 ```
