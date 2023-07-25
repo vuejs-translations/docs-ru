@@ -214,7 +214,7 @@ export default {
 <BlogPost :comment-ids="post.commentIds" />
 ```
 
-#### Передача объектов {#object}
+#### Объекты {#object}
 
 ```vue-html
 <!-- Несмотря на то, что указан статический объект, нам нужен v-bind, -->
