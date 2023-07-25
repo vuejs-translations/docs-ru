@@ -26,7 +26,7 @@
 
 Элемент `<slot>` указывает, где должно быть выведено **содержимое родительского слота**.
 
-![slot diagram](./images/slots.png)
+![Диаграмма слота](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
