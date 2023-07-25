@@ -580,7 +580,7 @@ export default {
 Компонент можно использовать следующим образом:
 
 ```vue-html
-<!-- эквивалент передачи :disabled="true" -->
+<!-- эквивалентно :disabled="true" -->
 <MyComponent disabled />
 
 <!-- эквивалент передачи :disabled="false" -->
