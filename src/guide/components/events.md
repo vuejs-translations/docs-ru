@@ -228,7 +228,7 @@ const emit = defineEmits({
     if (email && password) {
       return true
     } else {
-      console.warn('Некорректные данные для генерации события submit!')
+      console.warn('Некорректные данные для события submit!')
       return false
     }
   }
