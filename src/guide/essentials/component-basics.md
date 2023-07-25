@@ -219,7 +219,7 @@ const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-См. также: [Типизирование входных параметров](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+См. также: [Типизация входных параметров комопнента](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 Если вы не используете `<script setup>`, входные параметры должны быть объявлены с помощью опции `props`, и объект _props_ будет передан `setup()` в качестве первого аргумента:
 
