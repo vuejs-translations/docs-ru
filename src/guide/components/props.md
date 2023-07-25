@@ -342,7 +342,7 @@ export default {
    ```js
    const props = defineProps(['size'])
 
-   // вычисляемое свойство, которое автоматически обновляется при изменении входного параметра
+   // вычисляемое свойство автоматически обновится при изменении входного параметра
    const normalizedSize = computed(() => props.size.trim().toLowerCase())
    ```
 
