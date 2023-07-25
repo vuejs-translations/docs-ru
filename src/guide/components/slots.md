@@ -2,7 +2,7 @@
 
 > Подразумевается, что вы уже изучили и разобрались с разделом [Основы компонентов](/guide/essentials/component-basics). Если нет — прочитайте его сначала.
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Free Vue.js Slots Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Бесплатный урок про слоты"/>
 
 ## Слот содержимое и выход {#slot-content-and-outlet}
 
