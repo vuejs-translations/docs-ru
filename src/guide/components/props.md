@@ -79,7 +79,7 @@ defineProps({
 ```
 
 ```js
-// Без использования non-<script setup>
+// Без использования <script setup>
 export default {
   props: {
     title: String,
