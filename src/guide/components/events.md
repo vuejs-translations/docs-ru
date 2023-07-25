@@ -192,7 +192,7 @@ const emit = defineEmits<{
 export default {
   emits: {
     submit(payload) {
-      // вернуть `true` ил `false`, чтобы указать,
+      // возвращает `true` или `false`, чтобы показать
       // что проверка пройдена / не пройдена
     }
   }
