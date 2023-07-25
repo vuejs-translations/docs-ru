@@ -207,7 +207,7 @@ function FancyButton(slotContent) {
 
 `v-slot` имеет специальное сокращение `#`, поэтому `<template v-slot:header>` можно сократить до `<template #header>`. Думайте об этом как о "рендеринге этого фрагмента шаблона в слоте 'header' дочернего компонента".
 
-![named slots diagram](./images/named-slots.png)
+![Диаграмма именованного слота](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
