@@ -58,7 +58,7 @@ export function useMouse() {
     y.value = event.pageY
   }
 
-  // a composable объект также может подключаться к жизненному циклу своего
+  // composable объект также может подключаться к жизненному циклу своего
   // компонента-владельца для настройки и удаления побочных эффектов.
   onMounted(() => window.addEventListener('mousemove', update))
   onUnmounted(() => window.removeEventListener('mousemove', update))
