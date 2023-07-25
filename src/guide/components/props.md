@@ -203,7 +203,7 @@ export default {
 <BlogPost :is-published="post.isPublished" />
 ```
 
-#### Передача массивов {#array}
+#### Массивы {#array}
 
 ```vue-html
 <!-- Несмотря на то, что указан статический массив, нам нужен v-bind, -->
