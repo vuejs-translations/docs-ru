@@ -432,7 +432,7 @@ emit('enlarge-text')
 </script>
 ```
 
-См. также: [Типизирование emits](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+См. также: [Типизация событий, генерируемых компонентом](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 Если вы не используете `<script setup>`, вы можете объявить эмитируемые события с помощью опции `emits`. Вы можете получить доступ к функции `emit` как к свойству контекста настройки (передается в `setup()` в качестве второго аргумента):
 
