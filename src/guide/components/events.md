@@ -100,7 +100,7 @@ function increaseCount(n) {
 
 ## Определение пользовательских событий {#declaring-emitted-events}
 
-События генерируемые компонентом можно объявить с помощью <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits)</span><span class="options-api">[`emits`](/api/options-state.html#emits) опции</span>:
+События генерируемые компонентом можно объявить с помощью <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits)</span><span class="options-api">опции [`emits`](/api/options-state.html#emits)</span>:
 
 <div class="composition-api">
 
