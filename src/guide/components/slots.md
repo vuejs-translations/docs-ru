@@ -420,7 +420,7 @@ function MyComponent(slots) {
   <MyComponent v-slot="{ message }">
     <p>{{ message }}</p>
     <template #footer>
-      <!-- message принадлежит слоту по умолчанию и не доступно здесь -->
+      <!-- message принадлежит слоту по умолчанию и здесь недоступно -->
       <p>{{ message }}</p>
     </template>
   </MyComponent>
