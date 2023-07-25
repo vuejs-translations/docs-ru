@@ -42,7 +42,7 @@ const focus = {
 
 export default {
   directives: {
-    // включение v-focus в шабоне
+    // включение v-focus в шаблоне
     focus
   }
 }
