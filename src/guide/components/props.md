@@ -353,7 +353,7 @@ export default {
    export default {
      props: ['size'],
      computed: {
-       // вычисляемое свойство, которое автоматически обновляется при изменении входного параметр
+       // вычисляемое свойство автоматически обновится при изменении входного параметра
        normalizedSize() {
          return this.size.trim().toLowerCase()
        }
