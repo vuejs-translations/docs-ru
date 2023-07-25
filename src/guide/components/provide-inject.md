@@ -162,7 +162,7 @@ export default {
   inject: ['message'],
   data() {
     return {
-      // исходные данные на основе инжектированного значения
+      // исходные данные на основе внедрённого значения
       fullMessage: this.message
     }
   }
