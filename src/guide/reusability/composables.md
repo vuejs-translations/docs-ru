@@ -331,7 +331,7 @@ export default {
 
 ## Сравнение с другими методами {#comparisons-with-other-techniques}
 
-### vs. Mixins {#vs-mixins}
+### vs. Примеси {#vs-mixins}
 
 Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition.html#mixins), которая также позволяет извлекать логику компонентов в виде многократно используемых блоков. У миксинов есть три основных недостатка:
 
