@@ -117,7 +117,7 @@ function FancyButton(slotContent) {
 ```vue-html{3}
 <button type="submit">
   <slot>
-    Отправить <!-- резервное содержимое -->
+    Отправить <!-- содержимое по умолчанию -->
   </slot>
 </button>
 ```
