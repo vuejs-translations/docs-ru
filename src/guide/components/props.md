@@ -313,7 +313,7 @@ export default {
    const props = defineProps(['initialCounter'])
 
    // counter использует только props.initialCounter в качестве начального значения;
-   // он отключен от будущих обновлений входного параметра.
+   // он не будет получать будущие обновления входного параметра.
    const counter = ref(props.initialCounter)
    ```
 
