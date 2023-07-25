@@ -355,7 +355,7 @@ export default {
 
 Если у вас есть опыт работы с React, вы можете заметить, что это очень похоже на пользовательские хуки React. Composition API был частично вдохновлен хуками React, и Vue composables действительно похожи на хуки React  с точки зрения возможностей логической композиции. Однако, Vue composables основаны на мелкозернистой системе реактивности, которая принципиально отличается от модели выполнения хуков React. Более подробно этот вопрос рассматривается в [FAQ  по Composition API](/guide/extras/composition-api-faq#comparison-with-react-hooks).
 
-## Further Reading {#further-reading}
+## Дополнительное чтение {#further-reading}
 
 - [Реактивность в деталях](/guide/extras/reactivity-in-depth.html): для низкоуровневого понимания того, как работает система реактивности Vue.
 - [Управление состоянием](/guide/scaling-up/state-management.html): для моделей управления состоянием, разделяемым несколькими компонентами.
