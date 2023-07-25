@@ -174,7 +174,7 @@ export default {
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### Передача различных типов значений {#passing-different-value-types}
+### Передача значений различных типов {#passing-different-value-types}
 
 В двух приведенных выше примерах мы передаем строковые значения, но _любой_ тип значения может быть передан в prop.
 
