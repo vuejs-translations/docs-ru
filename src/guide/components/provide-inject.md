@@ -150,7 +150,7 @@ export default {
 export default {
   inject: ['message'],
   created() {
-    console.log(this.message) // инжектированное значения
+    console.log(this.message) // внедрённое значение
   }
 }
 ```
