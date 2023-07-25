@@ -181,7 +181,7 @@ export default {
 export default {
   inject: {
     /* локальный ключ */ localMessage: {
-      from: /* инжектированный ключ */ 'message'
+      from: /* внедряемый ключ */ 'message'
     }
   }
 }
