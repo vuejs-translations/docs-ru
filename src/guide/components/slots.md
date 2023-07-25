@@ -306,7 +306,7 @@ function BaseLayout(slots) {
     ...
   </template>
 
-  <!-- с сокращением -->
+  <!-- сокращённая запись -->
   <template #[dynamicSlotName]>
     ...
   </template>
