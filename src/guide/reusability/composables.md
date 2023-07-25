@@ -46,7 +46,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 // mouse.js
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// по соглашению имена составных функций начинаются с "use"
+// по соглашению имена composables функций начинаются с "use"
 export function useMouse() {
   // состояние, инкапсулированное и управляемое composable
   const x = ref(0)
