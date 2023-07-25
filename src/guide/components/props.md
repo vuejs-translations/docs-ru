@@ -3,7 +3,7 @@
 > Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics). Сначала прочитайте это, если вы новичок в работе с компонентами.
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Free Vue.js Props Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Бесплатный урок про входные параметры"/>
 </div>
 
 ## Объявление входных параметров {#props-declaration}
