@@ -230,7 +230,7 @@ export default {
 <BlogPost :author="post.author" />
 ```
 
-### Передача свойств объекта {#binding-multiple-properties-using-an-object}
+### Передача нескольких свойств с помощью объекта {#binding-multiple-properties-using-an-object}
 
 Если хотите передать все свойства объекта в качестве входных параметров, то можно использовать [`v-bind` без аргументов](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` вместо `:prop-name`). Например, для объекта `post`:
 
