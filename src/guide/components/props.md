@@ -583,7 +583,7 @@ export default {
 <!-- эквивалентно :disabled="true" -->
 <MyComponent disabled />
 
-<!-- эквивалент передачи :disabled="false" -->
+<!-- эквивалентно :disabled="false" -->
 <MyComponent />
 ```
 
