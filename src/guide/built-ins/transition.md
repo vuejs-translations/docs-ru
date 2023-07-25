@@ -580,6 +580,6 @@ export default {
 
 ---
 
-**Похожие**
+**Связанное**
 
 - [`<Transition>` Справочник API](/api/built-in-components.html#transition)
