@@ -6,19 +6,19 @@ outline: deep
 import SpreadSheet from './demos/SpreadSheet.vue'
 </script>
 
-# Reactivity in Depth {#reactivity-in-depth}
+# Подробнее о реактивности {#reactivity-in-depth}
 
-One of Vue’s most distinctive features is the unobtrusive reactivity system. Component state consists of reactive JavaScript objects. When you modify them, the view updates. It makes state management simple and intuitive, but it’s also important to understand how it works to avoid some common gotchas. In this section, we are going to dig into some of the lower-level details of Vue’s reactivity system.
+Одной из наиболее характерных особенностей Vue является ненавязчивая система реактивности. Состояние компонента состоит из реактивных JavaScript-объектов. Когда вы изменяете их, представление обновляется. Это делает управление состоянием простым и интуитивно понятным, но также важно понимать, как оно работает, чтобы избежать некоторых распространенных проблем. В этом разделе мы рассмотрим некоторые детали нижнего уровня системы реактивности Vue.
 
-## What is Reactivity? {#what-is-reactivity}
+## Что такое реактивность? {#what-is-reactivity}
 
-This term comes up in programming quite a bit these days, but what do people mean when they say it? Reactivity is a programming paradigm that allows us to adjust to changes in a declarative manner. The canonical example that people usually show, because it’s a great one, is an Excel spreadsheet:
+Этот термин довольно часто встречается в программировании, но что люди имеют в виду, когда говорят о нем? Реактивность - это парадигма программирования, которая позволяет нам адаптироваться к изменениям в декларативной форме. Канонический пример, который обычно показывают, потому что это отличный пример - электронная таблица Excel:
 
 <SpreadSheet />
 
-Here cell A2 is defined via a formula of `= A0 + A1` (you can click on A2 to view or edit the formula), so the spreadsheet gives us 3. No surprises there. But if you update A0 or A1, you'll notice that A2 automagically updates too.
+Здесь ячейка A2 определяется формулой `= A0 + A1` (для просмотра или редактирования формулы можно щелкнуть на A2), поэтому электронная таблица выдает нам 3. Ничего удивительного. Но если вы обновите A0 или A1, то заметите, что A2 тоже автоматически обновится.
 
-JavaScript doesn’t usually work like this. If we were to write something comparable in JavaScript:
+JavaScript обычно так не работает. Если бы мы написали нечто подобное на JavaScript:
 
 ```js
 let A0 = 1
@@ -28,12 +28,12 @@ let A2 = A0 + A1
 console.log(A2) // 3
 
 A0 = 2
-console.log(A2) // Still 3
+console.log(A2) // До сих пор 3
 ```
 
-When we mutate `A0`, `A2` does not change automatically.
+Когда мы мутируем `A0`, `A2` не меняется автоматически.
 
-So how would we do this in JavaScript? First, in order to re-run the code that updates `A2`, let's wrap it in a function:
+Итак, как бы мы сделали это в JavaScript? Во-первых, чтобы перезапустить код, обновляющий `A2`, обернем его в функцию:
 
 ```js
 let A2
@@ -43,31 +43,31 @@ function update() {
 }
 ```
 
-Then, we need to define a few terms:
+Далее необходимо определить несколько понятий:
 
-- The `update()` function produces a **side effect**, or **effect** for short, because it modifies the state of the program.
+- Функция `update()` производит **побочный эффект**, или сокращенно **эффект**, поскольку изменяет состояние программы.
 
-- `A0` and `A1` are considered **dependencies** of the effect, as their values are used to perform the effect. The effect is said to be a **subscriber** to its dependencies.
+- `A0` и `A1` считаются **зависимостями** эффекта, так как их значения используются для выполнения эффекта. Считается, что эффект является **подписчиком** своих зависимостей.
 
-What we need is a magic function that can invoke `update()` (the **effect**) whenever `A0` or `A1` (the **dependencies**) change:
+Нам нужна волшебная функция, которая может вызывать `update()` (**эффект**) при каждом изменении `A0` или `A1` (**зависимость**):
 
 ```js
 whenDepsChange(update)
 ```
 
-This `whenDepsChange()` function has the following tasks:
+Эта функция `whenDepsChange()` выполняет следующие задачи:
 
-1. Track when a variable is read. E.g. when evaluating the expression `A0 + A1`, both `A0` and `A1` are read.
+1. Отслеживание момента чтения переменной. Например, при вычислении выражения `A0 + A1`, считываются и `A0` и `A1`.
 
-2. If a variable is read when there is a currently running effect, make that effect a subscriber to that variable. E.g. because `A0` and `A1` are read when `update()` is being executed, `update()` becomes a subscriber to both `A0` and `A1` after the first call.
+2. Если переменная считывается в момент выполнения эффекта, то следует сделать этот эффект подписчиком на эту переменную. Например, поскольку `A0` и `A1` считываются во время выполнения `update()` то после первого вызова `update()` становится подписчиком и `A0` и `A1`.
 
-3. Detect when a variable is mutated. E.g. when `A0` is assigned a new value, notify all its subscriber effects to re-run.
+3. Определить, когда переменная мутирует. Например, когда переменной `A0` присваивается новое значение, уведомить все ее эффекты-подписчики о необходимости повторного выполнения.
 
-## How Reactivity Works in Vue {#how-reactivity-works-in-vue}
+## Как работает реактивность в Vue {#how-reactivity-works-in-vue}
 
-We can't really track the reading and writing of local variables like in the example. There's just no mechanism for doing that in vanilla JavaScript. What we **can** do though, is intercept the reading and writing of **object properties**.
+Мы не можем отслеживать чтение и запись локальных переменных, как в примере. В обычном JavaScript для этого просто нет механизма. Но что мы **можем** сделать, так это перехватить чтение и запись **свойств объекта**.
 
-There are two ways of intercepting property access in JavaScript: [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) and [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Vue 2 used getter / setters exclusively due to browser support limitations. In Vue 3, Proxies are used for reactive objects and getter / setters are used for refs. Here's some pseudo-code that illustrates how they work:
+Существует два способа перехвата доступа к свойствам в JavaScript: [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) и [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). В Vue 2 геттеры / сеттеры использовались исключительно из-за ограничений поддержки браузерами. В Vue 3 прокси используются для реактивных объектов, а геттеры / сеттеры - для ссылок. Вот псевдокод, иллюстрирующий их работу:
 
 ```js{4,9,17,22}
 function reactive(obj) {
@@ -99,20 +99,20 @@ function ref(value) {
 ```
 
 :::tip Совет
-Code snippets here and below are meant to explain the core concepts in the simplest form possible, so many details are omitted, and edge cases ignored.
+Приведенные здесь и далее фрагменты кода призваны объяснить основные понятия в максимально простой форме, поэтому многие детали опускаются, а крайние случаи игнорируются.
 :::
 
-This explains a few [limitations of reactive objects](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive) that we have discussed in the fundamentals section:
+Это объясняет некоторые [ограничения реактивных объектов](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive), о которых мы говорили в разделе "Основы":
 
-- When you assign or destructure a reactive object's property to a local variable, the reactivity is "disconnected" because access to the local variable no longer triggers the get / set proxy traps.
+- Когда вы присваиваете или деструктурируете свойство реактивного объекта локальной переменной, реактивность "отключается", поскольку доступ к локальной переменной больше не вызывает срабатывания прокси-ловушек get / set.
 
-- The returned proxy from `reactive()`, although behaving just like the original, has a different identity if we compare it to the original using the `===` operator.
+- Возвращенный прокси из `reactive()`, хотя и ведет себя так же, как и исходный, имеет другую идентичность, если мы сравним его с исходным с помощью оператора `===`.
 
-Inside `track()`, we check whether there is a currently running effect. If there is one, we lookup the subscriber effects (stored in a Set) for the property being tracked, and add the effect to the Set:
+Внутри функции `track()` мы проверяем, есть ли в данный момент работающий эффект. Если он есть, то мы просматриваем эффекты-подписчики (хранящиеся в Set) для отслеживаемого свойства и добавляем эффект в Set:
 
 ```js
-// This will be set right before an effect is about
-// to be run. We'll deal with this later.
+// Он будет установлен непосредственно перед
+// запуском эффекта. Мы разберемся с этим позже.
 let activeEffect
 
 function track(target, key) {
@@ -123,9 +123,9 @@ function track(target, key) {
 }
 ```
 
-Effect subscriptions are stored in a global `WeakMap<target, Map<key, Set<effect>>>` data structure. If no subscribing effects Set was found for a property (tracked for the first time), it will be created. This is what the `getSubscribersForProperty()` function does, in short. For simplicity, we will skip its details.
+Подписки на эффекты хранятся в глобальной структуре данных `WeakMap<target, Map<key, Set<effect>>>`. Если для свойства (отслеживаемого впервые) не было найдено ни одного набора эффектов-подписчиков, то он будет создан. Вот что, вкратце, делает функция `getSubscribersForProperty()`. Для простоты мы опустим ее подробности.
 
-Inside `trigger()`, we again lookup the subscriber effects for the property. But this time we invoke them instead:
+Внутри `trigger()`, мы снова ищем эффекты подписчика для этого свойства. Но на этот раз мы вызываем их:
 
 ```js
 function trigger(target, key) {
@@ -134,7 +134,7 @@ function trigger(target, key) {
 }
 ```
 
-Now let's circle back to the `whenDepsChange()` function:
+Вернемся теперь к функции `whenDepsChange()`:
 
 ```js
 function whenDepsChange(update) {
@@ -147,11 +147,11 @@ function whenDepsChange(update) {
 }
 ```
 
-It wraps the raw `update` function in an effect that sets itself as the current active effect before running the actual update. This enables `track()` calls during the update to locate the current active effect.
+Она оборачивает функцию `update` в эффект, который перед выполнением обновления устанавливает себя в качестве текущего активного эффекта. Это позволяет вызывать функцию `track()` во время обновления для определения местоположения текущего активного эффекта.
 
-At this point, we have created an effect that automatically tracks its dependencies, and re-runs whenever a dependency changes. We call this a **Reactive Effect**.
+На данном этапе мы создали эффект, который автоматически отслеживает свои зависимости и запускается заново при изменении зависимости. Мы называем его **реактивным эффектом**.
 
-Vue provides an API that allows you to create reactive effects: [`watchEffect()`](/api/reactivity-core.html#watcheffect). In fact, you may have noticed that it works pretty similarly to the magical `whenDepsChange()` in the example. We can now rework the original example using actual Vue APIs:
+Vue предоставляет API, позволяющий создавать реактивные эффекты: [`watchEffect()`](/api/reactivity-core.html#watcheffect). Возможно, вы заметили, что она работает аналогично магической функции `whenDepsChange()` в примере. Теперь мы можем переделать исходный пример, используя реальные API Vue:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -161,15 +161,15 @@ const A1 = ref(1)
 const A2 = ref()
 
 watchEffect(() => {
-  // tracks A0 and A1
+  // отслеживаются A0 и A1
   A2.value = A0.value + A1.value
 })
 
-// triggers the effect
+// срабатывает эффект
 A0.value = 2
 ```
 
-Using a reactive effect to mutate a ref isn't the most interesting use case - in fact, using a computed property makes it more declarative:
+Использование реактивного эффекта для мутации ссылки не самый интересный вариант использования - на самом деле, использование вычисляемого свойства делает его более декларативным:
 
 ```js
 import { ref, computed } from 'vue'
@@ -181,9 +181,9 @@ const A2 = computed(() => A0.value + A1.value)
 A0.value = 2
 ```
 
-Internally, `computed` manages its invalidation and re-computation using a reactive effect.
+Внутри `computed` управляет его аннулированием и повторным вычислением с помощью реактивного эффекта.
 
-So what's an example of a common and useful reactive effect? Well, updating the DOM! We can implement simple "reactive rendering" like this:
+Итак, что же является примером распространенного и полезного реактивного эффекта? Ну, обновление DOM! Мы можем реализовать простой "реактивный рендеринг" следующим образом:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -191,49 +191,49 @@ import { ref, watchEffect } from 'vue'
 const count = ref(0)
 
 watchEffect(() => {
-  document.body.innerHTML = `count is: ${count.value}`
+  document.body.innerHTML = `подсчет равен: ${count.value}`
 })
 
-// updates the DOM
+// обноление DOM
 count.value++
 ```
 
-In fact, this is pretty close to how a Vue component keeps the state and the DOM in sync - each component instance creates a reactive effect to render and update the DOM. Of course, Vue components use much more efficient ways to update the DOM than `innerHTML`. This is discussed in [Rendering Mechanism](./rendering-mechanism).
+Фактически, это очень похоже на то, как компонент Vue поддерживает состояние и DOM в синхронизации - каждый экземпляр компонента создает реактивный эффект для рендеринга и обновления DOM. Конечно, компоненты Vue используют гораздо более эффективные способы обновления DOM, чем `innerHTML`. Это обсуждается в разделе [Механизм рендеринга](./rendering-mechanism).
 
 <div class="options-api">
 
-The `ref()`, `computed()` and `watchEffect()` APIs are all part of the Composition API. If you have only been using Options API with Vue so far, you'll notice that Composition API is closer to how Vue's reactivity system works under the hood. In fact, in Vue 3 the Options API is implemented on top of the Composition API. All property access on the component instance (`this`) triggers getter / setters for reactivity tracking, and options like `watch` and `computed` invoke their Composition API equivalents internally.
+API `ref()`, `computed()` и `watchEffect()` являются частью Composition API. Если до сих пор вы использовали в Vue только Options API, то вы заметите, что Composition API ближе к тому, как работает система реактивности Vue под капотом. Фактически, в Vue 3 Options API реализован поверх Composition API. Все обращения к свойствам экземпляра компонента (`this`) вызывают геттеры / сеттеры для отслеживания реактивности, а такие опции, как `watch` и `computed`, вызывают свои эквиваленты Composition API изнутри.
 
 </div>
 
-## Runtime vs. Compile-time Reactivity {#runtime-vs-compile-time-reactivity}
+## Реактивность во время выполнения и во время компиляции {#runtime-vs-compile-time-reactivity}
 
-Vue's reactivity system is primarily runtime-based: the tracking and triggering are all performed while the code is running directly in the browser. The pros of runtime reactivity are that it can work without a build step, and there are fewer edge cases. On the other hand, this makes it constrained by the syntax limitations of JavaScript.
+Система реактивности Vue в основном основана на времени выполнения: отслеживание и срабатывание происходит во время выполнения кода непосредственно в браузере. Плюсы реактивности во время выполнения заключаются в том, что она может работать без шага сборки, а также в меньшем количестве крайних случаев. С другой стороны, это делает ее ограниченной синтаксическими ограничениями JavaScript.
 
-We have already encountered a limitation in the previous example: JavaScript does not provide a way for us to intercept the reading and writing of local variables, so we have to always access reactive state as object properties, using either reactive objects or refs.
+Мы уже столкнулись с этим ограничением в предыдущем примере: JavaScript не предоставляет нам возможности перехватить чтение и запись локальных переменных, поэтому мы вынуждены всегда обращаться к реактивному состоянию как к свойствам объекта, используя либо реактивные объекты, либо рефссылки.
 
-We have been experimenting with the [Reactivity Transform](/guide/extras/reactivity-transform.html) feature to reduce the code verbosity:
+Мы экспериментировали с функцией [Reactivity Transform](/guide/extras/reactivity-transform.html) чтобы уменьшить многословность кода:
 
 ```js
 let A0 = $ref(0)
 let A1 = $ref(1)
 
-// track on variable read
+// отслеживание переменной при чтении
 const A2 = $computed(() => A0 + A1)
 
-// trigger on variable write
+// срабатывание при записи в переменную
 A0 = 2
 ```
 
-This snippet compiles into exactly what we'd have written without the transform, by automatically appending `.value` after references to the variables. With Reactivity Transform, Vue's reactivity system becomes a hybrid one.
+Этот фрагмент компилируется в то, что мы написали бы без трансформации, автоматически добавляя `.value` после ссылок на переменные. С помощью Reactivity Transform система реактивности Vue становится гибридной.
 
-## Reactivity Debugging {#reactivity-debugging}
+## Отладка реактивности {#reactivity-debugging}
 
-It's great that Vue's reactivity system automatically tracks dependencies, but in some cases we may want to figure out exactly what is being tracked, or what is causing a component to re-render.
+Замечательно, что система реактивности Vue автоматически отслеживает зависимости, но в некоторых случаях мы можем захотеть выяснить, что именно отслеживается, или что вызывает повторный рендеринг компонента.
 
-### Component Debugging Hooks {#component-debugging-hooks}
+### Хуки для отладки компонентов {#component-debugging-hooks}
 
-We can debug what dependencies are used during a component's render and which dependency is triggering an update using the <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> and <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> lifecycle hooks. Both hooks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in the callbacks to interactively inspect the dependency:
+С помощью хуков жизненного цикла <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> и <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> можно отследить, какие зависимости используются при рендеринге компонента и какая зависимость вызывает обновление. Оба хука получают событие отладчика, содержащее информацию об используемой зависимости. Для интерактивной проверки зависимости рекомендуется поместить в обратные вызовы оператор `debugger`:
 
 <div class="composition-api">
 
@@ -268,10 +268,10 @@ export default {
 </div>
 
 :::tip Совет
-Component debug hooks only work in development mode.
+Отладочные хуки компонентов работают только в режиме разработки.
 :::
 
-The debug event objects have the following type:
+Объекты отладочных событий имеют следующий тип:
 
 <span id="debugger-event"></span>
 
@@ -289,45 +289,45 @@ type DebuggerEvent = {
 }
 ```
 
-### Computed Debugging {#computed-debugging}
+### Отладка вычислений {#computed-debugging}
 
 <!-- TODO options API equivalent -->
 
-We can debug computed properties by passing `computed()` a second options object with `onTrack` and `onTrigger` callbacks:
+Мы можем отладить вычисляемые свойства, передав `computed()`второй объект параметров с обратными вызовами `onTrack` и `onTrigger`:
 
-- `onTrack` will be called when a reactive property or ref is tracked as a dependency.
-- `onTrigger` will be called when the watcher callback is triggered by the mutation of a dependency.
+- `onTrack` вызывается, когда реактивное свойство или ссылка отслеживается как зависимость.
+- `onTrigger` будет вызван, когда обратный вызов наблюдателя будет вызван мутацией зависимости.
 
-Both callbacks will receive debugger events in the [same format](#debugger-event) as component debug hooks:
+Оба обратных вызова будут получать события отладчика [в том же формате](#debugger-event), что и отладочные хуки компонентов:
 
 ```js
 const plusOne = computed(() => count.value + 1, {
   onTrack(e) {
-    // triggered when count.value is tracked as a dependency
+    // срабатывает, когда count.value отслеживается как зависимость
     debugger
   },
   onTrigger(e) {
-    // triggered when count.value is mutated
+    // срабатывает при изменении значения count.value
     debugger
   }
 })
 
-// access plusOne, should trigger onTrack
+// доступ plusOne, должен сработать onTrack
 console.log(plusOne.value)
 
-// mutate count.value, should trigger onTrigger
+// мутация count.value, должна сработать onTrigger
 count.value++
 ```
 
 :::tip Совет
-`onTrack` and `onTrigger` computed options only work in development mode.
+Вычисляемые параметры `onTrack` и `onTrigger` работают только в режиме разработки.
 :::
 
-### Watcher Debugging {#watcher-debugging}
+### Отладка наблюдателя {#watcher-debugging}
 
 <!-- TODO options API equivalent -->
 
-Similar to `computed()`, watchers also support the `onTrack` and `onTrigger` options:
+Подобно `computed()`, наблюдатели также поддерживают опции `onTrack` и `onTrigger`:
 
 ```js
 watch(source, callback, {
@@ -350,22 +350,22 @@ watchEffect(callback, {
 ```
 
 :::tip Совет
-`onTrack` and `onTrigger` watcher options only work in development mode.
+Опции наблюдателя `onTrack` и `onTrigger` работают только в режиме разработки.
 :::
 
-## Integration with External State Systems {#integration-with-external-state-systems}
+## Интеграция с внешними системами состояний {#integration-with-external-state-systems}
 
-Vue's reactivity system works by deeply converting plain JavaScript objects into reactive proxies. The deep conversion can be unnecessary or sometimes unwanted when integrating with external state management systems (e.g. if an external solution also uses Proxies).
+Система реактивности Vue работает за счет глубокого преобразования обычных JavaScript-объектов в реактивные прокси. Глубокое преобразование может быть излишним, а иногда и нежелательным при интеграции с внешними системами управления состоянием (например, если внешнее решение также использует прокси).
 
-The general idea of integrating Vue's reactivity system with an external state management solution is to hold the external state in a [`shallowRef`](/api/reactivity-advanced.html#shallowref). A shallow ref is only reactive when its `.value` property is accessed - the inner value is left intact. When the external state changes, replace the ref value to trigger updates.
+Общая идея интеграции системы реактивности Vue с внешним решением по управлению состоянием заключается в том, чтобы хранить внешнее состояние в [`shallowRef`](/api/reactivity-advanced.html#shallowref). Неглубокий ref является реактивным только при обращении к его свойству `.value` - внутреннее значение остается нетронутым. Когда внешнее состояние изменяется, замените значение ref, чтобы вызвать обновление.
 
-### Immutable Data {#immutable-data}
+### Неизменяемые данные {#immutable-data}
 
-If you are implementing an undo / redo feature, you likely want to take a snapshot of the application's state on every user edit. However, Vue's mutable reactivity system isn't best suited for this if the state tree is large, because serializing the entire state object on every update can be expensive in terms of both CPU and memory costs.
+Если вы реализуете функцию отмены/повтора, то, скорее всего, захотите делать снимок состояния приложения при каждом изменении пользователем. Однако мутабельная система реактивности Vue не очень хорошо подходит для этого, если дерево состояний велико, поскольку сериализация всего объекта состояния при каждом обновлении может быть дорогостоящей как с точки зрения затрат процессора, так и памяти.
 
-[Immutable data structures](https://en.wikipedia.org/wiki/Persistent_data_structure) solve this by never mutating the state objects - instead, it creates new objects that share the same, unchanged parts with old ones. There are different ways of using immutable data in JavaScript, but we recommend using [Immer](https://immerjs.github.io/immer/) with Vue because it allows you to use immutable data while keeping the more ergonomic, mutable syntax.
+[Неизменяемые структуры данных](https://en.wikipedia.org/wiki/Persistent_data_structure) решают эту проблему тем, что никогда не мутируют объекты состояния - вместо этого создаются новые объекты, которые имеют общие неизменяемые части со старыми. Существуют различные способы использования неизменяемых данных в JavaScript, но мы рекомендуем использовать [Immer](https://immerjs.github.io/immer/) вместе с Vue, поскольку он позволяет использовать неизменяемые данные, сохраняя при этом более эргономичный синтаксис с возможностью изменения.
 
-We can integrate Immer with Vue via a simple composable:
+Мы можем интегрировать Immer с Vue с помощью простой композиции:
 
 ```js
 import produce from 'immer'
@@ -385,9 +385,9 @@ export function useImmer(baseState) {
 
 ### State Machines {#state-machines}
 
-[State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a model for describing all the possible states an application can be in, and all the possible ways it can transition from one state to another. While it may be overkill for simple components, it can help make complex state flows more robust and manageable.
+[Конечные автоматы](https://en.wikipedia.org/wiki/Finite-state_machine)— это модель для описания всех возможных состояний, в которых может находиться приложение, и всех возможных способов перехода из одного состояния в другое. Хотя это может быть излишним для простых компонентов, это может помочь сделать сложные потоки состояний более надежными и управляемыми.
 
-One of the most popular state machine implementations in JavaScript is [XState](https://xstate.js.org/). Here's a composable that integrates with it:
+Одной из самых популярных реализаций конечного автомата в JavaScript является [XState](https://xstate.js.org/). Вот composable, интегрирующийся с ним:
 
 ```js
 import { createMachine, interpret } from 'xstate'
@@ -409,4 +409,4 @@ export function useMachine(options) {
 
 ### RxJS {#rxjs}
 
-[RxJS](https://rxjs.dev/) is a library for working with asynchronous event streams. The [VueUse](https://vueuse.org/) library provides the [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) add-on for connecting RxJS streams with Vue's reactivity system.
+[RxJS](https://rxjs.dev/) - это библиотека для работы с асинхронными потоками событий. Библиотека [VueUse](https://vueuse.org/) предоставляет надстройку [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) для соединения потоков RxJS с системой реактивности Vue.
