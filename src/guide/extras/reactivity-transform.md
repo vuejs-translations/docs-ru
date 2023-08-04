@@ -1,18 +1,18 @@
-# Reactivity Transform {#reactivity-transform}
+# Трансформация реактивности {#reactivity-transform}
 
 :::warning Экспериментальная возможность
-Reactivity Transform is currently an experimental feature. It is disabled by default and requires [explicit opt-in](#explicit-opt-in). It may also change before being finalized. To stay up-to-date, keep an eye on its [proposal and discussion on GitHub](https://github.com/vuejs/rfcs/discussions/369).
+В настоящее время функция Reactivity Transform является экспериментальной. По умолчанию она отключена и требует [явного согласия.](#explicit-opt-in). Она также может быть изменена до окончательной доработки. Чтобы быть в курсе событий, следите за [предложением и обсуждением этой функции на GitHub](https://github.com/vuejs/rfcs/discussions/369).
 :::
 
 :::tip Специфика для Composition API
-Reactivity Transform is a Composition-API-specific feature and requires a build step.
+Reactivity Transform является специфической функцией Composition-API и требует шага сборки.
 :::
 
-## Refs vs. Reactive Variables {#refs-vs-reactive-variables}
+## Refs и реактивные переменные {#refs-vs-reactive-variables}
 
-Ever since the introduction of the Composition API, one of the primary unresolved questions is the use of refs vs. reactive objects. It's easy to lose reactivity when destructuring reactive objects, while it can be cumbersome to use `.value` everywhere when using refs. Also, `.value` is easy to miss if not using a type system.
+С момента появления Composition API одним из основных нерешенных вопросов является использование ссылок по сравнению с реактивными объектами. При деструктуризации реактивных объектов легко потерять реактивность, в то время как при использовании refs может быть неудобно использовать `.value` везде. Кроме того, `.value` легко пропустить, если не использовать систему типов.
 
-[Vue Reactivity Transform](https://github.com/vuejs/core/tree/main/packages/reactivity-transform) is a compile-time transform that allows us to write code like this:
+[Vue Reactivity Transform](https://github.com/vuejs/core/tree/main/packages/reactivity-transform) - это преобразование на этапе компиляции, которое позволяет нам писать код, подобный этому:
 
 ```vue
 <script setup>
@@ -30,9 +30,9 @@ function increment() {
 </template>
 ```
 
-The `$ref()` method here is a **compile-time macro**: it is not an actual method that will be called at runtime. Instead, the Vue compiler uses it as a hint to treat the resulting `count` variable as a **reactive variable.**
+Метод `$ref()` здесь является **макросом времени компиляции**: он не является реальным методом, который будет вызван во время выполнения. Вместо этого компилятор Vue использует его как подсказку, чтобы рассматривать результирующую переменную `count` как **реактивную переменную**.
 
-Reactive variables can be accessed and re-assigned just like normal variables, but these operations are compiled into refs with `.value`. For example, the `<script>` part of the above component is compiled into:
+К реактивным переменным можно обращаться и переназначать их так же, как и к обычным переменным, но эти операции компилируются в ссылки с `.value`. Например, часть `<script>` приведенного выше компонента компилируется в:
 
 ```js{5,8}
 import { ref } from 'vue'
@@ -46,7 +46,7 @@ function increment() {
 }
 ```
 
-Every reactivity API that returns refs will have a `$`-prefixed macro equivalent. These APIs include:
+Каждое API реактивности, возвращающее refs, будет иметь эквивалент в виде макроса с `$`-префиксом. К таким API относятся:
 
 - [`ref`](/api/reactivity-core.html#ref) -> `$ref`
 - [`computed`](/api/reactivity-core.html#computed) -> `$computed`
@@ -54,7 +54,7 @@ Every reactivity API that returns refs will have a `$`-prefixed macro equivalent
 - [`customRef`](/api/reactivity-advanced.html#customref) -> `$customRef`
 - [`toRef`](/api/reactivity-utilities.html#toref) -> `$toRef`
 
-These macros are globally available and do not need to be imported when Reactivity Transform is enabled, but you can optionally import them from `vue/macros` if you want to be more explicit:
+Эти макросы доступны глобально и не требуют импорта при включении Reactivity Transform, но при желании можно импортировать их из `vue/macros`, если требуется более четкое описание:
 
 ```js
 import { $ref } from 'vue/macros'
@@ -62,9 +62,9 @@ import { $ref } from 'vue/macros'
 let count = $ref(0)
 ```
 
-## Destructuring with `$()` {#destructuring-with}
+## Деструктуризация с помощью `$()` {#destructuring-with}
 
-It is common for a composition function to return an object of refs, and use destructuring to retrieve these refs. For this purpose, reactivity transform provides the **`$()`** macro:
+Обычно функция композиции возвращает объект refs, а для получения этих refs используется деструктуризация. Для этого в reactivity transform предусмотрен макрос **`$()`**:
 
 ```js
 import { useMouse } from '@vueuse/core'
@@ -74,7 +74,7 @@ const { x, y } = $(useMouse())
 console.log(x, y)
 ```
 
-Compiled output:
+Скомпилированный вывод:
 
 ```js
 import { toRef } from 'vue'
@@ -87,13 +87,13 @@ const __temp = useMouse(),
 console.log(x.value, y.value)
 ```
 
-Note that if `x` is already a ref, `toRef(__temp, 'x')` will simply return it as-is and no additional ref will be created. If a destructured value is not a ref (e.g. a function), it will still work - the value will be wrapped in a ref so the rest of the code works as expected.
+Обратите внимание, что если `x` уже является ref, то `toRef(__temp, 'x')` просто вернет его как есть, и никакого дополнительного ref создано не будет. Если деструктурированное значение не является ref (например, функция), оно все равно будет работать - значение будет обернуто в ref, так что остальная часть кода будет работать как положено.
 
-`$()` destructure works on both reactive objects **and** plain objects containing refs.
+Деструктуризация `$()` работает как с реактивными объектами, **так и** с обычными объектами, содержащими refs.
 
-## Convert Existing Refs to Reactive Variables with `$()` {#convert-existing-refs-to-reactive-variables-with}
+## Преобразование существующих refs в реактивные переменные с помощью `$()` {#convert-existing-refs-to-reactive-variables-with}
 
-In some cases we may have wrapped functions that also return refs. However, the Vue compiler won't be able to know ahead of time that a function is going to return a ref. In such cases, the `$()` macro can also be used to convert any existing refs into reactive variables:
+В некоторых случаях мы можем иметь обернутые функции, которые также возвращают refs. Однако компилятор Vue не сможет заранее узнать, что функция будет возвращать ref. В таких случаях макрос `$()` также может быть использован для преобразования всех существующих refs в реактивные переменные:
 
 ```js
 function myCreateRef() {
@@ -103,15 +103,15 @@ function myCreateRef() {
 let count = $(myCreateRef())
 ```
 
-## Reactive Props Destructure {#reactive-props-destructure}
+## Деструктуризация реактивных входных параметров {#reactive-props-destructure}
 
-There are two pain points with the current `defineProps()` usage in `<script setup>`:
+Существуют две болезненные точки с текущим использованием `defineProps()` в `<script setup>`:
 
-1. Similar to `.value`, you need to always access props as `props.x` in order to retain reactivity. This means you cannot destructure `defineProps` because the resulting destructured variables are not reactive and will not update.
+1. Как и в случае с `.value`, для сохранения реактивности необходимо всегда обращаться к входным параметрам как `props.x`. Это означает, что нельзя деструктурировать `defineProps`, поскольку полученные в результате деструктуризации переменные не являются реактивными и не будут обновляться.
 
-2. When using the [type-only props declaration](/api/sfc-script-setup.html#typescript-only-features), there is no easy way to declare default values for the props. We introduced the `withDefaults()` API for this exact purpose, but it's still clunky to use.
+2. При использовании [объявления props только для типа](/api/sfc-script-setup.html#typescript-only-features), нет простого способа объявить значения по умолчанию для props. Для этой цели мы ввели API `withDefaults()`, но он по-прежнему неудобен в использовании.
 
-We can address these issues by applying a compile-time transform when `defineProps` is used with destructuring, similar to what we saw earlier with `$()`:
+Мы можем решить эти проблемы, применив преобразование во время компиляции, когда `defineProps` используется с деструктуризацией, аналогично тому, что мы видели ранее с `$()`:
 
 ```html
 <script setup lang="ts">
@@ -123,21 +123,21 @@ We can address these issues by applying a compile-time transform when `definePro
 
   const {
     msg,
-    // default value just works
+    // работает значение по умолчанию
     count = 1,
-    // local aliasing also just works
-    // here we are aliasing `props.foo` to `bar`
+    // локальные псевдонимы также работают здесь,
+    // мы используем псевдоним `props.foo` для `bar`
     foo: bar
   } = defineProps<Props>()
 
   watchEffect(() => {
-    // will log whenever the props change
+    // будет регистрироваться при каждом изменении входного параметра
     console.log(msg, count, bar)
   })
 </script>
 ```
 
-The above will be compiled into the following runtime declaration equivalent:
+Вышеприведенное будет скомпилировано в следующий эквивалент объявления времени выполнения:
 
 ```js
 export default {
@@ -154,33 +154,33 @@ export default {
 }
 ```
 
-## Retaining Reactivity Across Function Boundaries {#retaining-reactivity-across-function-boundaries}
+## Сохранение реактивности за границами функций {#retaining-reactivity-across-function-boundaries}
 
-While reactive variables relieve us from having to use `.value` everywhere, it creates an issue of "reactivity loss" when we pass reactive variables across function boundaries. This can happen in two cases:
+Хотя реактивные переменные избавляют нас от необходимости повсеместно использовать `.value`,  возникает проблема "потери реактивности" при передаче реактивных переменных через границы функций. Это может произойти в двух случаях:
 
-### Passing into function as argument {#passing-into-function-as-argument}
+### Передача в функцию в качестве аргумента {#passing-into-function-as-argument}
 
-Given a function that expects a ref as an argument, e.g.:
+Дана функция, ожидающая в качестве аргумента ref, например:
 
 ```ts
 function trackChange(x: Ref<number>) {
   watch(x, (x) => {
-    console.log('x changed!')
+    console.log('x изменился!')
   })
 }
 
 let count = $ref(0)
-trackChange(count) // doesn't work!
+trackChange(count) // не работает!
 ```
 
-The above case will not work as expected because it compiles to:
+Приведенный выше случай не будет работать должным образом, поскольку он компилируется в:
 
 ```ts
 let count = ref(0)
 trackChange(count.value)
 ```
 
-Here `count.value` is passed as a number, whereas `trackChange` expects an actual ref. This can be fixed by wrapping `count` with `$$()` before passing it:
+Здесь `count.value` передается как число, в то время как `trackChange` ожидает фактического ref. Это можно исправить, обернув `count` в `$$()` перед передачей:
 
 ```diff
 let count = $ref(0)
@@ -188,7 +188,7 @@ let count = $ref(0)
 + trackChange($$(count))
 ```
 
-The above compiles to:
+Вышеприведенное компилируется в:
 
 ```js
 import { ref } from 'vue'
@@ -197,20 +197,20 @@ let count = ref(0)
 trackChange(count)
 ```
 
-As we can see, `$$()` is a macro that serves as an **escape hint**: reactive variables inside `$$()` will not get `.value` appended.
+Как мы видим, `$$()` - это макрос, который служит **подскасказкой**: реактивным переменным внутри `$$()` не будет добавлено `.value`.
 
-### Returning inside function scope {#returning-inside-function-scope}
+### Возврат внутри области видимости функции {#returning-inside-function-scope}
 
-Reactivity can also be lost if reactive variables are used directly in a returned expression:
+Реактивность также может быть потеряна, если реактивные переменные используются непосредственно в возвращаемом выражении:
 
 ```ts
 function useMouse() {
   let x = $ref(0)
   let y = $ref(0)
 
-  // listen to mousemove...
+  // слушаем движение мыши...
 
-  // doesn't work!
+  // не работает!
   return {
     x,
     y
@@ -218,7 +218,7 @@ function useMouse() {
 }
 ```
 
-The above return statement compiles to:
+Приведенный выше оператор возврата компилируется в:
 
 ```ts
 return {
@@ -227,18 +227,18 @@ return {
 }
 ```
 
-In order to retain reactivity, we should be returning the actual refs, not the current value at return time.
+Для того чтобы сохранить реактивность, мы должны возвращать фактические refs, а не текущее значение в момент возврата.
 
-Again, we can use `$$()` to fix this. In this case, `$$()` can be used directly on the returned object - any reference to reactive variables inside the `$$()` call will retain the reference to their underlying refs:
+И снова мы можем использовать `$$()` для решения этой проблемы. В этом случае `$$()` можно использовать непосредственно на возвращаемом объекте - любые ссылки на реактивные переменные внутри вызова `$$()` будут сохранять ссылки на их базовые refs:
 
 ```ts
 function useMouse() {
   let x = $ref(0)
   let y = $ref(0)
 
-  // listen to mousemove...
+  // слушаем движение мыши...
 
-  // fixed
+  // исправлено
   return $$({
     x,
     y
@@ -246,9 +246,9 @@ function useMouse() {
 }
 ```
 
-### Using `$()` on destructured props {#using-on-destructured-props}
+### Использование `$()` на деструктурированных входных параметрах {#using-on-destructured-props}
 
-`$$()` works on destructured props since they are reactive variables as well. The compiler will convert it with `toRef` for efficiency:
+`$$()` работает для деструктурированных входных параметров, поскольку они также являются реактивными переменными. Для повышения эффективности компилятор преобразует ее с помощью `toRef`:
 
 ```ts
 const { count } = defineProps<{ count: number }>()
@@ -256,7 +256,7 @@ const { count } = defineProps<{ count: number }>()
 passAsRef($$(count))
 ```
 
-compiles to:
+компилируется в:
 
 ```js
 setup(props) {
@@ -265,29 +265,29 @@ setup(props) {
 }
 ```
 
-## TypeScript Integration <sup class="vt-badge ts" /> {#typescript-integration}
+## Интеграция TypeScript <sup class="vt-badge ts" /> {#typescript-integration}
 
-Vue provides typings for these macros (available globally) and all types will work as expected. There are no incompatibilities with standard TypeScript semantics, so the syntax will work with all existing tooling.
+В Vue предусмотрены типы для этих макросов (доступны глобально), и все типы будут работать так, как ожидается. Нет никаких несовместимостей со стандартной семантикой TypeScript, поэтому синтаксис будет работать со всеми существующими инструментами.
 
-This also means the macros can work in any files where valid JS / TS are allowed - not just inside Vue SFCs.
+Это также означает, что макросы могут работать в любых файлах, где разрешен валидный JS / TS - не только внутри Vue SFC.
 
-Since the macros are available globally, their types need to be explicitly referenced (e.g. in a `env.d.ts` file):
+Поскольку макросы доступны глобально, на их типы необходимо явно ссылаться (например, в файле `env.d.ts`):
 
 ```ts
 /// <reference types="vue/macros-global" />
 ```
 
-When explicitly importing the macros from `vue/macros`, the type will work without declaring the globals.
+При явном импорте макросов из `vue/macros` тип будет работать без объявления глобальных переменных.
 
-## Explicit Opt-in {#explicit-opt-in}
+## Явное согласие {#explicit-opt-in}
 
-Reactivity Transform is currently disabled by default and requires explicit opt-in. In addition, all of the following setups require `vue@^3.2.25`.
+В настоящее время Reactivity Transform отключена по умолчанию и требует явного согласия. Кроме того, для всех приведенных ниже настроек требуется `vue@^3.2.25`.
 
 ### Vite {#vite}
 
-- Requires `@vitejs/plugin-vue@>=2.0.0`
-- Applies to SFCs and js(x)/ts(x) files. A fast usage check is performed on files before applying the transform so there should be no performance cost for files not using the macros.
-- Note `reactivityTransform` is now a plugin root-level option instead of nested as `script.refSugar`, since it affects not just SFCs.
+- Требуется `@vitejs/plugin-vue@>=2.0.0`
+- Применяется к SFC и файлам js(x)/ts(x). Перед применением преобразования выполняется быстрая проверка использования файлов, поэтому для файлов, не использующих макросы, не должно быть никаких потерь производительности.
+- Обратите внимание, что `reactivityTransform` теперь является опцией корневого уровня плагина, а не вложенной в `script.refSugar`, поскольку она влияет не только на SFC.
 
 ```js
 // vite.config.js
@@ -302,8 +302,8 @@ export default {
 
 ### `vue-cli` {#vue-cli}
 
-- Currently only affects SFCs
-- Requires `vue-loader@>=17.0.0`
+- В настоящее время влияет только на SFC
+- Требуется `vue-loader@>=17.0.0`
 
 ```js
 // vue.config.js
@@ -322,10 +322,10 @@ module.exports = {
 }
 ```
 
-### Plain `webpack` + `vue-loader` {#plain-webpack-vue-loader}
+### Обычный `webpack` + `vue-loader` {#plain-webpack-vue-loader}
 
-- Currently only affects SFCs
-- Requires `vue-loader@>=17.0.0`
+- В настоящее время влияет только на SFC
+- Требуется `vue-loader@>=17.0.0`
 
 ```js
 // webpack.config.js
