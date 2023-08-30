@@ -52,7 +52,7 @@ Vue.createApp({
 </h1>
 ```
 
-если содержится `userProvidedString`:
+если `userProvidedString` содержит:
 
 ```js
 '" onclick="alert(\'привет\')'
