@@ -128,7 +128,7 @@ server.listen(3000, () => {
 
 [Попробовать на StackBlitz](https://stackblitz.com/fork/vue-ssr-example-basic?file=index.js)
 
-### Гидрация клиентов {#client-hydration}
+### Клиентская гидратация {#client-hydration}
 
 Если нажать на кнопку, то можно заметить, что число не меняется. HTML на клиенте полностью статичен, поскольку мы не загружаем Vue в браузер.
 
