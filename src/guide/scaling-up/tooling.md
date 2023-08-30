@@ -37,7 +37,7 @@
 Информация о миграции с Vue CLI на Vite:
 
 - [Руководство по миграции Vue CLI -> Vite с сайта VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
-- [Инструменты / плагины, помогающие в автомиграции](https://github.com/vitejs/awesome-vite#vue-cli)
+- [Инструменты / плагины, которые помогут с автоматической миграцией](https://github.com/vitejs/awesome-vite#vue-cli)
 
 ### Примечание по компиляции шаблонов в браузере {#note-on-in-browser-template-compilation}
 
