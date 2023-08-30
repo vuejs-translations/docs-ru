@@ -84,7 +84,7 @@ renderToString(app).then((html) => {
 <button>1</button>
 ```
 
-[`renderToString()`](/api/ssr.html#rendertostring) принимает экземпляр приложения Vue и возвращает Promise, который разрешается в отрендеренный HTML приложения. Также можно осуществлять потоковый рендеринг с помощью [Node.js Stream API](https://nodejs.org/api/stream.html) или [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). Более подробную информацию можно найти в [SSR API справочник](/api/ssr.html).
+Метод [`renderToString()`](/api/ssr.html#rendertostring) принимает экземпляр приложения Vue и возвращает Promise, который разрешается в отрендеренный HTML приложения. Также можно осуществлять потоковый рендеринг с помощью [Node.js Stream API](https://nodejs.org/api/stream.html) или [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). Более подробную информацию можно найти в [справочнике API для SSR](/api/ssr.html).
 
 Затем мы можем перенести код Vue SSR в обработчик запросов к серверу, который обернет разметку приложения полным HTML страницы. Для следующих шагов мы будем использовать [`express`](https://expressjs.com/):
 
