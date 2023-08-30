@@ -126,7 +126,7 @@
 
 - Если используется Vite, то для преобразования сопоставленных пользовательских секций в исполняемый JavaScript необходимо использовать собственный плагин Vite. [Пример](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
-- При использовании Vue CLI или обычного webpack для преобразования найденных блоков необходимо настроить загрузчик webpack. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
+- При использовании Vue CLI или обычного webpack для преобразования таких секций необходимо настроить загрузчик webpack. [Пример](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
 ## Пакеты более низкого уровня {#lower-level-packages}
 
