@@ -467,7 +467,7 @@ watch(
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) продолжение [WCAG 2.0](https://www.w3.org/TR/WCAG20/), в котором были учтены новые веб-технологии. При разработке новых или обновлении существующих политик по обеспечению веб-доступности консорциум W3C настоятельно рекомендует использовать последнюю версию стандарта WCAG.
 
-#### Четыре базовых принципа WCAG 2.1 (сокращённо POUR): (abbreviated as POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
+#### Четыре базовых принципа WCAG 2.1 (сокращённо POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
 
 - [Perceivable (Воспринимаемость)](https://www.w3.org/TR/WCAG21/#perceivable)
   - Представленная информация должна быть доступной для всех пользователей
