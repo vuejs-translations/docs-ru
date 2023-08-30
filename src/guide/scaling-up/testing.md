@@ -207,7 +207,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 ### Рекомендации {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) для компонентов или composables, которые рендерятся без головы (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
+- [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
 
 - [Cypress Component Testing](https://on.cypress.io/component) для компонентов, чье ожидаемое поведение зависит от правильной отрисовки стилей или срабатывания собственных событий DOM. Может использоваться с библиотекой тестирования с помощью [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
