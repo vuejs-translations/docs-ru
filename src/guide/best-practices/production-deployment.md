@@ -1,6 +1,6 @@
 # Публикация на production {#production-deployment}
 
-## Разработка в сравнении с production {#development-vs-production}
+## Разработка vs. production {#development-vs-production}
 
 В процессе разработки Vue предоставляет ряд возможностей, улучшающих опыт разработки:
 
