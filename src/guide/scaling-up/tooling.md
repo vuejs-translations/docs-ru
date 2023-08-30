@@ -124,7 +124,7 @@
 
 Пользовательские блоки компилируются в импорт в один и тот же файл Vue с различными запросами. Обработка этих запросов на импорт зависит от базового инструмента сборки.
 
-- Если используется Vite, то для преобразования сопоставленных пользовательских блоков в исполняемый JavaScript необходимо использовать собственный плагин Vite. [Пример](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+- Если используется Vite, то для преобразования сопоставленных пользовательских секций в исполняемый JavaScript необходимо использовать собственный плагин Vite. [Пример](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
 - При использовании Vue CLI или обычного webpack для преобразования найденных блоков необходимо настроить загрузчик webpack. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
