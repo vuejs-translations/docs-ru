@@ -61,7 +61,7 @@
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) также предоставляет отличную встроенную поддержку однофайловых компонентов Vue.
 
-- Другие IDE, поддерживающие протокол [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP), также могут использовать основные функции Volar через LSP:
+- Другие IDE, поддерживающие [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP), также могут использовать основные функции Volar через LSP:
 
   - Поддержка Sublime Text через [LSP-Volar](https://github.com/sublimelsp/LSP-volar).
 
