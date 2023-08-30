@@ -12,7 +12,7 @@
 
 ```js
 Vue.createApp({
-  template: `<div>` + userProvidedString + `</div>` // НИКОГДА НЕ ДЕЛАЙТЕ ЭТОГО
+  template: `<div>` + userProvidedString + `</div>` // НИКОГДА ТАК НЕ ДЕЛАЙТЕ
 }).mount('#app')
 ```
 
