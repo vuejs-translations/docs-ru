@@ -12,7 +12,7 @@
 
 <!-- TODO update links -->
 <div>
-  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Free Vue Router Course">
+  <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Бесплатный курс по Vue Router">
     Посмотрите бесплатный видеокурс от Vue School
   </VueSchoolLink>
 </div>
