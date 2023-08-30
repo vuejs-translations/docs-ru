@@ -79,7 +79,7 @@
 
 - [Документация](https://devtools.vuejs.org/)
 - [Расширение для Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Аддон для Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+- [Расширение для Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
 - [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}
