@@ -421,7 +421,7 @@ test('useFoo', () => {
   const [result, app] = withSetup(() => useFoo(123))
   // имитация provide for для тестирование инъекций
   app.provide(...)
-  // run assertions
+  // запуск проверок
   expect(result.foo.value).toBe(1)
   // при необходимости запускать хук onUnmounted
   app.unmount()
