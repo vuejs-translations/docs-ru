@@ -106,7 +106,7 @@
 
 Пользователи, ранее использовавшие Vue CLI, могут привыкнуть к тому, что линтеры настраиваются через загрузчики webpack. Однако при использовании сборки на основе Vite наша общая рекомендация такова:
 
-1. `npm install -D eslint eslint-plugin-vue`, затем следуйте руководству по настройке `eslint-plugin-vue` [configuration guide](https://eslint.vuejs.org/user-guide/#usage).
+1. `npm install -D eslint eslint-plugin-vue`, затем следуйте [руководству по настройке](https://eslint.vuejs.org/user-guide/#usage) `eslint-plugin-vue`.
 
 2. Установите расширения ESLint для IDE, например [ESLint для VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), чтобы получать обратную связь от линтера прямо в редакторе во время разработки. Это также позволяет избежать лишних затрат на линтинг при запуске сервера разработки.
 
