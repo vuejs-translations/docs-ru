@@ -209,7 +209,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 - [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
 
-- [Cypress Component Testing](https://on.cypress.io/component) для компонентов, чье ожидаемое поведение зависит от правильной отрисовки стилей или срабатывания собственных событий DOM. Может использоваться с библиотекой тестирования с помощью [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Компонентное тестирование с Cypress](https://on.cypress.io/component) для компонентов, чье ожидаемое поведение зависит от правильной отрисовки стилей или срабатывания собственных событий DOM. Может использоваться с библиотекой тестирования с помощью [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
 Основные различия между Vitest и браузерными прогонами заключаются в скорости и контексте выполнения. Вкратце, браузерные прогоны, такие как Cypress, могут отлавливать проблемы, которые узловые прогоны, такие как Vitest, не могут (например, проблемы со стилями, реальные собственные события DOM, cookies, локальное хранилище и сбои в сети), но браузерные прогоны *на порядки медленнее Vitest*, поскольку они открывают браузер, компилируют таблицы стилей и т.д. Cypress - это браузерный прогон, поддерживающий тестирование компонентов. Последняя информация о сравнении Vitest и Cypress приведена на [странице сравнения Vitest](https://vitest.dev/guide/comparisons.html#cypress).
 
