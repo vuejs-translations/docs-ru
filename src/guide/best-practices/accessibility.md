@@ -269,7 +269,7 @@ watch(
 
 Через Chrome DevTools можно увидеть применённое описание:
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
+![Инструменты разработчика в Chrome показывают имя поля из aria-labelledby и описание с использованием aria-describedby](./images/AccessibleARIAdescribedby.png)
 
 ### Подсказка внутри поля {#placeholder}
 
