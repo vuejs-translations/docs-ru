@@ -205,7 +205,7 @@ watch(
 
 Можно убедиться самостоятельно что имя элемента изменилось с помощью инструментов разработки Chrome DevTools:
 
-![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
+![Инструменты разработчика в Chrome показывают имя поля из aria-label](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby` {#aria-labelledby}
 
