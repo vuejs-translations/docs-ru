@@ -8,7 +8,7 @@
 
 В таких SPA "маршрутизация" осуществляется на стороне клиента, в браузере. Маршрутизатор на стороне клиента отвечает за управление отображаемым представлением приложения, используя такие API браузера, как [History API](https://developer.mozilla.org/en-US/docs/Web/API/History) или [событие `hashchange`](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event).
 
-## Официальный маршрутизатор {#official-router}
+## Официальный роутер {#official-router}
 
 <!-- TODO update links -->
 <div>
