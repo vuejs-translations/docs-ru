@@ -59,7 +59,7 @@
   Volar заменяет [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VSCode для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
   :::
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) также предоставляет отличную встроенную поддержку Vue SFC.
+- [WebStorm](https://www.jetbrains.com/webstorm/) также предоставляет отличную встроенную поддержку однофайловых компонентов Vue.
 
 - Другие IDE, поддерживающие протокол [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP), также могут использовать основные функции Volar через LSP:
 
