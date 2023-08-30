@@ -128,7 +128,7 @@
 
 - При использовании Vue CLI или обычного webpack для преобразования таких секций необходимо настроить загрузчик webpack. [Пример](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
-## Пакеты более низкого уровня {#lower-level-packages}
+## Низкоуровневые пакеты {#lower-level-packages}
 
 ### `@vue/compiler-sfc` {#vue-compiler-sfc}
 
