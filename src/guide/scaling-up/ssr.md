@@ -201,7 +201,7 @@ server.get('/', (req, res) => {
 
 [Попробуйте выполнить пример на StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). Кнопка теперь интерактивна!
 
-## Решения более высокого уровня {#higher-level-solutions}
+## Высокоуровневые решения {#higher-level-solutions}
 
 Переход от примера к готовому приложению SSR предполагает гораздо большее. Нам потребуется:
 
