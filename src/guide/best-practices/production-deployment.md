@@ -28,7 +28,7 @@
 
 1. `vue` разрешается в `vue.runtime.esm-bundler.js`.
 2. [Флаги функций времени компиляции](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) настроены должным образом.
-3. <code>process.env<wbr>.NODE_ENV</code> заменяется на  `"production"` во время сборки.
+3. <code>process.env<wbr>.NODE_ENV</code> заменяется на `"production"` во время сборки.
 
 Дополнительные ссылки:
 
