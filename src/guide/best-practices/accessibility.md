@@ -169,7 +169,7 @@ watch(
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Если посмотреть элемент через инструменты разработки (например, DevTools в браузере Chrome) и перейти на вкладку Accessibility внутри раздела Elements, то можно увидеть, что имя поле извлекается из связанной с ним метки:
+Если посмотреть элемент через инструменты разработки (например, DevTools в браузере Chrome) и перейти на вкладку Accessibility внутри раздела Elements, то можно увидеть, что имя поля извлекается из связанной с ним метки:
 
 ![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
 
