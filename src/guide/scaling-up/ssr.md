@@ -195,7 +195,7 @@ server.get('/', (req, res) => {
 
 Кроме того, для загрузки клиентских файлов в браузер нам также необходимо:
 
-1. Поспособствовать клиентским файлам, добавив `server.use(express.static('.'))` в `server.js`.
+1. Раздавать клиентские файлы, добавив `server.use(express.static('.'))` в `server.js`.
 2. Загрузить клиент добавив `<script type="module" src="/client.js"></script>` в шаблон HTML.
 3. Поддержать использование, такое как `import * from 'vue'` в браузере, добавив [Import Map](https://github.com/WICG/import-maps) в шаблон HTML.
 
