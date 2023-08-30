@@ -209,7 +209,7 @@ watch(
 
 #### `aria-labelledby` {#aria-labelledby}
 
-Использование атрибута [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) похоже на `aria-label`, за исключением того, что текст метки показывается на экране. Он создаёт связь между элементами с атрибутом `id`, допускается указать несколько `id`:
+Использование атрибута [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) похоже на `aria-label`, за исключением того, что текст метки показывается на экране. Он создаёт связь между элементами с атрибутом `id`, причём допускается указывать несколько `id`:
 
 ```vue-html
 <form
