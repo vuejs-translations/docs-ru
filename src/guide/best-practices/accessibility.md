@@ -271,7 +271,7 @@ watch(
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
 
-### Подсказка поля {#placeholder}
+### Подсказка внутри поля {#placeholder}
 
 Старайтесь ограничить использования подсказок полей, так как они могут запутать пользователя.
 
