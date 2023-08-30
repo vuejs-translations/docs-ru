@@ -156,7 +156,7 @@ watch(
 
 <!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Обратите внимание, можно добавить `autocomplete='on'` к самому элементу формы, и этот атрибут применится ко всем полям формы. Каждому полю можно задать свои [значения атрибута autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
+Обратите внимание, можно добавить `autocomplete='on'` к самому элементу формы, и этот атрибут применится ко всем полям формы. Каждому полю можно задать свои [значения атрибута autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
 
 ### Метки {#labels}
 
