@@ -82,7 +82,7 @@ Vue.createApp({
   <div v-html="userProvidedHtml"></div>
   ```
 
-- Использование функции отрисовки:
+- Использование render-функции:
 
   ```js
   h('div', {
