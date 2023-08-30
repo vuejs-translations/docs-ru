@@ -297,7 +297,7 @@ export default defineConfig({
     // включение jest-подобных глобальных тест API
     globals: true,
     // имитация DOM с помощью happy-dom
-    // (требует установки happy-dom в качестве одноранговой зависимости)
+    // (требует установки happy-dom в качестве peer dependency)
     environment: 'happy-dom'
   }
 })
