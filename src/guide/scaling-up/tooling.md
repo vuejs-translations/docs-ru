@@ -71,7 +71,7 @@
 
 ## Браузерные инструменты разработчика {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Бесплатный урок по инструментам разработчика Vue.js"/>
 
 Расширение devtools для браузера Vue позволяет исследовать дерево компонентов приложения Vue, проверять состояние отдельных компонентов, отслеживать события управления состоянием и определять производительность.
 
