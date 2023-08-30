@@ -31,7 +31,7 @@ Vue спроектирован таким образом, чтобы обесп�
 
 Для оценки производительности при локальной разработке:
 
-- [Chrome DevTools Performance Panel](https://developer.chrome.com/docs/devtools/evaluate-performance/)
+- [Панель Performance в Chrome DevTools](https://developer.chrome.com/docs/devtools/evaluate-performance/)
   - [`app.config.performance`](/api/application.html#app-config-performance) включает маркеры производительности, специфичные для Vue, на временной шкале производительности Chrome DevTools.
 - [Расширение Vue DevTools](/guide/scaling-up/tooling.html#browser-devtools) также предоставляет возможность оценки производительности.
 
