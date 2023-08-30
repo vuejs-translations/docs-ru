@@ -86,7 +86,7 @@
 
 Основная статья: [Использование Vue с TypeScript](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) обеспечивает проверку типов для SFC с помощью блоков `<script lang="ts">`, включая шаблонные выражения и межкомпонентную валидацию входных параметров.
+- [Volar](https://github.com/johnsoncodehk/volar) обеспечивает проверку типов для однофайловых компонентов с помощью секций `<script lang="ts">`, включая выражения в шаблонах и межкомпонентную валидацию входных параметров.
 
 - Используйте [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)  для выполнения аналогичной проверки типов из командной строки или для генерации файлов `d.ts` для SFC.
 
