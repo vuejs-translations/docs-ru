@@ -171,7 +171,7 @@ watch(
 
 Если посмотреть элемент через инструменты разработки (например, DevTools в браузере Chrome) и перейти на вкладку Accessibility внутри раздела Elements, то можно увидеть, что имя поля извлекается из связанной с ним метки:
 
-![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
+![Инструменты разработчика в Chrome показывают имя для поля из метки](./images/AccessibleLabelChromeDevTools.png)
 
 :::warning Предупреждение
 Часто можно встретить случаи, когда поле ввода находится внутри элемента с меткой:
