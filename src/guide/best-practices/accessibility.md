@@ -277,7 +277,7 @@ watch(
 
 Одна из проблем в том, что по умолчанию подсказки внутри полей не соответствуют [критериям цветового контраста](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html). Попытка исправить цветовой контраст может сделать подсказку похожей на уже заполненное поле. Посмотрите на следующий пример: подсказка поля Last Name соответствует критериям цветового контраста, хотя она не отличается от введённого значения:
 
-![Accessible placeholder](./images/AccessiblePlaceholder.png)
+![Доступный вариант placeholder](./images/AccessiblePlaceholder.png)
 
 ```vue-html
 <form
