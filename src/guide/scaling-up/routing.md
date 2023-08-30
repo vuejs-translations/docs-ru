@@ -21,7 +21,7 @@ Vue хорошо подходит для создания SPA. Для больш
 
 ## Простая маршрутизация с нуля {#simple-routing-from-scratch}
 
-Если вам нужна только очень простая маршрутизация и вы не хотите привлекать полнофункциональную библиотеку маршрутизаторов, вы можете обойтись [динамическими компонентами](/guide/essentials/component-basics.html#dynamic-components) и обновлять текущее состояние компонента, прослушивая [`hashchange` события](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) браузера или используя [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
+Если вам нужна только очень простая маршрутизация и вы не хотите привлекать полнофункциональный роутер, то можно обойтись [динамическими компонентами](/guide/essentials/component-basics.html#dynamic-components) и обновлять текущее состояние компонента, прослушивая [`hashchange` события](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) браузера или используя [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
 Приведем простой пример:
 
