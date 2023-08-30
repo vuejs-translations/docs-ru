@@ -28,7 +28,7 @@ Vue.createApp({
 <h1>{{ userProvidedString }}</h1>
 ```
 
-если содержится `userProvidedString`:
+если `userProvidedString` содержит:
 
 ```js
 '<script>alert("привет")</script>'
