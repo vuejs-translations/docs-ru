@@ -52,7 +52,7 @@ SSG сохраняет те же характеристики производи
 
 1. Создайте новый каталог и перейдите в него с помощью `cd`
 2. Выполните команду `npm init -y`
-3. Добавьте `"type": "module"` в `package.json`, чтобы Node.js запускался в [режиме ES modules](https://nodejs.org/api/esm.html#modules-ecmascript-modules).
+3. Добавьте `"type": "module"` в `package.json`, чтобы Node.js запускался в [режиме ES-модулей](https://nodejs.org/api/esm.html#modules-ecmascript-modules).
 4. Выполните команду `npm install vue`
 5. Создайте файл `example.js`:
 
