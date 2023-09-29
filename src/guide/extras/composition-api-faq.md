@@ -51,7 +51,7 @@ onMounted(() => {
 
 ### Лучшее переиспользование логики {#better-logic-reuse}
 
-Основное преимущество Composition API заключается в том, что он обеспечивает чистое, эффективное повторное использование логики в виде [Composable функций](/guide/reusability/composables.html). Он решает [все недостатки миксинов](/guide/reusability/composables.html#vs-mixins), основного механизма повторного использования логики в Options API.
+Основное преимущество Composition API заключается в том, что он обеспечивает чистое, эффективное повторное использование логики в виде [Composable функций](/guide/reusability/composables.html). Он решает [все недостатки примесей](/guide/reusability/composables.html#vs-mixins), основного механизма повторного использования логики в Options API.
 
 Возможность повторного использования логики Composition API привела к созданию впечатляющих проектов сообщества, таких как [VueUse](https://vueuse.org/), постоянно растущей коллекции композитных утилит. Он также служит чистым механизмом для простой интеграции сторонних служб или библиотек с отслеживанием состояния в систему реактивности Vue, например [immutable data](/guide/extras/reactivity-in-depth.html#immutable-data), [state machines](/guide/extras/reactivity-in-depth.html#state-machines), и [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs).
 
