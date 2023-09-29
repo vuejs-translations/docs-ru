@@ -12,7 +12,7 @@ outline: deep
 
 Composition API - это набор API, который позволяет нам создавать компоненты Vue, используя импортированные функции вместо объявления опций. Это зонтичный термин, который охватывает следующие API:
 
-- [Reactivity API](/api/reactivity-core.html), например `ref()` и `reactive()`, что позволяет нам напрямую создавать reactive state, computed state, и watchers.
+- [Reactivity API](/api/reactivity-core.html), например `ref()` и `reactive()`, что позволяет нам напрямую создавать реактивное состояние, вычисляемое состояние, и watchers.
 
 - [Хуки жизненного цикла](/api/composition-api-lifecycle.html), например `onMounted()` и `onUnmounted()`, которые позволяют нам программно подключаться к жизненному циклу компонента.
 
