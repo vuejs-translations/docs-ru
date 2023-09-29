@@ -32,7 +32,7 @@ function increment() {
   count.value++
 }
 
-// жизненный цикл хуков
+// хуки жизненного цикла
 onMounted(() => {
   console.log(`The initial count is ${count.value}.`)
 })
