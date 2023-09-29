@@ -14,7 +14,7 @@ Composition API - это набор API, который позволяет на�
 
 - [Reactivity API](/api/reactivity-core.html), например `ref()` и `reactive()`, что позволяет нам напрямую создавать reactive state, computed state, и watchers.
 
-- [Lifecycle Hooks](/api/composition-api-lifecycle.html), например `onMounted()` и `onUnmounted()`, которые позволяют нам программно подключаться к жизненному циклу компонента.
+- [Хуки жизненного цикла](/api/composition-api-lifecycle.html), например `onMounted()` и `onUnmounted()`, которые позволяют нам программно подключаться к жизненному циклу компонента.
 
 - [Dependency Injection](/api/composition-api-dependency-injection.html), то есть `provide()` и `inject()`, которые позволяют нам использовать систему dependency injection при использовании Reactivity APIs.
 
