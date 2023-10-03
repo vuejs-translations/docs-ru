@@ -1,8 +1,8 @@
-# Custom Renderer API {#custom-renderer-api}
+# API пользовательского рендерера {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 
-Creates a custom renderer. By providing platform-specific node creation and manipulation APIs, you can leverage Vue's core runtime to target non-DOM environments.
+Создает пользовательский рендерер. Предоставление API для создания и работы с узлами, специфичных для конкретной платформы, позволяет использовать runtime-ядро Vue для работы в средах, отличных от DOM.
 
 - **Тип:**
 
@@ -22,7 +22,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
       key: string,
       prevValue: any,
       nextValue: any,
-      // the rest is unused for most custom renderers
+      // остальное не используется в большинстве пользовательских рендереров
       isSVG?: boolean,
       prevChildren?: VNode<HostNode, HostElement>[],
       parentComponent?: ComponentInternalInstance | null,
@@ -48,7 +48,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
     parentNode(node: HostNode): HostElement | null
     nextSibling(node: HostNode): HostNode | null
 
-    // optional, DOM-specific
+    // опционально, специфично для DOM
     querySelector?(selector: string): HostElement | null
     setScopeId?(el: HostElement, id: string): void
     cloneNode?(node: HostNode): HostNode
@@ -74,12 +74,12 @@ Creates a custom renderer. By providing platform-specific node creation and mani
     // ...
   })
 
-  // `render` is the low-level API
-  // `createApp` returns an app instance
+  // `render` - это низкоуровневый API
+  // `createApp` возвращает экземпляр приложения
   export { render, createApp }
 
-  // re-export Vue core APIs
+  // реэкспорт основного API Vue
   export * from '@vue/runtime-core'
   ```
 
-  Vue's own `@vue/runtime-dom` is [implemented using the same API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). For a simpler implementation, check out [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) which is a private package for Vue's own unit testing.
+  Собственный пакет Vue `@vue/runtime-dom` [реализован с использованием того же API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). Более простую реализацию можно найти в [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts), который представляет собой приватный пакет для собственного модульного тестирования Vue.
