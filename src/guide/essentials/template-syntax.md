@@ -165,7 +165,7 @@ data() {
 
 ### Ограничения доступа к глобальным объектам {#restricted-globals-access}
 
-Выражения в шаблонах находятся в «песочнице» и имеют доступ только к [ограниченному списку глобальных свойств](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3), таких как `Math` и `Date`.
+Выражения в шаблонах находятся в «песочнице» и имеют доступ только к [ограниченному списку глобальных свойств](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3), таких как `Math` и `Date`.
 
 Глобальные свойства, которые явно не включены в список (например пользовательские свойства на `window`) не будут доступны в шаблонных выражениях. Однако можно объявить дополнительные глобальные свойства для всех выражений Vue, добавив их с помощью [`app.config.globalProperties`](/api/application.html#app-config-globalproperties).
 
