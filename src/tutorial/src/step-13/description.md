@@ -1,16 +1,16 @@
-# Emits {#emits}
+# Объявление событий {#emits}
 
-In addition to receiving props, a child component can also emit events to the parent:
+Помимо получения входных параметров, дочерний компонент также может объявлять события для родительского компонента:
 
 <div class="composition-api">
 <div class="sfc">
 
 ```vue
 <script setup>
-// declare emitted events
+// объявление генерируемых событий
 const emit = defineEmits(['response'])
 
-// emit with argument
+// генерация события с параметром
 emit('response', 'hello from child')
 </script>
 ```
@@ -21,10 +21,10 @@ emit('response', 'hello from child')
 
 ```js
 export default {
-  // declare emitted events
+  // объявление генерируемых событий
   emits: ['response'],
   setup(props, { emit }) {
-    // emit with argument
+    // генерация события с параметром
     emit('response', 'hello from child')
   }
 }
@@ -38,10 +38,10 @@ export default {
 
 ```js
 export default {
-  // declare emitted events
+  // объявление генерируемых событий
   emits: ['response'],
   created() {
-    // emit with argument
+    // генерация события с параметром
     this.$emit('response', 'hello from child')
   }
 }
@@ -49,9 +49,9 @@ export default {
 
 </div>
 
-The first argument to <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
+Первым аргументом <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> является имя события. Все дополнительные аргументы передаются слушателю события.
 
-The parent can listen to child-emitted events using `v-on` - here the handler receives the extra argument from the child emit call and assigns it to local state:
+Родительский компонент может прослушивать события дочерних компонентов при помощи `v-on` - обработчик получает дополнительный аргумент от вызова emit в дочернем компоненте и присваивает его локальному состоянию:
 
 <div class="sfc">
 
@@ -68,4 +68,4 @@ The parent can listen to child-emitted events using `v-on` - here the handler re
 
 </div>
 
-Now try it yourself in the editor.
+Теперь попробуйте сделать это самостоятельно в редакторе.
