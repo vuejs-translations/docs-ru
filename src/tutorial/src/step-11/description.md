@@ -64,4 +64,4 @@ createApp({
 
 </div>
 
-Now try it yourself - import the child component and render it in the template.
+Теперь попробуйте самостоятельно - импортируйте дочерний компонент и укажите его в шаблоне.
