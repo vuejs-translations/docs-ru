@@ -1,4 +1,4 @@
-# API пользовательского рендерера {#custom-renderer-api}
+# Пользовательский интерфейс отрисовки (API) {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 
