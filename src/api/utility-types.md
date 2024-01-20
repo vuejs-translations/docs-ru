@@ -1,12 +1,12 @@
-# Utility Types {#utility-types}
+# Вспомогательные типы {#utility-types}
 
 :::info Информация
-This page only lists a few commonly used utility types that may need explanation for their usage. For a full list of exported types, consult the [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
+На этой странице перечислены лишь некоторые часто используемые вспомогательные типы, применение которых может потребовать объяснений по их использованию. Полный список экспортируемых типов можно найти в [исходном коде](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
 :::
 
 ## PropType\<T> {#proptype-t}
 
-Used to annotate a prop with more advanced types when using runtime props declarations.
+Используется для анотации входного параметра с более сложными типами по сравнению с runtime определением входных параметров
 
 - **Пример:**
 
@@ -22,7 +22,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
   export default {
     props: {
       book: {
-        // provide more specific type to `Object`
+        // предоставление более конкретного типа `Object`.
         type: Object as PropType<Book>,
         required: true
       }
@@ -30,11 +30,11 @@ Used to annotate a prop with more advanced types when using runtime props declar
   }
   ```
 
-- **См. также:** [Guide - Typing Component Props](/guide/typescript/options-api.html#typing-component-props)
+- **См. также:** [Руководство - Типизация входных параметров компонента](/guide/typescript/options-api.html#typing-component-props)
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
-Used to augment the component instance type to support custom global properties.
+Используется для расширения типа экземпляра компонента с целью поддержки пользовательских глобальных свойств.
 
 - **Пример:**
 
@@ -50,14 +50,14 @@ Used to augment the component instance type to support custom global properties.
   ```
 
   :::tip Совет
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
   :::
 
-- **См. также:** [Guide - Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties)
+- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
-Used to augment the component options type to support custom options.
+Используется для расширения типа опций компонента с целью поддержки пользовательских опций.
 
 - **Пример:**
 
@@ -72,14 +72,14 @@ Used to augment the component options type to support custom options.
   ```
 
   :::tip Совет
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
   :::
 
-- **См. также:** [Guide - Augmenting Custom Options](/guide/typescript/options-api.html#augmenting-custom-options)
+- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+Используется для расширения разрешенных входных параметров в TSX с целью использования недекларированных входных параметров на элементах TSX.
 
 - **Пример:**
 
@@ -94,21 +94,21 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   ```
 
   ```tsx
-  // now works even if hello is not a declared prop
+  // теперь работает, даже если hello не является объявленным входным параметром
   <MyComponent hello="world" />
   ```
 
   :::tip Совет
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
   :::
 
 ## CSSProperties {#cssproperties}
 
-Used to augment allowed values in style property bindings.
+Используется для расширения допустимых значений в привязках свойств стиля.
 
 - **Пример:**
 
-  Allow any custom CSS property
+  Разрешить любое пользовательское CSS-свойство
 
   ```ts
   declare module 'vue' {
@@ -126,11 +126,11 @@ Used to augment allowed values in style property bindings.
   ```
 
   :::tip Совет
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
   :::
-  
-  :::info См. также
-  SFC `<style>` tags support linking CSS values to dynamic component state using the `v-bind` CSS function. This allows for custom properties without type augmentation. 
 
-  - [v-bind() in CSS](/api/sfc-css-features.html#v-bind-in-css)
+  :::info См. также
+  Секции однофайловых компонентов `<style>` поддерживают привязку CSS-значений к динамическому состоянию компонента с помощью CSS-функции `v-bind`. Это позволяет использовать пользовательские свойства без дополнения типа.
+
+  - [v-bind() внутри CSS](/api/sfc-css-features.html#v-bind-in-css)
   :::
