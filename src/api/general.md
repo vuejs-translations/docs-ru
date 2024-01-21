@@ -140,7 +140,7 @@
 
   const Comp = defineComponent(
     (props) => {
-      // код как в setup() Composition API
+      // код как в <script setup> Composition API
       const count = ref(0)
 
       return () => {
@@ -148,7 +148,7 @@
         return h('div', count.value)
       }
     },
-    // дополнительные параметры, например, описание входных данных
+    // дополнительные параметры, например, описание входных данных и emits
     {
       props: {
         /* ... */
@@ -162,7 +162,7 @@
   ```tsx
   const Comp = defineComponent(
     <T extends string | number>(props: { msg: T; list: T[] }) => {
-      // код как в setup() Composition API
+      // код как в <script setup> Composition API
       const count = ref(0)
 
       return () => {
