@@ -14,14 +14,14 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 - По умолчанию он не отображает элемент-обертку. Однако вы можете указать элемент, который будет отображаться с помощью атрибута `tag`.
 
-- [Режимы переходов](./transition.html#transition-modes) недоступны, так как мы больше не переключаемся туда-сюда между взаимоисключающими элементами.
+- [Режимы переходов](./transition#transition-modes) недоступны, так как мы больше не переключаемся туда-сюда между взаимоисключающими элементами.
 
 - Элементы внутри **всегда должны** иметь уникальный атрибут `key`.
 
 - Классы CSS-перехода будут применяться к отдельным элементам в списке, а не к самой группе / контейнеру.
 
 :::tip Совет
-При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<transition-group>`.
+При использовании в [DOM-шаблонах](/guide/essentials/component-basics#dom-template-parsing-caveats), на него следует ссылаться как на `<transition-group>`.
 :::
 
 ## Анимация добавления / удаления элементов списка {#enter-leave-transitions}
@@ -132,4 +132,4 @@ function onEnter(el, done) {
 
 **Связанные**
 
-- [`<TransitionGroup>` API reference](/api/built-in-components.html#transitiongroup)
+- [`<TransitionGroup>` API reference](/api/built-in-components#transitiongroup)

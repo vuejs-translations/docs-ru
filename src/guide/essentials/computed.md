@@ -97,7 +97,7 @@ export default {
 
 В шаблоне к вычисляемым свойствам можно обращаться как и к обычным свойствам. Vue знает, что `this.publishedBooksMessage` зависит от значения `this.author.books`, поэтому будет обновлять все привязки, которые зависят от `this.publishedBooksMessage`, при изменениях `this.author.books`.
 
-См. также: [Типизация вычисляемых свойств](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+См. также: [Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 </div>
 
@@ -134,7 +134,7 @@ const publishedBooksMessage = computed(() => {
 
 Вычисляемое свойство автоматически отслеживает свои реактивные зависимости. Vue знает, что `publishedBooksMessage` зависит от значения `author.books`, поэтому будет обновлять все привязки, которые зависят от `publishedBooksMessage`, при изменениях `author.books`.
 
-См. также: [Типизация вычисляемых свойств](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+См. также: [Типизация вычисляемых свойств](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
 </div>
 

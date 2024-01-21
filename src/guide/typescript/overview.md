@@ -87,7 +87,7 @@ Vue написан на TypeScript и обеспечивает первокла�
 
 ### `defineComponent()` {#definecomponent}
 
-Чтобы TypeScript мог правильно выводить типы внутри опций компонентов, необходимо определить компоненты с помощью функции [`defineComponent()`](/api/general.html#definecomponent):
+Чтобы TypeScript мог правильно выводить типы внутри опций компонентов, необходимо определить компоненты с помощью функции [`defineComponent()`](/api/general#definecomponent):
 
 ```ts
 import { defineComponent } from 'vue'
@@ -129,7 +129,7 @@ export default defineComponent({
 
 См. также:
 
-- [Заметка о webpack Treeshaking](/api/general.html#note-on-webpack-treeshaking)
+- [Заметка о webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
 - [типы тестов для `defineComponent`](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
 
 :::tip Совет

@@ -543,7 +543,7 @@ export default {
 
 ## Переход между компонентами {#transition-between-components}
 
-`<Transition>` также может использоваться вокруг [динамических компонентов](/guide/essentials/component-basics.html#dynamic-components):
+`<Transition>` также может использоваться вокруг [динамических компонентов](/guide/essentials/component-basics#dynamic-components):
 
 ```vue-html
 <Transition name="fade" mode="out-in">
@@ -582,4 +582,4 @@ export default {
 
 **Связанное**
 
-- [`<Transition>` Справочник API](/api/built-in-components.html#transition)
+- [`<Transition>` Справочник API](/api/built-in-components#transition)

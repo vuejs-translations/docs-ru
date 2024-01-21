@@ -83,7 +83,7 @@ watchEffect(() => {
 })
 ```
 
-См. также: [Типизированные ссылки на элементы шаблона](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
+См. также: [Типизированные ссылки на элементы шаблона](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
 
 </div>
 
@@ -237,7 +237,7 @@ defineExpose({
 
 Когда родитель получает экземпляр этого компонента через ссылки шаблона, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ссылки автоматически разворачиваются, как и для обычных экземпляров).
 
-См. также: [Типизированные ссылки на шаблоны компонентов](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
+См. также: [Типизированные ссылки на шаблоны компонентов](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">

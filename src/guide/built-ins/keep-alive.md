@@ -8,7 +8,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## Базовое использование {#basic-usage}
 
-В главе "Основы компонентов" мы представили синтаксис для [Динамических компонентов](/guide/essentials/component-basics.html#dynamic-components), используя специальный элемент `<component>`:
+В главе "Основы компонентов" мы представили синтаксис для [Динамических компонентов](/guide/essentials/component-basics#dynamic-components), используя специальный элемент `<component>`:
 
 ```vue-html
 <component :is="activeComponent" />
@@ -47,7 +47,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </div>
 
 :::tip Совет
-При использовании в [DOM-шаблонах](/guide/essentials/component-basics.html#dom-template-parsing-caveats), на него следует ссылаться как на `<keep-alive>`.
+При использовании в [DOM-шаблонах](/guide/essentials/component-basics#dom-template-parsing-caveats), на него следует ссылаться как на `<keep-alive>`.
 :::
 
 ## Включение / Исключение {#include-exclude}
@@ -71,7 +71,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </KeepAlive>
 ```
 
-Соответствие проверяется параметром [`name`](/api/options-misc.html#name) компонента, поэтому компоненты, которые должны быть условно кэшированы с помощью `KeepAlive` должны явно объявлять параметр `name`.
+Соответствие проверяется параметром [`name`](/api/options-misc#name) компонента, поэтому компоненты, которые должны быть условно кэшированы с помощью `KeepAlive` должны явно объявлять параметр `name`.
 
 :::tip Совет
 Начиная с версии 3.2.34, однофайловый компонент, использующий `<script setup>`, будет автоматически определять собственный `name` на основе имени файла, устраняя необходимость вручную объявлять имя.
@@ -93,7 +93,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 <div class="composition-api">
 
-Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`onActivated()`](/api/composition-api-lifecycle.html#onactivated) и [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated):
+Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`onActivated()`](/api/composition-api-lifecycle#onactivated) и [`onDeactivated()`](/api/composition-api-lifecycle#ondeactivated):
 
 ```vue
 <script setup>
@@ -114,7 +114,7 @@ onDeactivated(() => {
 </div>
 <div class="options-api">
 
-Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`activated`](/api/options-lifecycle.html#activated) и [`deactivated`](/api/options-lifecycle.html#deactivated) хуки:
+Также наш компонент может регистрировать хуки жизненного цикла для этих двух состояний [`activated`](/api/options-lifecycle#activated) и [`deactivated`](/api/options-lifecycle#deactivated) хуки:
 
 ```js
 export default {
@@ -141,4 +141,4 @@ export default {
 
 **Связанные**
 
-- [`<KeepAlive>` API reference](/api/built-in-components.html#keepalive)
+- [`<KeepAlive>` API reference](/api/built-in-components#keepalive)

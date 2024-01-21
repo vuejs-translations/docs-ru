@@ -10,7 +10,7 @@
   function isRef<T>(r: Ref<T> | unknown): r is Ref<T>
   ```
 
-  Обратите внимание, что возвращаемый тип является [предикатом типа](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates), это значит что `isRef` может быть использован в качестве type guard'a:
+  Обратите внимание, что возвращаемый тип является [предикатом типа](https://www.typescriptlang.org/docs/handbook/2/narrowing#using-type-predicates), это значит что `isRef` может быть использован в качестве type guard'a:
 
   ```ts
   let foo: unknown
@@ -95,7 +95,7 @@
   </script>
   ```
 
-  Когда `toRef` используется с входными параметрами компонента, обычные ограничения на изменение входных параметров остаются в силе. Попытка присвоить новое значение входным параметрам эквивалентна попытке изменить входные параметры напрямую, что в свою очередь - не допустимо. В этом случае вы можете рассмотреть возможность использования [`computed`](./reactivity-core.html#computed) с `get` и `set` вместо этого. Для получения дополнительной информации смотрите руководство по [использованию `v-model` в компонентах](/guide/components/events.html#usage-with-v-model).
+  Когда `toRef` используется с входными параметрами компонента, обычные ограничения на изменение входных параметров остаются в силе. Попытка присвоить новое значение входным параметрам эквивалентна попытке изменить входные параметры напрямую, что в свою очередь - не допустимо. В этом случае вы можете рассмотреть возможность использования [`computed`](./reactivity-core#computed) с `get` и `set` вместо этого. Для получения дополнительной информации смотрите руководство по [использованию `v-model` в компонентах](/guide/components/events#usage-with-v-model).
 
   `toRef()` будет возвращать подходящее свойство, даже если исходное свойство не существует. Это позволяет работать с необязательными свойствами, которые не были бы получены [`toRefs`](#torefs).
 
@@ -162,7 +162,7 @@
 
 ## isProxy() {#isproxy}
 
-Проверяет, является ли объект прокси, созданным с помощью [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](./reactivity-advanced.html#shallowreactive) или [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly).
+Проверяет, является ли объект прокси, созданным с помощью [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](./reactivity-advanced#shallowreactive) или [`shallowReadonly()`](./reactivity-advanced#shallowreadonly).
 
 - **Тип:**
 
@@ -172,7 +172,7 @@
 
 ## isReactive() {#isreactive}
 
-Проверяет, является ли объект прокси, созданным [`reactive()`](./reactivity-core.html#reactive) или [`shallowReactive()`](./reactivity-advanced.html#shallowreactive).
+Проверяет, является ли объект прокси, созданным [`reactive()`](./reactivity-core#reactive) или [`shallowReactive()`](./reactivity-advanced#shallowreactive).
 
 - **Тип:**
 
@@ -184,7 +184,7 @@
 
 Проверяет, является ли переданное значение объектом readonly. Свойства объекта readonly могут изменяться, но они не могут быть присвоены непосредственно через переданный объект.
 
-Прокси, созданные [`readonly()`](./reactivity-core.html#readonly) и [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly), считаются readonly, как и ref-ссылка [`computed()`](./reactivity-core.html#computed) без функции `set`.
+Прокси, созданные [`readonly()`](./reactivity-core#readonly) и [`shallowReadonly()`](./reactivity-advanced#shallowreadonly), считаются readonly, как и ref-ссылка [`computed()`](./reactivity-core#computed) без функции `set`.
 
 - **Тип:**
 

@@ -112,7 +112,7 @@ const { name, count = 100 } = defineProps<Props>()
 </script>
 ```
 
-В настоящее время такое поведение требует [явного согласия](/guide/extras/reactivity-transform.html#explicit-opt-in).
+В настоящее время такое поведение требует [явного согласия](/guide/extras/reactivity-transform#explicit-opt-in).
 
 ### Без `<script setup>` {#without-script-setup}
 
@@ -148,7 +148,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-Аргумент type должен представлять собой литерал типа с [сигнатурами вызова](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures). Литерал типа будет использоваться в качестве типа возвращаемой функции `emit`. Как мы видим, объявление типа дает нам гораздо более тонкий контроль над ограничениями на тип испускаемых событий.
+Аргумент type должен представлять собой литерал типа с [сигнатурами вызова](https://www.typescriptlang.org/docs/handbook/2/functions#call-signatures). Литерал типа будет использоваться в качестве типа возвращаемой функции `emit`. Как мы видим, объявление типа дает нам гораздо более тонкий контроль над ограничениями на тип испускаемых событий.
 
 Если не используется `<script setup>`, то `defineComponent()` способен вывести разрешенные события для функции `emit`, выставленной в контексте setup:
 
@@ -373,4 +373,4 @@ const openModal = () => {
 </script>
 ```
 
-Обратите внимание, если вы хотите использовать эту технику в файлах TypeScript, а не в Vue SFC, необходимо включить [режим поглощения](./overview.html#volar-takeover-mode) Volar.
+Обратите внимание, если вы хотите использовать эту технику в файлах TypeScript, а не в Vue SFC, необходимо включить [режим поглощения](./overview#volar-takeover-mode) Volar.

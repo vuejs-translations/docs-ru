@@ -22,7 +22,7 @@
 
 <div class="composition-api">
 
-Чтобы предоставить данные потомкам компонента, используйте функцию [`provide()`](/api/composition-api-dependency-injection.html#provide):
+Чтобы предоставить данные потомкам компонента, используйте функцию [`provide()`](/api/composition-api-dependency-injection#provide):
 
 ```vue
 <script setup>
@@ -61,7 +61,7 @@ provide('key', count)
 
 <div class="options-api">
 
-Чтобы предоставить данные потомкам компонента, используйте опцию [`provide`](/api/options-composition.html#provide):
+Чтобы предоставить данные потомкам компонента, используйте опцию [`provide`](/api/options-composition#provide):
 
 ```js
 export default {
@@ -113,7 +113,7 @@ app.provide(/* ключ */ 'message', /* значение */ 'привет!')
 
 <div class="composition-api">
 
-Для инъекции данных, предоставляемых компонентом-предком, используйте функцию [`inject()`](/api/composition-api-dependency-injection.html#inject):
+Для инъекции данных, предоставляемых компонентом-предком, используйте функцию [`inject()`](/api/composition-api-dependency-injection#inject):
 
 ```vue
 <script setup>
@@ -144,7 +144,7 @@ export default {
 
 <div class="options-api">
 
-Для инъекции данных, предоставляемых компонентом-предком, используйте опцию [`inject`](/api/options-composition.html#inject):
+Для инъекции данных, предоставляемых компонентом-предком, используйте опцию [`inject`](/api/options-composition#inject):
 
 ```js
 export default {
@@ -274,7 +274,7 @@ const { location, updateLocation } = inject('location')
 </template>
 ```
 
-Наконец, вы можете обернуть предоставленное значение с помощью [`readonly()`](/api/reactivity-core.html#readonly), если хотите гарантировать, что данные, переданные через `provide`, не могут быть изменены инжектируемым компонентом.
+Наконец, вы можете обернуть предоставленное значение с помощью [`readonly()`](/api/reactivity-core#readonly), если хотите гарантировать, что данные, переданные через `provide`, не могут быть изменены инжектируемым компонентом.
 
 ```vue
 <script setup>
@@ -289,7 +289,7 @@ provide('read-only-count', readonly(count))
 
 <div class="options-api">
 
-Чтобы сделать инъекции реактивно связанной с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core.html#computed):
+Чтобы сделать инъекции реактивно связанной с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core#computed):
 
 ```js{10}
 import { computed } from 'vue'
@@ -350,7 +350,7 @@ import { myInjectionKey } from './keys.js'
 const injected = inject(myInjectionKey)
 ```
 
-См. также: [Типизация Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+См. также: [Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 </div>
 

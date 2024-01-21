@@ -6,7 +6,7 @@
 
 <div class="options-api">
 
-С помощью Options API мы можем использовать [`watch` опцию](/api/options-state.html#watch) для запуска функции при каждом изменении реактивного свойства:
+С помощью Options API мы можем использовать [`watch` опцию](/api/options-state#watch) для запуска функции при каждом изменении реактивного свойства:
 
 ```js
 export default {
@@ -65,7 +65,7 @@ export default {
 
 <div class="composition-api">
 
-С Composition API мы можем использовать [функцию](/api/reactivity-core.html#watch) `watch` для запуска обратного вызова всякий раз, когда изменяется часть реактивного состояния:
+С Composition API мы можем использовать [функцию](/api/reactivity-core#watch) `watch` для запуска обратного вызова всякий раз, когда изменяется часть реактивного состояния:
 
 ```vue
 <script setup>
@@ -268,7 +268,7 @@ fetchData()
 watch(url, fetchData)
 ```
 
-Это можно упростить с помощью функции [`watchEffect()`](/api/reactivity-core.html#watcheffect). `watchEffect()` позволяет нам немедленно выполнить побочный эффект, автоматически отслеживая реактивные зависимости. Приведенный выше пример можно переписать следующим образом:
+Это можно упростить с помощью функции [`watchEffect()`](/api/reactivity-core#watcheffect). `watchEffect()` позволяет нам немедленно выполнить побочный эффект, автоматически отслеживая реактивные зависимости. Приведенный выше пример можно переписать следующим образом:
 
 ```js
 watchEffect(async () => {
@@ -347,7 +347,7 @@ watchPostEffect(() => {
 
 ## `this.$watch()` \* {#this-watch}
 
-Также можно императивно создавать наблюдатели, используя [`$watch()` метод экземпляра](/api/component-instance.html#watch):
+Также можно императивно создавать наблюдатели, используя [`$watch()` метод экземпляра](/api/component-instance#watch):
 
 ```js
 export default {

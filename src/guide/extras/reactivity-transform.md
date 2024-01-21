@@ -48,11 +48,11 @@ function increment() {
 
 Каждое API реактивности, возвращающее refs, будет иметь эквивалент в виде макроса с `$`-префиксом. К таким API относятся:
 
-- [`ref`](/api/reactivity-core.html#ref) -> `$ref`
-- [`computed`](/api/reactivity-core.html#computed) -> `$computed`
-- [`shallowRef`](/api/reactivity-advanced.html#shallowref) -> `$shallowRef`
-- [`customRef`](/api/reactivity-advanced.html#customref) -> `$customRef`
-- [`toRef`](/api/reactivity-utilities.html#toref) -> `$toRef`
+- [`ref`](/api/reactivity-core#ref) -> `$ref`
+- [`computed`](/api/reactivity-core#computed) -> `$computed`
+- [`shallowRef`](/api/reactivity-advanced#shallowref) -> `$shallowRef`
+- [`customRef`](/api/reactivity-advanced#customref) -> `$customRef`
+- [`toRef`](/api/reactivity-utilities#toref) -> `$toRef`
 
 Эти макросы доступны глобально и не требуют импорта при включении Reactivity Transform, но при желании можно импортировать их из `vue/macros`, если требуется более четкое описание:
 
@@ -109,7 +109,7 @@ let count = $(myCreateRef())
 
 1. Как и в случае с `.value`, для сохранения реактивности необходимо всегда обращаться к входным параметрам как `props.x`. Это означает, что нельзя деструктурировать `defineProps`, поскольку полученные в результате деструктуризации переменные не являются реактивными и не будут обновляться.
 
-2. При использовании [объявления props только для типа](/api/sfc-script-setup.html#typescript-only-features), нет простого способа объявить значения по умолчанию для props. Для этой цели мы ввели API `withDefaults()`, но он по-прежнему неудобен в использовании.
+2. При использовании [объявления props только для типа](/api/sfc-script-setup#typescript-only-features), нет простого способа объявить значения по умолчанию для props. Для этой цели мы ввели API `withDefaults()`, но он по-прежнему неудобен в использовании.
 
 Мы можем решить эти проблемы, применив преобразование во время компиляции, когда `defineProps` используется с деструктуризацией, аналогично тому, что мы видели ранее с `$()`:
 

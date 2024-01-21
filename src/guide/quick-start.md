@@ -20,7 +20,7 @@ footer: false
 - Установленная [Node.js](https://nodejs.org/) 16.0 версии или выше
 :::
 
-В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue.html#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
+В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
 
 Убедитесь, что установлена актуальная версия [Node.js](https://nodejs.org/), после чего выполните следующую команду в командной строке (символ `>` вводить не нужно):
 
@@ -48,19 +48,19 @@ footer: false
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
 <span class="line"></span></code></pre></div>
 
-Теперь уже должен быть запущен первый проект! Обратите внимание, что примеры компонентов в сгенерированном проекте написаны с использованием [Composition API](/guide/introduction.html#composition-api) и `<script setup>`, а не [Options API](/guide/introduction.html#options-api). Вот несколько дополнительных советов:
+Теперь уже должен быть запущен первый проект! Обратите внимание, что примеры компонентов в сгенерированном проекте написаны с использованием [Composition API](/guide/introduction#composition-api) и `<script setup>`, а не [Options API](/guide/introduction#options-api). Вот несколько дополнительных советов:
 
-- Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [расширение Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling.html#ide-support).
-- Больше информации об инструментарии, включая интеграцию с бэкенд-фреймворками, обсуждается в разделе [Инструментарий](/guide/scaling-up/tooling.html).
+- Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [расширение Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling#ide-support).
+- Больше информации об инструментарии, включая интеграцию с бэкенд-фреймворками, обсуждается в разделе [Инструментарий](/guide/scaling-up/tooling).
 - Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vitejs.dev).
-- Если решили использовать TypeScript, ознакомьтесь с инструкцией по [использованию TypeScript](typescript/overview.html).
+- Если решили использовать TypeScript, ознакомьтесь с инструкцией по [использованию TypeScript](typescript/overview).
 
 Когда будете готовы опубликовать приложение в production, выполните команду:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
 
-Она создаст сборку приложения для production в каталоге `./dist`. Ознакомьтесь с руководством по [развёртыванию в production](/guide/best-practices/production-deployment.html), чтобы узнать больше о публикации приложения в production.
+Она создаст сборку приложения для production в каталоге `./dist`. Ознакомьтесь с руководством по [развёртыванию в production](/guide/best-practices/production-deployment), чтобы узнать больше о публикации приложения в production.
 
 [Следующие шаги >](#next-steps)
 
@@ -171,7 +171,7 @@ Import maps поддерживается по умолчанию в браузе
 :::
 
 :::warning Примечание при использовании в production
-До сих пор в примерах использовалась сборка Vue для разработки — если собираетесь подключать Vue из CDN в production, обязательно ознакомьтесь с руководством [по публикации в production](/guide/best-practices/production-deployment.html#without-build-tools).
+До сих пор в примерах использовалась сборка Vue для разработки — если собираетесь подключать Vue из CDN в production, обязательно ознакомьтесь с руководством [по публикации в production](/guide/best-practices/production-deployment#without-build-tools).
 :::
 
 ### Разделение на модули {#splitting-up-the-modules}
@@ -206,14 +206,14 @@ export default {
 
 ### Использование Composition API без шага сборки {#using-composition-api-without-a-build-step}
 
-Во многих примерах с Composition API используется синтаксис `<script setup>`. Если собираетесь использовать Composition API без шага сборки, ознакомьтесь сначала с документацией по [опции `setup()`](/api/composition-api-setup.html).
+Во многих примерах с Composition API используется синтаксис `<script setup>`. Если собираетесь использовать Composition API без шага сборки, ознакомьтесь сначала с документацией по [опции `setup()`](/api/composition-api-setup).
 
 ## Следующие шаги {#next-steps}
 
 Если пропустили [Введение](/guide/introduction), настоятельно рекомендуем прочитать его, прежде чем переходить к остальной части документации.
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box" href="/guide/essentials/application.html">
+  <a class="vt-box" href="/guide/essentials/application">
     <p class="next-steps-link">Руководство</p>
     <p class="next-steps-caption">В руководстве каждый аспект фреймворка разбирается подробно.</p>
   </a>

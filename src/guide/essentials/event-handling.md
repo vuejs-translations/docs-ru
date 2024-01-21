@@ -120,12 +120,12 @@ methods: {
 
 <div class="composition-api">
 
-См. также: [Аннотация событий](/guide/typescript/composition-api.html#typing-event-handlers) <sup class="vt-badge ts" />
+См. также: [Аннотация событий](/guide/typescript/composition-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-См. также: [Аннотация событий](/guide/typescript/options-api.html#typing-event-handlers) <sup class="vt-badge ts" />
+См. также: [Аннотация событий](/guide/typescript/options-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 

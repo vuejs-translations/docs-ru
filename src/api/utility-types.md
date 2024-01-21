@@ -30,7 +30,7 @@
   }
   ```
 
-- **См. также:** [Руководство - Типизация входных параметров компонента](/guide/typescript/options-api.html#typing-component-props)
+- **См. также:** [Руководство - Типизация входных параметров компонента](/guide/typescript/options-api#typing-component-props)
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
@@ -50,10 +50,10 @@
   ```
 
   :::tip Совет
-  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties)
+- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
@@ -72,10 +72,10 @@
   ```
 
   :::tip Совет
-  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-custom-options)
+- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
@@ -99,7 +99,7 @@
   ```
 
   :::tip Совет
-  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
 ## CSSProperties {#cssproperties}
@@ -126,11 +126,11 @@
   ```
 
   :::tip Совет
-  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties).
+  Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
   :::info См. также
   Секции однофайловых компонентов `<style>` поддерживают привязку CSS-значений к динамическому состоянию компонента с помощью CSS-функции `v-bind`. Это позволяет использовать пользовательские свойства без дополнения типа.
 
-  - [v-bind() внутри CSS](/api/sfc-css-features.html#v-bind-in-css)
+  - [v-bind() внутри CSS](/api/sfc-css-features#v-bind-in-css)
   :::

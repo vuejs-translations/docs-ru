@@ -218,7 +218,7 @@ export function useFetch(url) {
 }
 ```
 
-Эта версия `useFetch()` теперь принимает как статические строки URL, так и ссылки на строки URL. Когда функция обнаруживает, что URL является динамической ссылкой с помощью функции [`isRef()`](/api/reactivity-utilities.html#isref), она устанавливает реактивный эффект с помощью функции [`watchEffect()`](/api/reactivity-core.html#watcheffect). Эффект будет запущен немедленно и будет также отслеживать ссылку на URL как зависимость. При изменении URL-адреса данные будут сброшены и получены заново.
+Эта версия `useFetch()` теперь принимает как статические строки URL, так и ссылки на строки URL. Когда функция обнаруживает, что URL является динамической ссылкой с помощью функции [`isRef()`](/api/reactivity-utilities#isref), она устанавливает реактивный эффект с помощью функции [`watchEffect()`](/api/reactivity-core#watcheffect). Эффект будет запущен немедленно и будет также отслеживать ссылку на URL как зависимость. При изменении URL-адреса данные будут сброшены и получены заново.
 
 Вот [обновленная версия `useFetch()`](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgY29tcHV0ZWQgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyB1c2VGZXRjaCB9IGZyb20gJy4vdXNlRmV0Y2guanMnXG5cbmNvbnN0IGJhc2VVcmwgPSAnaHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tL3RvZG9zLydcbmNvbnN0IGlkID0gcmVmKCcxJylcbmNvbnN0IHVybCA9IGNvbXB1dGVkKCgpID0+IGJhc2VVcmwgKyBpZC52YWx1ZSlcblxuY29uc3QgeyBkYXRhLCBlcnJvciwgcmV0cnkgfSA9IHVzZUZldGNoKHVybClcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIExvYWQgcG9zdCBpZDpcbiAgPGJ1dHRvbiB2LWZvcj1cImkgaW4gNVwiIEBjbGljaz1cImlkID0gaVwiPnt7IGkgfX08L2J1dHRvbj5cblxuXHQ8ZGl2IHYtaWY9XCJlcnJvclwiPlxuICAgIDxwPk9vcHMhIEVycm9yIGVuY291bnRlcmVkOiB7eyBlcnJvci5tZXNzYWdlIH19PC9wPlxuICAgIDxidXR0b24gQGNsaWNrPVwicmV0cnlcIj5SZXRyeTwvYnV0dG9uPlxuICA8L2Rpdj5cbiAgPGRpdiB2LWVsc2UtaWY9XCJkYXRhXCI+RGF0YSBsb2FkZWQ6IDxwcmU+e3sgZGF0YSB9fTwvcHJlPjwvZGl2PlxuICA8ZGl2IHYtZWxzZT5Mb2FkaW5nLi4uPC9kaXY+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJ1c2VGZXRjaC5qcyI6ImltcG9ydCB7IHJlZiwgaXNSZWYsIHVucmVmLCB3YXRjaEVmZmVjdCB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUZldGNoKHVybCkge1xuICBjb25zdCBkYXRhID0gcmVmKG51bGwpXG4gIGNvbnN0IGVycm9yID0gcmVmKG51bGwpXG5cbiAgYXN5bmMgZnVuY3Rpb24gZG9GZXRjaCgpIHtcbiAgICAvLyByZXNldCBzdGF0ZSBiZWZvcmUgZmV0Y2hpbmcuLlxuICAgIGRhdGEudmFsdWUgPSBudWxsXG4gICAgZXJyb3IudmFsdWUgPSBudWxsXG4gICAgXG4gICAgLy8gcmVzb2x2ZSB0aGUgdXJsIHZhbHVlIHN5bmNocm9ub3VzbHkgc28gaXQncyB0cmFja2VkIGFzIGFcbiAgICAvLyBkZXBlbmRlbmN5IGJ5IHdhdGNoRWZmZWN0KClcbiAgICBjb25zdCB1cmxWYWx1ZSA9IHVucmVmKHVybClcbiAgICBcbiAgICB0cnkge1xuICAgICAgLy8gYXJ0aWZpY2lhbCBkZWxheSAvIHJhbmRvbSBlcnJvclxuICBcdCAgYXdhaXQgdGltZW91dCgpXG4gIFx0ICAvLyB1bnJlZigpIHdpbGwgcmV0dXJuIHRoZSByZWYgdmFsdWUgaWYgaXQncyBhIHJlZlxuXHQgICAgLy8gb3RoZXJ3aXNlIHRoZSB2YWx1ZSB3aWxsIGJlIHJldHVybmVkIGFzLWlzXG4gICAgXHRjb25zdCByZXMgPSBhd2FpdCBmZXRjaCh1cmxWYWx1ZSlcblx0ICAgIGRhdGEudmFsdWUgPSBhd2FpdCByZXMuanNvbigpXG4gICAgfSBjYXRjaCAoZSkge1xuICAgICAgZXJyb3IudmFsdWUgPSBlXG4gICAgfVxuICB9XG5cbiAgaWYgKGlzUmVmKHVybCkpIHtcbiAgICAvLyBzZXR1cCByZWFjdGl2ZSByZS1mZXRjaCBpZiBpbnB1dCBVUkwgaXMgYSByZWZcbiAgICB3YXRjaEVmZmVjdChkb0ZldGNoKVxuICB9IGVsc2Uge1xuICAgIC8vIG90aGVyd2lzZSwganVzdCBmZXRjaCBvbmNlXG4gICAgZG9GZXRjaCgpXG4gIH1cblxuICByZXR1cm4geyBkYXRhLCBlcnJvciwgcmV0cnk6IGRvRmV0Y2ggfVxufVxuXG4vLyBhcnRpZmljaWFsIGRlbGF5XG5mdW5jdGlvbiB0aW1lb3V0KCkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgaWYgKE1hdGgucmFuZG9tKCkgPiAwLjMpIHtcbiAgICAgICAgcmVzb2x2ZSgpXG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZWplY3QobmV3IEVycm9yKCdSYW5kb20gRXJyb3InKSlcbiAgICAgIH1cbiAgICB9LCAzMDApXG4gIH0pXG59In0=), с искусственной задержкой и рандомизированной ошибкой в демонстрационных целях.
 
@@ -230,7 +230,7 @@ export function useFetch(url) {
 
 ### Входные аргументы {#input-arguments}
 
-Composable может принимать ref-аргументы, даже если он не полагается на них для обеспечения реактивности. Если вы пишете composable, который может быть использован другими разработчиками, то неплохо было бы предусмотреть случай, когда входными аргументами являются не сырые значения, а refs. Для этого пригодится служебная функция [`unref()`](/api/reactivity-utilities.html#unref):
+Composable может принимать ref-аргументы, даже если он не полагается на них для обеспечения реактивности. Если вы пишете composable, который может быть использован другими разработчиками, то неплохо было бы предусмотреть случай, когда входными аргументами являются не сырые значения, а refs. Для этого пригодится служебная функция [`unref()`](/api/reactivity-utilities#unref):
 
 ```js
 import { unref } from 'vue'
@@ -333,7 +333,7 @@ export default {
 
 ### vs. Примеси {#vs-mixins}
 
-Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition.html#mixins), которая также позволяет извлекать логику компонентов в виде многократно используемых блоков. У миксинов есть три основных недостатка:
+Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition#mixins), которая также позволяет извлекать логику компонентов в виде многократно используемых блоков. У миксинов есть три основных недостатка:
 
 1. **Неясный источник свойств**: при использовании большого количества миксинов становится непонятно, какое свойство экземпляра инжектируется каким миксином, что затрудняет отслеживание реализации и понимание поведения компонента. Именно поэтому мы рекомендуем использовать паттерн refs + деструктуризация для composables: это делает источник свойств ясным в потребляющих компонентах.
 
@@ -345,7 +345,7 @@ export default {
 
 ### vs. Renderless компоненты {#vs-renderless-components}
 
-В главе, посвященной слотам компонентов, мы обсудили паттерн [Компонент без рендеринга](/guide/components/slots.html#renderless-components), основанный на слотах с ограничееной областью видимости. Мы даже реализовали тот же демонстрационный пример отслеживания мыши с использованием компонентов без рендеринга.
+В главе, посвященной слотам компонентов, мы обсудили паттерн [Компонент без рендеринга](/guide/components/slots#renderless-components), основанный на слотах с ограничееной областью видимости. Мы даже реализовали тот же демонстрационный пример отслеживания мыши с использованием компонентов без рендеринга.
 
 Основное преимущество composables перед компонентами без рендеринга заключается в том, что composables не несут дополнительных затрат на создание экземпляров компонентов. При использовании во всем приложении количество дополнительных экземпляров компонентов, создаваемых шаблоном компонентов без рендеринга, может стать заметным снижением производительности.
 
@@ -359,5 +359,5 @@ export default {
 
 - [Реактивность в деталях](/guide/extras/reactivity-in-depth.html): для низкоуровневого понимания того, как работает система реактивности Vue.
 - [Управление состоянием](/guide/scaling-up/state-management.html): для моделей управления состоянием, разделяемым несколькими компонентами.
-- [Тестирование Composables](/guide/scaling-up/testing.html#testing-composables): советы по модульному тестированию composables.
+- [Тестирование Composables](/guide/scaling-up/testing#testing-composables): советы по модульному тестированию composables.
 - [VueUse](https://vueuse.org/): постоянно растущая коллекция composables элементов Vue. Исходный код также является отличным обучающим ресурсом.

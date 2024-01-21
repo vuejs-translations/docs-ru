@@ -31,7 +31,7 @@ export default {
 
 </div>
 
-Также есть и другие хуки, которые будут вызываться на различных этапах жизненного цикла экземпляра, например <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle.html#onmounted), [`onUpdated`](/api/composition-api-lifecycle.html#onupdated) и [`onUnmounted`](/api/composition-api-lifecycle.html#onunmounted).</span><span class="options-api">[`mounted`](/api/options-lifecycle.html#mounted), [`updated`](/api/options-lifecycle.html#updated) и [`unmounted`](/api/options-lifecycle.html#unmounted).</span>
+Также есть и другие хуки, которые будут вызываться на различных этапах жизненного цикла экземпляра, например <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle#onmounted), [`onUpdated`](/api/composition-api-lifecycle#onupdated) и [`onUnmounted`](/api/composition-api-lifecycle#onunmounted).</span><span class="options-api">[`mounted`](/api/options-lifecycle#mounted), [`updated`](/api/options-lifecycle#updated) и [`unmounted`](/api/options-lifecycle#unmounted).</span>
 
 <div class="options-api">
 

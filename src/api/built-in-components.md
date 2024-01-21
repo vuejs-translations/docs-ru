@@ -7,7 +7,7 @@ pageClass: api
 :::info Регистрация и использование
 Встроенные компоненты можно использовать в шаблонах без их регистрации. Так же они являются "tree-shakeable": они включаются в сборку только тогда, когда они используются.
 
-При использовании в [render-функции](/guide/extras/render-function.html), они должны быть импортированы в явном виде. Например:
+При использовании в [render-функции](/guide/extras/render-function), они должны быть импортированы в явном виде. Например:
 
 ```js
 import { h, Transition } from 'vue'
@@ -116,7 +116,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **См. также:** [Руководство - Transition](/guide/built-ins/transition.html)
+- **См. также:** [Руководство - Transition](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
@@ -148,7 +148,7 @@ h(Transition, {
 
   По умолчанию `<TransitionGroup>` не создаёт DOM-элемент, но его можно задать с помощью параметра `tag`.
 
-  Обратите внимание, что у каждого потомка `<transition-group>` должен быть [**уникальный ключ**](/guide/essentials/list.html#maintaining-state-with-key) для правильной работы анимаций.
+  Обратите внимание, что у каждого потомка `<transition-group>` должен быть [**уникальный ключ**](/guide/essentials/list#maintaining-state-with-key) для правильной работы анимаций.
 
   `<TransitionGroup>` поддерживает анимации перемещения с помощью CSS трансформаций. Если положение потомка на экране изменится после обновления, ему будет добавлен CSS-класс (автоматически сгенерированный из атрибута `name` или заданный параметром `move-class`). Если после применения этого класса CSS-свойство `transform` возможно анимировать, элемент будет плавно перемещён в новое положение с помощью [техники FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
@@ -162,7 +162,7 @@ h(Transition, {
   </TransitionGroup>
   ```
 
-- **См. также:** [Руководство - TransitionGroup](/guide/built-ins/transition-group.html)
+- **См. также:** [Руководство - TransitionGroup](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
@@ -255,7 +255,7 @@ h(Transition, {
   </KeepAlive>
   ```
 
-- **См. также:** [Руководство - KeepAlive](/guide/built-ins/keep-alive.html)
+- **См. также:** [Руководство - KeepAlive](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
@@ -297,7 +297,7 @@ h(Transition, {
   </teleport>
   ```
 
-- **См. также:** [Руководство - Teleport](/guide/built-ins/teleport.html)
+- **См. также:** [Руководство - Teleport](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
@@ -321,6 +321,6 @@ h(Transition, {
 
   `<Suspense>` принимает два слота: `#default` и `#fallback`. Он будет отображать содержимое `#fallback` слота во время рендеринга `#default` слота в памяти.
 
-  Если он встречает асинхронные зависимости ([Асинхронные компоненты](/guide/components/async.html) и компоненты с [`async setup()`](/guide/built-ins/suspense.html#async-setup)) во время рендеринга `#default` слота, он будет ждать, пока все они не будут разрешены, прежде чем отобразить `#default` слот.
+  Если он встречает асинхронные зависимости ([Асинхронные компоненты](/guide/components/async) и компоненты с [`async setup()`](/guide/built-ins/suspense#async-setup)) во время рендеринга `#default` слота, он будет ждать, пока все они не будут разрешены, прежде чем отобразить `#default` слот.
 
-- **См. также:** [Руководство - Suspense](/guide/built-ins/suspense.html)
+- **См. также:** [Руководство - Suspense](/guide/built-ins/suspense)

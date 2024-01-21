@@ -4,7 +4,7 @@ These rules help prevent errors, so learn and abide by them at all costs. Except
 
 ## Use multi-word component names {#use-multi-word-component-names}
 
-User component names should always be multi-word, except for root `App` components. This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
+User component names should always be multi-word, except for root `App` components. This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
 
 <div class="style-example style-example-bad">
 <h3>Плохо</h3>
@@ -37,7 +37,7 @@ User component names should always be multi-word, except for root `App` componen
 In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
 
 :::details Подробное объяснение
-Detailed [prop definitions](/guide/components/props.html#prop-validation) have two advantages:
+Detailed [prop definitions](/guide/components/props#prop-validation) have two advantages:
 
 - They document the API of the component, so that it's easy to see how the component is meant to be used.
 - In development, Vue will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
