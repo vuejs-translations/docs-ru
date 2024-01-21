@@ -6,7 +6,7 @@ outline: deep
 
 Vue рекомендует использовать шаблоны для создания приложений в большинстве случаев. Однако есть ситуации, когда нам нужна полная программная мощность JavaScript. Здесь мы можем использовать **render-функцию**.
 
-> Если вы еще не знакомы с концепцией виртуального DOM и render-функциями, обязательно прочтите сначала раздел [Механизм отрисовки](/guide/extras/rendering-mechanism.html).
+> Если вы еще не знакомы с концепцией виртуального DOM и render-функциями, обязательно прочтите сначала раздел [Механизм отрисовки](/guide/extras/rendering-mechanism).
 
 ## Основное Использование {#basic-usage}
 
@@ -41,6 +41,7 @@ h('div', { class: 'bar', innerHTML: 'hello' })
 
 // Модификаторы входных параметров .prop и .attr могут быть добавлены
 // с префиксами '.' and `^' соответственно
+
 h('div', { '.name': 'some-name', '^width': '100' })
 
 // атрибуты class и style имеют такую же поддержку объекта/массива
@@ -239,6 +240,27 @@ const vnode = <div id={dynamicId}>hello, {userName}</div>
 
 Определение типов Vue обеспечивает определение типов для использования TSX. При использовании TSX обязательно укажите `"jsx": "preserve"` в файле `tsconfig.json`, чтобы TypeScript оставлял синтаксис JSX нетронутым для обработки Vue JSX-преобразованием .
 
+
+### JSX Type Inference {#jsx-type-inference}
+
+Similar to the transform, Vue's JSX also needs different type definitions.
+
+Starting in Vue 3.4, Vue no longer implicitly registers the global `JSX` namespace. To instruct TypeScript to use Vue's JSX type definitions, make sure to include the following in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+    // ...
+  }
+}
+```
+
+You can also opt-in per file by adding a `/* @jsxImportSource vue */` comment at the top of the file.
+
+If there is code that depends on the presence of the global `JSX` namespace,  you can retain the exact pre-3.4 global behavior by explicitly importing or referencing `vue/jsx` in your project, which registers the global `JSX` namespace.
+
 ## Реализация возможностей шаблона с помощью render-функций {#render-function-recipes}
 
 Ниже мы приведем несколько общих возможностей реализации функций шаблона в виде эквивалентных им в render-функциях / JSX.
@@ -389,7 +411,8 @@ h('input', {
 />
 ```
 
-Для других событий и модификаторов можно использовать метод [`withModifiers`](/api/render-function.html#withmodifiers):
+Для других событий и модификаторов можно использовать метод [`withModifiers`](/api/render-function#withmodifiers):
+
 
 ```js
 import { withModifiers } from 'vue'
@@ -446,7 +469,7 @@ function render() {
 }
 ```
 
-Если компонент зарегистрирован по имени и не может быть импортирован напрямую (например, глобально зарегистрирован библиотекой), его можно программно разрешить с помощью метода [`resolveComponent()`](/api/render-function.html#resolvecomponent).
+Если компонент зарегистрирован по имени и не может быть импортирован напрямую (например, глобально зарегистрирован библиотекой), его можно программно разрешить с помощью метода [`resolveComponent()`](/api/render-function#resolvecomponent).
 
 ### Отрисовка Слотов {#rendering-slots}
 
@@ -489,7 +512,8 @@ export default {
 </div>
 <div class="options-api">
 
-В render-функцияx, доступ к слотам осуществляется через [`this.$slots`](/api/component-instance.html#slots):
+В render-функцияx, доступ к слотам осуществляется через [`this.$slots`](/api/component-instance#slots):
+
 
 ```js
 export default {
@@ -556,6 +580,41 @@ h(MyComponent, null, {
 ```
 
 Передача слотов в виде функций позволяет дочернему компоненту лениво вызывать их. Это приводит к тому, что зависимости слота отслеживаются дочерним компонентом, а не родительским, что обеспечивает более точное и эффективное обновление.
+
+### Scoped Slots
+
+To render a scoped slot in the parent component, a slot is passed to the child. Notice how the slot now has a parameter `text`. The slot will be called in the child component and the data from the child component will be passed up to the parent component.
+
+```js
+// parent component
+export default {
+  setup() {
+    return () => h(MyComp, null, {
+      default: ({ text }) => h('p', text)
+    })
+  }
+}
+```
+
+Remember to pass `null` so the slots will not be treated as props.
+
+```js
+// child component
+export default {
+  setup(props, { slots }) {
+    const text = ref('hi')
+    return () => h('div', null, slots.default({ text: text.value }))
+  }
+}
+```
+
+JSX equivalent:
+
+```jsx
+<MyComponent>{{
+  default: ({ text }) => <p>{ text }</p>  
+}}</MyComponent>
+```
 
 ### Встроенные Компоненты {#built-in-components}
 
@@ -628,7 +687,7 @@ export default {
 
 ### Пользовательские директивы {#custom-directives}
 
-Пользовательские директивы могут быть применены к vnode с помощью [`withDirectives`](/api/render-function.html#withdirectives):
+Пользовательские директивы могут быть применены к vnode с помощью [`withDirectives`](/api/render-function#withdirectives):
 
 ```js
 import { h, withDirectives } from 'vue'
@@ -645,7 +704,42 @@ const vnode = withDirectives(h('div'), [
 ])
 ```
 
-Если директива зарегистрирована по имени и не может быть импортирована напрямую, она может быть разрешена с помощью метода [`resolveDirective`](/api/render-function.html#resolvedirective).
+Если директива зарегистрирована по имени и не может быть импортирована напрямую, она может быть разрешена с помощью метода [`resolveDirective`](/api/render-function#resolvedirective).
+
+### Template Refs {#template-refs}
+
+<div class="composition-api">
+
+With the Composition API, template refs are created by passing the `ref()` itself as a prop to the vnode:
+
+```js
+import { h, ref } from 'vue'
+
+export default {
+  setup() {
+    const divEl = ref()
+
+    // <div ref="divEl">
+    return () => h('div', { ref: divEl })
+  }
+}
+```
+
+</div>
+<div class="options-api">
+
+With the Options API, template refs are created by passing the ref name as a string in the vnode props:
+
+```js
+export default {
+  render() {
+    // <div ref="divEl">
+    return h('div', { ref: 'divEl' })
+  }
+}
+```
+
+</div>
 
 ## Функциональные Компоненты {#functional-components}
 
@@ -674,11 +768,11 @@ function MyComponent(props, context) {
 }
 ```
 
-Второй аргумент, `context`, содержит три свойства: `attrs`, `emit` и `slots`. Они эквивалентны свойствам экземпляра [`$attrs`](/api/component-instance.html#attrs), [`$emit`](/api/component-instance.html#emit) и [`$slots`](/api/component-instance.html#slots) соответственно.
+Второй аргумент, `context`, содержит три свойства: `attrs`, `emit` и `slots`. Они эквивалентны свойствам экземпляра [`$attrs`](/api/component-instance#attrs), [`$emit`](/api/component-instance#emit) и [`$slots`](/api/component-instance#slots) соответственно.
 
 </div>
 
-Большинство обычных параметров конфигурации для компонентов недоступны для функциональных компонентов. Однако можно определить [`props`](/api/options-state.html#props) и [`emits`](/api/options-state.html#emits), добавив их в качестве свойств:
+Большинство обычных параметров конфигурации для компонентов недоступны для функциональных компонентов. Однако можно определить [`props`](/api/options-state#props) и [`emits`](/api/options-state#emits), добавив их в качестве свойств:
 
 ```js
 MyComponent.props = ['value']
@@ -687,10 +781,86 @@ MyComponent.emits = ['click']
 
 Если опция `props` не указана, то объект `props`, передаваемый функции, будет содержать все атрибуты, как и `attrs`. Названия входных параметров не будут нормализованы к camelCase, если опция `props` не указана.
 
-Для функциональных компонентов с явным указанием `props`, [обычные атрибуты](/guide/components/attrs.html) работают так же, как и для обычных компонентов. Однако для функциональных компонентов, не указывающих явно свои `props`, по умолчанию от `attrs` наследуются только слушатели событий `class`, `style` и `onXxx`. В любом случае для отключения наследования атрибутов можно установить значение `inheritAttrs` в `false`:
+Для функциональных компонентов с явным указанием `props`, [обычные атрибуты](/guide/components/attrs) работают так же, как и для обычных компонентов. Однако для функциональных компонентов, не указывающих явно свои `props`, по умолчанию от `attrs` наследуются только слушатели событий `class`, `style` и `onXxx`. В любом случае для отключения наследования атрибутов можно установить значение `inheritAttrs` в `false`:
+
 
 ```js
 MyComponent.inheritAttrs = false
 ```
 
 Функциональные компоненты могут зарегистрированы и использованы так же, как и обычные компоненты. Если передать функцию в качестве первого аргумента `h()`, то она будет рассматриваться как функциональный компонент.
+
+### Typing Functional Components<sup class="vt-badge ts" /> {#typing-functional-components}
+
+Functional Components can be typed based on whether they are named or anonymous. Volar also supports type checking properly typed functional components when consuming them in SFC templates.
+
+**Named Functional Component**
+
+```tsx
+import type { SetupContext } from 'vue'
+type FComponentProps = {
+  message: string
+}
+
+type Events = {
+  sendMessage(message: string): void
+}
+
+function FComponent(
+  props: FComponentProps,
+  context: SetupContext<Events>
+) {
+  return (
+    <button onClick={() => context.emit('sendMessage', props.message)}>
+        {props.message} {' '}
+    </button>
+  )
+}
+
+FComponent.props = {
+  message: {
+    type: String,
+    required: true
+  }
+}
+
+FComponent.emits = {
+  sendMessage: (value: unknown) => typeof value === 'string'
+}
+```
+
+**Anonymous Functional Component**
+
+```tsx
+import type { FunctionalComponent } from 'vue'
+
+type FComponentProps = {
+  message: string
+}
+
+type Events = {
+  sendMessage(message: string): void
+}
+
+const FComponent: FunctionalComponent<FComponentProps, Events> = (
+  props,
+  context
+) => {
+  return (
+    <button onClick={() => context.emit('sendMessage', props.message)}>
+        {props.message} {' '}
+    </button>
+  )
+}
+
+FComponent.props = {
+  message: {
+    type: String,
+    required: true
+  }
+}
+
+FComponent.emits = {
+  sendMessage: (value) => typeof value === 'string'
+}
+```
