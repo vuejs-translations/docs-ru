@@ -1,9 +1,9 @@
 export default {
   data() {
     return {
-      message: 'Hello World!',
+      message: 'Привет Мир!',
       isRed: true,
-      color: 'green'
+      color: 'зеленый'
     }
   },
   methods: {
@@ -11,7 +11,7 @@ export default {
       this.isRed = !this.isRed
     },
     toggleColor() {
-      this.color = this.color === 'green' ? 'blue' : 'green'
+      this.color = this.color === 'зеленый' ? 'синий' : 'зеленый'
     }
   }
 }

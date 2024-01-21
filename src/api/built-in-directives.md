@@ -8,7 +8,7 @@
 
 - **Подробности:**
 
-  `v-text` работает путем установки свойства [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) элемента, поэтому он будет перезаписывать все существующее содержимое внутри элемента. Если необходимо обновить часть `textContent`, то вместо этого следует использовать [текстовые интерполяции](/guide/essentials/template-syntax.html#text-interpolation).
+  `v-text` работает путем установки свойства [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) элемента, поэтому он будет перезаписывать все существующее содержимое внутри элемента. Если необходимо обновить часть `textContent`, то вместо этого следует использовать [текстовые интерполяции](/guide/essentials/template-syntax#text-interpolation).
 
 - **Пример:**
 
@@ -18,7 +18,7 @@
   <span>{{msg}}</span>
   ```
 
-- **См. также:** [Синтаксис шаблонов - Текстовые интерполяции](/guide/essentials/template-syntax.html#text-interpolation)
+- **См. также:** [Синтаксис шаблонов - Текстовые интерполяции](/guide/essentials/template-syntax#text-interpolation)
 
 ## v-html {#v-html}
 
@@ -36,13 +36,14 @@
 
   В [однофайловых компонентах](/guide/scaling-up/sfc) стили `scoped` не будут применяться к содержимому внутри `v-html`, поскольку этот HTML не обрабатывается компилятором шаблонов Vue. Если вы хотите использовать на содержимом `v-html` скопированный CSS, то вместо этого можно использовать [CSS модули](./sfc-css-features.html#css-modules) или дополнительный глобальный элемент `<style>` с ручной стратегией области применения, например BEM.
 
+
 - **Пример:**
 
   ```vue-html
   <div v-html="html"></div>
   ```
 
-- **См. также:** [Синтаксис шаблонов - Сырой HTML](/guide/essentials/template-syntax.html#raw-html)
+- **См. также:** [Синтаксис шаблонов - Сырой HTML](/guide/essentials/template-syntax#raw-html)
 
 ## v-show {#v-show}
 
@@ -54,7 +55,7 @@
 
   `v-show` работает, устанавливая CSS-свойство `display` с помощью встроенных стилей, и будет стараться соблюдать начальное значение `display`, когда элемент становится видимым. Также он запускает переходы анимации при изменении состояния.
 
-- **См. также:** [Условная отрисовка - v-show](/guide/essentials/conditional.html#v-show)
+- **См. также:** [Условная отрисовка - v-show](/guide/essentials/conditional#v-show)
 
 ## v-if {#v-if}
 
@@ -72,7 +73,7 @@
 
   При совместном использовании `v-if` имеет более высокий приоритет, чем `v-for`. Мы не рекомендуем использовать эти две директивы вместе на одном элементе - подробнее об этом см. в руководстве [по отрисовке списков](/guide/essentials/list.html#v-for-with-v-if).
 
-- **См. также:** [Условная отрисовка - v-if](/guide/essentials/conditional.html#v-if)
+- **См. также:** [Условная отрисовка - v-if](/guide/essentials/conditional#v-if)
 
 ## v-else {#v-else}
 
@@ -97,7 +98,7 @@
   </div>
   ```
 
-- **См. также:** [Условная отрисовка - v-else](/guide/essentials/conditional.html#v-else)
+- **См. также:** [Условная отрисовка - v-else](/guide/essentials/conditional#v-else)
 
 ## v-else-if {#v-else-if}
 
@@ -128,7 +129,7 @@
   </div>
   ```
 
-- **См. также:** [Условная отрисовка - v-else-if](/guide/essentials/conditional.html#v-else-if)
+- **См. также:** [Условная отрисовка - v-else-if](/guide/essentials/conditional#v-else-if)
 
 ## v-for {#v-for}
 
@@ -165,7 +166,7 @@
   `v-for` может также работать со значениями, реализующими [протокол Iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), включая нативные `Map` и `Set`.
 
 - **См. также:**
-  - [Отрисовка списков](/guide/essentials/list.html)
+  - [Отрисовка списков](/guide/essentials/list)
 
 ## v-on {#v-on}
 
@@ -250,14 +251,16 @@
   ```
 
 - **См. также:**
-  - [Обработка событий](/guide/essentials/event-handling.html)
-  - [Компоненты - Прослушивание событий](/guide/essentials/component-basics.html#listening-to-events)
+  - [Обработка событий](/guide/essentials/event-handling)
+  - [Компоненты - Прослушивание событий](/guide/essentials/component-basics#listening-to-events)
 
 ## v-bind {#v-bind}
 
 Динамически привязывает один или несколько атрибутов или входных параметров компонента к выражению.
 
-- **Сокращённая запись:** `:` или `.` (при использовании модификатора `.prop`)
+- **Сокращённая запись:**
+  - `:` или `.` (при использовании модификатора `.prop`)
+  - Omitting value (when attribute and bound value has the same name) <sup class="vt-badge">3.4+</sup>
 
 - **Ожидает:** `any (если указан аргумент) | Object (без аргумента)`
 
@@ -269,7 +272,7 @@
   - `.prop` - принудительная установить привязку в качестве свойства DOM. <sup class="vt-badge">3.2+</sup>
   - `.attr` - принудительно установить привязку в качестве атрибута DOM. <sup class="vt-badge">3.2+</sup>
 
-- **Подробности:**
+- **Применение:**
 
   При использовании для привязки атрибутов `class` или `style`, `v-bind` поддерживает дополнительные типы значений, такие как Array или Objects. Более подробная информация приведена в разделе руководства по ссылкам ниже.
 
@@ -290,6 +293,9 @@
 
   <!-- сокращённая запись -->
   <img :src="imageSrc" />
+
+  <!-- same-name shorthand (3.4+), expands to :src="src" -->
+  <img :src />
 
   <!-- сокращённая запись при динамическом названии атрибута -->
   <button :[key]="value"></button>
@@ -337,8 +343,8 @@
   Модификатор `.camel` не нужен, если вы используете строковые шаблоны или предварительно компилируете шаблон на этапе сборки.
 
 - **См. также:**
-  - [Работа с классами и стилями](/guide/essentials/class-and-style.html)
-  - [Компоненты - Детали передачи входных параметров](/guide/components/props.html#prop-passing-details)
+  - [Работа с классами и стилями](/guide/essentials/class-and-style)
+  - [Компоненты - Детали передачи входных параметров](/guide/components/props#prop-passing-details)
 
 ## v-model {#v-model}
 
@@ -355,14 +361,14 @@
 
 - **Модификаторы:**
 
-  - [`.lazy`](/guide/essentials/forms.html#lazy) - отслеживание события `change` вместо `input`
-  - [`.number`](/guide/essentials/forms.html#number) - приведение корректной строки со значением к числу
-  - [`.trim`](/guide/essentials/forms.html#trim) - удаление пробелов в начале и в конце строки
+  - [`.lazy`](/guide/essentials/forms#lazy) - отслеживание события `change` вместо `input`
+  - [`.number`](/guide/essentials/forms#number) - приведение корректной строки со значением к числу
+  - [`.trim`](/guide/essentials/forms#trim) - удаление пробелов в начале и в конце строки
 
 - **См. также:**
 
-  - [Работа с формами](/guide/essentials/forms.html)
-  - [События компонентов - Использование вместе с `v-model`](/guide/components/events.html#usage-with-v-model)
+  - [Работа с формами](/guide/essentials/forms)
+  - [События компонентов - Использование вместе с `v-model`](/guide/components/events#usage-with-v-model)
 
 ## v-slot {#v-slot}
 
@@ -377,7 +383,8 @@
 - **Использование ограничено:**
 
   - `<template>`
-  - [компонентами](/guide/components/slots.html#scoped-slots) (для единственного слота по умолчанию с входными параметрами)
+  - [компонентами](/guide/components/slots#scoped-slots) (для единственного слота по умолчанию с входными параметрами)
+
 
 - **Пример:**
 
@@ -413,7 +420,7 @@
   ```
 
 - **См. также:**
-  - [Компоненты - Слоты](/guide/components/slots.html)
+  - [Компоненты - Слоты](/guide/components/slots)
 
 ## v-pre {#v-pre}
 
@@ -460,7 +467,7 @@
   Начиная с версии 3.2, можно использовать мемоизацию части шаблона, с возможностью указания условий для инвалидации, с помощью директивы [`v-memo`](#v-memo).
 
 - **См. также:**
-  - [Синтаксис шаблонов - Текстовые интерполяции](/guide/essentials/template-syntax.html#text-interpolation)
+  - [Синтаксис шаблонов - Текстовые интерполяции](/guide/essentials/template-syntax#text-interpolation)
   - [v-memo](#v-memo)
 
 ## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
