@@ -212,7 +212,7 @@
   }
   ```
 
-## app.version {#app-version}
+## app.provide() {#app-provide}
 
 Provide a value that can be injected in all descendant components within the application.
 
