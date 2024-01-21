@@ -131,24 +131,24 @@
 
   ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
 
-  `defineComponent()` also has an alternative signature that is meant to be used with Composition API and [render functions or JSX](/guide/extras/render-function.html).
+  `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function.html).
 
-  Instead of passing in an options object, a function is expected instead. This function works the same as the Composition API [`setup()`](/api/composition-api-setup.html#composition-api-setup) function: it receives the props and the setup context. The return value should be a render function - both `h()` and JSX are supported:
+  Вместо объекта с опциями первым аргументом `defineComponent()` может принимать функцию. Эта функция выполняется точно так же, как и [`setup()`](/api/composition-api-setup.html#composition-api-setup) из Composition API, принимая props и context в качестве аргументов. Ожидается, что эта функция вернёт JSX или рендер-функцию с `h()` - оба варианта поддерживаются:
 
   ```js
   import { ref, h } from 'vue'
 
   const Comp = defineComponent(
     (props) => {
-      // use Composition API here like in <script setup>
+      // код как в setup() Composition API
       const count = ref(0)
 
       return () => {
-        // render function or JSX
+        // рендер-функция или JSX
         return h('div', count.value)
       }
     },
-    // extra options, e.g. declare props and emits
+    // дополнительные параметры, например, описание входных данных
     {
       props: {
         /* ... */
@@ -157,33 +157,33 @@
   )
   ```
 
-  The main use case for this signature is with TypeScript (and in particular with TSX), as it supports generics:
+  Такой синтаксис удобен для написания компонентов с иcпользованием TypeScript (в частности с TSX), так как в нём можно использовать generic-типы:
 
   ```tsx
   const Comp = defineComponent(
     <T extends string | number>(props: { msg: T; list: T[] }) => {
-      // use Composition API here like in <script setup>
+      // код как в setup() Composition API
       const count = ref(0)
 
       return () => {
-        // render function or JSX
+        // рендер-функция или JSX
         return <div>{count.value}</div>
       }
     },
-    // manual runtime props declaration is currently still needed.
+    // Описание входных данных в runtime всё ещё необходимо
     {
       props: ['msg', 'list']
     }
   )
   ```
 
-  In the future, we plan to provide a Babel plugin that automatically infers and injects the runtime props (like for `defineProps` in SFCs) so that the runtime props declaration can be omitted.
+  В будущем мы планируем добавить Babel-плагин, который автоматически внедрит описанные входные данные (как это делает `defineProps` in SFC-компонентах). Таким образом, описание входных данных можно будет опустить.
 
-  ### Note on webpack Treeshaking {#note-on-webpack-treeshaking}
+  ### Использование с webpack {#note-on-webpack-treeshaking}
 
   Поскольку `defineComponent()` является вызовом функции, это может выглядеть так, что вызовет побочные эффекты (на англ. side-effects) для некоторых инструментов сборки, например, webpack. Это позволит предотвратить встряхивание дерева (на англ. tree-shaking) компонента, даже если он никогда не используется.
 
-  Чтобы сообщить webpack о том, что данный вызов функции безопасен для встряхивания дерева (на англ. tree-shaking), можно добавить `/_#**PURE**_/` перед вызовом функции обозначение комментария:
+  Чтобы сообщить webpack о том, что данный вызов функции безопасен для встряхивания дерева (на англ. tree-shaking), можно добавить специальный комментарий `/_#**PURE**_/` перед вызовом функции:
 
   ```js
   export default /*#__PURE__*/ defineComponent(/* ... */)
