@@ -116,7 +116,8 @@ export default {
 Вы можете нажать на кнопку ниже и проверить элемент `<body>` с помощью инструментов разработчика вашего браузера:
 
 <script setup>
-let open = $ref(false)
+import { ref } from 'vue'
+const open = ref(false)
 </script>
 
 <div class="demo">
@@ -198,5 +199,5 @@ let open = $ref(false)
 
 **Связанные**
 
-- [Справочник API — `<Teleport>`](/api/built-in-components.html#teleport)
-- [Работа с телепортами в SSR](/guide/scaling-up/ssr.html#teleports)
+- [Справочник API — `<Teleport>`](/api/built-in-components#teleport)
+- [Работа с телепортами в SSR](/guide/scaling-up/ssr#teleports)

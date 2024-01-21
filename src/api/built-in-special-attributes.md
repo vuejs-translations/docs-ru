@@ -35,11 +35,11 @@
 
   При изменении значения `text`, элемент `<span>` будет всегда заменяться, вместо обновления его содержимого, поэтому будет запускаться анимация перехода.
 
-- **См. также:** [Руководство - Рендер списка - Сохранение состояния с помощью `key`](/guide/essentials/list.html#maintaining-state-with-key)
+- **См. также:** [Руководство - Рендер списка - Сохранение состояния с помощью `key`](/guide/essentials/list#maintaining-state-with-key)
 
 ## ref {#ref}
 
-Означает [ссылку на элементы шаблона](/guide/essentials/template-refs.html).
+Означает [ссылку на элементы шаблона](/guide/essentials/template-refs).
 
 - **Ожидает:** `string | Function`
 
@@ -81,21 +81,21 @@
   Так же свойство `this.$refs` не реактивно, поэтому не следует использовать его в шаблонах для привязки данных.
 
 - **См. также:**
-  - [Руководство - Ссылки на элементы шаблона](/guide/essentials/template-refs.html)
-  - [Guide - Typing Template Refs](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
-  - [Guide - Typing Component Template Refs](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Ссылки на элементы шаблона](/guide/essentials/template-refs)
+  - [Guide - Typing Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [Guide - Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## is {#is}
 
-Используется для [динамических компонентов](/guide/essentials/component-basics.html#dynamic-components).
+Используется для [динамических компонентов](/guide/essentials/component-basics#dynamic-components).
 
 - **Ожидает:** `string | Component`
 
 - **Использование на нативных элементах** <sup class="vt-badge">3.1+</sup>
 
-  Когда атрибут `is` используется на нативном HTML-элементе, то он интерпретируется как [пользовательский встроенный элемент](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example). Это нативная возможность веб-платформы.
+  Когда атрибут `is` используется на нативном HTML-элементе, то он интерпретируется как [пользовательский встроенный элемент](https://html.spec.whatwg.org/multipage/custom-elements#custom-elements-customized-builtin-example). Это нативная возможность веб-платформы.
 
-  Однако, есть случай использования, когда может понадобиться, чтобы Vue заменил нативный элемент на компонент Vue, как это разъясняется в [Особенности парсинга DOM-шаблона](/guide/essentials/component-basics.html#dom-template-parsing-caveats). В таком случае можно добавить значению атрибута `is` префикс `vue:`, чтобы Vue вместо элемента отрисовал компонент Vue:
+  Однако, есть случай использования, когда может понадобиться, чтобы Vue заменил нативный элемент на компонент Vue, как это разъясняется в [Особенности парсинга DOM-шаблона](/guide/essentials/component-basics#dom-template-parsing-caveats). В таком случае можно добавить значению атрибута `is` префикс `vue:`, чтобы Vue вместо элемента отрисовал компонент Vue:
 
   ```vue-html
   <table>
@@ -105,5 +105,5 @@
 
 - **См. также:**
 
-  - [Специальные встроенные элементы - `<component>`](/api/built-in-special-elements.html#component)
-  - [Динамические компоненты](/guide/essentials/component-basics.html#dynamic-components)
+  - [Специальные встроенные элементы - `<component>`](/api/built-in-special-elements#component)
+  - [Динамические компоненты](/guide/essentials/component-basics#dynamic-components)

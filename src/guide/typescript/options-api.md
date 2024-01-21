@@ -94,6 +94,7 @@ export default defineComponent({
 
 Это избавляет TypeScript от необходимости выводить тип `this` внутри этих функций, что, к сожалению, может привести к неудачному выводу типа. Это было ограничение [предыдущего дизайна](https://github.com/microsoft/TypeScript/issues/38845), и теперь оно улучшено в [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods).
 
+
 ## Типизирование испукаемых событий компонента {#typing-component-emits}
 
 Мы можем объявить ожидаемый тип полезной нагрузки для испускаемого события, используя объектный синтаксис опции `emits`. Кроме того, все необъявленные генерируемые события будут вызывать ошибку типа при вызове:
@@ -201,6 +202,7 @@ export default defineComponent({
 
 Без аннотации типа аргумент `event` будет неявно иметь тип `any`. Это также приведет к ошибке TS, если в `tsconfig.json` используются значения `"strict": true` или `"noImplicitAny": true`. Поэтому рекомендуется явно аннотировать аргумент обработчиков событий. Кроме того, может потребоваться явное приведение свойств к `event`:
 
+
 ```ts
 import { defineComponent } from 'vue'
 
@@ -215,7 +217,8 @@ export default defineComponent({
 
 ## Расширение глобальных свойств {#augmenting-global-properties}
 
-Некоторые плагины устанавливают глобально доступные свойства для всех экземпляров компонента через [`app.config.globalProperties`](/api/application.html#app-config-globalproperties). Например, мы можем установить `this.$http` для получения данных или `this.$translate` для интернационализации. Чтобы все это хорошо сочеталось с TypeScript, Vue предоставляет интерфейс `ComponentCustomProperties` предназначенный для дополнения с помощью [TypeScript module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation):
+Некоторые плагины устанавливают глобально доступные свойства для всех экземпляров компонента через [`app.config.globalProperties`](/api/application#app-config-globalproperties). Например, мы можем установить `this.$http` для получения данных или `this.$translate` для интернационализации. Чтобы все это хорошо сочеталось с TypeScript, Vue предоставляет интерфейс `ComponentCustomProperties` предназначенный для дополнения с помощью [TypeScript module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation):
+
 
 ```ts
 import axios from 'axios'
