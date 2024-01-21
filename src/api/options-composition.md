@@ -1,8 +1,8 @@
-# Options: Composition {#options-composition}
+# Опции: Композиция {#options-composition}
 
 ## provide {#provide}
 
-Provide values that can be injected by descendant components.
+Предоставляет значения, которые могут быть внедрены компонентами-потомками.
 
 - **Тип:**
 
@@ -14,13 +14,13 @@ Provide values that can be injected by descendant components.
 
 - **Подробности:**
 
-  `provide` and [`inject`](#inject) are used together to allow an ancestor component to serve as a dependency injector for all its descendants, regardless of how deep the component hierarchy is, as long as they are in the same parent chain.
+  `provide` и [`inject`](#inject) используются вместе для того, чтобы компонент-предок мог служить инжектором зависимостей для всех своих потомков, независимо от глубины иерархии компонентов, при условии, что они находятся в одной родительской цепочке.
 
-  The `provide` option should be either an object or a function that returns an object. This object contains the properties that are available for injection into its descendants. You can use Symbols as keys in this object.
+  Опция `provide` должна быть либо объектом, либо функцией, возвращающей объект. Этот объект содержит свойства, доступные для внедрения в его потомков. В качестве ключей в этом объекте можно использовать Symbols.
 
 - **Пример:**
 
-  Basic usage:
+  Базовое использование:
 
   ```js
   const s = Symbol()
@@ -33,7 +33,7 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Using a function to provide per-component state:
+  Использование функции для предоставления состояния каждому компоненту:
 
   ```js
   export default {
@@ -50,13 +50,13 @@ Provide values that can be injected by descendant components.
   }
   ```
 
-  Note in the above example, the provided `msg` will NOT be reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  Обратите внимание, что в приведенном примере предоставленное для внедрения свойство `msg` НЕ будет реактивным. Подробнее об этом см. в разделе [Работа с реактивностью](/guide/components/provide-inject#working-with-reactivity).
 
 - **См. также:** [Provide / Inject](/guide/components/provide-inject)
 
 ## inject {#inject}
 
-Declare properties to inject into the current component by locating them from ancestor providers.
+Объявление свойств для внедрения в текущий компонент, которые описаны через provide в компонентах-предках.
 
 - **Тип:**
 
@@ -77,22 +77,22 @@ Declare properties to inject into the current component by locating them from an
 
 - **Подробности:**
 
-  The `inject` option should be either:
+  Опция `inject` должна быть:
 
-  - An array of strings, or
-  - An object where the keys are the local binding name and the value is either:
-    - The key (string or Symbol) to search for in available injections, or
-    - An object where:
-      - The `from` property is the key (string or Symbol) to search for in available injections, and
-      - The `default` property is used as fallback value. Similar to props default values, a factory function is needed for object types to avoid value sharing between multiple component instances.
+  - Массивом строк, или
+  - Объект, ключами которого являются имена локальных свойств для привязки, а значениями:
+    - Ключ (строка или символ) для поиска в доступных внедрениях, или
+    - Обьектом, в котором:
+      - Свойство `from` - это ключ (строка или символ) для поиска в доступных внедрениях, и
+      - В качестве запасного значения используется свойство `default`. Аналогично значениям по умолчанию для входных параметров, для типов объектов необходима функцию-фабрику, чтобы избежать совместного использования значений несколькими экземплярами компонентов.
 
-  An injected property will be `undefined` if neither a matching property nor a default value was provided.
+  Внедряемое свойство будет иметь значение `undefined`, если не было предоставлено для внедрения ни соответствующего свойства, ни значения по умолчанию.
 
-  Note that injected bindings are NOT reactive. This is intentional. However, if the injected value is a reactive object, properties on that object do remain reactive. See [Working with Reactivity](/guide/components/provide-inject#working-with-reactivity) for more details.
+  Обратите внимание, что внедряемые зависимости НЕ являются реактивными. Это сделано намеренно. Однако если внедряемое значение является реактивным объектом, то свойства этого объекта остаются реактивными. Подробнее об этом см. в разделе [Работа с реактивностью](/guide/components/provide-inject#working-with-reactivity).
 
 - **Пример:**
 
-  Basic usage:
+  Основное использование:
 
   ```js
   export default {
@@ -103,7 +103,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as the default for a prop:
+  Использование внедренного значения в качестве значения по умолчанию для входного параметра:
 
   ```js
   const Child = {
@@ -118,7 +118,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as data entry:
+  Использование инжектированного значения в качестве свойства data:
 
   ```js
   const Child = {
@@ -131,7 +131,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Injections can be optional with default value:
+  Внедренные значения могут быть необязательными со значением по умолчанию:
 
   ```js
   const Child = {
@@ -141,7 +141,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  If it needs to be injected from a property with a different name, use `from` to denote the source property:
+  Если его необходимо внедрить из свойства с другим именем, используйте `from` для обозначения свойства-источника:
 
   ```js
   const Child = {
@@ -154,7 +154,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Similar to prop defaults, you need to use a factory function for non-primitive values:
+  Аналогично значению по умолчанию в входных параметрах, для непримитивных значений необходимо использовать функцию-фабрику:
 
   ```js
   const Child = {
@@ -171,7 +171,7 @@ Declare properties to inject into the current component by locating them from an
 
 ## mixins {#mixins}
 
-An array of option objects to be mixed into the current component.
+Массив опций, которые будут подмешаны в текущий компонент.
 
 - **Тип:**
 
@@ -183,12 +183,12 @@ An array of option objects to be mixed into the current component.
 
 - **Подробности:**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options like normal instance objects, and they will be merged against the eventual options using the certain option merging logic. For example, if your mixin contains a `created` hook and the component itself also has one, both functions will be called.
+  Опция `mixins` принимает массив объектов примесей. Эти объекты примесей могут содержать опции экземпляра, как и обычные объекты экземпляра, и они будут объединены с конечными опциями, используя определенную логику объединения опций. Например, если ваш миксин содержит хук `created`, а сам компонент также имеет такой хук, то будут вызваны обе функции.
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  Хуки миксинов вызываются в том порядке, в котором они были предоставлены, и вызываются перед собственными хуками компонента.
 
   :::warning Больше не рекомендуется
-  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, [Composition API](/guide/reusability/composables) is now the preferred approach for code reuse between components.
+  Во Vue 2 миксины были основным механизмом для создания многократно используемых фрагментов логики компонентов. Хотя миксины продолжают поддерживаться в Vue 3, [Composition API](/guide/reusability/composables) теперь является предпочтительным подходом для повторного использования кода между компонентами.
   :::
 
 - **Пример:**
@@ -213,7 +213,7 @@ An array of option objects to be mixed into the current component.
 
 ## extends {#extends}
 
-A "base class" component to extend from.
+Расширение для компонента "базового класса".
 
 - **Тип:**
 
@@ -225,13 +225,13 @@ A "base class" component to extend from.
 
 - **Подробности:**
 
-  Allows one component to extend another, inheriting its component options.
+  Позволяет одному компоненту расширять другой, наследуя его опции.
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+  С точки зрения реализации, `extends` практически идентичен `mixins`. Компонент, указанный `extends`, будет рассматриваться так же, как если бы он был первым миксином.
 
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
+  Однако `extends` и `mixins` выражают разные цели. Опция `mixins` используется в основном для компоновки функциональных блоков, в то время как `extends` в основном связана с наследованием.
 
-  As with `mixins`, any options (except for `setup()`) will be merged using the relevant merge strategy.
+  Как и в случае с `mixins`, любые варианты (кроме `setup()`) будут объединены с использованием соответствующей стратегии слияния.
 
 - **Пример:**
 
