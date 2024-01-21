@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import NewsLetter from './NewsLetter.vue'
+import SiteMap from './SiteMap.vue'
+// import NewsLetter from './NewsLetter.vue'
 import { load, data, base } from './sponsors'
 import SponsorsGroup from './SponsorsGroup.vue'
 import VueMasteryModal from './VueMasteryModal.vue'
@@ -20,7 +21,7 @@ onMounted(async () => {
       Доступный, производительный и гибкий фреймворк для создания пользовательских интерфейсов.
     </p>
     <p class="actions">
-      <vue-mastery-modal />
+      <VueMasteryModal />
       <a class="get-started" href="/guide/introduction.html">
         Начать знакомство
         <svg
@@ -39,19 +40,26 @@ onMounted(async () => {
     </p>
   </section>
 
-  <section id="special-sponsor">
+  <section v-if="data && data.special" id="special-sponsor">
     <span class="lead">Специальный спонсор</span>
-    <template v-if="data && data.special">
-      <template v-for="{ url, img, name, description } of data.special" :key="name">
-        <a :href="url" target="_blank" rel="sponsored noopener">
-          <picture v-if="img.endsWith('png')">
-            <source type="image/avif" :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`" />
-            <img :src="`${base}/images/${img}`" :alt="name" />
-          </picture>
-          <img v-else :src="`${base}/images/${img}`" :alt="name" />
-        </a>
-        <span>{{ description }}</span>
-      </template>
+    <template v-for="{ url, img, name, description } of data.special">
+      <a :href="url" target="_blank" rel="sponsored noopener">
+        <picture v-if="img.endsWith('png')">
+          <source
+            type="image/avif"
+            :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
+          />
+          <img :src="`${base}/images/${img}`" :alt="name" />
+        </picture>
+        <img
+          width="168"
+          height="42"
+          v-else
+          :src="`${base}/images/${img}`"
+          :alt="name"
+        />
+      </a>
+      <span>{{ description }}</span>
     </template>
   </section>
 
@@ -84,7 +92,8 @@ onMounted(async () => {
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
-  <NewsLetter />
+  <SiteMap />
+  <!-- <NewsLetter /> -->
 </template>
 
 <style scoped>
@@ -264,7 +273,7 @@ html:not(.dark) .accent,
 
 @media (max-width: 576px) {
   #hero {
-    padding: 64px 32px;
+    padding: 56px 32px;
   }
   .description {
     font-size: 16px;
@@ -287,7 +296,7 @@ html:not(.dark) .accent,
     padding: 20px 36px;
   }
   .actions a {
-    margin: 0.5em 0;
+    margin: 18px 0;
   }
 }
 

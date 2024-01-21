@@ -84,7 +84,7 @@ const { x, y } = useMouse()
   Положение мыши: {{ x }}, {{ y }}
 </div>
 
-[Попробовать в песочнице](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZU1vdXNlIH0gZnJvbSAnLi9tb3VzZS5qcydcblxuY29uc3QgeyB4LCB5IH0gPSB1c2VNb3VzZSgpXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICBNb3VzZSBwb3NpdGlvbiBpcyBhdDoge3sgeCB9fSwge3sgeSB9fVxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwibW91c2UuanMiOiJpbXBvcnQgeyByZWYsIG9uTW91bnRlZCwgb25Vbm1vdW50ZWQgfSBmcm9tICd2dWUnXG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VNb3VzZSgpIHtcbiAgY29uc3QgeCA9IHJlZigwKVxuICBjb25zdCB5ID0gcmVmKDApXG5cbiAgZnVuY3Rpb24gdXBkYXRlKGV2ZW50KSB7XG4gICAgeC52YWx1ZSA9IGV2ZW50LnBhZ2VYXG4gICAgeS52YWx1ZSA9IGV2ZW50LnBhZ2VZXG4gIH1cblxuICBvbk1vdW50ZWQoKCkgPT4gd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ21vdXNlbW92ZScsIHVwZGF0ZSkpXG4gIG9uVW5tb3VudGVkKCgpID0+IHdpbmRvdy5yZW1vdmVFdmVudExpc3RlbmVyKCdtb3VzZW1vdmUnLCB1cGRhdGUpKVxuXG4gIHJldHVybiB7IHgsIHkgfVxufSJ9)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 
 Как видим, основная логика остается идентичной - все, что нам нужно было сделать, это перенести ее во внешнюю функцию и вернуть состояние, которое должно быть открыто. Как и внутри компонента, в composables можно использовать весь набор [функций Composition API](/api/#composition-api). Та же функция `useMouse()` теперь может быть использована в любом компоненте.
 
@@ -184,43 +184,64 @@ const { data, error } = useFetch('...')
 </script>
 ```
 
-`useFetch()` принимает на вход статическую строку URL - таким образом, выборка выполняется только один раз и на этом заканчивается. А что если мы хотим, чтобы она выполняла повторную выборку при каждом изменении URL? Мы можем добиться этого, приняв в качестве аргумента refs:
+### Accepting Reactive State {#accepting-reactive-state}
+
+`useFetch()` takes a static URL string as input - so it performs the fetch only once and is then done. What if we want it to re-fetch whenever the URL changes? In order to achieve this, we need to pass reactive state into the composable function, and let the composable create watchers that perform actions using the passed state.
+
+For example, `useFetch()` should be able to accept a ref:
 
 ```js
+const url = ref('/initial-url')
+
+const { data, error } = useFetch(url)
+
+// this should trigger a re-fetch
+url.value = '/new-url'
+```
+
+Or, accept a getter function:
+
+```js
+// re-fetch when props.id changes
+const { data, error } = useFetch(() => `/posts/${props.id}`)
+```
+
+We can refactor our existing implementation with the [`watchEffect()`](/api/reactivity-core.html#watcheffect) and [`toValue()`](/api/reactivity-utilities.html#tovalue) APIs:
+
+```js{8,13}
 // fetch.js
-import { ref, isRef, unref, watchEffect } from 'vue'
+import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {
   const data = ref(null)
   const error = ref(null)
 
-  function doFetch() {
-    // сброс состояния перед получением данных..
+  const fetchData = () => {
+    // reset state before fetching..
     data.value = null
     error.value = null
-    // unref() раскрывает потенциальные ссылки
-    fetch(unref(url))
+
+    fetch(toValue(url))
       .then((res) => res.json())
       .then((json) => (data.value = json))
       .catch((err) => (error.value = err))
   }
 
-  if (isRef(url)) {
-    // настройка реактивной повторной выборки, если входной URL является ссылкой
-    watchEffect(doFetch)
-  } else {
-    // в противном случае достаточно выполнить однократную выборку,
-    // чтобы избежать накладных расходов на наблюдателя
-    doFetch()
-  }
+  watchEffect(() => {
+    fetchData()
+  })
 
   return { data, error }
 }
 ```
 
-Эта версия `useFetch()` теперь принимает как статические строки URL, так и ссылки на строки URL. Когда функция обнаруживает, что URL является динамической ссылкой с помощью функции [`isRef()`](/api/reactivity-utilities.html#isref), она устанавливает реактивный эффект с помощью функции [`watchEffect()`](/api/reactivity-core.html#watcheffect). Эффект будет запущен немедленно и будет также отслеживать ссылку на URL как зависимость. При изменении URL-адреса данные будут сброшены и получены заново.
+`toValue()` is an API added in 3.3. It is designed to normalize refs or getters into values. If the argument is a ref, it returns the ref's value; if the argument is a function, it will call the function and return its return value. Otherwise, it returns the argument as-is. It works similarly to [`unref()`](/api/reactivity-utilities.html#unref), but with special treatment for functions.
 
-Вот [обновленная версия `useFetch()`](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgY29tcHV0ZWQgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyB1c2VGZXRjaCB9IGZyb20gJy4vdXNlRmV0Y2guanMnXG5cbmNvbnN0IGJhc2VVcmwgPSAnaHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tL3RvZG9zLydcbmNvbnN0IGlkID0gcmVmKCcxJylcbmNvbnN0IHVybCA9IGNvbXB1dGVkKCgpID0+IGJhc2VVcmwgKyBpZC52YWx1ZSlcblxuY29uc3QgeyBkYXRhLCBlcnJvciwgcmV0cnkgfSA9IHVzZUZldGNoKHVybClcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIExvYWQgcG9zdCBpZDpcbiAgPGJ1dHRvbiB2LWZvcj1cImkgaW4gNVwiIEBjbGljaz1cImlkID0gaVwiPnt7IGkgfX08L2J1dHRvbj5cblxuXHQ8ZGl2IHYtaWY9XCJlcnJvclwiPlxuICAgIDxwPk9vcHMhIEVycm9yIGVuY291bnRlcmVkOiB7eyBlcnJvci5tZXNzYWdlIH19PC9wPlxuICAgIDxidXR0b24gQGNsaWNrPVwicmV0cnlcIj5SZXRyeTwvYnV0dG9uPlxuICA8L2Rpdj5cbiAgPGRpdiB2LWVsc2UtaWY9XCJkYXRhXCI+RGF0YSBsb2FkZWQ6IDxwcmU+e3sgZGF0YSB9fTwvcHJlPjwvZGl2PlxuICA8ZGl2IHYtZWxzZT5Mb2FkaW5nLi4uPC9kaXY+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJ1c2VGZXRjaC5qcyI6ImltcG9ydCB7IHJlZiwgaXNSZWYsIHVucmVmLCB3YXRjaEVmZmVjdCB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUZldGNoKHVybCkge1xuICBjb25zdCBkYXRhID0gcmVmKG51bGwpXG4gIGNvbnN0IGVycm9yID0gcmVmKG51bGwpXG5cbiAgYXN5bmMgZnVuY3Rpb24gZG9GZXRjaCgpIHtcbiAgICAvLyByZXNldCBzdGF0ZSBiZWZvcmUgZmV0Y2hpbmcuLlxuICAgIGRhdGEudmFsdWUgPSBudWxsXG4gICAgZXJyb3IudmFsdWUgPSBudWxsXG4gICAgXG4gICAgLy8gcmVzb2x2ZSB0aGUgdXJsIHZhbHVlIHN5bmNocm9ub3VzbHkgc28gaXQncyB0cmFja2VkIGFzIGFcbiAgICAvLyBkZXBlbmRlbmN5IGJ5IHdhdGNoRWZmZWN0KClcbiAgICBjb25zdCB1cmxWYWx1ZSA9IHVucmVmKHVybClcbiAgICBcbiAgICB0cnkge1xuICAgICAgLy8gYXJ0aWZpY2lhbCBkZWxheSAvIHJhbmRvbSBlcnJvclxuICBcdCAgYXdhaXQgdGltZW91dCgpXG4gIFx0ICAvLyB1bnJlZigpIHdpbGwgcmV0dXJuIHRoZSByZWYgdmFsdWUgaWYgaXQncyBhIHJlZlxuXHQgICAgLy8gb3RoZXJ3aXNlIHRoZSB2YWx1ZSB3aWxsIGJlIHJldHVybmVkIGFzLWlzXG4gICAgXHRjb25zdCByZXMgPSBhd2FpdCBmZXRjaCh1cmxWYWx1ZSlcblx0ICAgIGRhdGEudmFsdWUgPSBhd2FpdCByZXMuanNvbigpXG4gICAgfSBjYXRjaCAoZSkge1xuICAgICAgZXJyb3IudmFsdWUgPSBlXG4gICAgfVxuICB9XG5cbiAgaWYgKGlzUmVmKHVybCkpIHtcbiAgICAvLyBzZXR1cCByZWFjdGl2ZSByZS1mZXRjaCBpZiBpbnB1dCBVUkwgaXMgYSByZWZcbiAgICB3YXRjaEVmZmVjdChkb0ZldGNoKVxuICB9IGVsc2Uge1xuICAgIC8vIG90aGVyd2lzZSwganVzdCBmZXRjaCBvbmNlXG4gICAgZG9GZXRjaCgpXG4gIH1cblxuICByZXR1cm4geyBkYXRhLCBlcnJvciwgcmV0cnk6IGRvRmV0Y2ggfVxufVxuXG4vLyBhcnRpZmljaWFsIGRlbGF5XG5mdW5jdGlvbiB0aW1lb3V0KCkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgaWYgKE1hdGgucmFuZG9tKCkgPiAwLjMpIHtcbiAgICAgICAgcmVzb2x2ZSgpXG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZWplY3QobmV3IEVycm9yKCdSYW5kb20gRXJyb3InKSlcbiAgICAgIH1cbiAgICB9LCAzMDApXG4gIH0pXG59In0=), с искусственной задержкой и рандомизированной ошибкой в демонстрационных целях.
+Notice that `toValue(url)` is called **inside** the `watchEffect` callback. This ensures that any reactive dependencies accessed during the `toValue()` normalization are tracked by the watcher.
+
+This version of `useFetch()` now accepts static URL strings, refs, and getters, making it much more flexible. The watch effect will run immediately, and will track any dependencies accessed during `toValue(url)`. If no dependencies are tracked (e.g. url is already a string), the effect runs only once; otherwise, it will re-run whenever a tracked dependency changes.
+
+Вот [обновленная версия `useFetch()`](https://play.vuejs.org/#eNp9Vdtu20YQ/ZUpUUA0qpAOjL4YktCbC7Rom8BN8sSHrMihtfZql9iLZEHgv2dml6SpxMiDIWkuZ+acmR2fs1+7rjgEzG6zlaut7Dw49KHbVFruO2M9nMFiu4Ta7LvgsYEeWmv2sKCkxSwoOPwTfb2b/EU5mopHR5GVro12HrbC4UerYA2Lnfeduy3LR2d0p0SNO6MatIU/dbI2DRZUtPSmMa4kgJQuG8qkjvLF28XVaAwRb2wxz69gvZkK/UQ5xUGogBQ/ZpyhEV4sAa01lnpeTwRyApsFWvT2RO6Eea40THBMgfq6NLwlS1/pVZnUJB3ph8c98fNIvwD+MaKBzkQut2xYbYP3RsPhTWvsusokSA0/Vxn8UitZP7GFSX/+8Sz7z1W2OZ9BQt+vypQXS1R+1cgDQciW4iMrimR0wu8270znfoC7SBaJWdAeLTa3QFgxuNijc+IBIy5PPyYOjU19RDEI954/Z/UptKTy6VvqA5XD1AwLTTl/0Aco4s5lV51F5sG+VJJ+v4qxYbmkfiiKYvSvyknPbJnNtoyW+HJpj4Icd22LtV+CN5/ikC4XuNL4HFPaoGsvie3FIqSJp1WIzabl00HxkoyetEVfufhv1kAu3EnX8z0CKEtKofcGzhMb2CItAELL1SPlFMV1pwVj+GROc/vWPoc26oDgdxhfSArlLnbWaBOcOoEzIP3CgbeifqLXLRyICaDBDnVD+3KC7emCSyQ4sifspOx61Hh4Qy/d8BsaOEdkYb1sZS2FoiJKnIC6FbqhsaTVZfk8gDgK6cHLPZowFGUzAQTNWl/BUSrFbzRYHXmSdeAp28RMsI0fyFDaUJg9Spd0SbERZcvZDBRleCPdQMCPh8ARwdRRnBCTjGz5WkT0i0GlSMqixTR6VKyHmmWEHIfV+naSOETyRx8vEYwMv7pa8dJU+hU9Kz2t86ReqjcgaTzCe3oGpEOeD4uyJOcjTXe+obScHwaAi82lo9dC/q/wuyINjrwbuC5uZrS4WAQeyTN9ftOXIVwy537iecoX92kR4q/F1UvqIMsSbq6vo5XF6ekCeEcTauVDFJpuQESvMv53IBXadx3r4KqMrt0w0kwoZY5/R5u3AZejvd5h/fSK/dE9s63K3vN7tQesssnnhX1An9x3//+Hz/R9cu5NExRFf8d5zyIF7jGF/RZ0Q23P4mK3f8XLRmfhg7t79qjdSIobjXLE+Cqju/b7d6i/tHtT3MQ8VrH/Ahstp5A=), с искусственной задержкой и рандомизированной ошибкой в демонстрационных целях.
 
 ## Соглашения и лучшие практики {#conventions-and-best-practices}
 
@@ -230,19 +251,22 @@ export function useFetch(url) {
 
 ### Входные аргументы {#input-arguments}
 
-Composable может принимать ref-аргументы, даже если он не полагается на них для обеспечения реактивности. Если вы пишете composable, который может быть использован другими разработчиками, то неплохо было бы предусмотреть случай, когда входными аргументами являются не сырые значения, а refs. Для этого пригодится служебная функция [`unref()`](/api/reactivity-utilities.html#unref):
+Composable может принимать ref-аргументы, даже если он не полагается на них для обеспечения реактивности. Если вы пишете composable, который может быть использован другими разработчиками, то неплохо было бы предусмотреть случай, когда входными аргументами являются не сырые значения, а refs. Для этого пригодится служебная функция [`unref()`](/api/reactivity-utilities#unref):
 
 ```js
-import { unref } from 'vue'
+import { toValue } from 'vue'
 
-function useFeature(maybeRef) {
-  // если maybeRef действительно является ссылкой, то будет возвращено
-  // ее значение, в противном случае maybeRef возвращается как есть
-  const value = unref(maybeRef)
+function useFeature(maybeRefOrGetter) {
+  // If maybeRefOrGetter is a ref or a getter,
+  // its normalized value will be returned.
+  // Otherwise, it is returned as-is.
+  const value = toValue(maybeRefOrGetter)
 }
 ```
 
-Если ваш компонент создает реактивные эффекты, когда на вход подается ссылка, убедитесь, что вы либо явно следите за ссылкой с помощью `watch()`, либо вызываете `unref()` внутри `watchEffect()`, чтобы она правильно отслеживалась.
+If your composable creates reactive effects when the input is a ref or a getter, make sure to either explicitly watch the ref / getter with `watch()`, or call `toValue()` inside a `watchEffect()` so that it is properly tracked.
+
+The [useFetch() implementation discussed earlier](#accepting-reactive-state) provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
 
 ### Возвращаемые значения {#return-values}
 
@@ -279,7 +303,7 @@ console.log(mouse.x)
 
 Composables должны вызываться только **синхронно** в `<script setup>` или в хуке `setup()`. В некоторых случаях их можно также вызывать в хуках жизненного цикла, например `onMounted()`.
 
-Это контексты, в которых Vue может определить текущий активный экземпляр компонента. Доступ к активному экземпляру компонента необходим для того, чтобы:
+These restrictions are important because these are the contexts where Vue is able to determine the current active component instance. Access to an active component instance is necessary so that:
 
 1. На него могут быть зарегистрированы хуки жизненного цикла.
 
@@ -333,7 +357,7 @@ export default {
 
 ### vs. Примеси {#vs-mixins}
 
-Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition.html#mixins), которая также позволяет извлекать логику компонентов в виде многократно используемых блоков. У миксинов есть три основных недостатка:
+Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition#mixins), которая также позволяет извлекать логику компонентов в виде многократно используемых блоков. У миксинов есть три основных недостатка:
 
 1. **Неясный источник свойств**: при использовании большого количества миксинов становится непонятно, какое свойство экземпляра инжектируется каким миксином, что затрудняет отслеживание реализации и понимание поведения компонента. Именно поэтому мы рекомендуем использовать паттерн refs + деструктуризация для composables: это делает источник свойств ясным в потребляющих компонентах.
 
@@ -345,7 +369,7 @@ export default {
 
 ### vs. Renderless компоненты {#vs-renderless-components}
 
-В главе, посвященной слотам компонентов, мы обсудили паттерн [Компонент без рендеринга](/guide/components/slots.html#renderless-components), основанный на слотах с ограничееной областью видимости. Мы даже реализовали тот же демонстрационный пример отслеживания мыши с использованием компонентов без рендеринга.
+В главе, посвященной слотам компонентов, мы обсудили паттерн [Компонент без рендеринга](/guide/components/slots#renderless-components), основанный на слотах с ограничееной областью видимости. Мы даже реализовали тот же демонстрационный пример отслеживания мыши с использованием компонентов без рендеринга.
 
 Основное преимущество composables перед компонентами без рендеринга заключается в том, что composables не несут дополнительных затрат на создание экземпляров компонентов. При использовании во всем приложении количество дополнительных экземпляров компонентов, создаваемых шаблоном компонентов без рендеринга, может стать заметным снижением производительности.
 
@@ -359,5 +383,5 @@ export default {
 
 - [Реактивность в деталях](/guide/extras/reactivity-in-depth.html): для низкоуровневого понимания того, как работает система реактивности Vue.
 - [Управление состоянием](/guide/scaling-up/state-management.html): для моделей управления состоянием, разделяемым несколькими компонентами.
-- [Тестирование Composables](/guide/scaling-up/testing.html#testing-composables): советы по модульному тестированию composables.
+- [Тестирование Composables](/guide/scaling-up/testing#testing-composables): советы по модульному тестированию composables.
 - [VueUse](https://vueuse.org/): постоянно растущая коллекция composables элементов Vue. Исходный код также является отличным обучающим ресурсом.
