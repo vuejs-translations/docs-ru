@@ -3,13 +3,13 @@ outline: deep
 ---
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
-let version = $ref()
+const version = ref()
 
 onMounted(async () => {
-  const res = await fetch('https://api.github.com/repos/vuejs/core/releases?per_page=1')
-  version = (await res.json())[0].name
+  const res = await fetch('https://api.github.com/repos/vuejs/core/releases/latest')
+  version.value = (await res.json()).name
 })
 </script>
 
@@ -58,6 +58,8 @@ This is only a concern for library authors, because in applications, the compile
 
 Minor releases typically go through a non-fixed number of beta releases. Major releases will go through an alpha phase and a beta phase.
 
+Additionally, we publish canary releases every week from the `main` and `minor` branches on GitHub. They are published as different packages to avoid bloating the npm metadata of the stable channel. You can install them via `npx install-vue@canary` or `npx install-vue@canary-minor`, respectively.
+
 Pre-releases are meant for integration / stability testing, and for early adopters to provide feedback for unstable features. Do not use pre-releases in production. All pre-releases are considered unstable and may ship breaking changes in between, so always pin to exact versions when using pre-releases.
 
 ## Deprecations {#deprecations}
@@ -72,6 +74,6 @@ The RFC process is conducted in the [vuejs/rfcs](https://github.com/vuejs/rfcs) 
 
 ## Experimental Features {#experimental-features}
 
-Some features are shipped and documented in a stable version of Vue, but marked as experimental. Experimental features are typically features that have an associated RFC discussion with most of the design problems resolved on paper, but still lacking feedback from real world usage.
+Some features are shipped and documented in a stable version of Vue, but marked as experimental. Experimental features are typically features that have an associated RFC discussion with most of the design problems resolved on paper, but still lacking feedback from real-world usage.
 
 The goal of experimental features is to allow users to provide feedback for them by testing them in a production setting, without having to use an unstable version of Vue. Experimental features themselves are considered unstable, and should only be used in a controlled manner, with the expectation that the feature may change between any release types.

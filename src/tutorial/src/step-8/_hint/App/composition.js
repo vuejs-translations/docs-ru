@@ -7,9 +7,9 @@ export default {
     const newTodo = ref('')
     const hideCompleted = ref(false)
     const todos = ref([
-      { id: id++, text: 'Learn HTML', done: true },
-      { id: id++, text: 'Learn JavaScript', done: true },
-      { id: id++, text: 'Learn Vue', done: false }
+      { id: id++, text: 'Изучить HTML', done: true },
+      { id: id++, text: 'Изучить JavaScript', done: true },
+      { id: id++, text: 'Изучить Vue', done: false }
     ])
 
     const filteredTodos = computed(() => {

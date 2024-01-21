@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Partner } from './type'
-import { normalizeName, getHero, getLogo } from './utils'
+import { normalizeName, getHero, getLogo, track } from './utils'
 import Location from './PartnerLocation.vue'
 
-const { data, hero, page } = defineProps<{
+const props = defineProps<{
   data: Partner
   hero?: boolean
   page?: boolean
@@ -18,7 +18,7 @@ const {
   proficiencies,
   flipLogo,
   website
-} = data
+} = props.data
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const {
     :href="'/partners/' + normalizeName(name) + '.html'"
   >
     <div class="info">
-      <a :href="website.url" target="_blank">
+      <a :href="website.url" target="_blank" @click="track">
         <img
           class="logo dark"
           v-if="hero && flipLogo"

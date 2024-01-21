@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { Repl, ReplStore } from '@vue/repl'
-import '@vue/repl/style.css'
+import CodeMirror from '@vue/repl/codemirror-editor'
 import { data } from './examples.data'
-import { inject, watchEffect, version, Ref } from 'vue'
-import { resolveSFCExample, resolveNoBuildExample, onHashChange } from './utils'
+import { inject, watchEffect, version, Ref, onMounted, ref, onUnmounted } from 'vue'
+import {
+  resolveSFCExample,
+  resolveNoBuildExample,
+  onHashChange
+} from './utils'
 
 const store = new ReplStore({
   defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
@@ -12,7 +16,12 @@ const store = new ReplStore({
 const preferComposition = inject('prefer-composition') as Ref<boolean>
 const preferSFC = inject('prefer-sfc') as Ref<boolean>
 
-watchEffect(updateExample)
+watchEffect(updateExample, {
+  onTrigger(e) {
+    console.log(e)
+    debugger
+  }
+})
 onHashChange(updateExample)
 
 /**
@@ -34,29 +43,51 @@ function updateExample() {
     preferSFC.value ? 'App.vue' : 'index.html'
   )
 }
+
+const heightProvider = ref<HTMLDivElement>()
+onMounted(() => {
+  const set = () => {
+    heightProvider.value!.style.setProperty(
+      '--vh',
+      window.innerHeight + 'px'
+    )
+  }
+  set()
+  window.addEventListener('resize', set)
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', set)
+  })
+})
 </script>
 
 <template>
-  <Repl
-    :store="store"
-    :showImportMap="!preferSFC"
-    :showCompileOutput="false"
-    :clearConsole="false"
-  />
+  <div ref="heightProvider">
+    <Repl
+      :editor="CodeMirror"
+      :store="store"
+      :showImportMap="!preferSFC"
+      :showCompileOutput="false"
+      :clearConsole="false"
+    />
+  </div>
 </template>
 
-<style scoped>
+<style>
 .vue-repl {
   max-width: 1105px;
   border-right: 1px solid var(--vt-c-divider-light);
-  height: calc(100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px));
+  height: calc(
+    var(--vh, 0px) - var(--vt-nav-height) - var(--vt-banner-height, 0px)
+  );
 }
 
 @media (max-width: 960px) {
   .vue-repl {
     border: none;
     height: calc(
-      100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px) - 48px
+      var(--vh, 0px) - var(--vt-nav-height) - var(--vt-banner-height, 0px) -
+        48px
     );
   }
 }
