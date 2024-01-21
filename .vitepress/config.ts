@@ -4,7 +4,7 @@ import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
-import { jobsPlugin } from './jobsMdPlugin'
+// import { textAdPlugin } from './textAdMdPlugin'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -16,6 +16,8 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Примеры', link: '/examples/' },
       { text: 'Быстрый старт', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
+      { text: 'Glossary', link: '/glossary/' },
+      { text: 'Error Reference', link: '/error-reference/' },
       {
         text: 'Документация для Vue 2',
         link: 'https://ru.vuejs.org/'
@@ -33,7 +35,7 @@ const nav: ThemeConfig['nav'] = [
   },
   {
     text: 'Песочница',
-    link: 'https://sfc.vuejs.org'
+    link: 'https://play.vuejs.org'
   },
   {
     text: 'Экосистема',
@@ -44,6 +46,11 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'Партнёры', link: '/partners/' },
           { text: 'Темы', link: '/ecosystem/themes' },
+          { text: 'UI компоненты', link: 'https://ui-libs.vercel.app/' },
+          {
+            text: 'Сертификация',
+            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+          },
           { text: 'Вакансии', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
         ]
@@ -88,8 +95,8 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'Блог', link: 'https://blog.vuejs.org/' },
           { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Рассылка', link: 'https://news.vuejs.org/' },
-          { text: 'События', link: 'https://events.vuejs.org/' }
+          { text: 'События', link: 'https://events.vuejs.org/' },
+          { text: 'Рассылка', link: '/ecosystem/newsletters' }
         ]
       }
     ]
@@ -189,6 +196,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Входные параметры', link: '/guide/components/props' },
         { text: 'События', link: '/guide/components/events' },
+        { text: 'Component v-model', link: '/guide/components/v-model' },
         {
           text: 'Передача обычных атрибутов',
           link: '/guide/components/attrs'
@@ -313,16 +321,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'Техники анимации',
           link: '/guide/extras/animation'
-        },
-        {
-          text: 'Трансформация реактивности',
-          link: '/guide/extras/reactivity-transform'
         }
         // {
         //   text: 'Building a Library for Vue',
         //   link: '/guide/extras/building-a-library'
         // },
-        // { text: 'Custom Renderers', link: '/guide/extras/custom-renderer' },
         // {
         //   text: 'Vue for React Devs',
         //   link: '/guide/extras/vue-for-react-devs'
@@ -416,7 +419,8 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'Render-функция', link: '/api/render-function' },
         { text: 'Отрисовка на стороне сервера', link: '/api/ssr' },
         { text: 'Вспомогательные типы TypeScript', link: '/api/utility-types' },
-        { text: 'Пользовательский рендерер', link: '/api/custom-renderer' }
+        { text: 'Пользовательский рендерер', link: '/api/custom-renderer' },
+        { text: 'Compile-Time Flags', link: '/api/compile-time-flags' }
       ]
     }
   ],
@@ -595,19 +599,28 @@ export default defineConfigWithTheme<ThemeConfig>({
   description: 'Vue.js - Прогрессивный JavaScript-фреймворк',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
-  scrollOffset: 'header',
 
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['meta', { name: 'twitter:site', content: '@vuejs' }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { property: 'og:url', content: 'https://vuejs.org/' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Vue.js' }],
     [
       'meta',
       {
-        name: 'twitter:image',
+        property: 'og:description',
+        content: 'Vue.js - The Progressive JavaScript Framework'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image',
         content: 'https://vuejs.org/images/logo.png'
       }
     ],
+    ['meta', { name: 'twitter:site', content: '@vuejs' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
     [
       'link',
       {
@@ -631,6 +644,13 @@ export default defineConfigWithTheme<ThemeConfig>({
     //     'data-spa': 'auto',
     //     defer: ''
     //   }
+    // ],
+    // [
+    //   'script',
+    //   {
+    //     src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
+    //     async: 'true'
+    //   }
     // ]
   ],
 
@@ -651,8 +671,38 @@ export default defineConfigWithTheme<ThemeConfig>({
         repo: 'https://github.com/vuejs-translations/docs-ja'
       },
       {
+        link: 'https://ua.vuejs.org',
+        text: 'Українська',
+        repo: 'https://github.com/vuejs-translations/docs-uk'
+      },
+      {
+        link: 'https://fr.vuejs.org',
+        text: 'Français',
+        repo: 'https://github.com/vuejs-translations/docs-fr'
+      },
+      {
+        link: 'https://ko.vuejs.org',
+        text: '한국어',
+        repo: 'https://github.com/vuejs-translations/docs-ko'
+      },
+      {
+        link: 'https://pt.vuejs.org',
+        text: 'Português',
+        repo: 'https://github.com/vuejs-translations/docs-pt'
+      },
+      {
+        link: 'https://bn.vuejs.org',
+        text: 'বাংলা',
+        repo: 'https://github.com/vuejs-translations/docs-bn'
+      },
+      {
+        link: 'https://it.vuejs.org',
+        text: 'Italiano',
+        repo: 'https://github.com/vuejs-translations/docs-it'
+      },
+      {
         link: '/translations/',
-        text: 'Переводы',
+        text: 'Help Us Translate!',
         isTranslationsDesc: true
       }
     ],
@@ -692,8 +742,10 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
 
   markdown: {
+    theme: 'github-dark',
     config(md) {
-      md.use(headerPlugin).use(jobsPlugin)
+      md.use(headerPlugin)
+      // .use(textAdPlugin)
     }
   },
 
@@ -723,9 +775,5 @@ export default defineConfigWithTheme<ThemeConfig>({
     json: {
       stringify: true
     }
-  },
-
-  vue: {
-    reactivityTransform: true
   }
 })

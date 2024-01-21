@@ -97,15 +97,15 @@ watch(
 ```vue-html
 <main role="main" aria-labelledby="main-title">
   <h1 id="main-title">Основной заголовок</h1>
-  <section aria-labelledby="section-title">
-    <h2 id="section-title"> Заголовок раздела </h2>
+  <section aria-labelledby="section-title-1">
+    <h2 id="section-title-1"> Заголовок раздел </h2>
     <h3>Вложенный заголовок раздела</h3>
     <!-- Содержимое -->
   </section>
-  <section aria-labelledby="section-title">
-    <h2 id="section-title"> Заголовок раздела </h2>
+  <section aria-labelledby="section-title-2">
+    <h2 id="section-title-2"> Заголовок раздел </h2>
     <h3>Вложенный заголовок раздела</h3>
-    <!-- Содержимое  -->
+    <!-- Содержимое -->
     <h3>Вложенный заголовок раздела</h3>
     <!-- Содержимое -->
   </section>
@@ -123,7 +123,7 @@ watch(
 | main            | role="main"          | Основное или самое важное содержимое на странице                                                                     |
 | footer          | role="contentinfo"   | Информация о странице: сноски, авторские права, ссылки на политику конфиденциальности                           |
 | aside           | role="complementary" | Дополнение к основному содержимому                                    |
-| _Not available_ | role="search"        | Раздел, содержащий функциональность поиска по приложению                                               |
+| search | role="search"        | Раздел, содержащий функциональность поиска по приложению                                               |
 | form            | role="form"          | Коллекция элементов формы                                                                           |
 | section         | role="region"        | Сопутствующее содержимое, которое пользователь возможно захочет изучить. Для такого элемента нужно указать метку |
 
@@ -163,7 +163,7 @@ watch(
 Добавляйте метки для описания полей формы, а также создания связи между элементами с атрибутами `for` и `id`:
 
 ```vue-html
-<label for="name">Название</label>
+<label for="name">Название:</label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
@@ -191,7 +191,7 @@ watch(
 Указать имя поля для использования вспомогательными технологиями можно с помощью атрибута [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label).
 
 ```vue-html
-<label for="name">Название</label>
+<label for="name">Название:</label>
 <input
   type="text"
   name="name"
@@ -503,7 +503,7 @@ watch(
   - [ChromeVox](https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)
 - Программы для увеличения/уменьшения области просмотра
   - [MAGic](https://www.freedomscientific.com/products/software/magic/)
-  - [ZoomText](https://www.zoomtext.com/)
+  - [ZoomText](https://www.freedomscientific.com/products/software/zoomtext/)
   - [Magnifier](https://support.microsoft.com/en-us/help/11542/windows-use-magnifier-to-make-things-easier-to-see)
 
 ### Тестирование {#testing}
@@ -511,14 +511,16 @@ watch(
 - Автоматизированные инструменты
   - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
   - [WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
+  - [ARC Toolkit](https://chrome.google.com/webstore/detail/arc-toolkit/chdkkkccnlfncngelccgbgfmjebmkmce?hl=en-US)
 - Инструменты для работы с цветом
   - [WebAim Color Contrast](https://webaim.org/resources/contrastchecker/)
   - [WebAim Link Color Contrast](https://webaim.org/resources/linkcontrastchecker)
 - Другие полезные инструменты
   - [HeadingMap](https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi?hl=en…)
   - [Color Oracle](https://colororacle.org)
-  - [Focus Indicator](https://chrome.google.com/webstore/detail/focus-indicator/heeoeadndnhebmfebjccbhmccmaoedlf?hl=en-US…)
   - [NerdeFocus](https://chrome.google.com/webstore/detail/nerdefocus/lpfiljldhgjecfepfljnbjnbjfhennpd?hl=en-US…)
+  - [Visual Aria](https://chrome.google.com/webstore/detail/visual-aria/lhbmajchkkmakajkjenkchhnhbadmhmk?hl=en-US)
+  - [Silktide Website Accessibility Simulator](https://chrome.google.com/webstore/detail/silktide-website-accessib/okcpiimdfkpkjcbihbmhppldhiebhhaf?hl=en-US)
 
 ### Пользователи {#users}
 

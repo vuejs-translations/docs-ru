@@ -22,7 +22,7 @@
 
 <div class="composition-api">
 
-Чтобы предоставить данные потомкам компонента, используйте функцию [`provide()`](/api/composition-api-dependency-injection.html#provide):
+Чтобы предоставить данные потомкам компонента, используйте функцию [`provide()`](/api/composition-api-dependency-injection#provide):
 
 ```vue
 <script setup>
@@ -61,7 +61,7 @@ provide('key', count)
 
 <div class="options-api">
 
-Чтобы предоставить данные потомкам компонента, используйте опцию [`provide`](/api/options-composition.html#provide):
+Чтобы предоставить данные потомкам компонента, используйте опцию [`provide`](/api/options-composition#provide):
 
 ```js
 export default {
@@ -113,7 +113,7 @@ app.provide(/* ключ */ 'message', /* значение */ 'привет!')
 
 <div class="composition-api">
 
-Для инъекции данных, предоставляемых компонентом-предком, используйте функцию [`inject()`](/api/composition-api-dependency-injection.html#inject):
+Для инъекции данных, предоставляемых компонентом-предком, используйте функцию [`inject()`](/api/composition-api-dependency-injection#inject):
 
 ```vue
 <script setup>
@@ -125,7 +125,7 @@ const message = inject('message')
 
 Если предоставленное значение является ref, то оно будет внедрено как есть и **не будет автоматически разворачиваться**. Это позволяет компоненту-инжектору сохранять реактивную связь с компонентом-провайдером.
 
-[Полный пример provide + inject с реактивностью](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgcHJvdmlkZSB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuLy8gYnkgcHJvdmlkaW5nIGEgcmVmLCB0aGUgR3JhbmRDaGlsZFxuLy8gY2FuIHJlYWN0IHRvIGNoYW5nZXMgaGFwcGVuaW5nIGhlcmUuXG5jb25zdCBtZXNzYWdlID0gcmVmKCdoZWxsbycpXG5wcm92aWRlKCdtZXNzYWdlJywgbWVzc2FnZSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxpbnB1dCB2LW1vZGVsPVwibWVzc2FnZVwiPlxuICA8Q2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsIkNoaWxkLnZ1ZSI6IjxzY3JpcHQgc2V0dXA+XG5pbXBvcnQgR3JhbmRDaGlsZCBmcm9tICcuL0dyYW5kQ2hpbGQudnVlJ1xuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0IHNldHVwPlxuaW1wb3J0IHsgaW5qZWN0IH0gZnJvbSAndnVlJ1xuXG5jb25zdCBtZXNzYWdlID0gaW5qZWN0KCdtZXNzYWdlJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIE1lc3NhZ2UgdG8gZ3JhbmQgY2hpbGQ6IHt7IG1lc3NhZ2UgfX1cbiAgPC9wPlxuPC90ZW1wbGF0ZT4ifQ==)
+[Полный пример provide + inject с реактивностью](https://play.vuejs.org/#eNqFUUFugzAQ/MrKF1IpxfeIVKp66Kk/8MWFDXYFtmUbpArx967BhURRU9/WOzO7MzuxV+fKcUB2YlWovXYRAsbBvQije2d9hAk8Xo7gvB11gzDDxdseCuIUG+ZN6a7JjZIvVRIlgDCcw+d3pmvTglz1okJ499I0C3qB1dJQT9YRooVaSdNiACWdQ5OICj2WwtTWhAg9hiBbhHNSOxQKu84WT8LkNQ9FBhTHXyg1K75aJHNUROxdJyNSBVBp44YI43NvG+zOgmWWYGt7dcipqPhGZEe2ef07wN3lltD+lWN6tNkV/37+rdKjK2rzhRTt7f3u41xhe37/xJZGAL2PLECXa9NKdD/a6QTTtGnP88LgiXJtYv4BaLHhvg==)
 
 Опять же, если не используется `<script setup>`, то `inject()` следует вызывать синхронно только внутри `setup()`:
 
@@ -144,7 +144,7 @@ export default {
 
 <div class="options-api">
 
-Для инъекции данных, предоставляемых компонентом-предком, используйте опцию [`inject`](/api/options-composition.html#inject):
+Для инъекции данных, предоставляемых компонентом-предком, используйте опцию [`inject`](/api/options-composition#inject):
 
 ```js
 export default {
@@ -169,7 +169,7 @@ export default {
 }
 ```
 
-[Полный пример provide + inject](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7IENoaWxkIH0sXG4gIHByb3ZpZGUoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIG1lc3NhZ2U6ICdoZWxsbydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
+[Полный пример provide + inject](https://play.vuejs.org/#eNqNkcFqwzAQRH9l0EUthOhuRKH00FO/oO7B2JtERZaEvA4F43+vZCdOTAIJCImRdpi32kG8h7A99iQKobs6msBvpTNt8JHxcTC2wS76FnKrJpVLZelKR39TSUO7qreMoXRA7ZPPkeOuwHByj5v8EqI/moZeXudCIBL30Z0V0FLXVXsqIA9krU8R+XbMR9rS0mqhS4KpDbZiSgrQc5JKQqvlRWzEQnyvuc9YuWbd4eXq+TZn0IvzOeKr8FvsNcaK/R6Ocb9Uc4FvefpE+fMwP0wH8DU7wB77nIo6x6a2hvNEME5D0CpbrjnHf+8excI=)
 
 ### Внедрение псевдонимов \* {#injection-aliasing}
 
@@ -208,8 +208,10 @@ const value = inject('message', 'default value')
 В некоторых случаях значение по умолчанию может потребоваться создать путем вызова функции или инстанцирования нового класса. Чтобы избежать лишних вычислений или побочных эффектов в случае, если необязательное значение не используется, мы можем использовать фабричную функцию для создания значения по умолчанию:
 
 ```js
-const value = inject('key', () => new ExpensiveClass())
+const value = inject('key', () => new ExpensiveClass(), true)
 ```
+
+The third parameter indicates the default value should be treated as a factory function.
 
 </div>
 
@@ -274,7 +276,7 @@ const { location, updateLocation } = inject('location')
 </template>
 ```
 
-Наконец, вы можете обернуть предоставленное значение с помощью [`readonly()`](/api/reactivity-core.html#readonly), если хотите гарантировать, что данные, переданные через `provide`, не могут быть изменены инжектируемым компонентом.
+Наконец, вы можете обернуть предоставленное значение с помощью [`readonly()`](/api/reactivity-core#readonly), если хотите гарантировать, что данные, переданные через `provide`, не могут быть изменены инжектируемым компонентом.
 
 ```vue
 <script setup>
@@ -289,7 +291,7 @@ provide('read-only-count', readonly(count))
 
 <div class="options-api">
 
-Чтобы сделать инъекции реактивно связанной с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core.html#computed):
+Чтобы сделать инъекции реактивно связанной с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core#computed):
 
 ```js{10}
 import { computed } from 'vue'
@@ -309,13 +311,9 @@ export default {
 }
 ```
 
-[Полный пример provide + inject с реактивностью](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcbmltcG9ydCB7IGNvbXB1dGVkIH0gZnJvbSAndnVlJ1xuXG5leHBvcnQgZGVmYXVsdCB7XG4gIGNvbXBvbmVudHM6IHsgQ2hpbGQgfSxcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogJ2hlbGxvJ1xuICAgIH1cbiAgfSxcbiAgcHJvdmlkZSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogY29tcHV0ZWQoKCkgPT4gdGhpcy5tZXNzYWdlKVxuICAgIH1cbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGlucHV0IHYtbW9kZWw9XCJtZXNzYWdlXCI+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
+[Полный пример provide + inject с реактивностью](https://play.vuejs.org/#eNqNUctqwzAQ/JVFFyeQxnfjBEoPPfULqh6EtYlV9EKWTcH43ytZtmPTQA0CsdqZ2dlRT16tPXctkoKUTeWE9VeqhbLGeXirheRwc0ZBds7HKkKzBdBDZZRtPXIYJlzqU40/I4LjjbUyIKmGEWw0at8UgZrUh1PscObZ4ZhQAA596/RcAShsGnbHArIapTRBP74O8Up060wnOO5QmP0eAvZyBV+L5jw1j2tZqsMp8yWRUHhUVjKPoQIohQ460L0ow1FeKJlEKEnttFweijJfiORElhCf5f3umObb0B9PU/I7kk17PJj7FloN/2t7a2Pj/Zkdob+x8gV8ZlMs2de/8+14AXwkBngD9zgVqjg2rNXPvwjD+EdlHilrn8MvtvD1+Q==)
 
 Функция `computed()` обычно используется в компонентах Composition API, но ее также можно использовать для дополнения определенных вариантов использования в Options API. Вы можете узнать больше о его использовании, прочитав [Основы реактивности](/guide/essentials/reactivity-fundamentals.html) и [Вычисляемые свойства](/guide/essentials/computed.html) с переключателем API Preference, установленным на Composition API.
-
-:::warning Временно требуется дополнительная конфигурация
-Приведенное выше использование требует установки `app.config.unwrapInjectedRef = true`, чтобы инъекции автоматически разворачивали вычисленные ссылки. Это станет поведением по умолчанию в Vue 3.3, и данный конфиг введен временно, чтобы избежать поломок. После версии 3.3 он больше не потребуется.
-:::
 
 </div>
 
@@ -350,7 +348,7 @@ import { myInjectionKey } from './keys.js'
 const injected = inject(myInjectionKey)
 ```
 
-См. также: [Типизация Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+См. также: [Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 </div>
 

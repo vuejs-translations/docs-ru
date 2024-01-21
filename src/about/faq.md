@@ -16,8 +16,6 @@ In general, Vue 3 provides smaller bundle sizes, better performance, better scal
 
 - You need to support IE11. Vue 3 leverages modern JavaScript features and does not support IE11.
 
-- You are still waiting for major ecosystem projects like Nuxt or Vuetify to release stable versions for Vue 3. This is reasonable if you do not wish to use beta-stage software. However, do note there are other already stable Vue 3 component libraries such as [Quasar](https://quasar.dev/), [Naive UI](https://www.naiveui.com/) and [Element Plus](https://element-plus.org/).
-
 If you intend to migrate an existing Vue 2 app to Vue 3, consult the [migration guide](https://v3-migration.vuejs.org/).
 
 ## Is Vue 2 Still Supported? {#is-vue-2-still-supported}
@@ -44,11 +42,11 @@ Vue is used in production by renowned organizations in varying capacities all ar
 
 Vue 3 is one of the most performant mainstream frontend frameworks, and handles most web application use cases with ease, without the need for manual optimizations.
 
-In stress-testing scenarios, Vue outperforms React and Angular by a decent margin in the [js-framework-benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts-results/table.html). It also goes neck-and-neck against some of the fastest production-level non-Virtual-DOM frameworks in the benchmark.
+In stress-testing scenarios, Vue outperforms React and Angular by a decent margin in the [js-framework-benchmark](https://krausest.github.io/js-framework-benchmark/current.html). It also goes neck-and-neck against some of the fastest production-level non-Virtual-DOM frameworks in the benchmark.
 
 Do note that synthetic benchmarks like the above focus on raw rendering performance with dedicated optimizations and may not be fully representative of real-world performance results. If you care more about page load performance, you are welcome to audit this very website using [WebPageTest](https://www.webpagetest.org/lighthouse) or [PageSpeed Insights](https://pagespeed.web.dev/). This website is powered by Vue itself, with SSG pre-rendering, full page hydration and SPA client-side navigation. It scores 100 in performance on an emulated Moto G4 with 4x CPU throttling over slow 4G networks.
 
-You can learn more about how Vue automatically optimizes runtime performance in the [Rendering Mechanism](/guide/extras/rendering-mechanism.html) section, and how to optimize a Vue app in particularly demanding cases in the [Performance Optimization Guide](/guide/best-practices/performance.html).
+You can learn more about how Vue automatically optimizes runtime performance in the [Rendering Mechanism](/guide/extras/rendering-mechanism) section, and how to optimize a Vue app in particularly demanding cases in the [Performance Optimization Guide](/guide/best-practices/performance).
 
 ## Is Vue lightweight? {#is-vue-lightweight}
 
@@ -68,17 +66,17 @@ Yes. Despite a common misconception that Vue is only suitable for simple use cas
 
 - [Composition API](/guide/reusability/composables) provides first-class TypeScript integration and enables clean patterns for organizing, extracting and reusing complex logic.
 
-- [Comprehensive tooling support](/guide/scaling-up/tooling.html) ensures a smooth development experience as the application grows.
+- [Comprehensive tooling support](/guide/scaling-up/tooling) ensures a smooth development experience as the application grows.
 
 - Lower barrier to entry and excellent documentation translate to lower onboarding and training costs for new developers.
 
 ## How do I contribute to Vue? {#how-do-i-contribute-to-vue}
 
-We appreciate your interest! Please check out our [Community Guide](/about/community-guide.html).
+We appreciate your interest! Please check out our [Community Guide](/about/community-guide).
 
 ## Should I use Options API or Composition API? {#should-i-use-options-api-or-composition-api}
 
-If you are new to Vue, we provide a high-level comparison between the two styles [here](/guide/introduction.html#which-to-choose).
+If you are new to Vue, we provide a high-level comparison between the two styles [here](/guide/introduction#which-to-choose).
 
 If you have previously used Options API and are currently evaluating Composition API, check out [this FAQ](/guide/extras/composition-api-faq).
 

@@ -40,8 +40,8 @@ export default {
     book() {
       alert(
         this.isReturn
-          ? `You have booked a return flight leaving on ${this.departureDate} and returning on ${this.returnDate}.`
-        	: `You have booked a one-way flight leaving on ${this.departureDate}.`
+          ? `Вы забронировали рейс в оба конца, вылетающий ${this.departureDate} и возвращаяющийся ${this.returnDate}.`
+        	: `Вы забронировали билет на рейс в одну сторону, вылетающий ${this.departureDate}.`
       )
     }
   }

@@ -1,8 +1,8 @@
 <svg @click="onClick">
   <foreignObject x="0" y="40%" width="100%" height="200">
     <p class="tip">
-      Click on the canvas to draw a circle. Click on a circle to select it.
-      Right-click on the canvas to adjust the radius of the selected circle.
+      Щелкните на холст, чтобы нарисовать окружность. Щелкните на окружность, чтобы выделить ее.
+      Щелкните правой кнопкой мыши на холст, чтобы изменить радиус выделенной окружности.
     </p>
   </foreignObject>
   <circle
@@ -17,11 +17,11 @@
 </svg>
 
 <div class="controls">
-  <button @click="undo" :disabled="index <= 0">Undo</button>
-  <button @click="redo" :disabled="index >= history.length - 1">Redo</button>
+  <button @click="undo" :disabled="index <= 0">Отменить</button>
+  <button @click="redo" :disabled="index >= history.length - 1">Повторить</button>
 </div>
 
 <div class="dialog" v-if="adjusting" @click.stop>
-  <p>Adjust radius of circle at ({{ selected.cx }}, {{ selected.cy }})</p>
+  <p>Настроить радиус окружности в точке ({{ selected.cx }}, {{ selected.cy }})</p>
   <input type="range" v-model="selected.r" min="1" max="300">
 </div>
