@@ -3,9 +3,9 @@
 :::info См. также
 To better understand the Reactivity APIs, it is recommended to read the following chapters in the guide:
 
-- [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) (with the API preference set to Composition API)
-- [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
-:::
+- [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals) (with the API preference set to Composition API)
+- [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+  :::
 
 ## ref() {#ref}
 
@@ -27,7 +27,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
 
   If an object is assigned as a ref's value, the object is made deeply reactive with [reactive()](#reactive). This also means if the object contains nested refs, they will be deeply unwrapped.
 
-  To avoid the deep conversion, use [`shallowRef()`](./reactivity-advanced.html#shallowref) instead.
+  To avoid the deep conversion, use [`shallowRef()`](./reactivity-advanced#shallowref) instead.
 
 - **Пример:**
 
@@ -35,13 +35,13 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
   const count = ref(0)
   console.log(count.value) // 0
 
-  count.value++
+  count.value = 1
   console.log(count.value) // 1
   ```
 
 - **См. также:**
-  - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
+  - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [Guide - Typing `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 ## computed() {#computed}
 
@@ -52,7 +52,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   ```ts
   // read-only
   function computed<T>(
-    getter: () => T,
+    getter: (oldValue: T | undefined) => T,
     // see "Computed Debugging" link below
     debuggerOptions?: DebuggerOptions
   ): Readonly<Ref<Readonly<T>>>
@@ -60,7 +60,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   // writable
   function computed<T>(
     options: {
-      get: () => T
+      get: (oldValue: T | undefined) => T
       set: (value: T) => void
     },
     debuggerOptions?: DebuggerOptions
@@ -109,9 +109,10 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   ```
 
 - **См. также:**
-  - [Guide - Computed Properties](/guide/essentials/computed.html)
-  - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+  - [Guide - Computed Properties](/guide/essentials/computed)
+  - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth#computed-debugging)
+  - [Guide - Typing `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
@@ -129,7 +130,7 @@ Returns a reactive proxy of the object.
 
   It should also be noted that there is no ref unwrapping performed when the ref is accessed as an element of a reactive array or a native collection type like `Map`.
 
-  To avoid the deep conversion and only retain reactivity at the root level, use [shallowReactive()](./reactivity-advanced.html#shallowreactive) instead.
+  To avoid the deep conversion and only retain reactivity at the root level, use [shallowReactive()](./reactivity-advanced#shallowreactive) instead.
 
   The returned object and its nested objects are wrapped with [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) and **not** equal to the original objects. It is recommended to work exclusively with the reactive proxy and avoid relying on the original object.
 
@@ -187,8 +188,8 @@ Returns a reactive proxy of the object.
   ```
 
 - **См. также:**
-  - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html)
-  - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+  - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals)
+  - [Guide - Typing `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -206,7 +207,7 @@ Takes an object (reactive or plain) or a [ref](#ref) and returns a readonly prox
 
   A readonly proxy is deep: any nested property accessed will be readonly as well. It also has the same ref-unwrapping behavior as `reactive()`, except the unwrapped values will also be made readonly.
 
-  To avoid the deep conversion, use [shallowReadonly()](./reactivity-advanced.html#shallowreadonly) instead.
+  To avoid the deep conversion, use [shallowReadonly()](./reactivity-advanced#shallowreadonly) instead.
 
 - **Пример:**
 
@@ -256,7 +257,7 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
 
   The second argument is an optional options object that can be used to adjust the effect's flush timing or to debug the effect's dependencies.
 
-  By default, watchers will run just prior to component rendering. Setting `flush: 'post'` will defer the watcher until after component rendering. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) for more information. In rare cases, it might be necessary to trigger a watcher immediately when a reactive dependency changes, e.g. to invalidate a cache. This can be achieved using `flush: 'sync'`. However, this setting should be used with caution, as it can lead to problems with performance and data consistency if multiple properties are being updated at the same time.
+  By default, watchers will run just prior to component rendering. Setting `flush: 'post'` will defer the watcher until after component rendering. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) for more information. In rare cases, it might be necessary to trigger a watcher immediately when a reactive dependency changes, e.g. to invalidate a cache. This can be achieved using `flush: 'sync'`. However, this setting should be used with caution, as it can lead to problems with performance and data consistency if multiple properties are being updated at the same time.
 
   The return value is a handle function that can be called to stop the effect from running again.
 
@@ -309,8 +310,8 @@ Runs a function immediately while reactively tracking its dependencies and re-ru
   ```
 
 - **См. также:**
-  - [Guide - Watchers](/guide/essentials/watchers.html#watcheffect)
-  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [Guide - Watchers](/guide/essentials/watchers#watcheffect)
+  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -360,6 +361,7 @@ Watches one or more reactive data sources and invokes a callback function when t
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
+    once?: boolean // default: false (3.4+)
   }
   ```
 
@@ -383,9 +385,10 @@ Watches one or more reactive data sources and invokes a callback function when t
   The third optional argument is an options object that supports the following options:
 
   - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core.html#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging).
+  - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
+  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
+  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`once`**: run the callback only once. The watcher is automatically stopped after the first callback run. <sup class="vt-badge" data-text="3.4+" />
 
   Compared to [`watchEffect()`](#watcheffect), `watch()` allows us to:
 
@@ -453,11 +456,35 @@ Watches one or more reactive data sources and invokes a callback function when t
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
+  })
+  ```
+
+  Stopping the watcher:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // when the watcher is no longer needed:
+  stop()
+  ```
+
+  Side effect cleanup:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
   })
   ```
 
 - **См. также:**
 
-  - [Guide - Watchers](/guide/essentials/watchers.html)
-  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [Guide - Watchers](/guide/essentials/watchers)
+  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging)

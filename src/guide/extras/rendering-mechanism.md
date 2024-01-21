@@ -12,6 +12,7 @@ outline: deep
 
 Виртуальный DOM (VDOM) - это концепция программирования, при которой идеальное, или "виртуальное", представление пользовательского интерфейса хранится в памяти и синхронизируется с "реальным" DOM. Впервые эта концепция была применена в [React](https://reactjs.org/), а затем адаптирована во многих других фреймворках с различными реализациями, включая Vue.
 
+
 Виртуальный DOM - это скорее паттерн, чем конкретная технология, поэтому не существует единой канонической реализации. Мы можем проиллюстрировать эту идею на простом примере:
 
 ```js
@@ -80,11 +81,11 @@ const vnode = {
 </div>
 ```
 
-[Проверить в обозревателе шаблонов](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PlxuICA8ZGl2PmJhcjwvZGl2PlxuICA8ZGl2Pnt7IGR5bmFtaWMgfX08L2Rpdj5cbjwvZGl2PiIsInNzciI6ZmFsc2UsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[Проверить в обозревателе шаблонов](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
 
 Разделы `foo` и `bar` статичны - повторное создание vnode и их изменение при каждом рендере не требуется. Компилятор Vue автоматически выносит вызовы создания vnode из функции рендеринга и повторно использует одни и те же vnode при каждом рендеринге. Кроме того, рендерер может полностью пропустить их изменение, когда замечает, что старый и новый vnode - это один и тот же vnode.
 
-Кроме того, при наличии достаточного количества последовательных статических элементов они сжимаются в один "статический vnode", который содержит обычную HTML-строку для всех этих узлов ([пример](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Эти статические узлы монтируются путем непосредственного указания `innerHTML`. Они также кэшируют соответствующие им DOM-узлы при первоначальном монтировании - если тот же самый фрагмент контента будет повторно использован в другом месте приложения, новые DOM-узлы будут созданы с помощью встроенной функции `cloneNode()`, что очень эффективно.
+Кроме того, при наличии достаточного количества последовательных статических элементов они сжимаются в один "статический vnode", который содержит обычную HTML-строку для всех этих узлов ([пример](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Эти статические узлы монтируются путем непосредственного указания `innerHTML`. Они также кэшируют соответствующие им DOM-узлы при первоначальном монтировании - если тот же самый фрагмент контента будет повторно использован в другом месте приложения, новые DOM-узлы будут созданы с помощью встроенной функции `cloneNode()`, что очень эффективно.
 
 ### Флаги патчей {#patch-flags}
 
@@ -185,7 +186,7 @@ div (корневой блок)
 
 ### Влияние на гидрацию SSR {#impact-on-ssr-hydration}
 
-И флаги патчей, и сплющивание деревьев также значительно улучшают работу Vue в [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration):
+И флаги патчей, и сплющивание деревьев также значительно улучшают работу Vue в [SSR Hydration](/guide/scaling-up/ssr#client-hydration):
 
 - При гидрации отдельных элементов могут использоваться быстрые пути, основанные на флаге патча соответствующего vnode.
 

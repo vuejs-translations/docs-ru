@@ -2,16 +2,16 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const message = ref('Hello World!')
+    const message = ref('Привет Мир!')
     const isRed = ref(true)
-    const color = ref('green')
+    const color = ref('зеленый')
 
     function toggleRed() {
       isRed.value = !isRed.value
     }
 
     function toggleColor() {
-      color.value = color.value === 'green' ? 'blue' : 'green'
+      color.value = color.value === 'зеленый' ? 'синий' : 'зеленый'
     }
 
     return {
