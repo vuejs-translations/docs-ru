@@ -9,22 +9,22 @@ onMounted(() => {
 })
 </script>
 
-# Production Error Code Reference {#error-reference}
+# Руководство по кодам ошибок {#error-reference}
 
-## Runtime Errors {#runtime-errors}
+## Ошибки в runtime {#runtime-errors}
 
-In production builds, the 3rd argument passed to the following error handler APIs will be a short code instead of the full information string:
+В production, третий аргумент, переданный в обработчик ошибок, будет содержать код вместо полного указания источника. Это относится к следующим API:
 
 - [`app.config.errorHandler`](/api/application#app-config-errorhandler)
 - [`onErrorCaptured`](/api/composition-api-lifecycle#onerrorcaptured) (Composition API)
 - [`errorCaptured`](/api/options-lifecycle#errorcaptured) (Options API)
 
-The following table maps the codes to their original full information strings.
+Эта таблица содержит соотношения кодов источников ошибок и оригинальных текстов.
 
 <ErrorsTable kind="runtime" :errors="data.runtime" :highlight="highlight" />
 
-## Compiler Errors {#compiler-errors}
+## Ошибки компиляции {#compiler-errors}
 
-The following table provides a mapping of the production compiler error codes to their original messages.
+Эта таблица содержит соотношения кодов ошибок компиляции и оригинальных сообщений.
 
 <ErrorsTable kind="compiler" :errors="data.compiler" :highlight="highlight" />
