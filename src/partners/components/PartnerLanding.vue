@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import PartnerHero from './PartnerHero.vue'
 import PartnerCard from './PartnerCard.vue'
 import PartnerList from './PartnerList.vue'
@@ -7,11 +7,11 @@ import PartnerJoin from './PartnerJoin.vue'
 import data from '../partners.json'
 import { Partner } from './type'
 
-let spotlighted = $ref<Partner | null>(null)
+const spotlighted = ref<Partner | null>(null)
 
 onMounted(() => {
   const plat = (data as Partner[]).filter((d) => d.platinum)
-  spotlighted = plat[Math.floor(Math.random() * plat.length)]
+  spotlighted.value = plat[Math.floor(Math.random() * plat.length)]
 })
 </script>
 
@@ -29,7 +29,7 @@ onMounted(() => {
 
     <div class="featured">
       <h2>Featured Partners</h2>
-      <PartnerList :filter="(p) => p.platinum" />
+      <PartnerList :filter="(p) => p.platinum" showLinkToAll />
       <a class="browse-all" href="./all.html">Browse All Partners</a>
     </div>
 
@@ -83,7 +83,8 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .spotlight-inner, .featured {
+  .spotlight-inner,
+  .featured {
     padding: 36px 28px;
   }
 }

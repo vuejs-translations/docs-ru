@@ -1,6 +1,6 @@
-# Computed Property {#computed-property}
+# Вычисляемые свойства {#computed-property}
 
-Let's keep building on top of the todo list from the last step. Here, we've already added a toggle functionality to each todo. This is done by adding a `done` property to each todo object, and using `v-model` to bind it to a checkbox:
+Продолжим работу над списком задач, составленным на предыдущем шаге. Здесь мы уже добавили функцию переключения для каждой задачи. Для этого мы добавили свойство `done` к каждому объекту todo и с помощью `v-model` привязали его к чекбоксу:
 
 ```vue-html{2}
 <li v-for="todo in todos">
@@ -9,11 +9,11 @@ Let's keep building on top of the todo list from the last step. Here, we've alre
 </li>
 ```
 
-The next improvement we can add is to be able to hide already completed todos. We already have a button that toggles the `hideCompleted` state. But how do we render different list items based on that state?
+Следующее улучшение, которое мы можем добавить - это возможность скрывать уже выполненные задания. У нас уже есть кнопка, которая переключает состояние `hideCompleted`. Но как отобразить различные элементы списка в зависимости от этого состояния?
 
 <div class="options-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">computed property</a>. We can declare a property that is reactively computed from other properties using the `computed` option:
+Встречайте <a target="_blank" href="/guide/essentials/computed.html">вычисляемое свойство</a>. Мы можем объявить свойство, которое реактивно вычисляется из других свойств с помощью параметра `computed`:
 
 <div class="sfc">
 
@@ -22,7 +22,7 @@ export default {
   // ...
   computed: {
     filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
+      // возвращает отфильтрованные по `this.hideCompleted` задачи
     }
   }
 }
@@ -36,7 +36,7 @@ createApp({
   // ...
   computed: {
     filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
+      // возвращает отфильтрованные по `this.hideCompleted` задачи
     }
   }
 })
@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. We can create a computed ref that computes its `.value` based on other reactive data sources:
+Встречайте <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Мы можем создать вычисляемый ref, который вычисляет свое `.value` на основе других реактивных источников данных:
 
 <div class="sfc">
 
@@ -60,8 +60,8 @@ const todos = ref([
 ])
 
 const filteredTodos = computed(() => {
-  // return filtered todos based on
-  // `todos.value` & `hideCompleted.value`
+  // возвращает задачи, отфильтрованные по
+  // `todos.value` и `hideCompleted.value`
 })
 ```
 
@@ -79,8 +79,8 @@ createApp({
     ])
 
     const filteredTodos = computed(() => {
-      // return filtered todos based on
-      // `todos.value` & `hideCompleted.value`
+      // возвращает задачи, отфильтрованные по
+      // `todos.value` и `hideCompleted.value`
     })
 
     return {
@@ -99,6 +99,6 @@ createApp({
 + <li v-for="todo in filteredTodos">
 ```
 
-A computed property tracks other reactive state used in its computation as dependencies. It caches the result and automatically updates it when its dependencies change.
+Вычисляемое свойство отслеживает другие реактивные состояния, используемые при его вычислении, в качестве зависимостей. Оно кэширует результат и автоматически обновляет его при изменении зависимостей.
 
-Now, try to add the `filteredTodos` computed property and implement its computation logic! If implemented correctly, checking off a todo when hiding completed items should instantly hide it as well.
+Теперь попробуйте добавить вычисляемое свойство `filteredTodos` и реализовать его логику! Если все реализовано правильно, то отметив задачу как выполненную, она должна быть мгновенно скрыта из списка задач.
