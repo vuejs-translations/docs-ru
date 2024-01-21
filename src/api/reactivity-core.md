@@ -27,7 +27,7 @@
 
   Если в качестве значения ref-объекта передается объект, то он становится глубоко реактивным с помощью функции [reactive()](#reactive). Это также означает, что если объект содержит вложенные ссылки, то они будут глубоко развернуты.
 
-  Чтобы избежать глубокой реактивности, используйте вместо этого [`shallowRef()`](./reactivity-advanced.html#shallowref)
+  Чтобы избежать глубокой реактивности, используйте вместо этого [`shallowRef()`](./reactivity-advanced#shallowref)
 
 - **Пример:**
 
@@ -111,9 +111,9 @@
   ```
 
 - **См. также:**
-  - [Руководство - Вычисляемые свойства](/guide/essentials/computed.html)
-  - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+  - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
+  - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
+  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
   - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
