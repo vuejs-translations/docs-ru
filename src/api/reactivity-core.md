@@ -3,8 +3,8 @@
 :::info См. также
 Чтобы лучше понять основы реактивности, рекомендуется прочитать следующие разделы руководства:
 
-- [Основы реактивности](/guide/essentials/reactivity-fundamentals.html) (с предпочтением API, установленным на Composition API)
-- [Подробнее о реактивности](/guide/extras/reactivity-in-depth.html)
+- [Основы реактивности](/guide/essentials/reactivity-fundamentals) (с предпочтением API, установленным на Composition API)
+- [Подробнее о реактивности](/guide/extras/reactivity-in-depth)
 :::
 
 ## ref() {#ref}
@@ -35,13 +35,14 @@
   const count = ref(0)
   console.log(count.value) // 0
 
-  count.value++
+  count.value = 1
   console.log(count.value) // 1
   ```
 
 - **См. также:**
-  - [Руководство - Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [Руководство - Типизация `ref()`](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
+  - [Руководство - Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [Руководство - Типизация `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
+
 
 ## computed() {#computed}
 
@@ -52,7 +53,8 @@
   ```ts
   // только для чтения
   function computed<T>(
-    getter: () => T,
+
+    getter: (oldValue: T | undefined) => T,
     // см. ссылку "Отладка вычисляемых свойств" ниже
     debuggerOptions?: DebuggerOptions
   ): Readonly<Ref<Readonly<T>>>
@@ -60,7 +62,7 @@
   // с возможностью записи
   function computed<T>(
     options: {
-      get: () => T
+      get: (oldValue: T | undefined) => T
       set: (value: T) => void
     },
     debuggerOptions?: DebuggerOptions
@@ -112,6 +114,7 @@
   - [Руководство - Вычисляемые свойства](/guide/essentials/computed.html)
   - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth.html#computed-debugging)
   - [Руководство - Типизация `computed()`](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+  - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
@@ -129,7 +132,7 @@
 
   Следует также отметить, что развертывание ref-объекта не выполняется, когда к нему обращаются как к элементу реактивного массива или нативной коллекции, например `Map`.
 
-  Чтобы избежать глубокого преобразования и сохранить реактивность только на корневом уровне, используйте вместо этого [shallowReactive()](./reactivity-advanced.html#shallowreactive).
+  Чтобы избежать глубокого преобразования и сохранить реактивность только на корневом уровне, используйте вместо этого [shallowReactive()](./reactivity-advanced#shallowreactive).
 
   Возвращаемый объект и его вложенные объекты обернуты в [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) и **не** равны исходным объектам. Рекомендуется работать исключительно с реактивным прокси объектом и не полагаться на исходный объект.
 
@@ -187,8 +190,8 @@
   ```
 
 - **См. также:**
-  - [Руководство - Основы реактивности](/guide/essentials/reactivity-fundamentals.html)
-  - [Руководство - Типизация `reactive()`](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+  - [Руководство - Основы реактивности](/guide/essentials/reactivity-fundamentals)
+  - [Руководство - Типизация `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -206,7 +209,7 @@
 
   Прокси readonly является глубоким: все вложенные свойства, к которым осуществляется доступ, также будут доступны только для чтения. Он также имеет такое же поведение при разворачивании, как и `reactive()`, за исключением того, что разворачиваемые значения также становятся доступны только для чтения.
 
-  Чтобы избежать глубокого разворачивания, используйте вместо этого [shallowReadonly()](./reactivity-advanced.html#shallowreadonly).
+  Чтобы избежать глубокого разворачивания, используйте вместо этого [shallowReadonly()](./reactivity-advanced#shallowreadonly).
 
 - **Пример:**
 
@@ -256,7 +259,7 @@
 
   Второй аргумент - необязательный объект параметров, который может быть использован для настройки времени срабатывания эффекта или для отладки зависимостей эффекта.
 
-  По умолчанию наблюдатели запускаются непосредственно перед рендерингом компонента. Установка значения `flush: 'post'` отложит выполнение наблюдателя до окончания рендеринга компонента. Более подробная информация приведена в разделе [Время срабатывания](/guide/essentials/watchers.html#callback-flush-timing). В редких случаях может потребоваться немедленный запуск наблюдателя при изменении реактивной зависимости, например, при инвалидации кэша. Этого можно добиться, используя `flush: 'sync'`. Однако эту настройку следует использовать с осторожностью, поскольку она может привести к проблемам с производительностью и согласованностью данных при одновременном обновлении нескольких свойств.
+  По умолчанию наблюдатели запускаются непосредственно перед рендерингом компонента. Установка значения `flush: 'post'` отложит выполнение наблюдателя до окончания рендеринга компонента. Более подробная информация приведена в разделе [Время срабатывания](/guide/essentials/watchers#callback-flush-timing). В редких случаях может потребоваться немедленный запуск наблюдателя при изменении реактивной зависимости, например, при инвалидации кэша. Этого можно добиться, используя `flush: 'sync'`. Однако эту настройку следует использовать с осторожностью, поскольку она может привести к проблемам с производительностью и согласованностью данных при одновременном обновлении нескольких свойств.
 
   Возвращаемое значение является функцией обработчика, которую можно вызвать, чтобы остановить повторный запуск эффекта.
 
@@ -309,8 +312,8 @@
   ```
 
 - **См. также:**
-  - [Руководство - Наблюдатели](/guide/essentials/watchers.html)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [Руководство - Наблюдатели](/guide/essentials/watchers)
+  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -360,6 +363,7 @@
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
+    once?: boolean // default: false (3.4+)
   }
   ```
 
@@ -383,9 +387,10 @@
   Третий необязательный аргумент представляет собой объект параметров, поддерживающий следующие настройки:
 
   - **`immediate`**: запуск обратного вызова сразу при создании наблюдателя. При первом вызове старое значение будет `undefined`.
-  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких изменениях. См. раздел [Глубокие наблюдатели](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: настройка времени срабатывания обратного вызова. Смотрите [Время срабатывания](/guide/essentials/watchers.html#callback-flush-timing) и [`watchEffect()`](/api/reactivity-core.html#watcheffect).
-  - **`onTrack / onTrigger`**: отладка зависимостей наблюдателя. См. раздел [Отладка наблюдателей](/guide/extras/reactivity-in-depth.html#watcher-debugging).
+  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких изменениях. См. раздел [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
+  - **`flush`**: настройка времени срабатывания обратного вызова. Смотрите [Время срабатывания](/guide/essentials/watchers#callback-flush-timing) и [`watchEffect()`](/api/reactivity-core#watcheffect).
+  - **`onTrack / onTrigger`**: отладка зависимостей наблюдателя. См. раздел [Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`once`**: run the callback only once. The watcher is automatically stopped after the first callback run. <sup class="vt-badge" data-text="3.4+" />
 
   По сравнению с [`watchEffect()`](#watcheffect), `watch()` позволяет нам:
 
@@ -453,11 +458,36 @@
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
+  })
+  ```
+
+  Stopping the watcher:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // when the watcher is no longer needed:
+  stop()
+  ```
+
+  Side effect cleanup:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
   })
   ```
 
 - **См. также:**
 
-  - [Руководство - Наблюдатели](/guide/essentials/watchers.html)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [Руководство - Наблюдатели](/guide/essentials/watchers)
+  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+

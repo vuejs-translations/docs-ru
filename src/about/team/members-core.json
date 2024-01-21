@@ -111,30 +111,24 @@
   {
     "name": "Jinjiang",
     "title": "Developer",
+    "company": "Bit",
+    "companyLink": "https://bit.dev",
     "projects": [
+      {
+        "label": "vuejs-translations",
+        "url": "https://github.com/vuejs-translations"
+      },
       {
         "label": "cn.vuejs.org",
         "url": "https://cn.vuejs.org"
-      },
-      {
-        "label": "vue-a11y-utils",
-        "url": "https://github.com/jinjiang/vue-a11y-utils"
-      },
-      {
-        "label": "vue-mark-display",
-        "url": "https://github.com/jinjiang/vue-mark-display"
-      },
-      {
-        "label": "mark2slides",
-        "url": "https://github.com/jinjiang/mark2slides"
-      },
-      {
-        "label": "vue-keyboard-over",
-        "url": "https://github.com/jinjiang/vue-keyboard-over"
       }
     ],
     "location": "Singapore",
     "languages": ["Chinese", "English"],
+    "website": {
+      "label": "jinjiang.me",
+      "url": "http://jinjiang.me"
+    },
     "socials": {
       "github": "jinjiang",
       "twitter": "zhaojinjiang"
@@ -277,27 +271,6 @@
     "sponsor": true
   },
   {
-    "name": "Damian Dulisz",
-    "title": "Consultant",
-    "projects": [
-      {
-        "label": "news.vuejs.org",
-        "url": "https://news.vuejs.org"
-      },
-      {
-        "label": "vue-multiselect",
-        "url": "https://vue-multiselect.js.org/"
-      }
-    ],
-    "location": "Wrocław, Poland",
-    "languages": ["Polish", "English"],
-    "socials": {
-      "github": "shentao",
-      "twitter": "DamianDulisz"
-    },
-    "sponsor": true
-  },
-  {
     "name": "GU Yiling",
     "title": "Senior web developer",
     "company": "Baidu, inc.",
@@ -347,7 +320,7 @@
       },
       {
         "label": "vuequery",
-        "url": "https://github.com/vuequery"
+        "url": "https://github.com/phanan/vuequery"
       },
       {
         "label": "vue-google-signin-button",
@@ -408,7 +381,7 @@
       "github": "ota-meshi",
       "twitter": "omoteota"
     },
-    "sponsor": "https://github.com/sponsors/ota-meshi"
+    "sponsor": true
   },
   {
     "name": "Kia King Ishii",
@@ -431,26 +404,28 @@
       "github": "kiaking",
       "twitter": "KiaKing85"
     },
-    "sponsor": "https://github.com/sponsors/kiaking"
+    "sponsor": true
   },
   {
     "name": "Anthony Fu",
     "title": "Open Sourceror",
+    "company": "NuxtLabs",
+    "companyLink": "https://nuxtlabs.com/",
     "projects": [
-      {
-        "label": "composition-api",
-        "url": "https://github.com/vuejs/composition-api"
-      },
       {
         "label": "VueUse",
         "url": "https://github.com/vueuse/vueuse"
+      },
+      {
+        "label": "Vitesse",
+        "url": "https://github.com/antfu/vitesse"
       },
       {
         "label": "vue-demi",
         "url": "https://github.com/vueuse/vue-demi"
       }
     ],
-    "location": "Shanghai, China",
+    "location": "Paris, France",
     "languages": ["Chinese", "English"],
     "socials": {
       "github": "antfu",
@@ -460,7 +435,7 @@
       "label": "https://antfu.me/",
       "url": "https://antfu.me/"
     },
-    "sponsor": "https://github.com/sponsors/antfu"
+    "sponsor": true
   },
   {
     "name": "HcySunYang",
@@ -483,8 +458,12 @@
     "title": "Developer",
     "projects": [
       {
-        "label": "volar",
-        "url": "https://github.com/johnsoncodehk/volar"
+        "label": "@vue/language-tools",
+        "url": "https://github.com/vuejs/language-tools"
+      },
+      {
+        "label": "Volar.js",
+        "url": "https://github.com/volarjs"
       }
     ],
     "location": "Hong Kong, China",
@@ -493,7 +472,7 @@
       "github": "johnsoncodehk",
       "twitter": "johnsoncodehk"
     },
-    "sponsor": "https://github.com/sponsors/johnsoncodehk"
+    "sponsor": true
   },
   {
     "name": "Carlos Rodrigues",
@@ -510,6 +489,23 @@
       "github": "pikax",
       "twitter": "pikax_dev"
     },
-    "sponsor": "https://github.com/sponsors/pikax"
+    "sponsor": true
+  },
+  {
+    "name": "Divyansh Singh",
+    "title": "Developer",
+    "projects": [
+      {
+        "label": "vitepress",
+        "url": "https://github.com/vuejs/vitepress"
+      }
+    ],
+    "location": "India",
+    "languages": ["English", "Hindi"],
+    "socials": {
+      "github": "brc-dd",
+      "twitter": "_brc_dd"
+    },
+    "sponsor": true
   }
 ]

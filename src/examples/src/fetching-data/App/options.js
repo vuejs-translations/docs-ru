@@ -8,12 +8,12 @@ export default {
   }),
 
   created() {
-    // fetch on init
+    // загрузка при инициализации
     this.fetchData()
   },
 
   watch: {
-    // re-fetch whenever currentBranch changes
+    // повторная загрузка при изменении currentBranch
     currentBranch: 'fetchData'
   },
 
