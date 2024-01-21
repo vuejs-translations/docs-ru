@@ -23,7 +23,7 @@
   Если в корневом компоненте приложения не указана опция `template` или `render`, Vue попытается использовать `innerHTML` смонтированного элемента в качестве шаблона.
 
   :::warning Примечание о безопасности
-  Используйте только те источники шаблонов, которым можно доверять. Не используйте в качестве шаблона содержимое, предоставленное пользователем. Подробнее об этом см. в [Руководстве по безопасности](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates).
+  Используйте только те источники шаблонов, которым можно доверять. Не используйте в качестве шаблона содержимое, предоставленное пользователем. Подробнее об этом см. в [Руководстве по безопасности](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates).
   :::
 
 ## render {#render}
@@ -58,8 +58,8 @@
   Предварительно скомпилированные шаблоны, например, в однофайловых компонентах, компилируются в опцию `render` во время сборки. Если в компоненте присутствуют и `render`, и `template`, то `render` будет иметь больший приоритет.
 
 - **См. также:**
-  - [Механизм отрисовки](/guide/extras/rendering-mechanism.html)
-  - [Render-функции](/guide/extras/render-function.html)
+  - [Механизм отрисовки](/guide/extras/rendering-mechanism)
+  - [Render-функции](/guide/extras/render-function)
 
 ## compilerOptions {#compileroptions}
 
@@ -80,6 +80,33 @@
 
 - **Подробности:**
 
-  Эта опция конфигурации учитывается только при использовании полной сборки (т.е. автономного `vue.js`, который может компилировать шаблоны в браузере). Она поддерживает те же опции, что и на уровне приложения [app.config.compilerOptions](/api/application.html#app-config-compileroptions), и имеет более высокий приоритет для текущего компонента.
+  Эта опция конфигурации учитывается только при использовании полной сборки (т.е. автономного `vue.js`, который может компилировать шаблоны в браузере). Она поддерживает те же опции, что и на уровне приложения [app.config.compilerOptions](/api/application#app-config-compileroptions), и имеет более высокий приоритет для текущего компонента.
 
-- **См. также:** [app.config.compilerOptions](/api/application.html#app-config-compileroptions)
+- **См. также:** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+
+## slots<sup class="vt-badge ts"/> {#slots}
+
+An option to assist with type inference when using slots programmatically in render functions. Only supported in 3.3+.
+
+- **Details**
+
+  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+
+  ```ts
+  import { SlotsType } from 'vue'
+
+  defineComponent({
+    slots: Object as SlotsType<{
+      default: { foo: string; bar: number }
+      item: { data: number }
+    }>,
+    setup(props, { slots }) {
+      expectType<
+        undefined | ((scope: { foo: string; bar: number }) => any)
+      >(slots.default)
+      expectType<undefined | ((scope: { data: number }) => any)>(
+        slots.item
+      )
+    }
+  })
+  ```

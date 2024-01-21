@@ -1,8 +1,8 @@
-# Options: Misc {#options-misc}
+# Опции: Прочее {#options-misc}
 
 ## name {#name}
 
-Explicitly declare a display name for the component.
+Явное объявление отображаемого имени компонента.
 
 - **Тип:**
 
@@ -14,39 +14,39 @@ Explicitly declare a display name for the component.
 
 - **Подробности:**
 
-  The name of a component is used for the following:
+  Имя компонента используется в следующих целях:
 
-  - Recursive self-reference in the component's own template
-  - Display in Vue DevTools' component inspection tree
-  - Display in warning component traces
+  - Рекурсивная ссылка на себя в собственном шаблоне компонента
+  - Отображение в дереве компонентов Vue DevTools
+  - Отображение в трассировке предупреждений компонентов
 
-  When you use Single-File Components, the component already infers its own name from the filename. For example, a file named `MyComponent.vue` will have the inferred display name "MyComponent".
+  При использовании однофайловых компонентов компонент уже сам определяет свое имя на основе имени файла. Например, файл с именем `MyComponent.vue` будет иметь предполагаемое отображаемое имя "MyComponent".
 
-  Another case is that when a component is registered globally with [`app.component`](/api/application.html#app-component), the global ID is automatically set as its name.
+  Другой случай - при глобальной регистрации компонента с помощью [`app.component`](/api/application#app-component) в качестве его имени автоматически устанавливается глобальный ID.
 
-  The `name` option allows you to override the inferred name, or to explicitly provide a name when no name can be inferred (e.g. when not using build tools, or an inlined non-SFC component).
+  Опция `name` позволяет переопределить подставляемое имя или явно указать имя, если оно не может быть подставлено (например, если не используются средства сборки или встраивается не однофайловый компонент).
 
-  There is one case where `name` is explicitly necessary: when matching against cacheable components in [`<KeepAlive>`](/guide/built-ins/keep-alive.html) via its `include / exclude` props.
+  Есть один случай, когда `name` явно необходим: при сопоставлении с кэшируемыми компонентами в [`<KeepAlive>`](/guide/built-ins/keep-alive) через его входные параметры `include / exclude`.
 
   :::tip Совет
-  Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name even when used with `<KeepAlive>`.
+  Начиная с версии 3.2.34, однофайловый компонент, использующий `<script setup>`, будет автоматически определять опцию `name` на основе имени файла, что избавляет от необходимости вручную объявлять имя даже при использовании `<KeepAlive>`.
   :::
 
 ## inheritAttrs {#inheritattrs}
 
-Controls whether the default component attribute fallthrough behavior should be enabled.
+Управляет тем, должно ли быть включено стандартное поведение наследования атрибутов компонента.
 
 - **Тип:**
 
   ```ts
   interface ComponentOptions {
-    inheritAttrs?: boolean // default: true
+    inheritAttrs?: boolean // по умолчанию: true
   }
   ```
 
 - **Подробности:**
 
-  By default, parent scope attribute bindings that are not recognized as props will "fallthrough". This means that when we have a single-root component, these bindings will be applied to the root element of the child component as normal HTML attributes. When authoring a component that wraps a target element or another component, this may not always be the desired behavior. By setting `inheritAttrs` to `false`, this default behavior can be disabled. The attributes are available via the `$attrs` instance property and can be explicitly bound to a non-root element using `v-bind`.
+  По умолчанию атрибуты из родительской области видимости, не распознанные как входные параметры, будут "проваливаться". Это означает, что при наличии компонента с одним корнем эти привязки будут применяться к корневому элементу дочернего компонента как обычные HTML атрибуты. При создании компонента, который оборачивает элемент или другой компонент, такое поведение может быть не всегда желательным. Установив для параметра `inheritAttrs` значение `false`, можно отключить это поведение по умолчанию. Атрибуты доступны через свойство экземпляра `$attrs` и могут быть явно привязаны к некорневому элементу с помощью `v-bind`.
 
 - **Пример:**
 
@@ -76,18 +76,15 @@ Controls whether the default component attribute fallthrough behavior should be 
   </div>
   <div class="composition-api">
 
-  When declaring this option in a component that uses `<script setup>`, a separate `<script>` block is necessary:
+  При объявлении этой опции в компоненте, использующем `<script setup>`, вы можете использовать макрос [`defineOptions`](/api/sfc-script-setup#defineoptions):
 
   ```vue
-  <script>
-  export default {
-    inheritAttrs: false
-  }
-  </script>
-
   <script setup>
   defineProps(['label', 'value'])
   defineEmits(['input'])
+  defineOptions({
+    inheritAttrs: false
+  })
   </script>
 
   <template>
@@ -104,11 +101,11 @@ Controls whether the default component attribute fallthrough behavior should be 
 
   </div>
 
-- **См. также:** [Fallthrough Attributes](/guide/components/attrs.html)
+- **См. также:** [Передача обычных атрибутов](/guide/components/attrs)
 
 ## components {#components}
 
-An object that registers components to be made available to the component instance.
+Объект для регистрации компонентов, которые должны быть доступны экземпляру компонента.
 
 - **Тип:**
 
@@ -126,19 +123,19 @@ An object that registers components to be made available to the component instan
 
   export default {
     components: {
-      // shorthand
+      // сокращение
       Foo,
-      // register under a different name
+      // зарегистрировать под другим именем
       RenamedBar: Bar
     }
   }
   ```
 
-- **См. также:** [Component Registration](/guide/components/registration.html)
+- **См. также:** [Регистрация компонентов](/guide/components/registration)
 
 ## directives {#directives}
 
-An object that registers directives to be made available to the component instance.
+Объеке для регистрирации директив, которые должны быть доступны экземпляру компонента.
 
 - **Тип:**
 
@@ -153,7 +150,7 @@ An object that registers directives to be made available to the component instan
   ```js
   export default {
     directives: {
-      // enables v-focus in template
+      // директива v-focus доступна в шаблоне
       focus: {
         mounted(el) {
           el.focus()
@@ -167,6 +164,6 @@ An object that registers directives to be made available to the component instan
   <input v-focus>
   ```
 
-  A hash of directives to be made available to the component instance.
+  Хэш директив, которые должны быть доступны экземпляру компонента.
 
-- **См. также:** [Custom Directives](/guide/reusability/custom-directives.html)
+- **См. также:** [Пользовательские директивы](/guide/reusability/custom-directives)
