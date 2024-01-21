@@ -8,7 +8,7 @@
 
 Используется для анотации входного параметра с более сложными типами по сравнению с runtime определением входных параметров
 
-- **Пример:**
+- **Пример**
 
   ```ts
   import type { PropType } from 'vue'
@@ -108,7 +108,7 @@ Extract prop types from a runtime props options object. The extracted types are 
 
 Используется для расширения типа экземпляра компонента с целью поддержки пользовательских глобальных свойств.
 
-- **Пример:**
+- **Пример**
 
   ```ts
   import axios from 'axios'
@@ -125,13 +125,13 @@ Extract prop types from a runtime props options object. The extracted types are 
   Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties)
+- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
 Используется для расширения типа опций компонента с целью поддержки пользовательских опций.
 
-- **Пример:**
+- **Пример**
 
   ```ts
   import { Route } from 'vue-router'
@@ -147,13 +147,13 @@ Extract prop types from a runtime props options object. The extracted types are 
   Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-custom-options)
+- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
 Используется для расширения разрешенных входных параметров в TSX с целью использования недекларированных входных параметров на элементах TSX.
 
-- **Пример:**
+- **Пример**
 
   ```ts
   declare module 'vue' {
@@ -178,7 +178,7 @@ Extract prop types from a runtime props options object. The extracted types are 
 
 Используется для расширения допустимых значений в привязках свойств стиля.
 
-- **Пример:**
+- **Пример**
 
   Разрешить любое пользовательское CSS-свойство
 
