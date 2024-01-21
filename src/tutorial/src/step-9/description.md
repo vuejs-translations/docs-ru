@@ -1,21 +1,21 @@
-# Lifecycle and Template Refs {#lifecycle-and-template-refs}
+# Жизненный цикл и ссылки в шаблонах {#lifecycle-and-template-refs}
 
-So far, Vue has been handling all the DOM updates for us, thanks to reactivity and declarative rendering. However, inevitably there will be cases where we need to manually work with the DOM.
+До сих пор Vue выполнял все обновления DOM за нас, благодаря реактивности и декларативному рендерингу. Однако могут быть случаи, когда нам потребуется работать с DOM вручную.
 
-We can request a **template ref** - i.e. a reference to an element in the template - using the <a target="_blank" href="/api/built-in-special-attributes.html#ref">special `ref` attribute</a>:
+Мы можем обратиться к **template ref**, который является ссылкой на элемент в шаблоне, используя <a target="_blank" href="/api/built-in-special-attributes#ref">специальный атрибут `ref`</a>:
 
 ```vue-html
-<p ref="p">hello</p>
+<p ref="pElementRef">привет</p>
 ```
 
 <div class="composition-api">
 
-To access the ref, we need to declare<span class="html"> and expose</span> a ref with matching name:
+Для доступа к ссылке необходимо объявить ее с соответствующим именем<span class="html">и вернуть</span>:
 
 <div class="sfc">
 
 ```js
-const p = ref(null)
+const pElementRef = ref(null)
 ```
 
 </div>
@@ -23,19 +23,19 @@ const p = ref(null)
 
 ```js
 setup() {
-  const p = ref(null)
+  const pElementRef = ref(null)
 
   return {
-    p
+    pElementRef
   }
 }
 ```
 
 </div>
 
-Notice the ref is initialized with `null` value. This is because the element doesn't exist yet when <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> is executed. The template ref is only accessible after the component is **mounted**.
+Обратите внимание, что ссылка инициализирована значением `null`. Это связано с тем, что элемент еще не существует, когда выполняется <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span>. Ссылка на шаблон доступна только после того, как компонент **смонтирован**.
 
-To run code after mount, we can use the `onMounted()` function:
+Для выполнения кода после монтирования, мы можем использовать функцию `onMounted()`:
 
 <div class="sfc">
 
@@ -43,7 +43,7 @@ To run code after mount, we can use the `onMounted()` function:
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  // component is now mounted.
+  // компонент теперь смонтирован.
 })
 ```
 
@@ -56,7 +56,7 @@ import { onMounted } from 'vue'
 createApp({
   setup() {
     onMounted(() => {
-      // component is now mounted.
+      // компонент теперь смонтирован.
     })
   }
 })
@@ -67,16 +67,16 @@ createApp({
 
 <div class="options-api">
 
-The element will be exposed on `this.$refs` as `this.$refs.p`. However, you can only access it after the component is **mounted**.
+Элемент будет доступен в `this.$refs` как `this.$refs.pElementRef`. Однако доступ к нему возможен только после того, как компонент будет **смонтирован**.
 
-To run code after mount, we can use the `mounted` option:
+Для выполнения кода после монтирования, мы можем использовать параметр `mounted`:
 
 <div class="sfc">
 
 ```js
 export default {
   mounted() {
-    // component is now mounted.
+    // компонент теперь смонтирован.
   }
 }
 ```
@@ -87,7 +87,7 @@ export default {
 ```js
 createApp({
   mounted() {
-    // component is now mounted.
+    // компонент теперь смонтирован.
   }
 })
 ```
@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-This is called a **lifecycle hook** - it allows us to register a callback to be called at certain times of the component's lifecycle. There are other hooks such as <span class="options-api">`created` and `updated`</span><span class="composition-api">`onUpdated` and `onUnmounted`</span>. Check out the <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Lifecycle Diagram</a> for more details.
+Это называется **хуком жизненного цикла**, позволяющего нам указать функцию обратного вызова в определенные моменты жизненного цикла компонента. Также существуют другие хуки, такие как <span class="options-api">`created` и `updated`</span><span class="composition-api">`onUpdated` и `onUnmounted`</span>. Чтобы узнать больше, просмотрите <a target="_blank" href="/guide/essentials/lifecycle#lifecycle-diagram">Диаграмму жизненного цикла</a>.
 
-Now, try to add <span class="options-api">a `mounted`</span><span class="composition-api">an `onMounted`</span> hook, access the `<p>` via <span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>, and perform some direct DOM operations on it (e.g. changing its `textContent`).
+Теперь попробуйте добавить хук <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> для того, чтобы получить доступ к `<p>` через <span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span> и выполните любые операции с DOM (например, измените его `textContent`).

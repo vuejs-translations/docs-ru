@@ -93,7 +93,7 @@
   })
   ```
 
-- **См. также:** [Руководство - Render-функции - Создание Vnodes](/guide/extras/render-function.html#creating-vnodes)
+- **См. также:** [Руководство - Render-функции - Создание Vnodes](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
@@ -199,7 +199,7 @@
   <div class="composition-api">
 
   ```js
-  const { h, resolveComponent } = Vue
+  import { h, resolveComponent } from 'vue'
 
   export default {
     setup() {
@@ -216,7 +216,7 @@
   <div class="options-api">
 
   ```js
-  const { h, resolveComponent } = Vue
+  import { h, resolveComponent } from 'vue'
 
   export default {
     render() {
@@ -228,7 +228,7 @@
 
   </div>
 
-- **См. также:** [Руководство - Render-функции - Компоненты](/guide/extras/render-function.html#components)
+- **См. также:** [Руководство - Render-функции - Компоненты](/guide/extras/render-function#components)
 
 ## resolveDirective() {#resolvedirective}
 
@@ -248,7 +248,7 @@
 
   Если директива не найдена, то выдается runtime предупреждение, а функция вернёт значение `undefined`.
 
-- **См. также:** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function.html#custom-directives)
+- **См. также:** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withDirectives() {#withdirectives}
 
@@ -296,11 +296,12 @@
   ])
   ```
 
-- **См. также:** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function.html#custom-directives)
+- **См. также:** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withModifiers() {#withmodifiers}
 
-Добавление встроенных модификаторов [`v-on`](/guide/essentials/event-handling.html#event-modifiers) в функцию-обработчик события.
+Добавление встроенных модификаторов [`v-on`](/guide/essentials/event-handling#event-modifiers) в функцию-обработчик события.
+
 
 - **Тип:**
 
@@ -314,11 +315,12 @@
   import { h, withModifiers } from 'vue'
 
   const vnode = h('button', {
-    // эквивалент of v-on.stop.prevent
+
+    // эквивалент v-on:click.stop.prevent
     onClick: withModifiers(() => {
       // ...
     }, ['stop', 'prevent'])
   })
   ```
 
-- **См. также:** [Руководство - Render-функции - Модификаторы cобытий](/guide/extras/render-function.html#event-modifiers)
+- **См. также:** [Руководство - Render-функции - Модификаторы cобытий](/guide/extras/render-function#event-modifiers)
