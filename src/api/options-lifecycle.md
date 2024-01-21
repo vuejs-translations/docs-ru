@@ -1,12 +1,12 @@
-# Options: Lifecycle {#options-lifecycle}
+# Опции: Жизненный цикл {#options-lifecycle}
 
 :::info См. также
-For shared usage of lifecycle hooks, see [Guide - Lifecycle Hooks](/guide/essentials/lifecycle)
+Чтобы узнать о совместном использовании хуков жизненного цикла, см. [Руководство - Хуки жизненного цикла](/guide/essentials/lifecycle)
 :::
 
 ## beforeCreate {#beforecreate}
 
-Called when the instance is initialized.
+Вызывается при инициализации экземпляра.
 
 - **Тип:**
 
@@ -18,13 +18,13 @@ Called when the instance is initialized.
 
 - **Подробности:**
 
-  Called immediately when the instance is initialized, after props resolution, before processing other options such as `data()` or `computed`.
+  Вызывается непосредственно при инициализации экземпляра, после разрешения входных параметров, перед обработкой других опций, таких как `data()` или `computed`.
 
-  Note that the `setup()` hook of Composition API is called before any Options API hooks, even `beforeCreate()`.
+  Обратите внимание, что хук `setup()` API Composition вызывается раньше всех хуков API Options, даже `beforeCreate()`.
 
 ## created {#created}
 
-Called after the instance has finished processing all state-related options.
+Вызывается после того, как экземпляр завершил обработку всех опций, связанных с состоянием.
 
 - **Тип:**
 
@@ -36,11 +36,11 @@ Called after the instance has finished processing all state-related options.
 
 - **Подробности:**
 
-  When this hook is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
+  При вызове этого хука уже настроены: реактивные данные, вычисляемые свойства, методы и наблюдатели. Однако этап монтирования еще не начался, и свойство `$el` пока не будет доступно.
 
 ## beforeMount {#beforemount}
 
-Called right before the component is to be mounted.
+Вызывается непосредственно перед монтированием компонента.
 
 - **Тип:**
 
@@ -52,13 +52,13 @@ Called right before the component is to be mounted.
 
 - **Подробности:**
 
-  When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
+  Когда вызывается этот хук, компонент завершил установку своего реактивного состояния, но ни один из узлов DOM еще не был создан. Он собирается впервые выполнить свой эффект рендеринга DOM.
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 ## mounted {#mounted}
 
-Called after the component has been mounted.
+Вызывается после того, как компонент был смонтирован.
 
 - **Тип:**
 
@@ -70,19 +70,19 @@ Called after the component has been mounted.
 
 - **Подробности:**
 
-  A component is considered mounted after:
+  Компонент считается смонтированным после:
 
-  - All of its synchronous child components have been mounted (does not include async components or components inside `<Suspense>` trees).
+  - Все его синхронные дочерние компоненты были смонтированы (не включая асинхронные компоненты или компоненты внутри деревьев `<Suspense>`).
 
-  - Its own DOM tree has been created and inserted into the parent container. Note it only guarantees that the component's DOM tree is in-document if the application's root container is also in-document.
+  - Его собственное DOM-дерево было создано и вставлено в родительский контейнер. Обратите внимание, что DOM-дерево компонента находится в документе только в том случае, если корневой контейнер приложения также находится в документе.
 
-  This hook is typically used for performing side effects that need access to the component's rendered DOM, or for limiting DOM-related code to the client in a [server-rendered application](/guide/scaling-up/ssr).
+  Этот хук обычно используется для выполнения сайд эффектов, требующих доступа к отрисованному DOM дереву компонента, или для ограничения кода, связанного с DOM, на клиенте в [server-rendered application](/guide/scaling-up/ssr).
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 ## beforeUpdate {#beforeupdate}
 
-Called right before the component is about to update its DOM tree due to a reactive state change.
+Вызывается непосредственно перед тем, как компонент собирается обновить свое DOM дерево в результате изменения реактивного состояния.
 
 - **Тип:**
 
@@ -94,13 +94,13 @@ Called right before the component is about to update its DOM tree due to a react
 
 - **Подробности:**
 
-  This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
+  Этот хук можно использовать для доступа к состоянию DOM до того, как Vue обновит DOM. Также, изменять состояние компонента внутри этого хука безопасно.
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 ## updated {#updated}
 
-Called after the component has updated its DOM tree due to a reactive state change.
+Вызывается после того, как компонент обновил свое DOM дерево в результате изменения реактивного состояния.
 
 - **Тип:**
 
@@ -112,19 +112,19 @@ Called after the component has updated its DOM tree due to a reactive state chan
 
 - **Подробности:**
 
-  A parent component's updated hook is called after that of its child components.
+  Хук updated родительского компонента вызывается после обновления дочерних компонентов.
 
-  This hook is called after any DOM update of the component, which can be caused by different state changes. If you need to access the updated DOM after a specific state change, use [nextTick()](/api/general#nexttick) instead.
+  Этот хук вызывается после любого обновления DOM компонента, которое может быть вызвано различными изменениями состояния. Если вам необходимо получить доступ к обновленному DOM после конкретного изменения состояния, используйте вместо этого [nextTick()](/api/general#nexttick).
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
   :::warning Предупреждение
-  Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
+  Не изменяйте состояние компонента в хуке updated - это может привести к бесконечному циклу обновления!
   :::
 
 ## beforeUnmount {#beforeunmount}
 
-Called right before a component instance is to be unmounted.
+Вызывается непосредственно перед тем, как экземпляр компонента должен быть размонтирован.
 
 - **Тип:**
 
@@ -136,13 +136,13 @@ Called right before a component instance is to be unmounted.
 
 - **Подробности:**
 
-  When this hook is called, the component instance is still fully functional.
+  При вызове этого хука экземпляр компонента остается полностью работоспособным.
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 ## unmounted {#unmounted}
 
-Called after the component has been unmounted.
+Вызывается после того, как компонент был размонтирован.
 
 - **Тип:**
 
@@ -154,19 +154,19 @@ Called after the component has been unmounted.
 
 - **Подробности:**
 
-  A component is considered unmounted after:
+  Компонент считается размонтированным после того, как:
 
-  - All of its child components have been unmounted.
+  - Все его дочерние компоненты были размонтированы.
 
-  - All of its associated reactive effects (render effect and computed / watchers created during `setup()`) have been stopped.
+  - Все связанные с ним реактивные эффекты (эффект отрисовки и эффекты вычисляемых свойств / наблюдателей, созданные в процессе `setup()`) были остановлены.
 
-  Use this hook to clean up manually created side effects such as timers, DOM event listeners or server connections.
+  Используйте этот хук для очистки созданных вручную сайд эффектов, таких как таймеры, слушатели DOM событий или соединения с серверном.
 
-  **This hook is not called during server-side rendering.**
+  **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 ## errorCaptured {#errorcaptured}
 
-Called when an error propagating from a descendant component has been captured.
+Вызывается, если была перехвачена ошибка, распространяющаяся от компонента-потомка.
 
 - **Тип:**
 
@@ -183,41 +183,41 @@ Called when an error propagating from a descendant component has been captured.
 
 - **Подробности:**
 
-  Errors can be captured from the following sources:
+  Ошибки могут быть получены из следующих источников:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - Отрисовка компонента
+  - Слушатели событий
+  - Хуки жизненного цикла
+  - функция `setup()`
+  - Наблюдатели
+  - Хуки пользовательских директив
+  - Хуки transition
 
-  The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  Хук получает три аргумента: ошибку, экземпляр компонента, вызвавшего ошибку, и информационную строку, указывающую тип источника ошибки.
 
   :::tip
   In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
   :::
 
-  You can modify component state in `errorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
+  Для отображения состояния ошибки пользователю можно модифицировать состояние компонента в `errorCaptured()`. Однако важно, чтобы в состоянии ошибки не отображалось исходное содержимое, вызвавшее ошибку, иначе компонент будет брошен в бесконечный цикл отрисовки.
 
-  The hook can return `false` to stop the error from propagating further. See error propagation details below.
+  Хук может возвращать `false`, чтобы остановить дальнейшее распространение ошибки. Подробнее о распространении ошибок см. ниже.
 
-  **Error Propagation Rules**
+  **Правила распространения ошибок**
 
-  - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - По умолчанию все ошибки по-прежнему отправляются на уровень приложения [`app.config.errorHandler`](/api/application#app-config-errorhandler), если он определен, так что эти ошибки по-прежнему могут быть сообщены аналитическому сервису в одном месте.
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
+  - Если в цепочке наследования или родительской цепочке компонента существует несколько хуков `errorCaptured`, то все они будут вызваны при одной и той же ошибке в порядке снизу вверх. Это похоже на механизм "всплытия" (от англ. bubbling) нативных событий DOM.
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
+  - Если сам хук `errorCaptured` выбрасывает ошибку, то и эта ошибка, и исходная захваченная ошибка отправляются в `app.config.errorHandler`.
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
+  - Хук `errorCaptured` может возвращать значение `false`, чтобы предотвратить дальнейшее распространение ошибки. По сути, это означает, что "эта ошибка была обработана и должна быть проигнорирована". Это предотвратит вызов дополнительных хуков `errorCaptured` или `app.config.errorHandler` для этой ошибки.
 
 ## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
-Called when a reactive dependency has been tracked by the component's render effect.
+Вызывается, когда реактивная зависимость была отслежена эффектом отрисовки компонента.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Этот хук предназначен только для разработки и не вызывается при рендеринге на стороне сервера.**
 
 - **Тип:**
 
@@ -234,13 +234,13 @@ Called when a reactive dependency has been tracked by the component's render eff
   }
   ```
 
-- **См. также:** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **См. также:** [Подробнее о реактивности](/guide/extras/reactivity-in-depth)
 
 ## renderTriggered <sup class="vt-badge dev-only" /> {#rendertriggered}
 
-Called when a reactive dependency triggers the component's render effect to be re-run.
+Вызывается, когда реактивная зависимость вызывает повторный запуск эффекта рендеринга компонента.
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**Этот хук предназначен только для разработки и не вызывается при рендеринге на стороне сервера.**
 
 - **Тип:**
 
@@ -260,13 +260,13 @@ Called when a reactive dependency triggers the component's render effect to be r
   }
   ```
 
-- **См. также:** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **См. также:** [Подробнее о реактивности](/guide/extras/reactivity-in-depth)
 
 ## activated {#activated}
 
-Called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Вызывается после вставки экземпляра компонента в DOM как части дерева, кэшируемого при помощи [`<KeepAlive>`](/api/built-in-components#keepalive).
 
-**This hook is not called during server-side rendering.**
+**Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 - **Тип:**
 
@@ -276,13 +276,13 @@ Called after the component instance is inserted into the DOM as part of a tree c
   }
   ```
 
-- **См. также:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также:** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
-Called after the component instance is removed from the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components#keepalive).
+Вызывается после удаления экземпляра компонента из DOM как части дерева, кэшируемого при помощи [`<KeepAlive>`](/api/built-in-components#keepalive).
 
-**This hook is not called during server-side rendering.**
+**Этот хук не вызывается во время отрисовки на стороне сервера.**
 
 - **Тип:**
 
@@ -292,11 +292,11 @@ Called after the component instance is removed from the DOM as part of a tree ca
   }
   ```
 
-- **См. также:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также:** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 
-Async function to be resolved before the component instance is to be rendered on the server.
+Асинхронная функция, которая должна быть разрешена перед отрисовкой экземпляра компонента на сервере.
 
 - **Тип:**
 
@@ -308,7 +308,9 @@ Async function to be resolved before the component instance is to be rendered on
 
 - **Подробности:**
 
-  If the hook returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
+  Если хук возвращает Promise, то серверный рендерер будет ждать разрешения Promise перед отрисовкой компонента.
+
+  Этот хук вызывается только во время отрисовки на стороне сервера и может быть использован получения данных только на стороне сервера.
 
   This hook is only called during server-side rendering can be used to perform server-only data fetching.
 
@@ -322,19 +324,19 @@ Async function to be resolved before the component instance is to be rendered on
       }
     },
     async serverPrefetch() {
-      // component is rendered as part of the initial request
-      // pre-fetch data on server as it is faster than on the client
+      // компонент отображается как часть первоначального запроса
+      // предварительное получение данных на сервере происходит быстрее, чем на клиенте
       this.data = await fetchOnServer(/* ... */)
     },
     async mounted() {
       if (!this.data) {
-        // if data is null on mount, it means the component
-        // is dynamically rendered on the client. Perform a
-        // client-side fetch instead.
+        // если при монтировании данные равны null, это означает, что компонент
+        // динамически отображается на клиенте. Вместо этого выполните
+        // получение данных на стороне клиента.
         this.data = await fetchOnClient(/* ... */)
       }
     }
   }
   ```
 
-- **См. также:** [Server-Side Rendering](/guide/scaling-up/ssr)
+- **См. также:** [Отрисовка на стороне сервера](/guide/scaling-up/ssr)
