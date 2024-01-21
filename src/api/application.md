@@ -4,17 +4,17 @@
 
 Создает экземпляр приложения.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function createApp(rootComponent: Component, rootProps?: object): App
   ```
 
-- **Подробности:**
+- **Подробности**
 
   Первым аргументом является корневой компонент. Вторым необязательным аргументом являются входные параметры, которые должны быть переданы корневому компоненту.
 
-- **Пример:**
+- **Пример**
 
   Со встроенным корневым компонентом:
 
@@ -35,7 +35,7 @@
   const app = createApp(App)
   ```
 
-- **См. также:** [Руководство - Создание Vue приложения](/guide/essentials/application)
+- **См. также** [Руководство - Создание Vue приложения](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
@@ -45,7 +45,7 @@
 
 Монтирует экземпляр приложения в элемент контейнера.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -53,7 +53,7 @@
   }
   ```
 
-- **Подробности:**
+- **Подробности**
 
   Аргумент может быть либо фактическим элементом DOM, либо селектором CSS (будет использоваться первый соответствующий элемент). Аргумент вернет корневой экземпляр компонента.
 
@@ -63,7 +63,7 @@
 
   Следует отметить, что для каждого экземпляра приложения `mount()` может быть вызван только один раз.
 
-- **Пример:**
+- **Пример**
 
   ```js
   import { createApp } from 'vue'
@@ -82,7 +82,7 @@
 
 Размонтирует смонтированный экземпляр приложения, запуская хуки жизненного цикла размонтирования для всех компонентов в дереве компонентов приложения.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -94,7 +94,7 @@
 
 Регистрирует глобальный компонент, если передается строка имени и определение компонента, или возвращает уже зарегистрированный компонент, если передается только имя.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -103,7 +103,7 @@
   }
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   import { createApp } from 'vue'
@@ -119,13 +119,13 @@
   const MyComponent = app.component('my-component')
   ```
 
-- **См. также:** [Регистрация компонента](/guide/components/registration)
+- **См. также** [Регистрация компонента](/guide/components/registration)
 
 ## app.directive() {#app-directive}
 
 Регистрирует глобальную пользовательскую директиву, если передается строка имени и определение директивы, или извлекает уже зарегистрированную, если передается только имя.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -134,7 +134,7 @@
   }
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   import { createApp } from 'vue'
@@ -157,13 +157,13 @@
   const myDirective = app.directive('my-directive')
   ```
 
-- **См. также:** [Пользовательские директивы](/guide/reusability/custom-directives)
+- **См. также** [Пользовательские директивы](/guide/reusability/custom-directives)
 
 ## app.use() {#app-use}
 
 Установка [плагина](/guide/reusability/plugins).
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -171,7 +171,7 @@
   }
   ```
 
-- **Подробности:**
+- **Подробности**
 
   В качестве первого аргумента ожидается плагин, а в качестве второго - необязательные параметры плагина.
 
@@ -179,7 +179,7 @@
 
   Если `app.use()` вызывается для одного и того же плагина несколько раз, то плагин будет установлен только один раз.
 
-- **Пример:**
+- **Пример**
 
   ```js
   import { createApp } from 'vue'
@@ -192,7 +192,7 @@
   app.use(MyPlugin)
   ```
 
-- **См. также:** [Плагины](/guide/reusability/plugins)
+- **См. также** [Плагины](/guide/reusability/plugins)
 
 ## app.mixin() {#app-mixin}
 
@@ -204,7 +204,7 @@
 Для повторного использования логики предпочтите [Composables](/guide/reusability/composables).
 :::
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -212,11 +212,11 @@
   }
   ```
 
-## app.version {#app-version}
+## app.provide() {#app-provide}
 
-Provide a value that can be injected in all descendant components within the application.
+Предоставляет данные, которые могут быть внедрены любыми компонентами-потомками приложения.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface App {
@@ -224,11 +224,11 @@ Provide a value that can be injected in all descendant components within the app
   }
   ```
 
-- **Details**
+- **Подробности**
 
-  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+Ожидает ключ внедрения в качестве первого аргумента и передаваемое значение в качестве второго. Возвращает экземпляр приложения.
 
-- **Example**
+- **Пример**
 
   ```js
   import { createApp } from 'vue'
@@ -238,7 +238,7 @@ Provide a value that can be injected in all descendant components within the app
   app.provide('message', 'hello')
   ```
 
-  Inside a component in the application:
+  Внутри компонента приложения:
 
   <div class="composition-api">
 
@@ -266,14 +266,14 @@ Provide a value that can be injected in all descendant components within the app
 
   </div>
 
-- **See also**
+- **См. также**
   - [Provide / Inject](/guide/components/provide-inject)
   - [App-level Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
 ## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
 
-Execute a callback with the current app as injection context.
+  Выполняет переданную функцию в контексте текущего экземпляра приложения.
 
 - **Type**
 
@@ -285,9 +285,9 @@ Execute a callback with the current app as injection context.
 
 - **Details**
 
-  Expects a callback function and runs the callback immediately. During the synchronous call of the callback, `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
+  Принимает коллбэк-функцию, которую сразу же выполняет. Так как вызов происходит синхронно, вызовы `inject()` могут внедрять значения, предоставленные в текущем приложении, даже при отсутствии активного экземпляра компонента. Возвращаемое значение коллбэка будет возвращено и этой функцией.
 
-- **Example**
+- **Пример**
 
   ```js
   import { inject } from 'vue'
@@ -303,9 +303,9 @@ Execute a callback with the current app as injection context.
 
 ## app.version {#app-version}
 
-Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
+Передаёт версию Vue, с который был создан этот экземпляр приложения. Это может быть полезно при разработке [плагинов](/guide/reusability/plugins), где часть логики варьируется в зависимости от версии Vue.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface App {
@@ -313,7 +313,7 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **Пример:**
+- **Пример**
 
   Выполнение проверки версии внутри плагина:
 
@@ -328,7 +328,7 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **См. также:** [Глобальное API - version](/api/general#version)
+- **См. также** [Глобальное API - version](/api/general#version)
 
 ## app.config {#app-config}
 
@@ -346,7 +346,7 @@ console.log(app.config)
 
 Назначает глобальный обработчик для не перехваченных ошибок, возникающих в приложении.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface AppConfig {
@@ -360,7 +360,7 @@ console.log(app.config)
   }
   ```
 
-- **Подробности:**
+- **Подробности**
 
   Обработчик ошибки получает три аргумента: ошибку, экземпляр компонента, в котором произошла ошибка, и строку, определяющую тип источника ошибки.
 
@@ -374,8 +374,9 @@ console.log(app.config)
   - Хуки пользовательских директив
   - Хуки анимаций
 
-  :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  :::tip Совет
+  
+  В production, третий аргумент (`info`) будет содержать код вместо полного названия источника. Соответствие кода и названия можно найти в [Руководстве по кодам ошибок](/error-reference/#runtime-errors).
   :::
 
 - **Пример**
@@ -390,7 +391,7 @@ console.log(app.config)
 
 Назначение пользовательского обработчика предупреждений, возникающих во время выполнения Vue.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface AppConfig {
@@ -402,7 +403,7 @@ console.log(app.config)
   }
   ```
 
-- **Подробности:**
+- **Подробности**
 
   В качестве первого аргумента обработчик предупреждения получает сообщение о предупреждении, в качестве второго - экземпляр исходного компонента, в качестве третьего - trace строку компонента.
 
@@ -412,7 +413,7 @@ console.log(app.config)
   Предупреждения работают только во время разработки, поэтому в рабочем режиме эта конфигурация игнорируется
   :::
 
-- **Пример:**
+- **Пример**
 
   ```js
   app.config.warnHandler = (msg, instance, trace) => {
@@ -424,9 +425,9 @@ console.log(app.config)
 
 Установите значение `true`, чтобы включить отслеживание производительности компонентов при инициализации, компиляции, отрисовке и исправлениях в devtool панели браузера perfomance/timeline . Работает только в режиме разработки и в браузерах, поддерживающих API [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark).
 
-- **Тип:** `boolean`
+- **Тип** `boolean`
 
-- **См. также:** [Руководство - Производительность](/guide/best-practices/performance)
+- **См. также** [Руководство - Производительность](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
@@ -444,15 +445,15 @@ console.log(app.config)
 
 Определяет метод проверки для распознавания нативных пользовательских элементов.
 
-- **Тип:** `(tag: string) => boolean`
+- **Тип** `(tag: string) => boolean`
 
-- **Подробности:**
+- **Подробности**
 
   Должен возвращать `true`, если тег должен рассматриваться как нативный пользовательский элемент. Для совпавшего тега Vue отобразит его как пользовательский элемент, а не попытается разрешить его как компонент Vue.
 
   Нативные HTML и SVG теги в этой функции указывать не нужно - парсер Vue распознает их автоматически.
 
-- **Пример:**
+- **Пример**
 
   ```js
   // рассматривать все теги, начинающиеся с 'ion-', как пользовательские элементы
@@ -461,17 +462,17 @@ console.log(app.config)
   }
   ```
 
-- **См. также:** [Vue и Веб-компоненты](/guide/extras/web-components)
+- **См. также** [Vue и Веб-компоненты](/guide/extras/web-components)
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
 Настраивает поведение обработки символов пробела в шаблоне.
 
-- **Тип:** `'condense' | 'preserve'`
+- **Тип** `'condense' | 'preserve'`
 
-- **По умолчанию:** `'condense'`
+- **По умолчанию** `'condense'`
 
-- **Подробности:**
+- **Подробности**
 
   Vue удаляет / сжимает пробельные символы в шаблонах для получения более эффективного компилированного вывода. По умолчанию используется стратегия "condense" со следующим поведением:
 
@@ -481,7 +482,7 @@ console.log(app.config)
 
   Установка этого параметра в значение `'preserve'` отключает (2) и (3).
 
-- **Пример:**
+- **Пример**
 
   ```js
   app.config.compilerOptions.whitespace = 'preserve'
@@ -491,15 +492,15 @@ console.log(app.config)
 
 Настраивает разделители, используемые для интерполяции текста в шаблоне.
 
-- **Тип:** `[string, string]`
+- **Тип** `[string, string]`
 
-- **По умолчанию:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
+- **По умолчанию** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
-- **Подробности:**
+- **Подробности**
 
   Обычно это используется для того, чтобы избежать конфликта с серверными фреймворками, которые также используют синтаксис mustache (синтаксиса из двойных фигурных скобок).
 
-- **Пример:**
+- **Пример**
 
   ```js
   // Разделители изменены на шаблонный стиль строки ES6
@@ -510,15 +511,15 @@ console.log(app.config)
 
 Настройка обработки HTML-комментариев в шаблонах.
 
-- **Тип:** `boolean`
+- **Тип** `boolean`
 
-- **По умолчанию:** `false`
+- **По умолчанию** `false`
 
-- **Подробности:**
+- **Подробности**
 
   По умолчанию Vue будет удалять комментарии в production сборке. Установка этого значения в `true` заставит Vue сохранять комментарии даже в продакшене. Во время разработки комментарии всегда сохраняются. Эта опция обычно используется, когда Vue используется с другими библиотеками, которые полагаются на HTML-комментарии.
 
-- **Пример:**
+- **Пример**
 
   ```js
   app.config.compilerOptions.comments = true
@@ -528,7 +529,7 @@ console.log(app.config)
 
 Объект, который может использоваться для регистрации глобальных свойств, доступ к которым может быть получен для любого экземпляра компонента внутри приложения.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface AppConfig {
@@ -536,13 +537,13 @@ console.log(app.config)
   }
   ```
 
-- **Подробности:**
+- **Подробности**
 
   Это замена `Vue.prototype` из Vue 2, которой больше нет в Vue 3. Как и все глобальное, его следует использовать осторожно.
 
   Если глобальное свойство конфликтует с собственным свойством компонента, то собственное свойство компонента будет иметь более высокий приоритет.
 
-- **Использование:**
+- **Использование**
 
   ```js
   app.config.globalProperties.msg = 'привет'
@@ -558,13 +559,13 @@ console.log(app.config)
   }
   ```
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
 Объект для определения стратегий объединения для пользовательских опций компонентов.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   interface AppConfig {
@@ -574,7 +575,7 @@ console.log(app.config)
   type OptionMergeFunction = (to: unknown, from: unknown) => any
   ```
 
-- **Подробности:**
+- **Подробности**
 
   Некоторые плагины/библиотеки добавляют поддержку пользовательских опций компонентов (путем инъекции глобальных миксинов). Для таких опций может потребоваться специальная логика объединения, когда одна и та же опция должна быть "смержена" из нескольких источников (например, миксинов или наследования компонентов).
 
@@ -582,7 +583,7 @@ console.log(app.config)
 
   Функция стратегии слияния получает в качестве первого и второго аргументов значение этой опции, определенной для родительского и дочернего экземпляров соответственно.
 
-- **Пример:**
+- **Пример**
 
   ```js
   const app = createApp({
@@ -609,4 +610,4 @@ console.log(app.config)
   // logs 'Привет Vue'
   ```
 
-- **См. также:** [Экземпляр компонента - `$options`](/api/component-instance#options)
+- **См. также** [Экземпляр компонента - `$options`](/api/component-instance#options)
