@@ -50,9 +50,9 @@
   }
   ```
 
-  Обратите внимание, что в приведенном примере предоставленное для внедрения свойство `msg` НЕ будет реактивным. Подробнее об этом см. в разделе [Работа с реактивностью](/guide/components/provide-inject.html#working-with-reactivity).
+  Обратите внимание, что в приведенном примере предоставленное для внедрения свойство `msg` НЕ будет реактивным. Подробнее об этом см. в разделе [Работа с реактивностью](/guide/components/provide-inject#working-with-reactivity).
 
-- **См. также:** [Provide / Inject](/guide/components/provide-inject.html)
+- **См. также:** [Provide / Inject](/guide/components/provide-inject)
 
 ## inject {#inject}
 
@@ -88,7 +88,7 @@
 
   Внедряемое свойство будет иметь значение `undefined`, если не было предоставлено для внедрения ни соответствующего свойства, ни значения по умолчанию.
 
-  Обратите внимание, что внедряемые зависимости НЕ являются реактивными. Это сделано намеренно. Однако если внедряемое значение является реактивным объектом, то свойства этого объекта остаются реактивными. Подробнее об этом см. в разделе [Работа с реактивностью] (/guide/components/provide-inject.html#working-with-reactivity).
+  Обратите внимание, что внедряемые зависимости НЕ являются реактивными. Это сделано намеренно. Однако если внедряемое значение является реактивным объектом, то свойства этого объекта остаются реактивными. Подробнее об этом см. в разделе [Работа с реактивностью](/guide/components/provide-inject#working-with-reactivity).
 
 - **Пример:**
 
@@ -167,7 +167,7 @@
   }
   ```
 
-- **См. также:** [Provide / Inject](/guide/components/provide-inject.html)
+- **См. также:** [Provide / Inject](/guide/components/provide-inject)
 
 ## mixins {#mixins}
 
@@ -188,7 +188,7 @@
   Хуки миксинов вызываются в том порядке, в котором они были предоставлены, и вызываются перед собственными хуками компонента.
 
   :::warning Больше не рекомендуется
-  Во Vue 2 миксины были основным механизмом для создания многократно используемых фрагментов логики компонентов. Хотя миксины продолжают поддерживаться в Vue 3, [Composition API](/guide/reusability/composables.html) теперь является предпочтительным подходом для повторного использования кода между компонентами.
+  Во Vue 2 миксины были основным механизмом для создания многократно используемых фрагментов логики компонентов. Хотя миксины продолжают поддерживаться в Vue 3, [Composition API](/guide/reusability/composables) теперь является предпочтительным подходом для повторного использования кода между компонентами.
   :::
 
 - **Пример:**
@@ -231,7 +231,7 @@
 
   Однако `extends` и `mixins` выражают разные цели. Опция `mixins` используется в основном для компоновки функциональных блоков, в то время как `extends` в основном связана с наследованием.
 
-  Как и в случае с `mixins`, любые варианты будут объединены с использованием соответствующей стратегии слияния.
+  Как и в случае с `mixins`, любые варианты (кроме `setup()`) будут объединены с использованием соответствующей стратегии слияния.
 
 - **Пример:**
 
@@ -243,3 +243,24 @@
     ...
   }
   ```
+
+  :::warning Not Recommended for Composition API
+  `extends` is designed for Options API and does not handle the merging of the `setup()` hook.
+
+  In Composition API, the preferred mental model for logic reuse is "compose" over "inheritance". If you have logic from a component that needs to be reused in another one, consider extracting the relevant logic into a [Composable](/guide/reusability/composables#composables).
+
+  If you still intend to "extend" a component using Composition API, you can call the base component's `setup()` in the extending component's `setup()`:
+
+  ```js
+  import Base from './Base.js'
+  export default {
+    extends: Base,
+    setup(props, ctx) {
+      return {
+        ...Base.setup(props, ctx),
+        // local bindings
+      }
+    }
+  }
+  ```
+  :::

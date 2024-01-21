@@ -7,12 +7,12 @@ export default {
   },
   setup() {
     const searchQuery = ref('')
-    const gridColumns = ['name', 'power']
+    const gridColumns = ['имя', 'сила']
     const gridData = [
-      { name: 'Chuck Norris', power: Infinity },
-      { name: 'Bruce Lee', power: 9000 },
-      { name: 'Jackie Chan', power: 7000 },
-      { name: 'Jet Li', power: 8000 }
+      { name: 'Чак Норис', power: Infinity },
+      { name: 'Брюс Ли', power: 9000 },
+      { name: 'Джеки Чан', power: 7000 },
+      { name: 'Джет Ли', power: 8000 }
     ]
 
     return {

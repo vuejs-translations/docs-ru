@@ -8,7 +8,7 @@ outline: deep
 
 ## Наследование атрибутов {#attribute-inheritance}
 
-Обычный атрибут для компонента — атрибут или слушатель события `v-on`, который передаётся в компонент, но не имеет соответствующего свойства в [props](./props) или [emits](./events.html#declaring-emitted-events). Частыми примерами подобного являются атрибуты `class`, `style`, и `id`.
+Обычный атрибут для компонента — атрибут или слушатель события `v-on`, который передаётся в компонент, но не имеет соответствующего свойства в [props](./props) или [emits](./events#declaring-emitted-events). Частыми примерами подобного являются атрибуты `class`, `style`, и `id`.
 
 Если в компоненте один корневой элемент, то обычные атрибуты будут добавляться к этому элементу автоматически. Например, есть компонент `<MyButton>` со следующим шаблоном:
 
@@ -79,17 +79,13 @@ outline: deep
 
 <div class="composition-api">
 
-Если вы используете `<script setup>`, вам необходимо объявить этот параметр с помощью отдельного, обычного блока `<script>`:
+ Since 3.3 you can also use [`defineOptions`](/api/sfc-script-setup#defineoptions) directly in `<script setup>`:
 
 ```vue
-<script>
-// используйте обычный <script> для объявления параметров
-export default {
-  inheritAttrs: false
-}
-</script>
-
 <script setup>
+defineOptions({
+  inheritAttrs: false
+})
 // ...логика настройки
 </script>
 ```
@@ -128,7 +124,7 @@ export default {
 </div>
 ```
 
-Помните, что [`v-bind` без аргумента](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) связывает все свойства объекта как атрибуты целевого элемента.
+Помните, что [`v-bind` без аргумента](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) связывает все свойства объекта как атрибуты целевого элемента.
 
 ## Наследование атрибутов при нескольких корневых элементах {#attribute-inheritance-on-multiple-root-nodes}
 

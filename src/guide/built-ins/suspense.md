@@ -101,7 +101,7 @@ const posts = await res.json()
 
 ## Обработка ошибок {#error-handling}
 
-В настоящее время `<Suspense>` не предоставляет возможности обработки ошибок через сам компонент, однако вы можете использовать опцию [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) или хук [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) для перехвата и обработки ассинхронных ошибок в родительском компоненте `<Suspense>`.
+В настоящее время `<Suspense>` не предоставляет возможности обработки ошибок через сам компонент, однако вы можете использовать опцию [`errorCaptured`](/api/options-lifecycle#errorcaptured) или хук [`onErrorCaptured()`](/api/composition-api-lifecycle#onerrorcaptured) для перехвата и обработки ассинхронных ошибок в родительском компоненте `<Suspense>`.
 
 ## Комбинирование с другими компонентами {#combining-with-other-components}
 
