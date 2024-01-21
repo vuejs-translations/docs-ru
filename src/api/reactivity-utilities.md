@@ -4,7 +4,7 @@
 
 Проверяет, является ли значение объектом ref.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function isRef<T>(r: Ref<T> | unknown): r is Ref<T>
@@ -24,13 +24,13 @@
 
 Возвращает внутреннее значение, если аргумент является ref-ссылкой, в противном случае возвращает сам аргумент. Это вспомогательная функция для `val = isRef(val) ? val.value : val`.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function unref<T>(ref: T | Ref<T>): T
   ```
 
-- **Пример:**
+- **Пример**
 
   ```ts
   function useFoo(x: number | Ref<number>) {
@@ -45,7 +45,7 @@ Can be used to normalize values / refs / getters into refs (3.3+).
 
 Может использоваться для создания ссылки на свойство исходного реактивного объекта. Созданная ref-ссылка синхронизируется с входными параметрами источника: изменение входных параметров источника приведет к обновлению ссылки, и наоборот.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   // normalization signature (3.3+)
@@ -67,7 +67,7 @@ Can be used to normalize values / refs / getters into refs (3.3+).
   type ToRef<T> = T extends Ref ? T : Ref<T>
   ```
 
-- **Пример:**
+- **Пример**
 
   Normalization signature (3.3+):
 
@@ -137,7 +137,7 @@ Normalizes values / refs / getters to values. This is similar to [unref()](#unre
 
 This can be used in [Composables](/guide/reusability/composables.html) to normalize an argument that can be either a value, a ref, or a getter.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function toValue<T>(source: T | Ref<T> | (() => T)): T
@@ -172,7 +172,7 @@ This can be used in [Composables](/guide/reusability/composables.html) to normal
 
 Преобразует реактивный объект в обычный объект, где каждое свойство результирующего объекта является ref-ссылкой, указывающей на соответствующее свойство исходного объекта. Каждая отдельная ref-ссылка создается с помощью [`toRef()`](#toref).
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function toRefs<T extends object>(
@@ -184,7 +184,7 @@ This can be used in [Composables](/guide/reusability/composables.html) to normal
   type ToRef = T extends Ref ? T : Ref<T>
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   const state = reactive({
@@ -233,7 +233,7 @@ This can be used in [Composables](/guide/reusability/composables.html) to normal
 
 Проверяет, является ли объект прокси, созданным с помощью [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](./reactivity-advanced#shallowreactive) или [`shallowReadonly()`](./reactivity-advanced#shallowreadonly).
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function isProxy(value: unknown): boolean
@@ -243,7 +243,7 @@ This can be used in [Composables](/guide/reusability/composables.html) to normal
 
 Проверяет, является ли объект прокси, созданным [`reactive()`](./reactivity-core#reactive) или [`shallowReactive()`](./reactivity-advanced#shallowreactive).
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function isReactive(value: unknown): boolean
@@ -257,7 +257,7 @@ The proxies created by [`readonly()`](./reactivity-core#readonly) and [`shallowR
 
 Прокси, созданные [`readonly()`](./reactivity-core#readonly) и [`shallowReadonly()`](./reactivity-advanced#shallowreadonly), считаются readonly, как и ref-ссылка [`computed()`](./reactivity-core#computed) без функции `set`.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function isReadonly(value: unknown): boolean

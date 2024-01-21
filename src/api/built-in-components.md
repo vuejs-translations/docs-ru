@@ -22,7 +22,7 @@ h(Transition, {
 
 Обеспечивает эффекты анимированного перехода **одного** элемента или компонента.
 
-- **Входные параметры:**
+- **Входные параметры**
 
   ```ts
   interface TransitionProps {
@@ -76,7 +76,7 @@ h(Transition, {
   }
   ```
 
-- **События:**
+- **События**
 
   - `@before-enter`
   - `@before-leave`
@@ -90,7 +90,7 @@ h(Transition, {
   - `@leave-cancelled` (только для `v-show`)
   - `@appear-cancelled`
 
-- **Пример:**
+- **Пример**
 
   Простой элемент:
 
@@ -124,13 +124,13 @@ h(Transition, {
   </Transition>
   ```
 
-- **См. также:** [Руководство - Transition](/guide/built-ins/transition)
+- **См. также** [Руководство - Transition](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
 Обеспечивает эффекты перехода для **нескольких** элементов или компонентов в списке.
 
-- **Входные параметры:**
+- **Входные параметры**
 
   `<TransitionGroup>` принимает те же параметры, что и `<Transition>`, за исключением `mode`, плюс два дополнительных параметра:
 
@@ -148,11 +148,11 @@ h(Transition, {
   }
   ```
 
-- **События:**
+- **События**
 
   `<TransitionGroup>` генерирует те же события, что и `<Transition>`.
 
-- **Подробности:**
+- **Подробности**
 
   По умолчанию `<TransitionGroup>` не создаёт DOM-элемент, но его можно задать с помощью параметра `tag`.
 
@@ -160,7 +160,7 @@ h(Transition, {
 
   `<TransitionGroup>` поддерживает анимации перемещения с помощью CSS трансформаций. Если положение потомка на экране изменится после обновления, ему будет добавлен CSS-класс (автоматически сгенерированный из атрибута `name` или заданный параметром `move-class`). Если после применения этого класса CSS-свойство `transform` возможно анимировать, элемент будет плавно перемещён в новое положение с помощью [техники FLIP](https://aerotwist.com/blog/flip-your-animations/).
 
-- **Пример:**
+- **Пример**
 
   ```vue-html
   <TransitionGroup tag="ul" name="slide">
@@ -170,13 +170,13 @@ h(Transition, {
   </TransitionGroup>
   ```
 
-- **См. также:** [Руководство - TransitionGroup](/guide/built-ins/transition-group)
+- **См. также** [Руководство - TransitionGroup](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
 Кэширует содержащиеся внутри динамически переключаемые компоненты.
 
-- **Входные параметры:**
+- **Входные параметры**
 
   ```ts
   interface KeepAliveProps {
@@ -199,7 +199,7 @@ h(Transition, {
   type MatchPattern = string | RegExp | (string | RegExp)[]
   ```
 
-- **Подробности:**
+- **Подробности**
 
   При оборачивании вокруг динамического компонента, `<KeepAlive>` кэширует неактивные экземпляры компонентов, не уничтожая их.
 
@@ -207,7 +207,7 @@ h(Transition, {
 
   При переключении компонента внутри `<KeepAlive>` будут вызываться его хуки жизненного цикла `activated` и `deactivated` соответственно, предоставляя альтернативу хукам `mounted` и `unmounted`, которые не вызываются. Это относится как к непосредственному потомку `<KeepAlive>`, так и ко всем прочим его потомкам.
 
-- **Пример:**
+- **Пример**
 
   Базовое использование:
 
@@ -263,13 +263,13 @@ h(Transition, {
   </KeepAlive>
   ```
 
-- **См. также:** [Руководство - KeepAlive](/guide/built-ins/keep-alive)
+- **См. также** [Руководство - KeepAlive](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
 Перемещает содержимое своего слота в другую часть DOM.
 
-- **Входные параметры:**
+- **Входные параметры**
 
   ```ts
   interface TeleportProps {
@@ -287,7 +287,7 @@ h(Transition, {
   }
   ```
 
-- **Пример:**
+- **Пример**
 
   Указание целевого контейнера:
 
@@ -305,13 +305,13 @@ h(Transition, {
   </Teleport>
   ```
 
-- **См. также:** [Руководство - Teleport](/guide/built-ins/teleport)
+- **См. также** [Руководство - Teleport](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
 Используется для оркестровки вложенных асинхронных зависимостей в дереве компонентов.
 
-- **Входные параметры:**
+- **Входные параметры**
 
   ```ts
   interface SuspenseProps {
@@ -319,16 +319,16 @@ h(Transition, {
   }
   ```
 
-- **События:**
+- **События**
 
   - `@resolve`
   - `@pending`
   - `@fallback`
 
-- **Подробности:**
+- **Подробности**
 
   `<Suspense>` принимает два слота: `#default` и `#fallback`. Он будет отображать содержимое `#fallback` слота во время рендеринга `#default` слота в памяти.
 
   Если он встречает асинхронные зависимости ([Асинхронные компоненты](/guide/components/async) и компоненты с [`async setup()`](/guide/built-ins/suspense#async-setup)) во время рендеринга `#default` слота, он будет ждать, пока все они не будут разрешены, прежде чем отобразить `#default` слот.
 
-- **См. также:** [Руководство - Suspense](/guide/built-ins/suspense)
+- **См. также** [Руководство - Suspense](/guide/built-ins/suspense)

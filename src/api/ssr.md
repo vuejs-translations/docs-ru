@@ -4,7 +4,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function renderToString(
@@ -13,7 +13,7 @@
   ): Promise<string>
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   import { createSSRApp } from 'vue'
@@ -43,7 +43,7 @@
 
   Большинство других SSR API, представленных на этой странице, также опционально принимают объект контекста. Доступ к объекту контекста можно получить в коде компонента с помощью помощника [useSSRContext](#usessrcontext).
 
-- **См. также:** [Руководство - Отрисовка на стороне сервера](/guide/scaling-up/ssr)
+- **См. также** [Руководство - Отрисовка на стороне сервера](/guide/scaling-up/ssr)
 
 ## renderToNodeStream() {#rendertonodestream}
 
@@ -51,7 +51,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function renderToNodeStream(
@@ -60,7 +60,7 @@
   ): Readable
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   // внутри http-обработчика Node.js
@@ -77,7 +77,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function pipeToNodeWritable(
@@ -87,7 +87,7 @@
   ): void
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   // внутри http-обработчика Node.js
@@ -100,7 +100,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function renderToWebStream(
@@ -109,7 +109,7 @@
   ): ReadableStream
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   // внутри среды с поддержкой ReadableStream
@@ -126,7 +126,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function pipeToWebWritable(
@@ -136,7 +136,7 @@
   ): void
   ```
 
-- **Пример:**
+- **Пример**
 
   Обычно используется в сочетании с [`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream):
 
@@ -155,7 +155,7 @@
 
 - **Экспортируется из `vue/server-renderer`**
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function renderToSimpleStream(
@@ -170,7 +170,7 @@
   }
   ```
 
-- **Пример:**
+- **Пример**
 
   ```js
   let res = ''
@@ -198,13 +198,13 @@
 
 Runtime API, используемый для получения объекта контекста, передаваемого в `renderToString()` или другие серверные API отрисовки.
 
-- **Тип:**
+- **Тип**
 
   ```ts
   function useSSRContext<T = Record<string, any>>(): T | undefined
   ```
 
-- **Пример:**
+- **Пример**
 
   Извлеченный контекст может быть использован для присоединения информации, необходимой для рендеринга конечного HTML (например, метаданных head).
 
