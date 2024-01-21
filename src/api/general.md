@@ -92,7 +92,7 @@
 
   </div>
 
-- **См. также:** [`this.$nextTick()`](/api/component-instance.html#nexttick)
+- **См. также:** [`this.$nextTick()`](/api/component-instance#nexttick)
 
 ## defineComponent() {#definecomponent}
 
@@ -101,9 +101,16 @@
 - **Тип:**
 
   ```ts
+  // options syntax
   function defineComponent(
-    component: ComponentOptions | ComponentOptions['setup']
+    component: ComponentOptions
   ): ComponentConstructor
+
+  // function syntax (requires 3.3+)
+  function defineComponent(
+    setup: ComponentOptions['setup'],
+    extraOptions?: ComponentOptions
+  ): () => any
   ```
 
   > Тип упрощен для удобства чтения
@@ -122,7 +129,57 @@
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Замечание о webpack Treeshaking
+  ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+
+  `defineComponent()` also has an alternative signature that is meant to be used with Composition API and [render functions or JSX](/guide/extras/render-function.html).
+
+  Instead of passing in an options object, a function is expected instead. This function works the same as the Composition API [`setup()`](/api/composition-api-setup.html#composition-api-setup) function: it receives the props and the setup context. The return value should be a render function - both `h()` and JSX are supported:
+
+  ```js
+  import { ref, h } from 'vue'
+
+  const Comp = defineComponent(
+    (props) => {
+      // use Composition API here like in <script setup>
+      const count = ref(0)
+
+      return () => {
+        // render function or JSX
+        return h('div', count.value)
+      }
+    },
+    // extra options, e.g. declare props and emits
+    {
+      props: {
+        /* ... */
+      }
+    }
+  )
+  ```
+
+  The main use case for this signature is with TypeScript (and in particular with TSX), as it supports generics:
+
+  ```tsx
+  const Comp = defineComponent(
+    <T extends string | number>(props: { msg: T; list: T[] }) => {
+      // use Composition API here like in <script setup>
+      const count = ref(0)
+
+      return () => {
+        // render function or JSX
+        return <div>{count.value}</div>
+      }
+    },
+    // manual runtime props declaration is currently still needed.
+    {
+      props: ['msg', 'list']
+    }
+  )
+  ```
+
+  In the future, we plan to provide a Babel plugin that automatically infers and injects the runtime props (like for `defineProps` in SFCs) so that the runtime props declaration can be omitted.
+
+  ### Note on webpack Treeshaking {#note-on-webpack-treeshaking}
 
   Поскольку `defineComponent()` является вызовом функции, это может выглядеть так, что вызовет побочные эффекты (на англ. side-effects) для некоторых инструментов сборки, например, webpack. Это позволит предотвратить встряхивание дерева (на англ. tree-shaking) компонента, даже если он никогда не используется.
 
@@ -134,7 +191,7 @@
 
   Обратите внимание, что это не требуется при использовании Vite, поскольку Rollup (базовый пакетный модуль, используемый Vite) достаточно умен, чтобы определить, что `defineComponent()` действительно не имеет побочных эффектов, без необходимости ручной аннотации.
 
-- **См. также:** [Руководство - Использование Vue с TypeScript](/guide/typescript/overview.html#general-usage-notes)
+- **См. также:** [Руководство - Использование Vue с TypeScript](/guide/typescript/overview#general-usage-notes)
 
 ## defineAsyncComponent() {#defineasynccomponent}
 
@@ -165,7 +222,7 @@
   }
   ```
 
-- **См. также:** [Руководство - Асинхронные компоненты](/guide/components/async.html)
+- **См. также:** [Руководство - Асинхронные компоненты](/guide/components/async)
 
 ## defineCustomElement() {#definecustomelement}
 
@@ -206,6 +263,6 @@
 
 - **См. также:**
 
-  - [Руководство - Создание пользовательских элементов с помощью Vue](/guide/extras/web-components.html#building-custom-elements-with-vue)
+  - [Руководство - Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
 
-  - Также обратите внимание, что `defineCustomElement()` требует [специальной настройки](/guide/extras/web-components.html#sfc-as-custom-element) при использовании с однофайловыми компонентами (SFC).
+  - Также обратите внимание, что `defineCustomElement()` требует [специальной настройки](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами (SFC).

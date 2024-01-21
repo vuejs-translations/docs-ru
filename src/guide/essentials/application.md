@@ -83,6 +83,8 @@ app.mount('#app')
 
 Vue станет автоматически использовать `innerHTML` контейнера в качестве шаблона, если в корневом компоненте нет указанной опции `template`.
 
+In-DOM templates are often used in applications that are [using Vue without a build step](/guide/quick-start.html#using-vue-from-cdn). They can also be used in conjunction with server-side frameworks, where the root template might be generated dynamically by the server.
+
 ## Конфигурации приложения {#app-configurations}
 
 Экземпляр приложения предоставляет объект `.config`, который позволяет настроить некоторые параметры уровня приложения, например определить обработчик ошибок на уровне приложения, который перехватывает ошибки от всех компонентов-потомков:

@@ -35,11 +35,11 @@
   const app = createApp(App)
   ```
 
-- **См. также:** [Руководство - Создание Vue приложения](/guide/essentials/application.html)
+- **См. также:** [Руководство - Создание Vue приложения](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
-Создает экземпляр приложения в режиме [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration). Используется точно так же, как `createApp()`.
+Создает экземпляр приложения в режиме [SSR Hydration](/guide/scaling-up/ssr#client-hydration). Используется точно так же, как `createApp()`.
 
 ## app.mount() {#app-mount}
 
@@ -59,7 +59,7 @@
 
   Если для компонента определен шаблон или функция рендеринга, он заменит все существующие узлы DOM внутри контейнера. В противном случае, если доступен runtime компилятор, в качестве шаблона будет использоваться `innerHTML`.
 
-  В режиме гидратации SSR гидратирует существующие узлы DOM внутри контейнера. Если имеются [несоответствия](/guide/scaling-up/ssr.html#hydration-mismatch), существующие узлы DOM будут изменены, чтобы соответствовать ожидаемому результату.
+  В режиме гидратации SSR гидратирует существующие узлы DOM внутри контейнера. Если имеются [несоответствия](/guide/scaling-up/ssr#hydration-mismatch), существующие узлы DOM будут изменены, чтобы соответствовать ожидаемому результату.
 
   Следует отметить, что для каждого экземпляра приложения `mount()` может быть вызван только один раз.
 
@@ -90,64 +90,6 @@
   }
   ```
 
-## app.provide() {#app-provide}
-
-Предоставляет значение, которое может быть внедрено во все дочерние компоненты в приложении.
-
-- **Тип:**
-
-  ```ts
-  interface App {
-    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
-  }
-  ```
-
-- **Подробности:**
-
-  Ожидает ключ инъекции в качестве первого аргумента, а предоставленное значение - в качестве второго. В итоге возвращает непосредственно сам экземпляр приложения.
-
-- **Пример:**
-
-  ```js
-  import { createApp } from 'vue'
-
-  const app = createApp(/* ... */)
-
-  app.provide('message', 'привет')
-  ```
-
-  Внутри компонента в приложении:
-
-  <div class="composition-api">
-
-  ```js
-  import { inject } from 'vue'
-
-  export default {
-    setup() {
-      console.log(inject('message')) // 'привет'
-    }
-  }
-  ```
-
-  </div>
-  <div class="options-api">
-
-  ```js
-  export default {
-    inject: ['message'],
-    created() {
-      console.log(this.message) // 'привет'
-    }
-  }
-  ```
-
-  </div>
-
-- **См. также:**
-  - [Provide / Inject](/guide/components/provide-inject.html)
-  - [App-level Provide](/guide/components/provide-inject.html#app-level-provide)
-
 ## app.component() {#app-component}
 
 Регистрирует глобальный компонент, если передается строка имени и определение компонента, или возвращает уже зарегистрированный компонент, если передается только имя.
@@ -177,7 +119,7 @@
   const MyComponent = app.component('my-component')
   ```
 
-- **См. также:** [Регистрация компонента](/guide/components/registration.html)
+- **См. также:** [Регистрация компонента](/guide/components/registration)
 
 ## app.directive() {#app-directive}
 
@@ -215,11 +157,11 @@
   const myDirective = app.directive('my-directive')
   ```
 
-- **См. также:** [Пользовательские директивы](/guide/reusability/custom-directives.html)
+- **См. также:** [Пользовательские директивы](/guide/reusability/custom-directives)
 
 ## app.use() {#app-use}
 
-Установка [плагина](/guide/reusability/plugins.html).
+Установка [плагина](/guide/reusability/plugins).
 
 - **Тип:**
 
@@ -250,7 +192,7 @@
   app.use(MyPlugin)
   ```
 
-- **См. также:** [Плагины](/guide/reusability/plugins.html)
+- **См. также:** [Плагины](/guide/reusability/plugins)
 
 ## app.mixin() {#app-mixin}
 
@@ -259,7 +201,7 @@
 :::warning Не рекомендуется
 Миксины поддерживаются в Vue 3 в основном для обратной совместимости, что связано с их широким использованием в библиотеках экосистемы. Использование миксинов, особенно глобальных, следует избегать.
 
-Для повторного использования логики предпочтите [Composables](/guide/reusability/composables.html).
+Для повторного использования логики предпочтите [Composables](/guide/reusability/composables).
 :::
 
 - **Тип:**
@@ -272,7 +214,96 @@
 
 ## app.version {#app-version}
 
-Возвращает версию Vue, с которой было создано приложение. Это полезно в [плагинах](/guide/reusability/plugins.html), где может потребоваться логика, основанная на различных версиях Vue.
+Provide a value that can be injected in all descendant components within the application.
+
+- **Type**
+
+  ```ts
+  interface App {
+    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
+  }
+  ```
+
+- **Details**
+
+  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+
+- **Example**
+
+  ```js
+  import { createApp } from 'vue'
+
+  const app = createApp(/* ... */)
+
+  app.provide('message', 'hello')
+  ```
+
+  Inside a component in the application:
+
+  <div class="composition-api">
+
+  ```js
+  import { inject } from 'vue'
+
+  export default {
+    setup() {
+      console.log(inject('message')) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+  <div class="options-api">
+
+  ```js
+  export default {
+    inject: ['message'],
+    created() {
+      console.log(this.message) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+
+- **See also**
+  - [Provide / Inject](/guide/components/provide-inject)
+  - [App-level Provide](/guide/components/provide-inject#app-level-provide)
+  - [app.runWithContext()](#app-runwithcontext)
+
+## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+
+Execute a callback with the current app as injection context.
+
+- **Type**
+
+  ```ts
+  interface App {
+    runWithContext<T>(fn: () => T): T
+  }
+  ```
+
+- **Details**
+
+  Expects a callback function and runs the callback immediately. During the synchronous call of the callback, `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
+
+- **Example**
+
+  ```js
+  import { inject } from 'vue'
+
+  app.provide('id', 1)
+
+  const injected = app.runWithContext(() => {
+    return inject('id')
+  })
+
+  console.log(injected) // 1
+  ```
+
+## app.version {#app-version}
+
+Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
 
 - **Тип:**
 
@@ -297,7 +328,7 @@
   }
   ```
 
-- **См. также:** [Глобальное API - version](/api/general.html#version)
+- **См. также:** [Глобальное API - version](/api/general#version)
 
 ## app.config {#app-config}
 
@@ -343,7 +374,11 @@ console.log(app.config)
   - Хуки пользовательских директив
   - Хуки анимаций
 
-- **Пример:**
+  :::tip
+  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  :::
+
+- **Пример**
 
   ```js
   app.config.errorHandler = (err, instance, info) => {
@@ -391,16 +426,16 @@ console.log(app.config)
 
 - **Тип:** `boolean`
 
-- **См. также:** [Руководство - Производительность](/guide/best-practices/performance.html)
+- **См. также:** [Руководство - Производительность](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
-Настройка параметров runtime компилятора. Значения, установленные для этого объекта, будут передаваться компилятору шаблонов в браузере и влиять на каждый компонент сконфигурированного приложения. Обратите внимание, что вы также можете переопределить эти параметры для каждого компонента, используя опцию [`compilerOptions`](/api/options-rendering.html#compileroptions)
+Настройка параметров runtime компилятора. Значения, установленные для этого объекта, будут передаваться компилятору шаблонов в браузере и влиять на каждый компонент сконфигурированного приложения. Обратите внимание, что вы также можете переопределить эти параметры для каждого компонента, используя опцию [`compilerOptions`](/api/options-rendering#compileroptions)
 
 :::warning Важно
 Эта опция конфигурации учитывается только при использовании полной сборки (т.е. автономной `vue.js`, которая может компилировать шаблоны в браузере). Если вы используете сборку только во время выполнения с настройкой сборки, опции компилятора должны передаваться в `@vue/compiler-dom` через конфигурации инструмента сборки.
 
-- Для `vue-loader`: [передайте лоадеру параметр `compilerOptions`](https://vue-loader.vuejs.org/options.html#compileroptions). См. также [как настроить в `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+- Для `vue-loader`: [передайте лоадеру параметр `compilerOptions`](https://vue-loader.vuejs.org/options#compileroptions). См. также [как настроить в `vue-cli`](https://cli.vuejs.org/guide/webpack#modifying-options-of-a-loader).
 
 - Для `vite`: [передайте параметр `@vitejs/plugin-vue`](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#options).
   :::
@@ -426,7 +461,7 @@ console.log(app.config)
   }
   ```
 
-- **См. также:** [Vue и Веб-компоненты](/guide/extras/web-components.html)
+- **См. также:** [Vue и Веб-компоненты](/guide/extras/web-components)
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
@@ -523,7 +558,7 @@ console.log(app.config)
   }
   ```
 
-- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+- **См. также:** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
@@ -574,4 +609,4 @@ console.log(app.config)
   // logs 'Привет Vue'
   ```
 
-- **См. также:** [Экземпляр компонента - `$options`](/api/component-instance.html#options)
+- **См. также:** [Экземпляр компонента - `$options`](/api/component-instance#options)

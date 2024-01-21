@@ -42,11 +42,11 @@ export default {
 
 ### `<script>` {#script}
 
-- Каждый файл `*.vue` может быть не более одной секции `<script>` (за исключением случаев использования [`<script setup>`](/api/sfc-script-setup.html)).
+- Каждый файл `*.vue` может быть не более одной секции `<script>` (за исключением случаев использования [`<script setup>`](/api/sfc-script-setup)).
 
 - Скрипт выполняется как ES-модуль.
 
-- **Экспорт по умолчанию** должен быть объектом опций компонента Vue, либо обычным объектом, либо как возвращаемое значение [defineComponent](/api/general.html#definecomponent).
+- **Экспорт по умолчанию** должен быть объектом опций компонента Vue, либо обычным объектом, либо как возвращаемое значение [defineComponent](/api/general#definecomponent).
 
 ### `<script setup>` {#script-setup}
 
@@ -68,7 +68,7 @@ export default {
 - [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
 - [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
 
-Обработка пользовательских секций зависит от инструментария - если вы хотите создать свои собственные интеграции пользовательских секций, обратитесь к разделу [инструментарий SFC](/guide/scaling-up/tooling.html#sfc-custom-block-integrations) для более подробной информации.
+Обработка пользовательских секций зависит от инструментария - если вы хотите создать свои собственные интеграции пользовательских секций, обратитесь к разделу [инструментарий SFC](/guide/scaling-up/tooling#sfc-custom-block-integrations) для более подробной информации.
 
 ## Автоматическое определение `name` {#automatic-name-inference}
 
@@ -105,16 +105,16 @@ p {{ msg }}
 
 Обратите внимание, что интеграция с различными пре-процессорами может отличаться в зависимости от инструментария. Примеры можно найти в соответствующей документации:
 
-- [Vite](https://vitejs.dev/guide/features.html#css-pre-processors)
-- [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
-- [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
+- [Vite](https://vitejs.dev/guide/features#css-pre-processors)
+- [Vue CLI](https://cli.vuejs.org/guide/css#pre-processors)
+- [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors#using-pre-processors)
 
 ## Импорты через src {#src-imports}
 
 Если вы предпочитаете разделять компоненты `*.vue` на несколько файлов, вы можете использовать атрибут `src` для импорта внешнего файла для языковой секции:
 
 ```vue
-<template src="./template.html"></template>
+<template src="./template"></template>
 <style src="./style.css"></style>
 <script src="./script.js"></script>
 ```

@@ -18,7 +18,7 @@ Vue использует синтаксис шаблонов, основанны
 
 ## Сырой HTML {#raw-html}
 
-Значение выражения в двойных фигурных скобках обрабатывается как обычный текст, а не как HTML. Для вывода в виде HTML необходимо использовать [директиву `v-html`](/api/built-in-directives.html#v-html):
+Значение выражения в двойных фигурных скобках обрабатывается как обычный текст, а не как HTML. Для вывода в виде HTML необходимо использовать [директиву `v-html`](/api/built-in-directives#v-html):
 
 ```vue-html
 <p>Двойные фигурные скобки: {{ rawHtml }}</p>
@@ -44,7 +44,7 @@ Vue использует синтаксис шаблонов, основанны
 
 ## Атрибуты {#attribute-bindings}
 
-Синтаксис двойных фигурных скобок нельзя использовать внутри HTML-атрибутов. Вместо него следует использовать [директиву `v-bind`](/api/built-in-directives.html#v-bind):
+Синтаксис двойных фигурных скобок нельзя использовать внутри HTML-атрибутов. Вместо него следует использовать [директиву `v-bind`](/api/built-in-directives#v-bind):
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
@@ -64,9 +64,23 @@ Vue использует синтаксис шаблонов, основанны
 
 > Далее в примерах в руководстве будет использоваться сокращённая запись, потому что она наиболее распространена у разработчиков Vue.
 
+### Same-name Shorthand <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+
+If the attribute has the same name with the JavaScript value being bound, the syntax can be further shortened to omit the attribute value:
+
+```vue-html
+<!-- same as :id="id" -->
+<div :id></div>
+
+<!-- this also works -->
+<div v-bind:id></div>
+```
+
+This is similar to the property shorthand syntax when declaring objects in JavaScript. Note this is a feature that is only available in Vue 3.4 and above.
+
 ### Булевы атрибуты {#boolean-attributes}
 
-[Булевы атрибуты](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) — атрибуты, которые указывают истинное/ложное значение своим присутствием в элементе. Например, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — один из наиболее часто используемых булевых атрибутов.
+[Булевы атрибуты](https://html.spec.whatwg.org/multipage/common-microsyntaxes#boolean-attributes) — атрибуты, которые указывают истинное/ложное значение своим присутствием в элементе. Например, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — один из наиболее часто используемых булевых атрибутов.
 
 В этом случае `v-bind` будет работать немного иначе:
 
@@ -154,9 +168,9 @@ data() {
 Внутри привязки можно вызвать метод, объявленный в компоненте:
 
 ```vue-html
-<span :title="toTitleDate(date)">
+<time :title="toTitleDate(date)" :datetime="date">
   {{ formatDate(date) }}
-</span>
+</time>
 ```
 
 :::tip Совет
@@ -167,13 +181,13 @@ data() {
 
 Выражения в шаблонах находятся в «песочнице» и имеют доступ только к [ограниченному списку глобальных свойств](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3), таких как `Math` и `Date`.
 
-Глобальные свойства, которые явно не включены в список (например пользовательские свойства на `window`) не будут доступны в шаблонных выражениях. Однако можно объявить дополнительные глобальные свойства для всех выражений Vue, добавив их с помощью [`app.config.globalProperties`](/api/application.html#app-config-globalproperties).
+Глобальные свойства, которые явно не включены в список (например пользовательские свойства на `window`) не будут доступны в шаблонных выражениях. Однако можно объявить дополнительные глобальные свойства для всех выражений Vue, добавив их с помощью [`app.config.globalProperties`](/api/application#app-config-globalproperties).
 
 ## Директивы {#directives}
 
 Директивы — специальные атрибуты с префиксом `v-`. Vue предоставляет ряд [встроенных директив](/api/built-in-directives.html), включая `v-html` и `v-bind`, которые уже встретили ранее.
 
-В значении директивы ожидается **одно выражение JavaScript** (за исключением `v-for`, `v-on` и `v-slot`, о которых поговорим далее). Задачей директивы является реактивное применение изменений к DOM, когда изменится значение выражения. Возьмём [`v-if`](/api/built-in-directives.html#v-if) для примера:
+В значении директивы ожидается **одно выражение JavaScript** (за исключением `v-for`, `v-on` и `v-slot`, о которых поговорим далее). Задачей директивы является реактивное применение изменений к DOM, когда изменится значение выражения. Возьмём [`v-if`](/api/built-in-directives#v-if) для примера:
 
 ```vue-html
 <p v-if="seen">Сейчас меня видно</p>
@@ -229,7 +243,7 @@ data() {
 <a v-on:[eventName]="doSomething"> ... </a>
 
 <!-- сокращённая запись -->
-<a @[eventName]="doSomething">
+<a @[eventName]="doSomething"> ... </a>
 ```
 
 В этом примере, когда свойство в данных `eventName` будет со значением `"focus"` — итоговый обработчик `v-on:[eventName]` будет эквивалентен `v-on:focus`.
@@ -247,7 +261,7 @@ data() {
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-Для сложных динамических аргументов лучше выносить любые составные выражения в [вычисляемые свойства](./computed.html), с которыми уже совсем скоро познакомимся.
+Для сложных динамических аргументов лучше выносить любые составные выражения в [вычисляемые свойства](./computed), с которыми уже совсем скоро познакомимся.
 
 При использовании шаблонов в DOM (шаблонов, написанных непосредственно в HTML-файле), также следует избегать прописных символов в именах ключей, потому что браузеры будут принудительно приводить имена атрибутов к нижнему регистру:
 
@@ -265,7 +279,7 @@ data() {
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-Другие примеры применения модификаторов увидим далее, когда будем изучать подробнее возможности [`v-on`](./event-handling.html#event-modifiers) и [`v-model`](./forms.html#modifiers).
+Другие примеры применения модификаторов увидим далее, когда будем изучать подробнее возможности [`v-on`](./event-handling#event-modifiers) и [`v-model`](./forms#modifiers).
 
 И, наконец, визуализация полного синтаксиса директивы:
 
