@@ -214,7 +214,7 @@
 
 ## app.provide() {#app-provide}
 
-Provide a value that can be injected in all descendant components within the application.
+Предоставляет данные, которые могут быть внедрены любыми компонентами-потомками приложения.
 
 - **Тип**
 
@@ -226,7 +226,7 @@ Provide a value that can be injected in all descendant components within the app
 
 - **Подробности**
 
-  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+Ожидает ключ внедрения в качестве первого аргумента и передаваемое значение в качестве второго. Возвращает экземпляр приложения.
 
 - **Пример**
 
@@ -238,7 +238,7 @@ Provide a value that can be injected in all descendant components within the app
   app.provide('message', 'hello')
   ```
 
-  Inside a component in the application:
+  Внутри компонента приложения:
 
   <div class="composition-api">
 
@@ -266,14 +266,14 @@ Provide a value that can be injected in all descendant components within the app
 
   </div>
 
-- **See also**
+- **См. также**
   - [Provide / Inject](/guide/components/provide-inject)
   - [App-level Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
 ## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
 
-Execute a callback with the current app as injection context.
+  Выполняет переданную функцию в контексте текущего экземпляра приложения.
 
 - **Type**
 
@@ -285,9 +285,9 @@ Execute a callback with the current app as injection context.
 
 - **Details**
 
-  Expects a callback function and runs the callback immediately. During the synchronous call of the callback, `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
+  Принимает коллбэк-функцию, которую сразу же выполняет. Так как вызов происходит синхронно, вызовы `inject()` могут внедрять значения, предоставленные в текущем приложении, даже при отсутствии активного экземпляра компонента. Возвращаемое значение коллбэка будет возвращено и этой функцией.
 
-- **Example**
+- **Пример**
 
   ```js
   import { inject } from 'vue'
@@ -303,7 +303,7 @@ Execute a callback with the current app as injection context.
 
 ## app.version {#app-version}
 
-Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
+Передаёт версию Vue, с который был создан этот экземпляр приложения. Это может быть полезно при разработке [плагинов](/guide/reusability/plugins), где часть логики варьируется в зависимости от версии Vue.
 
 - **Тип**
 
@@ -374,8 +374,9 @@ console.log(app.config)
   - Хуки пользовательских директив
   - Хуки анимаций
 
-  :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  :::tip Совет
+  
+  В production, третий аргумент (`info`) будет содержать код вместо полного названия источника. Соответствие кода и названия можно найти в [Руководстве по кодам ошибок](/error-reference/#runtime-errors).
   :::
 
 - **Пример**
