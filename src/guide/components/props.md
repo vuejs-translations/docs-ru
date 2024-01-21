@@ -22,7 +22,7 @@ console.log(props.foo)
 </script>
 ```
 
-В компонентах не имеющих`<script setup>`, входные параметры объявляются с помощью [`props`](/api/options-state.html#props):
+В компонентах не имеющих`<script setup>`, входные параметры объявляются с помощью [`props`](/api/options-state#props):
 
 ```js
 export default {
@@ -40,7 +40,7 @@ export default {
 
 <div class="options-api">
 
-Входные параметры объявляются с помощью опции [`props`](/api/options-state.html#props):
+Входные параметры объявляются с помощью опции [`props`](/api/options-state#props):
 
 ```js
 export default {
@@ -96,7 +96,7 @@ export default {
 
 <div class="options-api">
 
-См. также: [Типизирование входных параметров](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+См. также: [Типизирование входных параметров](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -113,7 +113,7 @@ defineProps<{
 </script>
 ```
 
-Подробнее: [Типизирование входных параметров](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+Подробнее: [Типизирование входных параметров](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -148,13 +148,13 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-Технически, вы также можете использовать camelCase при передаче входных параметров дочернему компоненту (за исключением [шаблонов DOM](/guide/essentials/component-basics.html#dom-template-parsing-caveats)). Тем не менее, общепринятым является использование kebab-case во всех случаях для согласования с атрибутами HTML:
+Технически, вы также можете использовать camelCase при передаче входных параметров дочернему компоненту (за исключением [шаблонов DOM](/guide/essentials/component-basics#dom-template-parsing-caveats)). Тем не менее, общепринятым является использование kebab-case во всех случаях для согласования с атрибутами HTML:
 
 ```vue-html
 <MyComponent greeting-message="hello" />
 ```
 
-Мы используем [PascalCase для тегов компонентов](/guide/components/registration.html#component-name-casing), когда это возможно, потому что это улучшает читаемость шаблона, отличая компоненты Vue от собственных элементов. Однако практическая польза от использования camelCase при передаче входных параметров не так велика, поэтому мы предпочитаем следовать соглашениям каждого языка.
+Мы используем [PascalCase для тегов компонентов](/guide/components/registration#component-name-casing), когда это возможно, потому что это улучшает читаемость шаблона, отличая компоненты Vue от собственных элементов. Однако практическая польза от использования camelCase при передаче входных параметров не так велика, поэтому мы предпочитаем следовать соглашениям каждого языка.
 
 ### Статические и динамические входные параметры {#static-vs-dynamic-props}
 
@@ -232,7 +232,7 @@ export default {
 
 ### Передача нескольких свойств с помощью объекта {#binding-multiple-properties-using-an-object}
 
-Если хотите передать все свойства объекта в качестве входных параметров, то можно использовать [`v-bind` без аргументов](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` вместо `:prop-name`). Например, для объекта `post`:
+Если хотите передать все свойства объекта в качестве входных параметров, то можно использовать [`v-bind` без аргументов](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) (`v-bind` вместо `:prop-name`). Например, для объекта `post`:
 
 <div class="options-api">
 
@@ -405,8 +405,9 @@ defineProps({
     }
   },
   // Пользовательская функция для валидации
+  // full props passed as 2nd argument in 3.4+
   propF: {
-    validator(value) {
+    validator(value, props) {
       // Значение должно соответствовать одной из этих строк
       return ['success', 'warning', 'danger'].includes(value)
     }
@@ -458,8 +459,9 @@ export default {
       }
     },
     // Пользовательская функция для валидации
+    // full props passed as 2nd argument in 3.4+
     propF: {
-      validator(value) {
+      validator(value, props) {
         // Значение должно соответствовать одной из этих строк
         return ['success', 'warning', 'danger'].includes(value)
       }
@@ -492,7 +494,7 @@ export default {
 
 <div class="composition-api">
 
-Если вы используете [объявления свойств на основе типов](/api/sfc-script-setup.html#typescript-only-features) <sup class="vt-badge ts" />, Vue сделает все возможное, чтобы скомпилировать аннотации типов в эквивалентные объявления свойств во время выполнения. Например, `defineProps<{ msg: string }>` будет скомпилирован в `{ msg: { type: String, required: true }}`.
+Если вы используете [объявления свойств на основе типов](/api/sfc-script-setup#typescript-only-features) <sup class="vt-badge ts" />, Vue сделает все возможное, чтобы скомпилировать аннотации типов в эквивалентные объявления свойств во время выполнения. Например, `defineProps<{ msg: string }>` будет скомпилирован в `{ msg: { type: String, required: true }}`.
 
 </div>
 <div class="options-api">
@@ -592,8 +594,24 @@ export default {
 <div class="composition-api">
 
 ```js
+// disabled will be casted to true
 defineProps({
   disabled: [Boolean, Number]
+})
+  
+// disabled will be casted to true
+defineProps({
+  disabled: [Boolean, String]
+})
+  
+// disabled will be casted to true
+defineProps({
+  disabled: [Number, Boolean]
+})
+  
+// disabled will be parsed as an empty string (disabled="")
+defineProps({
+  disabled: [String, Boolean]
 })
 ```
 
@@ -601,13 +619,33 @@ defineProps({
 <div class="options-api">
 
 ```js
+// disabled will be casted to true
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
+  
+// disabled will be casted to true
+export default {
+  props: {
+    disabled: [Boolean, String]
+  }
+}
+  
+// disabled will be casted to true
+export default {
+  props: {
+    disabled: [Number, Boolean]
+  }
+}
+  
+// disabled will be parsed as an empty string (disabled="")
+export default {
+  props: {
+    disabled: [String, Boolean]
+  }
+}
 ```
 
 </div>
-
-Правила приведения для `Boolean` будут применяться независимо от порядка перечисления типа.
