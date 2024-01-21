@@ -10,7 +10,7 @@ Vue [безупречно получает 100% в тестах Custom Elements 
 
 ### Пропуск определения компонента {#skipping-component-resolution}
 
-По умолчанию Vue будет пытаться разрешить ненативный HTML-тег зарегистрированным компонентом Vue, прежде чем вернуться к его отрисовке как пользовательского элемента. Это приведет к тому, что во время разработки Vue выдаст предупреждение "не удалось определить компонент" (англ.: "failed to resolve component"). Чтобы сообщить Vue, что некоторые элементы должны рассматриваться как пользовательские и предотвратить их определение как компонентов, мы можем указать параметр [`compilerOptions.isCustomElement`](/api/application.html#app-config-compileroptions).
+По умолчанию Vue будет пытаться разрешить ненативный HTML-тег зарегистрированным компонентом Vue, прежде чем вернуться к его отрисовке как пользовательского элемента. Это приведет к тому, что во время разработки Vue выдаст предупреждение "не удалось определить компонент" (англ.: "failed to resolve component"). Чтобы сообщить Vue, что некоторые элементы должны рассматриваться как пользовательские и предотвратить их определение как компонентов, мы можем указать параметр [`compilerOptions.isCustomElement`](/api/application#app-config-compileroptions).
 
 В приложениях Vue с использованием шага сборки, опцию необходимо передавать через конфигурацию сборки, поскольку она используется во время компиляции.
 
@@ -81,7 +81,7 @@ module.exports = {
 
 ### defineCustomElement {#definecustomelement}
 
-Vue позволяет создавать пользовательские элементы с точно таким же же API компонентов Vue с помощью метода [`defineCustomElement`](/api/general.html#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general.html#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
+Vue позволяет создавать пользовательские элементы с точно таким же же API компонентов Vue с помощью метода [`defineCustomElement`](/api/general#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -157,7 +157,7 @@ document.body.appendChild(
 
 Внутри компонента слоты могутуказываться как обычно, с помощью элемента `<slot/>`. Но при получении результирующего элемента должен быть только [нативный синтаксис слотов](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots):
 
-- [Слоты с ограниченной областью видимости](/guide/components/slots.html#scoped-slots) не поддерживаются.
+- [Слоты с ограниченной областью видимости](/guide/components/slots#scoped-slots) не поддерживаются.
 
 - При передаче именованных слотов используйте атрибут `slot` вместо директивы `v-slot`:
 
@@ -169,7 +169,8 @@ document.body.appendChild(
 
 #### Provide / Inject {#provide-inject}
 
-[Provide / Inject API](/guide/components/provide-inject.html#provide-inject) и [его эквивалент в Composition API](/api/composition-api-dependency-injection.html#provide) также работают между пользовательскими элементами, определяемыми Vue. Однако обратите внимание, что это работает **только между пользовательскими элементами**. То есть пользовательский элемент, определяемый Vue, не сможет инжектировать свойства, предоставляемые компонентом Vue, не являющимся пользовательским элементом.
+[Provide / Inject API](/guide/components/provide-inject#provide-inject) и [его эквивалент в Composition API](/api/composition-api-dependency-injection#provide) также работают между пользовательскими элементами, определяемыми Vue. Однако обратите внимание, что это работает **только между пользовательскими элементами**. То есть пользовательский элемент, определяемый Vue, не сможет инжектировать свойства, предоставляемые компонентом Vue, не являющимся пользовательским элементом.
+
 
 ### Однофайловые компоненты как пользовательские элементы {#sfc-as-custom-element}
 
@@ -222,7 +223,30 @@ export function register() {
 }
 ```
 
-Если компонентов слишком много, можно воспользоваться такими возможностями систем сборки, как [glob import] (https://vitejs.dev/guide/features.html#glob-import) в Vite или [`require.context`] (https://webpack.js.org/guides/dependency-management/#requirecontext) в webpack для загрузки всех компонентов из определённого каталога.
+Если компонентов слишком много, можно воспользоваться такими возможностями систем сборки, как [glob import](https://vitejs.dev/guide/features.html#glob-import) в Vite или [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) в webpack для загрузки всех компонентов из определённого каталог
+
+### Web Components and Typescript {#web-components-and-typescript}
+
+If you are developing an application or a library, you may want to [type check](/guide/scaling-up/tooling.html#typescript) your Vue components, including those that are defined as custom elements.
+
+Custom elements are registered globally using native APIs, so by default they won't have type inference when used in Vue templates. To provide type support for Vue components registered as custom elements, we can register global component typings using the the [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) in Vue templates and/or in [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+
+```typescript
+import { defineCustomElement } from 'vue'
+
+// vue SFC
+import CounterSFC from './src/components/counter.ce.vue'
+
+// turn component into web components
+export const Counter = defineCustomElement(CounterSFC)
+
+// register global typings
+declare module 'vue' {
+  export interface GlobalComponents {
+    'Counter': typeof Counter,
+  }
+}
+```
 
 ## Веб-компоненты против Vue компонентов {#web-components-vs-vue-components}
 
@@ -246,6 +270,6 @@ export function register() {
 
 - Нетерпеливая оценка слотов не позволяет компоновать компоненты. [Слоты с ограниченной областью видимости](/guide/components/slots.html#scoped-slots) во Vue - это мощный механизм для композиции компонентов, который не может поддерживаться пользовательскими элементами из-за нетерпеливой природы нативных слотов. Нетерпеливые слоты также означают, что принимающий компонент не может контролировать, когда и нужно ли выводить содержимое слота.
 
-- Доставка пользовательских элементов с shadow DOM и локальным (scoped) CSS сейчас требует встраивания CSS в JavaScript, чтобы их можно было внедрить в shadow root в runtime. Это также приводит к дублированию стилей в разметке в сценариях с SSR. В этой области работают над новыми [возможностями платформы](https://github.com/whatwg/html/pull/4898/)], но на данный момент они ещё не поддерживаются повсеместно, и всё ещё есть проблемы с производительностью в production и SSR, которые требуется решить. В тоже время, однофайловые компоненты Vue предоставляют [механизм локализации CSS](/api/sfc-css-features.html), который поддерживает извлечение стилей в обычные CSS-файлы.
+- Доставка пользовательских элементов с shadow DOM и локальным (scoped) CSS сейчас требует встраивания CSS в JavaScript, чтобы их можно было внедрить в shadow root в runtime. Это также приводит к дублированию стилей в разметке в сценариях с SSR. В этой области работают над новыми [возможностями платформы](https://github.com/whatwg/html/pull/4898/)], но на данный момент они ещё не поддерживаются повсеместно, и всё ещё есть проблемы с производительностью в production и SSR, которые требуется решить. В тоже время, однофайловые компоненты Vue предоставляют [механизм локализации CSS](/api/sfc-css-features), который поддерживает извлечение стилей в обычные CSS-файлы.
 
 Vue всегда будет идти в ногу с последними стандартами веб-платформ, и использовать всё, что предоставляет платформа, если это может облегчить работу. Но текущая цель — предоставлять решения, которые работают хорошо и работают уже сегодня. Это значит, что новые возможности платформы следует включать лишь критически поразмыслив — и это подразумевает заполнение пробелов, где стандарты ещё не соответствуют требованиям.

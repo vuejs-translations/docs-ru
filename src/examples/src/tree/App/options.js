@@ -1,22 +1,22 @@
 import TreeItem from './TreeItem.vue'
 
 const treeData = {
-  name: 'My Tree',
+  name: 'Мое дерево',
   children: [
-    { name: 'hello' },
-    { name: 'wat' },
+    { name: 'привет' },
+    { name: 'мир' },
     {
-      name: 'child folder',
+      name: 'дочерняя папка',
       children: [
         {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
+          name: 'дочерняя папка',
+          children: [{ name: 'привет' }, { name: 'мир' }]
         },
-        { name: 'hello' },
-        { name: 'wat' },
+        { name: 'привет' },
+        { name: 'мир' },
         {
-          name: 'child folder',
-          children: [{ name: 'hello' }, { name: 'wat' }]
+          name: 'дочерняя папка',
+          children: [{ name: 'привет' }, { name: 'мир' }]
         }
       ]
     }

@@ -1,27 +1,28 @@
 <script setup lang="ts">
 import partnersRaw from '../partners.json'
-import { computed, onMounted } from 'vue'
+import { ref, shallowRef, computed, onMounted } from 'vue'
 import PartnerCard from './PartnerCard.vue'
 import { Partner } from './type'
 
-const { filter } = defineProps<{
+const props = defineProps<{
   filter?: (p: Partner) => boolean | undefined
+  showLinkToAll?: boolean
 }>()
 
-let mounted = $ref(false)
-let partners = $shallowRef(partnersRaw)
+const mounted = ref(false)
+const partners = shallowRef(partnersRaw as Partner[])
 
 const filtered = computed(() =>
-  filter ? (partners as Partner[]).filter(filter) : (partners as Partner[])
+  props.filter ? partners.value.filter(props.filter) : partners.value
 )
 
 onMounted(() => {
-  mounted = true
-  const platinum = partners.filter((p) => p.platinum)
+  mounted.value = true
+  const platinum = partners.value.filter((p) => p.platinum)
   shuffle(platinum)
-  const normal = partners.filter((p) => !p.platinum)
+  const normal = partners.value.filter((p) => !p.platinum)
   shuffle(normal)
-  partners = [...platinum, ...normal]
+  partners.value = [...platinum, ...normal]
 })
 
 function shuffle(array: Array<any>) {
@@ -49,6 +50,13 @@ function shuffle(array: Array<any>) {
     <ClientOnly>
       <PartnerCard v-for="p in filtered" :key="p.name" :data="p" />
     </ClientOnly>
+    <a
+      class="browse-all"
+      href="./all.html"
+      v-if="showLinkToAll && filtered.length % 2"
+    >
+      Browse and Search<br />All Partners
+    </a>
   </div>
 </template>
 
@@ -57,5 +65,28 @@ function shuffle(array: Array<any>) {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.browse-all {
+  color: var(--vt-c-text-2);
+  transition: color 0.5s ease;
+  font-size: 1.2em;
+  text-align: center;
+  padding-top: 240px;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid var(--vt-c-divider-light);
+  width: 48.5%;
+  margin-bottom: 36px;
+}
+
+.browse-all:hover {
+  color: var(--vt-c-text-1);
+}
+
+@media (max-width: 768px) {
+  .browse-all {
+    display: none;
+  }
 }
 </style>
