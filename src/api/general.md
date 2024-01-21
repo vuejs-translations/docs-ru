@@ -131,9 +131,9 @@
 
   ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
 
-  `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function.html).
+  `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function).
 
-  Вместо объекта с опциями первым аргументом `defineComponent()` может принимать функцию. Эта функция выполняется точно так же, как и [`setup()`](/api/composition-api-setup.html#composition-api-setup) из Composition API, принимая props и context в качестве аргументов. Ожидается, что эта функция вернёт JSX или рендер-функцию с `h()` - оба варианта поддерживаются:
+  Вместо объекта с опциями первым аргументом `defineComponent()` может принимать функцию. Эта функция выполняется точно так же, как и [`setup()`](/api/composition-api-setup#composition-api-setup) из Composition API, принимая props и context в качестве аргументов. Ожидается, что эта функция вернёт JSX или рендер-функцию с `h()` - оба варианта поддерживаются:
 
   ```js
   import { ref, h } from 'vue'
