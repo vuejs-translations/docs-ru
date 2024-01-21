@@ -64,6 +64,20 @@ Vue использует синтаксис шаблонов, основанны
 
 > Далее в примерах в руководстве будет использоваться сокращённая запись, потому что она наиболее распространена у разработчиков Vue.
 
+### Same-name Shorthand <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+
+If the attribute has the same name with the JavaScript value being bound, the syntax can be further shortened to omit the attribute value:
+
+```vue-html
+<!-- same as :id="id" -->
+<div :id></div>
+
+<!-- this also works -->
+<div v-bind:id></div>
+```
+
+This is similar to the property shorthand syntax when declaring objects in JavaScript. Note this is a feature that is only available in Vue 3.4 and above.
+
 ### Булевы атрибуты {#boolean-attributes}
 
 [Булевы атрибуты](https://html.spec.whatwg.org/multipage/common-microsyntaxes#boolean-attributes) — атрибуты, которые указывают истинное/ложное значение своим присутствием в элементе. Например, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — один из наиболее часто используемых булевых атрибутов.
@@ -154,9 +168,9 @@ data() {
 Внутри привязки можно вызвать метод, объявленный в компоненте:
 
 ```vue-html
-<span :title="toTitleDate(date)">
+<time :title="toTitleDate(date)" :datetime="date">
   {{ formatDate(date) }}
-</span>
+</time>
 ```
 
 :::tip Совет
@@ -229,7 +243,7 @@ data() {
 <a v-on:[eventName]="doSomething"> ... </a>
 
 <!-- сокращённая запись -->
-<a @[eventName]="doSomething">
+<a @[eventName]="doSomething"> ... </a>
 ```
 
 В этом примере, когда свойство в данных `eventName` будет со значением `"focus"` — итоговый обработчик `v-on:[eventName]` будет эквивалентен `v-on:focus`.
@@ -247,7 +261,7 @@ data() {
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-Для сложных динамических аргументов лучше выносить любые составные выражения в [вычисляемые свойства](./computed.html), с которыми уже совсем скоро познакомимся.
+Для сложных динамических аргументов лучше выносить любые составные выражения в [вычисляемые свойства](./computed), с которыми уже совсем скоро познакомимся.
 
 При использовании шаблонов в DOM (шаблонов, написанных непосредственно в HTML-файле), также следует избегать прописных символов в именах ключей, потому что браузеры будут принудительно приводить имена атрибутов к нижнему регистру:
 

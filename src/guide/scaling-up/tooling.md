@@ -4,7 +4,7 @@
 
 Вам не нужно ничего устанавливать на свой компьютер, чтобы опробовать Vue SFC — есть онлайн-площадки, которые позволяют вам делать это прямо в браузере:
 
-- [Vue SFC Playground](https://sfc.vuejs.org)
+- [Vue SFC Playground](https://play.vuejs.org)
   - Всегда развертывается из последнего коммита
   - Предназначен для проверки результатов компиляции компонентов
 - [Vue + Vite on StackBlitz](https://vite.new/vue)
@@ -21,7 +21,7 @@
 
 Чтобы начать работу с Vite + Vue, просто запустите программу:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
+<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
 
 Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue) официальный инструмент для инициализации проекта Vue.
 
@@ -53,7 +53,7 @@
 
 ## Поддержка IDE {#ide-support}
 
-- Рекомендуемая настройка IDE - [VSCode](https://code.visualstudio.com/) + расширение [Volar](https://github.com/johnsoncodehk/volar). Volar обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
+- Рекомендуемая настройка IDE - [VSCode](https://code.visualstudio.com/) + расширение [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Volar обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
 
   :::tip Совет
   Volar заменяет [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VSCode для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
@@ -80,7 +80,8 @@
 - [Документация](https://devtools.vuejs.org/)
 - [Расширение для Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Расширение для Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation#standalone)
+- - [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
+- [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}
 
@@ -88,7 +89,7 @@
 
 - [Volar](https://github.com/johnsoncodehk/volar) обеспечивает проверку типов для однофайловых компонентов с помощью секций `<script lang="ts">`, включая выражения в шаблонах и межкомпонентную валидацию входных параметров.
 
-- Используйте [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc) для выполнения аналогичной проверки типов из командной строки или для генерации файлов `d.ts` для SFC.
+- Используйте [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) для выполнения аналогичной проверки типов из командной строки или для генерации файлов `d.ts` для SFC.
 
 ## Тестирование {#testing}
 

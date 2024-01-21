@@ -40,7 +40,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 
 <div class="options-api">
 
-Вы так же можете использовать `defineAsyncComponent` при [локальной регистрации компонента](/guide/components/registration#local-registration):
+You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration.html#local-registration):
 
 ```vue
 <script>

@@ -13,7 +13,8 @@ export default {
   data() {
     return {
       question: '',
-      answer: 'Вопросы обычно заканчиваются вопросительным знаком. ;-)'
+      answer: 'Вопросы обычно заканчиваются вопросительным знаком. ;-)',
+      loading: false
     }
   },
   watch: {
@@ -26,12 +27,15 @@ export default {
   },
   methods: {
     async getAnswer() {
+      this.loading = true
       this.answer = 'Думаю...'
       try {
         const res = await fetch('https://yesno.wtf/api')
         this.answer = (await res.json()).answer
       } catch (error) {
         this.answer = 'Ошибка! Нет доступа к API. ' + error
+      } finally {
+        this.loading = false
       }
     }
   }
@@ -41,12 +45,12 @@ export default {
 ```vue-html
 <p>
   Задайте вопрос, на который можно ответить «да» или «нет»:
-  <input v-model="question" />
+  <input v-model="question" :disabled="loading" />
 </p>
 <p>{{ answer }}</p>
 ```
 
-[Попробовать в песочнице](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgcXVlc3Rpb246ICcnLFxuICAgICAgYW5zd2VyOiAnUXVlc3Rpb25zIHVzdWFsbHkgY29udGFpbiBhIHF1ZXN0aW9uIG1hcmsuIDstKSdcbiAgICB9XG4gIH0sXG4gIHdhdGNoOiB7XG4gICAgLy8gd2hlbmV2ZXIgcXVlc3Rpb24gY2hhbmdlcywgdGhpcyBmdW5jdGlvbiB3aWxsIHJ1blxuICAgIHF1ZXN0aW9uKG5ld1F1ZXN0aW9uLCBvbGRRdWVzdGlvbikge1xuICAgICAgaWYgKG5ld1F1ZXN0aW9uLmluZGV4T2YoJz8nKSA+IC0xKSB7XG4gICAgICAgIHRoaXMuZ2V0QW5zd2VyKClcbiAgICAgIH1cbiAgICB9XG4gIH0sXG4gIG1ldGhvZHM6IHtcbiAgICBhc3luYyBnZXRBbnN3ZXIoKSB7XG4gICAgICB0aGlzLmFuc3dlciA9ICdUaGlua2luZy4uLidcbiAgICAgIHRyeSB7XG4gICAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCdodHRwczovL3llc25vLnd0Zi9hcGknKVxuICAgICAgICB0aGlzLmFuc3dlciA9IChhd2FpdCByZXMuanNvbigpKS5hbnN3ZXJcbiAgICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICAgIHRoaXMuYW5zd2VyID0gJ0Vycm9yISBDb3VsZCBub3QgcmVhY2ggdGhlIEFQSS4gJyArIGVycm9yXG4gICAgICB9XG4gICAgfVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBBc2sgYSB5ZXMvbm8gcXVlc3Rpb246XG4gICAgPGlucHV0IHYtbW9kZWw9XCJxdWVzdGlvblwiIC8+XG4gIDwvcD5cbiAgPHA+e3sgYW5zd2VyIH19PC9wPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9VE1v2zAM/SucLnaw1D70lqUbsiKH7rB1W4++aDYdq5ElTx9xgiD/fbT8lXZFAQO2+Mgn8pH0mW2aJjl4ZCu2trkRjfucKTw22jgosOReOjhnCqDgjseL/hvAoPNGjSeAvx6tE1qtIIqWo5Er26Ih088BteCt51KeINfKcaGAT5FQc7NP4NPNYiaQmhdC7VZQcmlxMF+61yUcWu7yajVmkabQVqjwgGZmzSuudmiX4CphofQqD+ZWSAnGqz5y9I4VtmOuS9CyGA9T3QCihGu3RKhc+gJtHH2JFld+EG5Mdug2QYZ4MSKhgBd11OgqXdipEm5PKoer0Jk2kA66wB044/EF1GtOSPRUCbUnryRJosnFnK4zpC5YR7205M9bLhyUSIrGUeVcY1dpekKrdNK6MuWNiKYKXt8V98FElDxbknGxGLCpZMi7VkGMxmjzv0pz1tvO4QPcay8LULoj5RToKoTN40MCEXyEQDJTl0KFmXpNOqsUxudN+TNFzzqdJp8ODutGcod0Alg34QWwsXsaVtIjVXqe9h5bC9V4B4ebWhco7zI24hmDVSEs/yOxIPOQEFnTnjzt2emS83nYFrhcevM6nRJhS+Ys9aoUu6Av7WqoNWO5rhsh0fxownplbBqhjJEmuv0WbN2UDNtDMRXm+zfsz/bY2TL2SH1Ec8CMTZjjhqaxh7e/v+ORvieQqvaSvN8Bf6HV0veSdG5fvSoo7Su/kO1D3f13SKInuz06VHYsahzzfl0yRj+s+3dKn9O9TW7HPrPLP624lFU=)
 
 Опция `watch` также поддерживает путь, разделенный точками, в качестве ключа:
 
@@ -73,16 +77,20 @@ import { ref, watch } from 'vue'
 
 const question = ref('')
 const answer = ref('Вопросы обычно заканчиваются вопросительным знаком. ;-)')
+const loading = ref(false)
 
 // watch работает прямо в ref
 watch(question, async (newQuestion, oldQuestion) => {
-  if (newQuestion.indexOf('?') > -1) {
+  if (newQuestion.includes('?')) {
+    loading.value = true
     answer.value = 'Думаю...'
     try {
       const res = await fetch('https://yesno.wtf/api')
       answer.value = (await res.json()).answer
     } catch (error) {
       answer.value = 'Ошибка! Нет доступа к API. ' + error
+    } finally {
+      loading.value = false
     }
   }
 })
@@ -91,13 +99,13 @@ watch(question, async (newQuestion, oldQuestion) => {
 <template>
   <p>
     Ask a yes/no question:
-    <input v-model="question" />
+    <input v-model="question" :disabled="loading" />
   </p>
   <p>{{ answer }}</p>
 </template>
 ```
 
-[Попробовать в песочнице](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmNvbnN0IHF1ZXN0aW9uID0gcmVmKCcnKVxuY29uc3QgYW5zd2VyID0gcmVmKCdRdWVzdGlvbnMgdXN1YWxseSBjb250YWluIGEgcXVlc3Rpb24gbWFyay4gOy0pJylcblxud2F0Y2gocXVlc3Rpb24sIGFzeW5jIChuZXdRdWVzdGlvbikgPT4ge1xuICBpZiAobmV3UXVlc3Rpb24uaW5kZXhPZignPycpID4gLTEpIHtcbiAgICBhbnN3ZXIudmFsdWUgPSAnVGhpbmtpbmcuLi4nXG4gICAgdHJ5IHtcbiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCdodHRwczovL3llc25vLnd0Zi9hcGknKVxuICAgICAgYW5zd2VyLnZhbHVlID0gKGF3YWl0IHJlcy5qc29uKCkpLmFuc3dlclxuICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICBhbnN3ZXIudmFsdWUgPSAnRXJyb3IhIENvdWxkIG5vdCByZWFjaCB0aGUgQVBJLiAnICsgZXJyb3JcbiAgICB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBBc2sgYSB5ZXMvbm8gcXVlc3Rpb246XG4gICAgPGlucHV0IHYtbW9kZWw9XCJxdWVzdGlvblwiIC8+XG4gIDwvcD5cbiAgPHA+e3sgYW5zd2VyIH19PC9wPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9U8Fy0zAQ/ZVFF9tDah96C2mZ0umhHKBAj7oIe52oUSQjyXEyGf87KytyoDC9JPa+p+e3b1cndtd15b5HtmQrV1vZeXDo++6Wa7nrjPVwAovtAgbh6w2M0Fqzg4xOZFxzXRvtPPzq0XlpNNwEbp5lRUKEdgPaVP925jnoXS+UOgKxvJAaxEVjJ+y2hA9XxUVFGdFIvT7LtEI5JIzrqjrbGozdOmikxdqTKqmIQOV6gvOkvQDhjrqGXOOQvCzAqCa9FHBzCyeuAWT7F6uUulZ9gy7PPmZFETmQjJV7oXoke972GJHY+Axkzxupt4FalhRcYHh7TDIQcqA+LTriikFIDy0G59nG+84tq+qITpty8G0lOhmSiedefSaPZ0mnfHFG50VRRkbkj1BPceVorbFzF/+6fQj4O7g3vWpAm6Ao6JzfINw9PZaQwXuYNJJuK/U0z1nxdTLT0M7s8Ec/I3WxquLS0brRi8ddp4RHegNYhR0M/Du3pXFSAJU285osI7aSuus97K92pkF1w1nCOYNlI534qbCh8tkOVasoXkV1+sjplLZ0HGN5Vc1G2IJ5R8Np5XpKlK7J1CJntdl1UqH92k0bzdkyNc8ZRWGGz1MtbMQi1esN1tv/1F/cIdQ4e6LJod0jZzPmhV2jj/DDjy94oOcZpK57Rew3wO/ojOpjJIH2qdcN2f6DN7l9nC47RfTsHg4etUtNpZUeJz5ndPPv32j9Yve6vE6DZuNvu1R2Tg==)
 
 ### Типы источников watch {#watch-source-types}
 
@@ -220,11 +228,11 @@ watch(
 Глубокий наблюдатель требует обхода всех вложенных свойств в просматриваемом объекте и может быть дорогостоящим при использовании на больших структурах данных. Используйте его только в случае необходимости и помните о последствиях для производительности.
 :::
 
+## Eager Watchers {#eager-watchers}
+
+`watch` is lazy by default: the callback won't be called until the watched source has changed. But in some cases we may want the same callback logic to be run eagerly - for example, we may want to fetch some initial data, and then re-fetch the data whenever relevant state changes.
+
 <div class="options-api">
-
-## Нетерпеливые наблюдатели \* {#eager-watchers}
-
-`watch` по умолчанию ленив. Обратный вызов не будет вызываться до тех пор, пока наблюдаемый источник не изменится. Но в некоторых случаях мы можем захотеть, чтобы та же логика обратного вызова выполнялась немедленно. Например, мы можем захотеть запросить некоторые начальные данные, а затем повторно запрашивать их при каждом изменении состояния.
 
 Мы можем заставить обратный вызов наблюдателя выполниться немедленно, объявив его с помощью объекта с функцией `handler` и параметром `immediate: true`:
 
@@ -245,6 +253,23 @@ export default {
 ```
 
 Начальное выполнение функции-обработчика произойдет непосредственно перед `created` хуком. Vue уже обработает параметры `data`, `computed`, и `methods`, поэтому эти свойства будут доступны при первом вызове.
+
+</div>
+
+<div class="composition-api">
+
+We can force a watcher's callback to be executed immediately by passing the `immediate: true` option:
+
+```js
+watch(
+  source,
+  (newValue, oldValue) => {
+    // executed immediately, then again when `source` changes
+  },
+  { immediate: true }
+)
+```
+
 </div>
 
 <div class="composition-api">
@@ -254,32 +279,39 @@ export default {
 `watch()` является ленивым: обратный вызов не будет вызван до тех пор, пока наблюдаемый источник не изменится. Но в некоторых случаях мы можем захотеть, чтобы та же логика обратного вызова выполнялась немедленно. Например, мы можем захотеть получить некоторые начальные данные, а затем повторно получить их при каждом изменении состояния. Мы можем столкнуться с такой задачей:
 
 ```js
-const url = ref('https://...')
+const todoId = ref(1)
 const data = ref(null)
 
-async function fetchData() {
-  const response = await fetch(url.value)
-  data.value = await response.json()
-}
-
-// запросить немедленно
-fetchData()
-// ...затем следим за изменением url
-watch(url, fetchData)
+watch(
+  todoId,
+  async () => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+    )
+    data.value = await response.json()
+  },
+  { immediate: true }
+)
 ```
+
+In particular, notice how the watcher uses `todoId` twice, once as the source and then again inside the callback.
 
 Это можно упростить с помощью функции [`watchEffect()`](/api/reactivity-core#watcheffect). `watchEffect()` позволяет нам немедленно выполнить побочный эффект, автоматически отслеживая реактивные зависимости. Приведенный выше пример можно переписать следующим образом:
 
 ```js
 watchEffect(async () => {
-  const response = await fetch(url.value)
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
   data.value = await response.json()
 })
 ```
 
-Здесь обратный вызов будет выполнен немедленно. Во время его выполнения он также будет автоматически отслеживать `url.value` как зависимость (аналогично вычисляемым свойствам). Когда `url.value` изменится, обратный вызов будет запущен снова.
+Here, the callback will run immediately, there's no need to specify `immediate: true`. During its execution, it will automatically track `todoId.value` as a dependency (similar to computed properties). Whenever `todoId.value` changes, the callback will be run again. With `watchEffect()`, we no longer need to pass `todoId` explicitly as the source value.
 
 Вы можете посмотреть [этот пример](/examples/#fetching-data) с `watchEffect` и реактивной загрузкой данных в action.
+
+For examples like these, with only one dependency, the benefit of `watchEffect()` is relatively small. But for watchers that have multiple dependencies, using `watchEffect()` removes the burden of having to maintain the list of dependencies manually. In addition, if you need to watch several properties in a nested data structure, `watchEffect()` may prove more efficient than a deep watcher, as it will only track the properties that are used in the callback, rather than recursively tracking all of them.
 
 :::tip Совет
 `watchEffect` отслеживает зависимости только во время **синхронного** выполнения. При использовании его с асинхронным обратным вызовом будут отслеживаться только свойства, доступные до первого тика `await`.
@@ -299,13 +331,17 @@ watchEffect(async () => {
 
 Когда вы изменяете реактивное состояние, это может вызвать как обновления компонентов Vue, так и обратные вызовы наблюдателя, созданные вами.
 
+Similar to component updates, user-created watcher callbacks are batched to avoid duplicate invocations. For example, we probably don't want a watcher to fire a thousand times if we synchronously push a thousand items into an array being watched.
+
 По умолчанию созданные пользователем наблюдатели обратных вызовов вызываются **до** обновления компонентов Vue. Это означает, что если вы попытаетесь получить доступ к DOM внутри обратного вызова наблюдателя, DOM будет находиться в состоянии до того, как Vue применит какие-либо обновления.
+
+### Post Watchers
 
 Если вы хотите получить доступ к DOM в обратном вызове наблюдателя **после того**, как Vue обновит его,  вам нужно указать опцию `flush: 'post'`:
 
 <div class="options-api">
 
-```js
+```js{6}
 export default {
   // ...
   watch: {
@@ -321,7 +357,7 @@ export default {
 
 <div class="composition-api">
 
-```js
+```js{2,6}
 watch(source, callback, {
   flush: 'post'
 })
@@ -342,6 +378,54 @@ watchPostEffect(() => {
 ```
 
 </div>
+
+### Sync Watchers
+
+It's also possible to create a watcher that fires synchronously, before any Vue-managed updates:
+
+<div class="options-api">
+
+```js{6}
+export default {
+  // ...
+  watch: {
+    key: {
+      handler() {},
+      flush: 'sync'
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+```js{2,6}
+watch(source, callback, {
+  flush: 'sync'
+})
+
+watchEffect(callback, {
+  flush: 'sync'
+})
+```
+
+Sync `watchEffect()` also has a convenience alias, `watchSyncEffect()`:
+
+```js
+import { watchSyncEffect } from 'vue'
+
+watchSyncEffect(() => {
+  /* executed synchronously upon reactive data change */
+})
+```
+
+</div>
+
+:::warning Use with Caution
+Sync watchers do not have batching and triggers every time a reactive mutation is detected. It's ok to use them to watch simple boolean values, but avoid using them on data sources that might be synchronously mutated many times, e.g. arrays.
+:::
 
 <div class="options-api">
 

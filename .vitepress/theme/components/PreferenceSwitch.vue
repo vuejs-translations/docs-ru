@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { VTSwitch, VTIconChevronDown } from '@vue/theme'
 import { useRoute } from 'vitepress'
-import { inject, Ref } from 'vue'
+import { ref, computed, inject, Ref } from 'vue'
 import {
   preferCompositionKey,
   preferComposition,
   preferSFCKey,
   preferSFC
 } from './preferences'
+import PreferenceTooltip from './PreferenceTooltip.vue'
 
 const route = useRoute()
-const show = $computed(() =>
+const show = computed(() =>
   /^\/(guide|tutorial|examples|style-guide)\//.test(route.path)
 )
-const showSFC = $computed(() => !/^\/guide|style-guide/.test(route.path))
+const showSFC = computed(() => !/^\/guide|style-guide/.test(route.path))
 
-let isOpen = $ref(true)
+let isOpen = ref(true)
 
 const toggleOpen = () => {
-  isOpen = !isOpen
+  isOpen.value = !isOpen.value
 }
 
 const removeOutline = (e: Event) => {
@@ -94,6 +95,7 @@ function useToggleFn(
           @click="closeSideBar"
           >?</a
         >
+        <PreferenceTooltip />
       </div>
       <div class="switch-container" v-if="showSFC">
         <label class="no-sfc-label" @click="toggleSFC(false)">HTML</label>
@@ -169,6 +171,12 @@ function useToggleFn(
 .switch-container {
   display: flex;
   align-items: center;
+}
+
+@media(max-width: 959px){
+  .switch-container {
+    padding: 0 1em;
+  }
 }
 
 .switch-container:nth-child(2) {

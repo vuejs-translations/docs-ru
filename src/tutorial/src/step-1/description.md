@@ -21,6 +21,33 @@
 
 - Вы также можете переключаться между SFC-режимом или HTML-режимом. В первом будут показаны примеры кода в формате <a target="_blank" href="/guide/introduction#single-file-components">Однофайловые компоненты</a> (SFC), который используется большинством разработчиков при использовании Vue на этапе сборки. HTML-режим показывает использование без этапа сборки.
 
+<div class="html">
+
+:::tip
+If you're about to use HTML-mode without a build step in your own applications, make sure you either change imports to:
+
+```js
+import { ... } from 'vue/dist/vue.esm-bundler.js'
+```
+
+inside your scripts or configure your build tool to resolve `vue` accordingly. Sample config for [Vite](https://vitejs.dev/):
+
+```js
+// vite.config.js
+export default {
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js'
+    }
+  }
+}
+```
+
+See the respective [section in Tooling guide](/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation) for more information.
+:::
+
+</div>
+
 </details>
 
 Готовы? Нажмите "Далее", чтобы начать работу.

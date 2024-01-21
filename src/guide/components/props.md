@@ -405,8 +405,9 @@ defineProps({
     }
   },
   // Пользовательская функция для валидации
+  // full props passed as 2nd argument in 3.4+
   propF: {
-    validator(value) {
+    validator(value, props) {
       // Значение должно соответствовать одной из этих строк
       return ['success', 'warning', 'danger'].includes(value)
     }
@@ -458,8 +459,9 @@ export default {
       }
     },
     // Пользовательская функция для валидации
+    // full props passed as 2nd argument in 3.4+
     propF: {
-      validator(value) {
+      validator(value, props) {
         // Значение должно соответствовать одной из этих строк
         return ['success', 'warning', 'danger'].includes(value)
       }
@@ -592,8 +594,24 @@ export default {
 <div class="composition-api">
 
 ```js
+// disabled will be casted to true
 defineProps({
   disabled: [Boolean, Number]
+})
+  
+// disabled will be casted to true
+defineProps({
+  disabled: [Boolean, String]
+})
+  
+// disabled will be casted to true
+defineProps({
+  disabled: [Number, Boolean]
+})
+  
+// disabled will be parsed as an empty string (disabled="")
+defineProps({
+  disabled: [String, Boolean]
 })
 ```
 
@@ -601,13 +619,33 @@ defineProps({
 <div class="options-api">
 
 ```js
+// disabled will be casted to true
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
+  
+// disabled will be casted to true
+export default {
+  props: {
+    disabled: [Boolean, String]
+  }
+}
+  
+// disabled will be casted to true
+export default {
+  props: {
+    disabled: [Number, Boolean]
+  }
+}
+  
+// disabled will be parsed as an empty string (disabled="")
+export default {
+  props: {
+    disabled: [String, Boolean]
+  }
+}
 ```
 
 </div>
-
-Правила приведения для `Boolean` будут применяться независимо от порядка перечисления типа.

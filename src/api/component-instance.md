@@ -141,7 +141,7 @@
 
 ## $refs {#refs}
 
-Объект элементов DOM и экземпляров компонентов, зарегистрированный через [атрибутов](/guide/essentials/template-refs).
+Объект элементов DOM и экземпляров компонентов, зарегистрированный через [ссылки на шаблон](/guide/essentials/template-refs).
 
 - **Тип:**
 
@@ -154,7 +154,7 @@
 - **См. также:**
 
   - [Ссылки на элементы шаблона](/guide/essentials/template-refs)
-  - [Специальные атрибуты — ref](./built-in-special-attributes.md#ref)
+  - [Специальные атрибуты — ref](./built-in-special-attributes#ref)
 
 ## $attrs {#attrs}
 

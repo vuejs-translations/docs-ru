@@ -116,7 +116,8 @@ export default {
 Вы можете нажать на кнопку ниже и проверить элемент `<body>` с помощью инструментов разработчика вашего браузера:
 
 <script setup>
-let open = $ref(false)
+import { ref } from 'vue'
+const open = ref(false)
 </script>
 
 <div class="demo">

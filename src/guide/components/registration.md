@@ -33,7 +33,7 @@ import MyComponent from './App.vue'
 app.component('MyComponent', MyComponent)
 ```
 
-Метод `app.component()` можно объединить в цепочку вызовов:
+Метод `.component()` можно объединить в цепочку вызовов:
 
 ```js
 app

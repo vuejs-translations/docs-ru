@@ -139,3 +139,26 @@
   Элементы `<slot>` в шаблонах Vue скомпилированы в JavaScript, поэтому их не следует путать с [собственными элементами `<slot>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot ).
 
 - **См. также:** [Компонент - Слоты](/guide/components/slots)
+
+## `<template>` {#template}
+
+The `<template>` tag is used as a placeholder when we want to use a built-in directive without rendering an element in the DOM.
+
+- **Details**
+
+  The special handling for `<template>` is only triggered if it is used with one of these directives:
+
+  - `v-if`, `v-else-if`, or `v-else`
+  - `v-for`
+  - `v-slot`
+
+  If none of those directives are present then it will be rendered as a [native `<template>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) instead.
+
+  A `<template>` with a `v-for` can also have a [`key` attribute](/api/built-in-special-attributes#key). All other attributes and directives will be discarded, as they aren't meaningful without a corresponding element.
+
+  Single-file components use a [top-level `<template>` tag](/api/sfc-spec#language-blocks) to wrap the entire template. That usage is separate from the use of `<template>` described above. That top-level tag is not part of the template itself and doesn't support template syntax, such as directives.
+
+- **See also**
+  - [Guide - `v-if` on `<template>`](/guide/essentials/conditional#v-if-on-template)
+  - [Guide - `v-for` on `<template>`](/guide/essentials/list#v-for-on-template)
+  - [Guide - Named slots](/guide/components/slots#named-slots)

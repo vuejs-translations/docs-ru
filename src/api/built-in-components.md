@@ -100,6 +100,14 @@ h(Transition, {
   </Transition>
   ```
 
+  Forcing a transition by changing the `key` attribute:
+
+  ```vue-html
+  <Transition>
+    <div :key="text">{{ text }}</div>
+  </Transition>
+  ```
+
   Динамический компонент, используются параметры mode и appear:
 
   ```vue-html
@@ -284,17 +292,17 @@ h(Transition, {
   Указание целевого контейнера:
 
   ```vue-html
-  <teleport to="#some-id" />
-  <teleport to=".some-class" />
-  <teleport to="[data-teleport]" />
+  <Teleport to="#some-id" />
+  <Teleport to=".some-class" />
+  <Teleport to="[data-teleport]" />
   ```
 
   Перемещение по условию:
 
   ```vue-html
-  <teleport to="#popup" :disabled="displayVideoInline">
+  <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
-  </teleport>
+  </Teleport>
   ```
 
 - **См. также:** [Руководство - Teleport](/guide/built-ins/teleport)

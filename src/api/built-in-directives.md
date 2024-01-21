@@ -257,7 +257,9 @@ Attach an event listener to the element.
 
 Dynamically bind one or more attributes, or a component prop to an expression.
 
-- **Сокращённая запись:** `:` or `.` (when using `.prop` modifier)
+- **Сокращённая запись:**
+  - `:` or `.` (when using `.prop` modifier)
+  - Omitting value (when attribute and bound value has the same name) <sup class="vt-badge">3.4+</sup>
 
 - **Ожидает:** `any (with argument) | Object (without argument)`
 
@@ -269,7 +271,7 @@ Dynamically bind one or more attributes, or a component prop to an expression.
   - `.prop` - force a binding to be set as a DOM property. <sup class="vt-badge">3.2+</sup>
   - `.attr` - force a binding to be set as a DOM attribute. <sup class="vt-badge">3.2+</sup>
 
-- **Подробности:**
+- **Применение:**
 
   When used to bind the `class` or `style` attribute, `v-bind` supports additional value types such as Array or Objects. See linked guide section below for more details.
 
@@ -290,6 +292,9 @@ Dynamically bind one or more attributes, or a component prop to an expression.
 
   <!-- shorthand -->
   <img :src="imageSrc" />
+
+  <!-- same-name shorthand (3.4+), expands to :src="src" -->
+  <img :src />
 
   <!-- shorthand dynamic attribute name -->
   <button :[key]="value"></button>
@@ -362,7 +367,7 @@ Create a two-way binding on a form input element or a component.
 - **См. также:**
 
   - [Form Input Bindings](/guide/essentials/forms)
-  - [Component Events - Usage with `v-model`](/guide/components/events#usage-with-v-model)
+  - [Component Events - Usage with `v-model`](/guide/components/v-model)
 
 ## v-slot {#v-slot}
 

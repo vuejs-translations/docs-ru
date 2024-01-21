@@ -36,7 +36,7 @@ Called after the instance has finished processing all state-related options.
 
 - **Подробности:**
 
-  When this hooks is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
+  When this hook is called, the following have been set up: reactive data, computed properties, methods, and watchers. However, the mounting phase has not been started, and the `$el` property will not be available yet.
 
 ## beforeMount {#beforemount}
 
@@ -194,6 +194,10 @@ Called when an error propagating from a descendant component has been captured.
   - Transition hooks
 
   The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+
+  :::tip
+  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  :::
 
   You can modify component state in `errorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
 

@@ -90,64 +90,6 @@
   }
   ```
 
-## app.provide() {#app-provide}
-
-Предоставляет значение, которое может быть внедрено во все дочерние компоненты в приложении.
-
-- **Тип:**
-
-  ```ts
-  interface App {
-    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
-  }
-  ```
-
-- **Подробности:**
-
-  Ожидает ключ инъекции в качестве первого аргумента, а предоставленное значение - в качестве второго. В итоге возвращает непосредственно сам экземпляр приложения.
-
-- **Пример:**
-
-  ```js
-  import { createApp } from 'vue'
-
-  const app = createApp(/* ... */)
-
-  app.provide('message', 'привет')
-  ```
-
-  Внутри компонента в приложении:
-
-  <div class="composition-api">
-
-  ```js
-  import { inject } from 'vue'
-
-  export default {
-    setup() {
-      console.log(inject('message')) // 'привет'
-    }
-  }
-  ```
-
-  </div>
-  <div class="options-api">
-
-  ```js
-  export default {
-    inject: ['message'],
-    created() {
-      console.log(this.message) // 'привет'
-    }
-  }
-  ```
-
-  </div>
-
-- **См. также:**
-  - [Provide / Inject](/guide/components/provide-inject)
-  - [App-level Provide](/guide/components/provide-inject#app-level-provide)
-
 ## app.component() {#app-component}
 
 Регистрирует глобальный компонент, если передается строка имени и определение компонента, или возвращает уже зарегистрированный компонент, если передается только имя.
@@ -272,7 +214,96 @@
 
 ## app.version {#app-version}
 
-Возвращает версию Vue, с которой было создано приложение. Это полезно в [плагинах](/guide/reusability/plugins), где может потребоваться логика, основанная на различных версиях Vue.
+Provide a value that can be injected in all descendant components within the application.
+
+- **Type**
+
+  ```ts
+  interface App {
+    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
+  }
+  ```
+
+- **Details**
+
+  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+
+- **Example**
+
+  ```js
+  import { createApp } from 'vue'
+
+  const app = createApp(/* ... */)
+
+  app.provide('message', 'hello')
+  ```
+
+  Inside a component in the application:
+
+  <div class="composition-api">
+
+  ```js
+  import { inject } from 'vue'
+
+  export default {
+    setup() {
+      console.log(inject('message')) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+  <div class="options-api">
+
+  ```js
+  export default {
+    inject: ['message'],
+    created() {
+      console.log(this.message) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+
+- **See also**
+  - [Provide / Inject](/guide/components/provide-inject)
+  - [App-level Provide](/guide/components/provide-inject#app-level-provide)
+  - [app.runWithContext()](#app-runwithcontext)
+
+## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+
+Execute a callback with the current app as injection context.
+
+- **Type**
+
+  ```ts
+  interface App {
+    runWithContext<T>(fn: () => T): T
+  }
+  ```
+
+- **Details**
+
+  Expects a callback function and runs the callback immediately. During the synchronous call of the callback, `inject()` calls are able to look up injections from the values provided by the current app, even when there is no current active component instance. The return value of the callback will also be returned.
+
+- **Example**
+
+  ```js
+  import { inject } from 'vue'
+
+  app.provide('id', 1)
+
+  const injected = app.runWithContext(() => {
+    return inject('id')
+  })
+
+  console.log(injected) // 1
+  ```
+
+## app.version {#app-version}
+
+Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins), where you might need conditional logic based on different Vue versions.
 
 - **Тип:**
 
@@ -343,7 +374,11 @@ console.log(app.config)
   - Хуки пользовательских директив
   - Хуки анимаций
 
-- **Пример:**
+  :::tip
+  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  :::
+
+- **Пример**
 
   ```js
   app.config.errorHandler = (err, instance, info) => {

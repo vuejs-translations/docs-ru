@@ -41,11 +41,23 @@
 
 ## toRef() {#toref}
 
+Can be used to normalize values / refs / getters into refs (3.3+).
+
 Может использоваться для создания ссылки на свойство исходного реактивного объекта. Созданная ref-ссылка синхронизируется с входными параметрами источника: изменение входных параметров источника приведет к обновлению ссылки, и наоборот.
 
 - **Тип:**
 
   ```ts
+  // normalization signature (3.3+)
+  function toRef<T>(
+    value: T
+  ): T extends () => infer R
+    ? Readonly<Ref<R>>
+    : T extends Ref
+    ? T
+    : Ref<UnwrapRef<T>>
+
+  // object property signature
   function toRef<T extends object, K extends keyof T>(
     object: T,
     key: K,
@@ -57,12 +69,29 @@
 
 - **Пример:**
 
+  Normalization signature (3.3+):
+
+  ```js
+  // returns existing refs as-is
+  toRef(existingRef)
+
+  // creates a readonly ref that calls the getter on .value access
+  toRef(() => props.foo)
+
+  // creates normal refs from non-function values
+  // equivalent to ref(1)
+  toRef(1)
+  ```
+
+  Object property signature:
+
   ```js
   const state = reactive({
     foo: 1,
     bar: 2
   })
 
+  // a two-way ref that syncs with the original property
   const fooRef = toRef(state, 'foo')
 
   // мутация ref обновляет оригинал
@@ -87,17 +116,57 @@
   ```vue
   <script setup>
   import { toRef } from 'vue'
-  
+
   const props = defineProps(/* ... */)
 
   // преобразуем `props.foo` в ссылку, и затем передаем в функцию композиции
   useSomeFeature(toRef(props, 'foo'))
+
+  // getter syntax - recommended in 3.3+
+  useSomeFeature(toRef(() => props.foo))
   </script>
   ```
 
   Когда `toRef` используется с входными параметрами компонента, обычные ограничения на изменение входных параметров остаются в силе. Попытка присвоить новое значение входным параметрам эквивалентна попытке изменить входные параметры напрямую, что в свою очередь - не допустимо. В этом случае вы можете рассмотреть возможность использования [`computed`](./reactivity-core#computed) с `get` и `set` вместо этого. Для получения дополнительной информации смотрите руководство по [использованию `v-model` в компонентах](/guide/components/events#usage-with-v-model).
 
-  `toRef()` будет возвращать подходящее свойство, даже если исходное свойство не существует. Это позволяет работать с необязательными свойствами, которые не были бы получены [`toRefs`](#torefs).
+  When using the object property signature, `toRef()` will return a usable ref even if the source property doesn't currently exist. This makes it possible to work with optional properties, which wouldn't be picked up by [`toRefs`](#torefs).
+
+## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+
+Normalizes values / refs / getters to values. This is similar to [unref()](#unref), except that it also normalizes getters. If the argument is a getter, it will be invoked and its return value will be returned.
+
+This can be used in [Composables](/guide/reusability/composables.html) to normalize an argument that can be either a value, a ref, or a getter.
+
+- **Тип:**
+
+  ```ts
+  function toValue<T>(source: T | Ref<T> | (() => T)): T
+  ```
+
+- **Example**
+
+  ```js
+  toValue(1) //       --> 1
+  toValue(ref(1)) //  --> 1
+  toValue(() => 1) // --> 1
+  ```
+
+  Normalizing arguments in composables:
+
+  ```ts
+  import type { MaybeRefOrGetter } from 'vue'
+
+  function useFeature(id: MaybeRefOrGetter<number>) {
+    watch(() => toValue(id), id => {
+      // react to id changes
+    })
+  }
+
+  // this composable supports any of the following:
+  useFeature(1)
+  useFeature(ref(1))
+  useFeature(() => 1)
+  ```
 
 ## toRefs() {#torefs}
 
@@ -182,7 +251,9 @@
 
 ## isReadonly() {#isreadonly}
 
-Проверяет, является ли переданное значение объектом readonly. Свойства объекта readonly могут изменяться, но они не могут быть присвоены непосредственно через переданный объект.
+Checks whether the passed value is a readonly object. The properties of a readonly object can change, but they can't be assigned directly via the passed object.
+
+The proxies created by [`readonly()`](./reactivity-core#readonly) and [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) are both considered readonly, as is a [`computed()`](./reactivity-core#computed) ref without a `set` function.
 
 Прокси, созданные [`readonly()`](./reactivity-core#readonly) и [`shallowReadonly()`](./reactivity-advanced#shallowreadonly), считаются readonly, как и ref-ссылка [`computed()`](./reactivity-core#computed) без функции `set`.
 

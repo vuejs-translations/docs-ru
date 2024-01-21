@@ -23,17 +23,17 @@
   ```vue
   <script setup>
   import { ref, provide } from 'vue'
-  import { fooSymbol } from './injectionSymbols'
+  import { countSymbol } from './injectionSymbols'
 
   // provide со статическим значением
-  provide('foo', 'bar')
+  provide('path', '/project/')
 
   // provide с реактивным значением
   const count = ref(0)
   provide('count', count)
 
   // provide с ключами-символами
-  provide(fooSymbol, count)
+  provide(countSymbol, count)
   </script>
   ```
 
@@ -66,7 +66,9 @@
 
   Первым аргументом является ключ внедрения. Vue пройдет по родительской цепочке вверх, чтобы найти предоставленное значение с соответствующим ключом. Если несколько компонентов в родительской цепочке предоставляют один и тот же ключ, то ближайший к внедряющему компоненту будет "затенять" те, которые находятся выше по цепочке. Если значение с подходящим ключом не найдено, `inject()` возвращает значение `undefined`, если не указано значение по умолчанию.
 
-  Второй аргумент является необязательным и представляет собой значение по умолчанию, которое будет использоваться, если не было найдено ни одного подходящего значения. Это также может быть функция-фабрика для возврата значений, которые дорого создавать. Если значением по умолчанию является функция, то в качестве третьего аргумента необходимо передать `false`, чтобы указать, что в качестве значения должна использоваться функция, а не фабрика.
+  The second argument is optional and is the default value to be used when no matching value was found.
+
+  The second argument can also be a factory function that returns values that are expensive to create. In this case, `true` must be passed as the third argument to indicate that the function should be used as a factory instead of the value itself.
 
   Подобно API регистрации хуков жизненного цикла, `inject()` должен вызываться синхронно во время фазы `setup()` компонента.
 
@@ -79,26 +81,36 @@
   ```vue
   <script setup>
   import { inject } from 'vue'
-  import { fooSymbol } from './injectionSymbols'
+  import { countSymbol } from './injectionSymbols'
 
   // inject co статическим значением
-  const foo = inject('foo')
+  const path = inject('path')
 
   // inject с реактивным значением
   const count = inject('count')
 
   // inject с ключами-символами
-  const foo2 = inject(fooSymbol)
+  const count2 = inject(countSymbol)
 
   // inject со значением по умолчанию
-  const bar = inject('foo', 'default value')
+  const bar = inject('path', '/default-path')
 
-  // inject с функцией-фабрикой значения по умолчанию
-  const baz = inject('foo', () => new Map())
+  // inject with function default value
+  const fn = inject('function', () => {})
 
-  // inject со значением по умолчанию в виде функции, через передачу 3го аргумента
-  const fn = inject('function', () => {}, false)
+  // inject with default value factory
+  const baz = inject('factory', () => new ExpensiveObject(), true)
   </script>
+  ```
+
+## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
+
+Returns true if [inject()](#inject) can be used without warning about being called in the wrong place (e.g. outside of `setup()`). This method is designed to be used by libraries that want to use `inject()` internally without triggering a warning to the end user.
+
+- **Type**
+
+  ```ts
+  function hasInjectionContext(): boolean
   ```
 
 - **См. также:**

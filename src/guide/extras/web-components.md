@@ -224,6 +224,29 @@ export function register() {
 
 If you have many components, you can also leverage build tool features such as Vite's [glob import](https://vitejs.dev/guide/features#glob-import) or webpack's [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) to load all components from a directory.
 
+### Web Components and Typescript {#web-components-and-typescript}
+
+If you are developing an application or a library, you may want to [type check](/guide/scaling-up/tooling.html#typescript) your Vue components, including those that are defined as custom elements.
+
+Custom elements are registered globally using native APIs, so by default they won't have type inference when used in Vue templates. To provide type support for Vue components registered as custom elements, we can register global component typings using the the [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) in Vue templates and/or in [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+
+```typescript
+import { defineCustomElement } from 'vue'
+
+// vue SFC
+import CounterSFC from './src/components/counter.ce.vue'
+
+// turn component into web components
+export const Counter = defineCustomElement(CounterSFC)
+
+// register global typings
+declare module 'vue' {
+  export interface GlobalComponents {
+    'Counter': typeof Counter,
+  }
+}
+```
+
 ## Web Components vs. Vue Components {#web-components-vs-vue-components}
 
 Some developers believe that framework-proprietary component models should be avoided, and that exclusively using Custom Elements makes an application "future-proof". Here we will try to explain why we believe that this is an overly simplistic take on the problem.
@@ -248,4 +271,4 @@ There are also some areas where we find custom elements to be limiting:
 
 - Shipping custom elements with shadow DOM scoped CSS today requires embedding the CSS inside JavaScript so that they can be injected into shadow roots at runtime. They also result in duplicated styles in markup in SSR scenarios. There are [platform features](https://github.com/whatwg/html/pull/4898/) being worked on in this area - but as of now they are not yet universally supported, and there are still production performance / SSR concerns to be addressed. In the meanwhile, Vue SFCs provide [CSS scoping mechanisms](/api/sfc-css-features) that support extracting the styles into plain CSS files.
 
-Vue will always be stay up to date with the latest standards in the web platform, and we will happily leverage whatever the platform provides if it makes our job easier. However, our goal is to provide solutions that work well and work today. That means we have to incorporate new platform features with a critical mindset - and that involves filling the gaps where the standards fall short while that is still the case.
+Vue will always stay up to date with the latest standards in the web platform, and we will happily leverage whatever the platform provides if it makes our job easier. However, our goal is to provide solutions that work well and work today. That means we have to incorporate new platform features with a critical mindset - and that involves filling the gaps where the standards fall short while that is still the case.

@@ -1,7 +1,9 @@
 # Трансформация реактивности {#reactivity-transform}
 
 :::warning Экспериментальная возможность
-В настоящее время функция Reactivity Transform является экспериментальной. По умолчанию она отключена и требует [явного согласия.](#explicit-opt-in). Она также может быть изменена до окончательной доработки. Чтобы быть в курсе событий, следите за [предложением и обсуждением этой функции на GitHub](https://github.com/vuejs/rfcs/discussions/369).
+Reactivity Transform was an experimental feature, and has been removed in the latest 3.4 release. Please read about [the reasoning here](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028).
+
+If you still intend to use it, it is now available via the [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) plugin.
 :::
 
 :::tip Специфика для Composition API
@@ -109,7 +111,7 @@ let count = $(myCreateRef())
 
 1. Как и в случае с `.value`, для сохранения реактивности необходимо всегда обращаться к входным параметрам как `props.x`. Это означает, что нельзя деструктурировать `defineProps`, поскольку полученные в результате деструктуризации переменные не являются реактивными и не будут обновляться.
 
-2. При использовании [объявления props только для типа](/api/sfc-script-setup#typescript-only-features), нет простого способа объявить значения по умолчанию для props. Для этой цели мы ввели API `withDefaults()`, но он по-прежнему неудобен в использовании.
+2. При использовании [объявления props только для типа](/api/sfc-script-setup#type-only-props-emit-declarations), нет простого способа объявить значения по умолчанию для props. Для этой цели мы ввели API `withDefaults()`, но он по-прежнему неудобен в использовании.
 
 Мы можем решить эти проблемы, применив преобразование во время компиляции, когда `defineProps` используется с деструктуризацией, аналогично тому, что мы видели ранее с `$()`:
 
@@ -281,7 +283,9 @@ setup(props) {
 
 ## Явное включение {#explicit-opt-in}
 
-В настоящее время Reactivity Transform отключена по умолчанию и требует явного включения. Кроме того, для всех приведенных ниже настроек требуется `vue@^3.2.25`.
+:::danger No longer supported in core
+The following only applies up to Vue version 3.3 and below. Support has been removed in Vue core 3.4 and above, and `@vitejs/plugin-vue` 5.0 and above. If you intend to continue using the transform, please migrate to [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) instead.
+:::
 
 ### Vite {#vite}
 

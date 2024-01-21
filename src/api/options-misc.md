@@ -76,18 +76,15 @@ Controls whether the default component attribute fallthrough behavior should be 
   </div>
   <div class="composition-api">
 
-  When declaring this option in a component that uses `<script setup>`, a separate `<script>` block is necessary:
+  When declaring this option in a component that uses `<script setup>`, you can use the [`defineOptions`](/api/sfc-script-setup#defineoptions) macro:
 
   ```vue
-  <script>
-  export default {
-    inheritAttrs: false
-  }
-  </script>
-
   <script setup>
   defineProps(['label', 'value'])
   defineEmits(['input'])
+  defineOptions({
+    inheritAttrs: false
+  })
   </script>
 
   <template>
@@ -166,7 +163,5 @@ An object that registers directives to be made available to the component instan
   ```vue-html
   <input v-focus>
   ```
-
-  A hash of directives to be made available to the component instance.
 
 - **См. также:** [Custom Directives](/guide/reusability/custom-directives)

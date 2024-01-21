@@ -1,5 +1,5 @@
 <script setup>
-import TestingApiSwitcher from './TestingApiSwitcher.vue'
+import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 
 # Тестирование {#testing}
@@ -105,9 +105,7 @@ describe('increment', () => {
 
 ### Другие варианты {#other-options}
 
-- [Peeky](https://peeky.dev/) - еще один быстрый прогонщик модульных тестов с первоклассной интеграцией с Vite. Он также создан одним из членов основной команды Vue и предлагает интерфейс тестирования на основе графического интерфейса.
-
-- [Jest](https://jestjs.io/) - это популярный фреймворк для модульного тестирования, который можно заставить работать с Vite с помощью пакета [vite-jest](https://github.com/sodatea/vite-jest). Однако мы рекомендуем использовать Jest только в том случае, если у вас есть существующий набор тестов Jest, который необходимо перенести в проект, основанный на Vite, поскольку Vitest обеспечивает более тесную интеграцию и лучшую производительность.
+- [Jest](https://jestjs.io/) is a popular unit testing framework. However, we only recommend Jest if you have an existing Jest test suite that needs to be migrated over to a Vite-based project, as Vitest offers a more seamless integration and better performance.
 
 ## Тестирование компонентов {#component-testing}
 
@@ -128,72 +126,68 @@ describe('increment', () => {
 
   Мы ничего не знаем о реализации Stepper, только то, что "входом" является параметр `max`, а "выходом" - состояние DOM в том виде, в котором его увидит пользователь.
 
-<TestingApiSwitcher>
+<VTCodeGroup>
+  <VTCodeGroupTab label="Vue Test Utils">
 
-<div class="testing-library-api">
+  ```js
+  const valueSelector = '[data-testid=stepper-value]'
+  const buttonSelector = '[data-testid=increment]'
 
-```js
-const { getByText } = render(Stepper, {
-  props: {
-    max: 1
-  }
-})
+  const wrapper = mount(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-getByText('0') // Неявное утверждение, что «0» находится внутри компонента
+  expect(wrapper.find(valueSelector).text()).toContain('0')
 
-const button = getByText('increment')
+  await wrapper.find(buttonSelector).trigger('click')
 
-// Отправляем событие click для нашей кнопки инкремента.
-await fireEvent.click(button)
+  expect(wrapper.find(valueSelector).text()).toContain('1')
+  ```
 
-getByText('1')
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="Cypress">
 
-await fireEvent.click(button)
-```
+  ```js
+  const valueSelector = '[data-testid=stepper-value]'
+  const buttonSelector = '[data-testid=increment]'
 
-</div>
+  mount(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-<div class="vtu-api">
+  cy.get(valueSelector).should('be.visible').and('contain.text', '0')
+    .get(buttonSelector).click()
+    .get(valueSelector).should('contain.text', '1')
+  ```
 
-```js
-const valueSelector = '[data-testid=stepper-value]'
-const buttonSelector = '[data-testid=increment]'
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="Testing Library">
 
-const wrapper = mount(Stepper, {
-  props: {
-    max: 1
-  }
-})
+  ```js
+  const { getByText } = render(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-expect(wrapper.find(valueSelector).text()).toContain('0')
+  getByText('0') // Implicit assertion that "0" is within the component
 
-await wrapper.find(buttonSelector).trigger('click')
+  const button = getByRole('button', { name: /increment/i })
 
-expect(wrapper.find(valueSelector).text()).toContain('1')
-```
+  // Dispatch a click event to our increment button.
+  await fireEvent.click(button)
 
-</div>
+  getByText('1')
 
-<div class="cypress-api">
+  await fireEvent.click(button)
+  ```
 
-```js
-const valueSelector = '[data-testid=stepper-value]'
-const buttonSelector = '[data-testid=increment]'
-
-mount(Stepper, {
-  props: {
-    max: 1
-  }
-})
-
-cy.get(valueSelector).should('be.visible').and('contain.text', '0')
-  .get(buttonSelector).click()
-  .get(valueSelector).should('contain.text', '1')
-```
-
-</div>
-
-</TestingApiSwitcher>
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 - **НЕ ДЕЛАЙТЕ**
 
@@ -207,7 +201,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 ### Рекомендации {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
+- [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
 - [Компонентное тестирование с Cypress](https://on.cypress.io/component) для компонентов, чье ожидаемое поведение зависит от правильной отрисовки стилей или срабатывания собственных событий DOM. Может использоваться с библиотекой тестирования с помощью [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
@@ -217,15 +211,17 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 Тестирование компонентов часто включает в себя изолированное монтирование тестируемого компонента, инициирование симулированных событий пользовательского ввода и утверждение на визуализированных выходных данных DOM. Существуют специальные библиотеки утилит, которые упрощают эти задачи.
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) - это библиотека тестирования Vue, ориентированная на тестирование компонентов без привязки к деталям реализации. Созданная с учетом требований доступности, она также позволяет легко проводить рефакторинг. Основной принцип библиотеки заключается в том, что чем больше тесты похожи на то, как используется программное обеспечение, тем больше уверенности они могут обеспечить.
-
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) - это официальная низкоуровневая библиотека тестирования компонентов, которая была написана для предоставления пользователям доступа к специфическим API Vue. На ней также построена библиотека нижнего уровня `@testing-library/vue`.
 
-Мы рекомендуем использовать `@testing-library/vue` для тестирования компонентов в приложениях, так как ее направленность лучше соответствует приоритетам тестирования в приложениях. Используйте `@vue/test-utils` только в том случае, если вы создаете сложные компоненты, требующие тестирования специфичных для Vue внутренних компонентов.
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) - это библиотека тестирования Vue, ориентированная на тестирование компонентов без привязки к деталям реализации. Созданная с учетом требований доступности, она также позволяет легко проводить рефакторинг. Основной принцип библиотеки заключается в том, что чем больше тесты похожи на то, как используется программное обеспечение, тем больше уверенности они могут обеспечить.
+
+Мы рекомендуем использовать `@vue/test-utils` для тестирования компонентов в приложениях, так как ее направленность лучше соответствует приоритетам тестирования в приложениях. Используйте `@vue/test-utils` только в том случае, если вы создаете сложные компоненты, требующие тестирования специфичных для Vue внутренних компонентов.
 
 ### Другие варианты {#other-options-1}
 
-- [Nightwatch](https://v2.nightwatchjs.org/) - это E2E-тест-прогонщик с поддержкой тестирования компонентов Vue. ([Пример проекта](https://github.com/nightwatchjs-community/todo-vue) в Nightwatch v2)
+- [Nightwatch](https://nightwatchjs.org/) - это E2E-тест-прогонщик с поддержкой тестирования компонентов Vue. ([Пример проекта](https://github.com/nightwatchjs-community/todo-vue) в Nightwatch v2)
+
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library.
 
 ## E2E тестирование {#e2e-testing}
 
@@ -273,7 +269,9 @@ E2E-тесты проверяют многие уровни приложения
 
 - [Playwright](https://playwright.dev/) также является отличным решением для E2E-тестирования с более широким спектром поддержки браузеров (в основном WebKit). Более подробную информацию см. в разделе [Почему Playwright](https://playwright.dev/docs/why-playwright).
 
-- [Nightwatch v2](https://v2.nightwatchjs.org/) - это решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров.
+- [Nightwatch](https://nightwatchjs.org/) то решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров.
+
+- [WebdriverIO](https://webdriver.io/) is a test automation framework for web and mobile testing based on the WebDriver protocol.
 
 ## Рецепты {#recipes}
 
@@ -315,6 +313,7 @@ export default defineConfig({
   }
 }
 ```
+
 :::
 
 Затем создайте в проекте файл, заканчивающийся `*.test.js`. Все тестовые файлы можно разместить в каталоге test в корне проекта или в каталогах test рядом с исходными файлами. Vitest будет автоматически искать их, используя соглашение об именовании.
@@ -409,10 +408,11 @@ export function withSetup(composable) {
   })
   app.mount(document.createElement('div'))
   // возвращение результата и экземпляра приложения
-  // для тестирования provide / unmount
+  // для тестирования provide/unmount
   return [result, app]
 }
 ```
+
 ```js
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'

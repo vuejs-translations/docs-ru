@@ -5,7 +5,7 @@ To better understand the Reactivity APIs, it is recommended to read the followin
 
 - [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals) (with the API preference set to Composition API)
 - [Reactivity in Depth](/guide/extras/reactivity-in-depth)
-:::
+  :::
 
 ## ref() {#ref}
 
@@ -35,7 +35,7 @@ Takes an inner value and returns a reactive and mutable ref object, which has a 
   const count = ref(0)
   console.log(count.value) // 0
 
-  count.value++
+  count.value = 1
   console.log(count.value) // 1
   ```
 
@@ -52,7 +52,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   ```ts
   // read-only
   function computed<T>(
-    getter: () => T,
+    getter: (oldValue: T | undefined) => T,
     // see "Computed Debugging" link below
     debuggerOptions?: DebuggerOptions
   ): Readonly<Ref<Readonly<T>>>
@@ -60,7 +60,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   // writable
   function computed<T>(
     options: {
-      get: () => T
+      get: (oldValue: T | undefined) => T
       set: (value: T) => void
     },
     debuggerOptions?: DebuggerOptions
@@ -112,6 +112,7 @@ Takes a getter function and returns a readonly reactive [ref](#ref) object for t
   - [Guide - Computed Properties](/guide/essentials/computed)
   - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth#computed-debugging)
   - [Guide - Typing `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
@@ -360,6 +361,7 @@ Watches one or more reactive data sources and invokes a callback function when t
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
+    once?: boolean // default: false (3.4+)
   }
   ```
 
@@ -386,6 +388,7 @@ Watches one or more reactive data sources and invokes a callback function when t
   - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`once`**: run the callback only once. The watcher is automatically stopped after the first callback run. <sup class="vt-badge" data-text="3.4+" />
 
   Compared to [`watchEffect()`](#watcheffect), `watch()` allows us to:
 
@@ -453,7 +456,31 @@ Watches one or more reactive data sources and invokes a callback function when t
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
+  })
+  ```
+
+  Stopping the watcher:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // when the watcher is no longer needed:
+  stop()
+  ```
+
+  Side effect cleanup:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
   })
   ```
 

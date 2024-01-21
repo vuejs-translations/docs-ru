@@ -18,7 +18,7 @@ Vue написан на TypeScript и обеспечивает первокла�
 
 - В процессе разработки мы рекомендуем опираться на хорошую [настройку IDE](#ide-support) для получения мгновенной обратной связи по типовым ошибкам.
 
-- При использовании SFC используйте утилиту [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc) для проверки типов в командной строке и генерации объявлений типов. `vue-tsc` представляет собой обертку для `tsc`, собственного интерфейса командной строки TypeScript. Она работает в основном так же, как и `tsc`, за исключением того, что поддерживает Vue SFC в дополнение к файлам TypeScript. Вы можете запустить `vue-tsc` в режиме watch параллельно с сервером Vite dev или использовать плагин Vite, например [vite-plugin-checker](https://vite-plugin-checker.netlify.app/), который выполняет проверки в отдельном рабочем потоке.
+- При использовании SFC используйте утилиту [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) для проверки типов в командной строке и генерации объявлений типов. `vue-tsc` представляет собой обертку для `tsc`, собственного интерфейса командной строки TypeScript. Она работает в основном так же, как и `tsc`, за исключением того, что поддерживает Vue SFC в дополнение к файлам TypeScript. Вы можете запустить `vue-tsc` в режиме watch параллельно с сервером Vite dev или использовать плагин Vite, например [vite-plugin-checker](https://vite-plugin-checker.netlify.app/), который выполняет проверки в отдельном рабочем потоке.
 
 - Vue CLI также обеспечивает поддержку TypeScript, но больше не рекомендуется. Смотрите [примечания ниже](#note-on-vue-cli-and-ts-loader).
 
@@ -47,6 +47,8 @@ Vue написан на TypeScript и обеспечивает первокла�
 - При использовании API Options необходимо установить [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) в `true` (или, по крайней мере, включить [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis), который является частью флага `strict`), чтобы задействовать проверку типа `this` в опциях компонента. В противном случае `this` будет рассматриваться как `any`.
 
 - Если вы настроили псевдонимы распознавателя в инструменте сборки, например псевдоним `@/*`, настроенный по умолчанию в проекте `create-vue`, необходимо также настроить его для TypeScript с помощью [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths).
+
+- If you intend to use TSX with Vue, set [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) to `"preserve"`, and set [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) to `"vue"`.
 
 См. также:
 
@@ -130,7 +132,7 @@ export default defineComponent({
 См. также:
 
 - [Заметка о webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
-- [типы тестов для `defineComponent`](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
+- [типы тестов для `defineComponent`](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
 
 :::tip Совет
 `defineComponent()` также позволяет выводить типы для компонентов, определенных в простом JavaScript.
@@ -207,6 +209,17 @@ let x: string | number = 1
 :::tip Совет
 Если используется Vue CLI или настройка на основе webpack, то для использования TypeScript в выражениях шаблонов требуется `vue-loader@^16.8.0`.
 :::
+
+### Usage with TSX {#usage-with-tsx}
+
+Vue also supports authoring components with JSX / TSX. Details are covered in the [Render Function & JSX](/guide/extras/render-function.html#jsx-tsx) guide.
+
+## Generic Components {#generic-components}
+
+Generic components are supported in two cases:
+
+- In SFCs: [`<script setup>` with the `generic` attribute](/api/sfc-script-setup.html#generics)
+- Render function / JSX components: [`defineComponent()`'s function signature](/api/general.html#function-signature)
 
 ## Специфические рецепты API {#api-specific-recipes}
 
