@@ -106,7 +106,7 @@ function dismiss() {
       </template>
       <template v-if="source && source.startsWith('url')">
         <p>
-          Showing content for
+          Показать содержимое для
           {{ preferComposition ? 'Composition' : 'Options' }} API, потому что
           {{
             source === 'url-query'
