@@ -196,7 +196,7 @@
   Хук получает три аргумента: ошибку, экземпляр компонента, вызвавшего ошибку, и информационную строку, указывающую тип источника ошибки.
 
   :::tip
-  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Production Error Code Reference](/error-reference/#runtime-errors).
+  In production, the 3rd argument (`info`) will be a shortened code instead of the full information string. You can find the code to string mapping in the [Руководстве по кодам ошибок](/error-reference/#runtime-errors).
   :::
 
   Для отображения состояния ошибки пользователю можно модифицировать состояние компонента в `errorCaptured()`. Однако важно, чтобы в состоянии ошибки не отображалось исходное содержимое, вызвавшее ошибку, иначе компонент будет брошен в бесконечный цикл отрисовки.
