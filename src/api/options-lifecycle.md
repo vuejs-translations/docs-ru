@@ -1,7 +1,7 @@
 # Опции: Жизненный цикл {#options-lifecycle}
 
 :::info См. также
-Чтобы узнать о совместном использовании хуков жизненного цикла, см. [Руководство - Хуки жизненного цикла](/guide/essentials/lifecycle)
+Чтобы узнать о совместном использовании хуков жизненного цикла, см. [Руководство — Хуки жизненного цикла](/guide/essentials/lifecycle)
 :::
 
 ## beforeCreate {#beforecreate}
@@ -276,7 +276,7 @@
   }
   ```
 
-- **См. также** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
@@ -292,7 +292,7 @@
   }
   ```
 
-- **См. также** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 

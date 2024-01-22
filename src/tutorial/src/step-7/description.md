@@ -52,4 +52,4 @@
 
 Здесь у нас есть простой список todo - попробуйте реализовать логику для методов `addTodo()` и `removeTodo()`, чтобы заставить его работать!
 
-Подробнее о `v-for`: <a target="_blank" href="/guide/essentials/list.html">Руководство - рендеринг списков</a>
+Подробнее о `v-for`: <a target="_blank" href="/guide/essentials/list.html">Руководство — рендеринг списков</a>

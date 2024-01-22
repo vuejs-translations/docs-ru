@@ -1,7 +1,7 @@
 # Composition API: Хуки жизненного цикла {#composition-api-lifecycle-hooks}
 
 :::info Примечание по использованию
-Все API, перечисленные на этой странице, должны вызываться синхронно на этапе `setup()` компонента. Прочтите [Руководство - Хуки жизненного цикла](/guide/essentials/lifecycle) для получения подробностей.
+Все API, перечисленные на этой странице, должны вызываться синхронно на этапе `setup()` компонента. Прочтите [Руководство — Хуки жизненного цикла](/guide/essentials/lifecycle) для получения подробностей.
 :::
 
 ## onMounted() {#onmounted}
@@ -245,7 +245,7 @@
   }
   ```
 
-- **См. также** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **См. также** [Подробнее о реактивности](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
@@ -271,7 +271,7 @@
   }
   ```
 
-- **См. также** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **См. также** [Подробнее о реактивности](/guide/extras/reactivity-in-depth)
 
 ## onActivated() {#onactivated}
 
@@ -285,7 +285,7 @@
   function onActivated(callback: () => void): void
   ```
 
-- **См. также** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
@@ -299,7 +299,7 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **См. также** [Руководство - Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 

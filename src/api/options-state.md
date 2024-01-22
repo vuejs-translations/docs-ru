@@ -126,8 +126,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Входные параметры](/guide/components/props)
-  - [Руководство - Типизация входных параметров компонента](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
+  - [Руководство — Входные параметры](/guide/components/props)
+  - [Руководство — Типизация входных параметров компонента](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
@@ -208,8 +208,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
-  - [Руководство - Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
+  - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
+  - [Руководство — Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
 
@@ -434,8 +434,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Передача обычных атрибутов](/guide/components/attrs.html)
-  - [Руководство - Типизирование генерируемых компонентом событий](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
+  - [Руководство — Передача обычных атрибутов](/guide/components/attrs.html)
+  - [Руководство — Типизирование генерируемых компонентом событий](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 

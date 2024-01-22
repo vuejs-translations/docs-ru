@@ -35,7 +35,7 @@
   const app = createApp(App)
   ```
 
-- **См. также** [Руководство - Создание Vue приложения](/guide/essentials/application)
+- **См. также** [Руководство — Создание Vue приложения](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
@@ -427,7 +427,7 @@ console.log(app.config)
 
 - **Тип** `boolean`
 
-- **См. также** [Руководство - Производительность](/guide/best-practices/performance)
+- **См. также** [Руководство — Производительность](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
@@ -559,7 +559,7 @@ console.log(app.config)
   }
   ```
 
-- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+- **См. также** [Руководство — Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
