@@ -1,15 +1,15 @@
-# Priority B Rules: Strongly Recommended {#priority-b-rules-strongly-recommended}
+# Правила приоритета B: Настоятельно рекомендуются {#priority-b-rules-strongly-recommended}
 
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
+Эти правила помогают улучшить читаемость и/или опыт разработчика в большинстве проектов. Ваш код все равно выполнится, если вы их нарушите, но эти нарушения должны быть редкими и обоснованными.
 
-## Component files {#component-files}
+## Файлы компонентов {#component-files}
 
-**Whenever a build system is available to concatenate files, each component should be in its own file.**
+**Несмотря на то, что ваша система сборки приложения может конкатенировать файлы, каждый компонент должен быть в отдельном файле.**
 
-This helps you to more quickly find a component when you need to edit it or review how to use it.
+Это поможет вам быстрее находить компонент, который нужно поменять или с которым нужно ознакомиться для дальнейшего использования.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 app.component('TodoList', {
@@ -24,7 +24,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -40,14 +40,14 @@ components/
 
 </div>
 
-## Single-file component filename casing {#single-file-component-filename-casing}
+## Регистр SFC-файла {#single-file-component-filename-casing}
 
-**Filenames of [Single-File Components](/guide/scaling-up/sfc) should either be always PascalCase or always kebab-case.**
+**Имена файлов [Single-File Components](/guide/scaling-up/sfc) должны всегда быть либо в PascalCase, либо в kebab-case.**
 
-PascalCase works best with autocompletion in code editors, as it's consistent with how we reference components in JS(X) and templates, wherever possible. However, mixed case filenames can sometimes create issues on case-insensitive file systems, which is why kebab-case is also perfectly acceptable.
+PascalCase работает лучше с автодополнением в редакторах кода, так как он соответствует тому, как мы ссылаемся на компоненты в JSX и в шаблонах, где это возможно. Однако, имена файлов в смешанном стиле иногда могут создать проблемы в файловых системах, не зависящих от регистра, поэтому kebab-case также допустим.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -62,7 +62,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -76,28 +76,28 @@ components/
 
 </div>
 
-## Base component names {#base-component-names}
+## Имена базовых компоненов {#base-component-names}
 
-**Base components (a.k.a. presentational, dumb, or pure components) that apply app-specific styling and conventions should all begin with a specific prefix, such as `Base`, `App`, or `V`.**
+**Базовые компоненты (они же презентационные, глупые или чистые компоненты), которые используют специфичные для приложения стили и соглашения, должны всегда начинаться со специального префикса, например `Base`, `App` или `V`.**
 
-::: details Detailed Explanation
-These components lay the foundation for consistent styling and behavior in your application. They may **only** contain:
+::: details Подробное объяснение
+Эти компоненты закладывают основу для согласованного стиля и поведения в рамках вашего приложения. Они содержат **только**:
 
-- HTML elements,
-- other base components, and
-- 3rd-party UI components.
+- HTML-элементы,
+- другие базовые компоненты и
+- сторонние UI-компоненты.
 
-But they'll **never** contain global state (e.g. from a [Pinia](https://pinia.vuejs.org/) store).
+Но они никогда не будут содержать глобального состояния (например, из [Pinia-хранилища](https://pinia.vuejs.org/)).
 
-Their names often include the name of an element they wrap (e.g. `BaseButton`, `BaseTable`), unless no element exists for their specific purpose (e.g. `BaseIcon`). If you build similar components for a more specific context, they will almost always consume these components (e.g. `BaseButton` may be used in `ButtonSubmit`).
+Имена этих файлов часто содержат имя элемента, который используют (например, `BaseButton`, `BaseTable`), если не существует элемента для конкретной цели (например, `BaseIcon`). Если вы будете создавать похожие компоненты для более специфичного случая, они почти всегда будут использовать базовые компоненты (например, `BaseButton` может быть использован в `ButtonSubmit` ).
 
-Some advantages of this convention:
+Преимущества этого соглашения:
 
-- When organized alphabetically in editors, your app's base components are all listed together, making them easier to identify.
+- При алфавитном порядке расположения базовые компоненты вашего приложения будут перечисляться вместе, что облегчает их поиск.
 
-- Since component names should always be multi-word, this convention prevents you from having to choose an arbitrary prefix for simple component wrappers (e.g. `MyButton`, `VueButton`).
+- Поскольку имена компонентов всегда должны состоять из нескольких слов, это соглашение избавляет вас от необходимости выбрать произвольных префикс для простых компонентов-оберток (например, `MyButton`, `VueButton`).
 
-- Since these components are so frequently used, you may want to simply make them global instead of importing them everywhere. A prefix makes this possible with Webpack:
+- Посколько эти компоненты часто используются, вы, возможно, хотите сделать их глобальными вместо того, чтобы импортировать их везде. Префикс позволяет сделать это в Webpack:
 
   ```js
   const requireComponent = require.context(
@@ -119,7 +119,7 @@ Some advantages of this convention:
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -131,7 +131,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -156,14 +156,15 @@ components/
 
 </div>
 
-## Tightly coupled component names {#tightly-coupled-component-names}
+## Имена тесносвязанных компонентов {#tightly-coupled-component-names}
 
 **Child components that are tightly coupled with their parent should include the parent component name as a prefix.**
+**Дочерние компоненты, которые тесно связаны с родителем, должны использовать имя родительского компонента как префикс.**
 
-If a component only makes sense in the context of a single parent component, that relationship should be evident in its name. Since editors typically organize files alphabetically, this also keeps these related files next to each other.
+Если компонент имеет смысл только в рамках одного родительского компонента, тогда это отношение должно быть очевидно из его имени. Так как редакторы обычно располагают файлы в алфавитном порядке, то это также позволит хранить связанные файлы рядом друг с другом.
 
-::: details Detailed Explanation
-You might be tempted to solve this problem by nesting child components in directories named after their parent. For example:
+::: details Подробное объяснение
+Возможно, у вас появится соблазн решить данную проблему, вложив дочерние компоненты в папки, которые названы в честь родителя компонентов. Например:
 
 ```
 components/
@@ -174,7 +175,7 @@ components/
    |- index.vue
 ```
 
-or:
+или:
 
 ```
 components/
@@ -185,14 +186,16 @@ components/
 |- TodoList.vue
 ```
 
+Так делать не рекомендуется, так как в результате:
 This isn't recommended, as it results in:
 
 - Many files with similar names, making rapid file switching in code editors more difficult.
-- Many nested sub-directories, which increases the time it takes to browse components in an editor's sidebar.
+- Много файлов с одинаковыми именами, это затрудняет быстро переключаться между файлами в редакторе.
+- Много вложенных друг в друга папок, это увеличивает время, чтобы найти компонент в левом меню редактора. 
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -210,7 +213,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
