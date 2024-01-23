@@ -594,22 +594,22 @@ export default {
 <div class="composition-api">
 
 ```js
-// disabled будет преобразовано в true
+// disabled будет преобразован в true
 defineProps({
   disabled: [Boolean, Number]
 })
-  
-// отключено, будет преобразовано в true
+
+// disabled будет преобразован в true
 defineProps({
   disabled: [Boolean, String]
 })
-  
-// отключено, будет преобразовано в true
+
+// disabled будет преобразован в true
 defineProps({
   disabled: [Number, Boolean]
 })
-  
-// отключено будет разобрана как пустая строка (disabled="")
+
+// disabled будет разобран как пустая строка (disabled="")
 defineProps({
   disabled: [String, Boolean]
 })
@@ -619,28 +619,28 @@ defineProps({
 <div class="options-api">
 
 ```js
-// отключено, будет преобразовано в true
+// disabled будет преобразован в true
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
   
-// отключено, будет преобразовано в true
+// disabled будет преобразован в true
 export default {
   props: {
     disabled: [Boolean, String]
   }
 }
-  
-// отключено, будет преобразовано в true
+
+// disabled будет преобразован в true
 export default {
   props: {
     disabled: [Number, Boolean]
   }
 }
   
-// отключено будет разобрана как пустая строка (disabled="")
+// disabled будет разобран как пустая строка (disabled="")
 export default {
   props: {
     disabled: [String, Boolean]
