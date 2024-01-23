@@ -3,7 +3,7 @@
 :::warning Экспериментальная возможность
 Преобразование реактивности было экспериментальной функцией и была удалена в последнем выпуске 3.4. Пожалуйста, прочитайте о [причинах здесь](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028).
 
-Если вы всё еще собираетесь использовать эту функцию, она теперь доступна через плагин [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html).
+Если вы всё ещё собираетесь использовать эту функцию, она теперь доступна через плагин [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html).
 :::
 
 :::tip Специфика для Composition API
