@@ -93,7 +93,7 @@
   })
   ```
 
-- **См. также** [Руководство - Render-функции - Создание Vnodes](/guide/extras/render-function#creating-vnodes)
+- **См. также** [Руководство — Render-функции - Создание Vnodes](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
@@ -228,7 +228,7 @@
 
   </div>
 
-- **См. также** [Руководство - Render-функции - Компоненты](/guide/extras/render-function#components)
+- **См. также** [Руководство — Render-функции - Компоненты](/guide/extras/render-function#components)
 
 ## resolveDirective() {#resolvedirective}
 
@@ -248,7 +248,7 @@
 
   Если директива не найдена, то выдается runtime предупреждение, а функция вернёт значение `undefined`.
 
-- **См. также** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
+- **См. также** [Руководство — Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withDirectives() {#withdirectives}
 
@@ -296,7 +296,7 @@
   ])
   ```
 
-- **См. также** [Руководство - Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
+- **См. также** [Руководство — Render-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withModifiers() {#withmodifiers}
 
@@ -323,4 +323,4 @@
   })
   ```
 
-- **См. также** [Руководство - Render-функции - Модификаторы cобытий](/guide/extras/render-function#event-modifiers)
+- **См. также** [Руководство — Render-функции - Модификаторы cобытий](/guide/extras/render-function#event-modifiers)

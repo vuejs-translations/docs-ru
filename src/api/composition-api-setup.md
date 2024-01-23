@@ -8,10 +8,10 @@
 2. Интеграция с кодом на основе Composition API в компоненте с синтаксисом Options API.
 
 :::info Note
-If you are using Composition API with Single-File Components, [`<script setup>`](/api/sfc-script-setup) is strongly recommended for a more succinct and ergonomic syntax.
+Если вы используете Composition API с однофайловыми компонентами, настоятельно рекомендуется использовать [`<script setup>`](/api/sfc-script-setup) для более лаконичного и эргономичного синтаксиса.
 :::
 
-Мы можем объявить реактивное состояние с помощью [Reactivity APIs](./reactivity-core) и передать его шаблону, вернув объект из `setup()`. Свойства возвращаемого объекта также будут доступны для экземпляра компонента (если используются другие опции):
+Мы можем объявить реактивное состояние с помощью [API реактивности](./reactivity-core) и передать его шаблону, вернув объект из `setup()`. Свойства возвращаемого объекта также будут доступны для экземпляра компонента (если используются другие опции):
 
 
 ```vue

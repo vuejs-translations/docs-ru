@@ -191,7 +191,7 @@
 
   Обратите внимание, что это не требуется при использовании Vite, поскольку Rollup (базовый пакетный модуль, используемый Vite) достаточно умен, чтобы определить, что `defineComponent()` действительно не имеет побочных эффектов, без необходимости ручной аннотации.
 
-- **См. также** [Руководство - Использование Vue с TypeScript](/guide/typescript/overview#general-usage-notes)
+- **См. также** [Руководство — Использование Vue с TypeScript](/guide/typescript/overview#general-usage-notes)
 
 ## defineAsyncComponent() {#defineasynccomponent}
 
@@ -222,7 +222,7 @@
   }
   ```
 
-- **См. также** [Руководство - Асинхронные компоненты](/guide/components/async)
+- **См. также** [Руководство — Асинхронные компоненты](/guide/components/async)
 
 ## defineCustomElement() {#definecustomelement}
 
@@ -246,7 +246,7 @@
 
   Помимо обычных параметров компонента, `defineCustomElement()` также поддерживает специальную опцию `styles`, которая должна быть массивом инлайновых CSS строк, для определения CSS, который следует вставить в теневой корень элемента.
 
-  Возвращаемое значение - конструктор пользовательского элемента, который может быть зарегистрирован с помощью [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
+  Возвращаемое значение — конструктор пользовательского элемента, который может быть зарегистрирован с помощью [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
 
 - **Пример**
 
@@ -263,6 +263,6 @@
 
 - **См. также**
 
-  - [Руководство - Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
+  - [Руководство — Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
 
   - Также обратите внимание, что `defineCustomElement()` требует [специальной настройки](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами (SFC).

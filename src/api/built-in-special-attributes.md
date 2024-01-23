@@ -35,7 +35,7 @@
 
   При изменении значения `text`, элемент `<span>` будет всегда заменяться, вместо обновления его содержимого, поэтому будет запускаться анимация перехода.
 
-- **См. также** [Руководство - Рендер списка - Сохранение состояния с помощью `key`](/guide/essentials/list#maintaining-state-with-key)
+- **См. также** [Руководство — Рендер списка - Сохранение состояния с помощью `key`](/guide/essentials/list#maintaining-state-with-key)
 
 ## ref {#ref}
 
@@ -81,7 +81,7 @@
   Так же свойство `this.$refs` не реактивно, поэтому не следует использовать его в шаблонах для привязки данных.
 
 - **См. также**
-  - [Руководство - Ссылки на элементы шаблона](/guide/essentials/template-refs)
+  - [Руководство — Ссылки на элементы шаблона](/guide/essentials/template-refs)
   - [Guide - Typing Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
   - [Guide - Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 

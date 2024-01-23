@@ -14,9 +14,9 @@
 
 - **Подробности**
 
-  `provide` и [`inject`](#inject) используются вместе для того, чтобы компонент-предок мог служить инжектором зависимостей для всех своих потомков, независимо от глубины иерархии компонентов, при условии, что они находятся в одной родительской цепочке.
+  `provide` и [`inject`](#inject) используются вместе для того, чтобы компонент-предок мог служить инжектором зависимостей для всех своих потомков, насколько глубока иерархия компонентов, если они находятся в одной родительской цепочке.
 
-  Опция `provide` должна быть либо объектом, либо функцией, возвращающей объект. Этот объект содержит свойства, доступные для внедрения в его потомков. В качестве ключей в этом объекте можно использовать Symbols.
+  Параметр `provide` должен быть либо объектом, либо функцией, которая возвращает объект. Этот объект содержит свойства, которые после ввода будут доступны в потомках. Вы можете использовать Symbols в качестве ключей в этом объекте.
 
 - **Пример**
 
@@ -154,7 +154,7 @@
   }
   ```
 
-  Аналогично значению по умолчанию в входных параметрах, для непримитивных значений необходимо использовать функцию-фабрику:
+  Аналогично значению по умолчанию в входных параметрах для не примитивных значений необходимо использовать функцию-фабрику:
 
   ```js
   const Child = {
@@ -244,12 +244,12 @@
   }
   ```
 
-  :::warning Not Recommended for Composition API
-  `extends` is designed for Options API and does not handle the merging of the `setup()` hook.
+  :::warning Не рекомендуется для Composition API
+  `extends` предназначен для Options API и не обрабатывает объединение хуков `setup()`.
 
-  In Composition API, the preferred mental model for logic reuse is "compose" over "inheritance". If you have logic from a component that needs to be reused in another one, consider extracting the relevant logic into a [Composable](/guide/reusability/composables#composables).
+  В Composition API предпочтительной ментальной моделью для повторного использования логики является "композиция", а не "наследование". Если у вас есть логика одного компонента, которую нужно повторно использовать в другом компоненте, подумайте о том, чтобы извлечь соответствующую логику в [Composable](/guide/reusability/composables#composables).
 
-  If you still intend to "extend" a component using Composition API, you can call the base component's `setup()` in the extending component's `setup()`:
+  Если вы всё же собираетесь "расширить" компонент с помощью Composition API, вы можете вызвать `setup()` базового компонента в `setup()` расширяемого компонента:
 
   ```js
   import Base from './Base.js'
@@ -258,7 +258,7 @@
     setup(props, ctx) {
       return {
         ...Base.setup(props, ctx),
-        // local bindings
+        // локальные привязки
       }
     }
   }

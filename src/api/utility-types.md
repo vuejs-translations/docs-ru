@@ -125,7 +125,7 @@ Extract prop types from a runtime props options object. The extracted types are 
   Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties)
+- **См. также** [Руководство — Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
@@ -147,7 +147,7 @@ Extract prop types from a runtime props options object. The extracted types are 
   Дополнения должны быть размещены в файле модуля `.ts` или `.d.ts`. Подробнее об этом см. в разделе [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties).
   :::
 
-- **См. также** [Руководство - Расширение глобальных свойств](/guide/typescript/options-api#augmenting-custom-options)
+- **См. также** [Руководство — Расширение глобальных свойств](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 

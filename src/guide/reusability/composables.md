@@ -52,7 +52,7 @@ export function useMouse() {
   const x = ref(0)
   const y = ref(0)
 
-  // composable может обновлять свое управляемое состояние с течением времени.
+  // composable может обновлять своё управляемое состояние с течением времени.
   function update(event) {
     x.value = event.pageX
     y.value = event.pageY

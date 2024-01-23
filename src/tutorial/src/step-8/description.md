@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-Встречайте <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Мы можем создать вычисляемый ref, который вычисляет свое `.value` на основе других реактивных источников данных:
+Встречайте <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. Мы можем создать вычисляемый ref, который вычисляет своё `.value` на основе других реактивных источников данных:
 
 <div class="sfc">
 

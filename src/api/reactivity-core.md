@@ -40,8 +40,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
-  - [Руководство - Типизация `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
+  - [Руководство — Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [Руководство — Типизация `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 
 ## computed() {#computed}
@@ -111,9 +111,9 @@
   ```
 
 - **См. также**
-  - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
-  - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
-  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
+  - [Руководство — Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
+  - [Руководство — Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
   - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
@@ -190,8 +190,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Основы реактивности](/guide/essentials/reactivity-fundamentals)
-  - [Руководство - Типизация `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
+  - [Руководство — Основы реактивности](/guide/essentials/reactivity-fundamentals)
+  - [Руководство — Типизация `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -312,8 +312,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Наблюдатели](/guide/essentials/watchers)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+  - [Руководство — Наблюдатели](/guide/essentials/watchers)
+  - [Руководство — Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -488,6 +488,6 @@
 
 - **См. также**
 
-  - [Руководство - Наблюдатели](/guide/essentials/watchers)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+  - [Руководство — Наблюдатели](/guide/essentials/watchers)
+  - [Руководство — Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 

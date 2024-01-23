@@ -64,19 +64,19 @@ Vue использует синтаксис шаблонов, основанны
 
 > Далее в примерах в руководстве будет использоваться сокращённая запись, потому что она наиболее распространена у разработчиков Vue.
 
-### Same-name Shorthand <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+### Одноименное сокращение <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
 
-If the attribute has the same name with the JavaScript value being bound, the syntax can be further shortened to omit the attribute value:
+Если атрибут имеет то же имя, что и связываемое значение JavaScript, синтаксис можно еще больше сократить, опустив значение атрибута:
 
 ```vue-html
-<!-- same as :id="id" -->
+<!-- так же, как :id="id" -->
 <div :id></div>
 
-<!-- this also works -->
+<!-- это также работает -->
 <div v-bind:id></div>
 ```
 
-This is similar to the property shorthand syntax when declaring objects in JavaScript. Note this is a feature that is only available in Vue 3.4 and above.
+Это похоже на синтаксис сокращения свойств при объявлении объектов в JavaScript. Обратите внимание, что эта функция доступна только в Vue 3.4 и выше.
 
 ### Булевы атрибуты {#boolean-attributes}
 

@@ -33,8 +33,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Уменьшение затрат на реактивность для больших неизменяемых структур](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
-  - [Руководство - Интеграция с внешними системами состояний](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
+  - [Руководство — Уменьшение затрат на реактивность для больших неизменяемых структур](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
+  - [Руководство — Интеграция с внешними системами состояний](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
 
 ## triggerRef() {#triggerref}
 

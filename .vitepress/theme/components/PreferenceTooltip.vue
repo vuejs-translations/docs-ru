@@ -102,13 +102,12 @@ function dismiss() {
         <p>Дефолтный стиль API теперь Composition API.</p>
         <p>
           Некоторые страницы содержат различный контент основанный на выбранном стиле API.
-          Используйте переключитель для переключения между стилями API.
+          Используйте переключатель для переключения между стилями API.
         </p>
       </template>
       <template v-if="source && source.startsWith('url')">
         <p>
           Показывается контент для
-          Showing content for
           {{ preferComposition ? 'Composition' : 'Options' }} API так как
           {{
             source === 'url-query'
