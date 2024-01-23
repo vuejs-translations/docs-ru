@@ -379,9 +379,9 @@ watchPostEffect(() => {
 
 </div>
 
-### Sync Watchers
+### Синхронизация наблюдателей 
 
-It's also possible to create a watcher that fires synchronously, before any Vue-managed updates:
+Также можно создать наблюдатель, который будет срабатывать синхронно, перед любыми обновлениями, управляемыми Vue:
 
 <div class="options-api">
 
@@ -411,7 +411,7 @@ watchEffect(callback, {
 })
 ```
 
-Sync `watchEffect()` also has a convenience alias, `watchSyncEffect()`:
+У синхронизации `watchEffect()` также есть удобный псевдоним, `watchSyncEffect()`:
 
 ```js
 import { watchSyncEffect } from 'vue'
@@ -423,8 +423,8 @@ watchSyncEffect(() => {
 
 </div>
 
-:::warning Use with Caution
-Sync watchers do not have batching and triggers every time a reactive mutation is detected. It's ok to use them to watch simple boolean values, but avoid using them on data sources that might be synchronously mutated many times, e.g. arrays.
+:::warning Используйте с осторожностью
+Наблюдатели синхронизации не имеют пакетной обработки и срабатывают каждый раз, когда обнаруживается реактивная мутация. Их можно использовать для наблюдения за простыми булевыми значениями, но избегайте использования их для источников данных, которые могут синхронно мутировать много раз, например, массивов.
 :::
 
 <div class="options-api">
