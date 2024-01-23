@@ -174,11 +174,11 @@ describe('increment', () => {
     }
   })
 
-  getByText('0') // Implicit assertion that "0" is within the component
+  getByText('0') // Неявное утверждение, что "0" находится внутри компонента
 
   const button = getByRole('button', { name: /increment/i })
 
-  // Dispatch a click event to our increment button.
+  // Отправляем событие клика на нашу кнопку увеличения.
   await fireEvent.click(button)
 
   getByText('1')
@@ -221,7 +221,7 @@ describe('increment', () => {
 
 - [Nightwatch](https://nightwatchjs.org/) - это E2E-тест-прогонщик с поддержкой тестирования компонентов Vue. ([Пример проекта](https://github.com/nightwatchjs-community/todo-vue) в Nightwatch v2)
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library.
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) для кроссбраузерного тестирования компонентов, основанного на взаимодействии с пользователем на основе стандартизированной автоматизации. Его также можно использовать с библиотекой Testing Library.
 
 ## E2E тестирование {#e2e-testing}
 
@@ -271,7 +271,7 @@ E2E-тесты проверяют многие уровни приложения
 
 - [Nightwatch](https://nightwatchjs.org/) то решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров.
 
-- [WebdriverIO](https://webdriver.io/) is a test automation framework for web and mobile testing based on the WebDriver protocol.
+- [WebdriverIO](https://webdriver.io/) это фреймворк автоматизации тестирования для web и мобильного тестирования, основанный на протоколе WebDriver.
 
 ## Рецепты {#recipes}
 
