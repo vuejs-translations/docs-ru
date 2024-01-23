@@ -594,7 +594,7 @@ export default {
 <div class="composition-api">
 
 ```js
-// отключено, будет преобразовано в true
+// disabled будет преобразовано в true
 defineProps({
   disabled: [Boolean, Number]
 })
