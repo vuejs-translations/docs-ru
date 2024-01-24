@@ -86,11 +86,11 @@
 
 ## slots<sup class="vt-badge ts"/> {#slots}
 
-An option to assist with type inference when using slots programmatically in render functions. Only supported in 3.3+.
+Опция для типизации при использовании слотов в функциях рендеринга. Поддерживается только в версии 3.3+.
 
-- **Details**
+- **Подробности**
 
-  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+  Значение этой опции во время выполнения не используется. Фактические типы должны быть объявлены через приведение типов с помощью помощника типа `SlotsType`:
 
   ```ts
   import { SlotsType } from 'vue'

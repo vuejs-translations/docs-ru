@@ -32,7 +32,7 @@ pnpm run dev
 
 - См. документацию VitePress о поддерживаемых [расширениях Markdown](https://vitepress.dev/guide/markdown.html) и возможностями [по использованию синтаксиса Vue внутри markdown](https://vitepress.dev/guide/using-vue.html).
 
-- См. [Руководство по написанию](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) где собраны правила и рекомендации по написанию и поддержке документации.
+- См. [Руководство по написанию](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md), где собраны правила и рекомендации по написанию и поддержке документации.
 
 ## Работа над темой
 

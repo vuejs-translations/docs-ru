@@ -259,7 +259,7 @@
 
 - **См. также**
   - [Параметры - `watch`](/api/options-state#watch)
-  - [Руководство - Наблюдатели](/guide/essentials/watchers)
+  - [Руководство — Наблюдатели](/guide/essentials/watchers)
 
 ## $emit() {#emit}
 

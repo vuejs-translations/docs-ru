@@ -16,8 +16,8 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Примеры', link: '/examples/' },
       { text: 'Быстрый старт', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
-      { text: 'Glossary', link: '/glossary/' },
-      { text: 'Error Reference', link: '/error-reference/' },
+      { text: 'Глоссарий', link: '/glossary/' },
+      { text: 'Руководство по ошибкам', link: '/error-reference/' },
       {
         text: 'Документация для Vue 2',
         link: 'https://ru.vuejs.org/'
@@ -109,10 +109,10 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Команда', link: '/about/team' },
       { text: 'Релизы', link: '/about/releases' },
       {
-        text: 'Community Guide',
+        text: 'Путеводитель по сообществу',
         link: '/about/community-guide'
       },
-      { text: 'Code of Conduct', link: '/about/coc' },
+      { text: 'Нормы поведения', link: '/about/coc' },
       {
         text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'

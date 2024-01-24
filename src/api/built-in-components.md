@@ -124,7 +124,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **См. также** [Руководство - Transition](/guide/built-ins/transition)
+- **См. также** [Руководство — Transition](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
@@ -170,7 +170,7 @@ h(Transition, {
   </TransitionGroup>
   ```
 
-- **См. также** [Руководство - TransitionGroup](/guide/built-ins/transition-group)
+- **См. также** [Руководство — TransitionGroup](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
@@ -263,7 +263,7 @@ h(Transition, {
   </KeepAlive>
   ```
 
-- **См. также** [Руководство - KeepAlive](/guide/built-ins/keep-alive)
+- **См. также** [Руководство — KeepAlive](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
@@ -305,7 +305,7 @@ h(Transition, {
   </Teleport>
   ```
 
-- **См. также** [Руководство - Teleport](/guide/built-ins/teleport)
+- **См. также** [Руководство — Teleport](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
@@ -331,4 +331,4 @@ h(Transition, {
 
   Если он встречает асинхронные зависимости ([Асинхронные компоненты](/guide/components/async) и компоненты с [`async setup()`](/guide/built-ins/suspense#async-setup)) во время рендеринга `#default` слота, он будет ждать, пока все они не будут разрешены, прежде чем отобразить `#default` слот.
 
-- **См. также** [Руководство - Suspense](/guide/built-ins/suspense)
+- **См. также** [Руководство — Suspense](/guide/built-ins/suspense)

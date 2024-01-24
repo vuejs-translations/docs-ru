@@ -65,23 +65,23 @@ watch(
 
           <div class="vuemastery-modal-footer">
             <p class="vuemastery-modal-footer-text">
-              Video by
+              Видео от
               <a
                 href="https://www.vuemastery.com"
                 target="_blank"
                 rel="sponsored noopener"
-                title="Vue.js Courses on Vue Mastery"
+                title="Vue.js Курсы на Vue Mastery"
               >
                 Vue Mastery.</a
-              > Watch Vue Mastery’s free
+              > Смотри бесплатно Vue Mastery
               <a
                 href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
                 target="_blank"
                 rel="sponsored noopener"
-                title="Vue.js Courses on Vue Mastery"
+                title="Vue.js Курс на Vue Mastery"
               >
-                Intro to Vue course.</a
-              >
+                Курс Введение в Vue.</a
+              > (на англ.)
             </p>
           </div>
         </div>

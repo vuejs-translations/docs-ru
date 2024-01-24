@@ -126,8 +126,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Входные параметры](/guide/components/props)
-  - [Руководство - Типизация входных параметров компонента](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
+  - [Руководство — Входные параметры](/guide/components/props)
+  - [Руководство — Типизация входных параметров компонента](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
@@ -208,8 +208,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
-  - [Руководство - Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
+  - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
+  - [Руководство — Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
 
@@ -393,7 +393,7 @@
   Генерируемые события могут быть объявлены в двух формах:
 
   - Простая форма с использованием массива строк
-  - Полная форма с использованием объекта, где каждое ключ свойства - это имя события, а значение - либо `null`, либо функция валидации.
+  - Полная форма с использованием объекта, где каждое ключ свойства — это имя события, а значение — либо `null`, либо функция валидации.
 
   Функция валидации будет принимать дополнительные аргументы, переданные в вызов `$emit` компонента. Например, если вызывается `this.$emit('foo', 1)`, то соответствующий валидатор для `foo` получит аргумент `1`. Функция должна возвращать булево значение, чтобы указать корректность передаваемых с событием аргументов.
 
@@ -434,8 +434,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Передача обычных атрибутов](/guide/components/attrs.html)
-  - [Руководство - Типизирование генерируемых компонентом событий](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
+  - [Руководство — Передача обычных атрибутов](/guide/components/attrs.html)
+  - [Руководство — Типизирование генерируемых компонентом событий](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 

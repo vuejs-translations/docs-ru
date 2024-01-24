@@ -40,8 +40,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
-  - [Руководство - Типизация `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
+  - [Руководство — Реактивные переменные `ref()`](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [Руководство — Типизация `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 
 ## computed() {#computed}
@@ -111,9 +111,9 @@
   ```
 
 - **См. также**
-  - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
-  - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
-  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
+  - [Руководство — Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
+  - [Руководство — Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
   - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
@@ -190,8 +190,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Основы реактивности](/guide/essentials/reactivity-fundamentals)
-  - [Руководство - Типизация `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
+  - [Руководство — Основы реактивности](/guide/essentials/reactivity-fundamentals)
+  - [Руководство — Типизация `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -312,8 +312,8 @@
   ```
 
 - **См. также**
-  - [Руководство - Наблюдатели](/guide/essentials/watchers)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+  - [Руководство — Наблюдатели](/guide/essentials/watchers)
+  - [Руководство — Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -390,7 +390,7 @@
   - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких изменениях. См. раздел [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: настройка времени срабатывания обратного вызова. Смотрите [Время срабатывания](/guide/essentials/watchers#callback-flush-timing) и [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: отладка зависимостей наблюдателя. См. раздел [Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging).
-  - **`once`**: run the callback only once. The watcher is automatically stopped after the first callback run. <sup class="vt-badge" data-text="3.4+" />
+  - **`once`**: запустить обратный вызов только один раз. Наблюдатель автоматически останавливается после первого выполнения обратного вызова. <sup class="vt-badge" data-text="3.4+" />
 
   По сравнению с [`watchEffect()`](#watcheffect), `watch()` позволяет нам:
 
@@ -488,6 +488,6 @@
 
 - **См. также**
 
-  - [Руководство - Наблюдатели](/guide/essentials/watchers)
-  - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+  - [Руководство — Наблюдатели](/guide/essentials/watchers)
+  - [Руководство — Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 

@@ -1,20 +1,20 @@
 # Трансформация реактивности {#reactivity-transform}
 
 :::warning Экспериментальная возможность
-Reactivity Transform was an experimental feature, and has been removed in the latest 3.4 release. Please read about [the reasoning here](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028).
+Преобразование реактивности было экспериментальной функцией и была удалена в последнем выпуске 3.4. Пожалуйста, прочитайте о [причинах здесь](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028).
 
-If you still intend to use it, it is now available via the [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) plugin.
+Если вы всё ещё собираетесь использовать эту функцию, она теперь доступна через плагин [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html).
 :::
 
 :::tip Специфика для Composition API
-Reactivity Transform является специфической функцией Composition-API и требует шага сборки.
+Преобразование реактивности является специфической функцией Composition-API и требует шага сборки.
 :::
 
 ## Refs и реактивные переменные {#refs-vs-reactive-variables}
 
 С момента появления Composition API одним из основных нерешенных вопросов является использование ссылок по сравнению с реактивными объектами. При деструктуризации реактивных объектов легко потерять реактивность, в то время как при использовании refs может быть неудобно использовать `.value` везде. Кроме того, `.value` легко пропустить, если не использовать систему типов.
 
-[Vue Reactivity Transform](https://github.com/vuejs/core/tree/main/packages/reactivity-transform) - это преобразование на этапе компиляции, которое позволяет нам писать код, подобный этому:
+[Преобразование реактивности в Vue](https://github.com/vuejs/core/tree/main/packages/reactivity-transform) - это преобразование на этапе компиляции, которое позволяет нам писать код, подобный этому:
 
 ```vue
 <script setup>
