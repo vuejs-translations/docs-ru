@@ -400,7 +400,7 @@ export function useMachine(options) {
 
 ## Подключение к сигналам {#connection-to-signals}
 
-Довольно много других фреймворков внедрили реактивные примитивы, аналогичные ref из Composition API Vue, используя термин "сигналы":
+Довольно много других фреймворков внедрили реактивные примитивы, аналогичные ref-ссылкам из Composition API Vue, используя термин "сигналы":
 
 - [Сигналы Solid](https://www.solidjs.com/docs/latest/api#createsignal)
 - [Сигналы Angular](https://github.com/angular/angular/discussions/49090)
