@@ -2,14 +2,14 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    // give each todo a unique id
+    // выдаем всем todo уникальные id
     let id = 0
 
     const newTodo = ref('')
     const todos = ref([
-      { id: id++, text: 'Learn HTML' },
-      { id: id++, text: 'Learn JavaScript' },
-      { id: id++, text: 'Learn Vue' }
+      { id: id++, text: 'Изучить HTML' },
+      { id: id++, text: 'Изучить JavaScript' },
+      { id: id++, text: 'Изучить Vue' }
     ])
 
     function addTodo() {

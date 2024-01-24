@@ -90,7 +90,7 @@ function useToggleFn(
         >
         <a
           class="switch-link"
-          title="About API preference"
+          title="О выборе API"
           href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
           >?</a
@@ -108,7 +108,7 @@ function useToggleFn(
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
         <a
           class="switch-link"
-          title="About SFC"
+          title="О SFC"
           href="/guide/scaling-up/sfc.html"
           @click="closeSideBar"
           >?</a
