@@ -486,7 +486,7 @@ export function signal(initialValue) {
 
 [Попробовать в песочнице](https://play.vuejs.org/#eNp9UslOwzAQ/ZVRLiRQEsqxpBUIvoADp0goTd3U4DiWl4AU5d8ZL3E3iZtn5r1Z3vOYvAiRD4Ykq6RUjaRCgyLaiE3FaSd6qWEERVteswU0fSeMJjuYYC/7Dm7youatYbW895D8S91UvOJNz5VGuOEa1oGePmRzYdebLSNYmRumaQbrjSfg8xYeEVsWfh/cBANNOsFqTTACKA/LzavrTtUKxjEyp6kssDZj3vygAPJjL1Bbo3XP4blhtPleV4nrlBuxw1npYLca4A6WWZU4PADljSQd4drRC8//rxfKaW+f+ZJg4oJbFvG8ZJFcaYreHL041Iz1P+9kvwAtadsS6d7Rm1rB55VRaLAzhvy6NnvDG01x1WAN5VTTmn3UzJAMRrudd0pa++LEc9wRpRDlHZT5YGu2pOzhWHAJWxvnakxOHufFxqx/4MxzcEinIYP+eV5ntOe5Rx94IYjopxOZUhnIEr+4xPMrjuG1LPFftkTj5DNJGhwYBZ4BJz3DV56FmJLpD1DrKXU=)
 
-По сравнению с refs во Vue, стиль API с использованием геттеров в Solid и Angular предоставляет интересные компромиссы при использовании в компонентах Vue:
+По сравнению с refs-ссылками во Vue, стиль API с использованием геттеров в Solid и Angular предоставляет интересные компромиссы при использовании в компонентах Vue:
 
 - `()` менее понятнее, чем `.value`, но обновление является более понятным.
 - Отсутствует автоматическое разворачивание ref-ссылок: доступ к значениям всегда требует использования `()`. Это обеспечивает последовательность доступа к значениям во всех местах. Также это означает, что вы можете передавать напрямую сигналы в чистом виде в качестве свойств компонента.
