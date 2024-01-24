@@ -200,7 +200,6 @@ export default {
 
 </div>
 
-### Radio {#radio}
 ### Радиокнопки {#radio}
 
 ```vue-html

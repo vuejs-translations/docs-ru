@@ -3,7 +3,7 @@
 
 <h2>Чекбокс</h2>
 <input type="checkbox" id="checkbox" v-model="checked">
-<label for="checkbox">Выбранно: {{ checked }}</label>
+<label for="checkbox">Выбрано: {{ checked }}</label>
 
 <!--
   несколько чекбоксов могут быть привязаны к одному и тому же
@@ -25,7 +25,7 @@
 <input type="radio" id="two" value="Два" v-model="picked">
 <label for="two">Два</label>
 <br>
-<span>Выбранно: {{ picked }}</span>
+<span>Выбрано: {{ picked }}</span>
 
 <h2>Выбор</h2>
 <select v-model="selected">
@@ -34,7 +34,7 @@
   <option>B</option>
   <option>C</option>
 </select>
-<span>Выбранно: {{ selected }}</span>
+<span>Выбрано: {{ selected }}</span>
 
 <h2>Многоразовый выбор</h2>
 <select v-model="multiSelected" multiple style="width:100px">
@@ -42,4 +42,4 @@
   <option>B</option>
   <option>C</option>
 </select>
-<span>Выбранно: {{ multiSelected }}</span>
+<span>Выбрано: {{ multiSelected }}</span>
