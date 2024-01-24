@@ -200,7 +200,6 @@ export default {
 
 </div>
 
-### Radio {#radio}
 ### Радиокнопки {#radio}
 
 ```vue-html
@@ -216,11 +215,11 @@ export default {
 <div class="demo">
   <div>Выбрано: {{ picked }}</div>
 
-  <input type="radio" id="demo-one" value="Один" v-model="picked" />
-  <label for="demo-one">Один</label>
+  <input type="radio" id="one" value="Один" v-model="picked" />
+  <label for="one">Один</label>
 
-  <input type="radio" id="demo-two" value="Два" v-model="picked" />
-  <label for="demo-two">Два</label>
+  <input type="radio" id="two" value="Два" v-model="picked" />
+  <label for="two">Два</label>
 </div>
 
 <div class="composition-api">
