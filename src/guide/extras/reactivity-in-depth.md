@@ -106,7 +106,6 @@ function ref(value) {
 
 - Когда вы присваиваете или деструктурируете свойство реактивного объекта локальной переменной, реактивность "отключается", поскольку доступ к локальной переменной больше не вызывает срабатывания прокси-ловушек get / set.
 
-
 - Возвращенный прокси из `reactive()`, хотя и ведет себя так же, как и исходный, имеет другую идентичность, если мы сравним его с исходным с помощью оператора `===`.
 
 Внутри функции `track()` мы проверяем, есть ли в данный момент работающий эффект. Если он есть, то мы просматриваем эффекты-подписчики (хранящиеся в Set) для отслеживаемого свойства и добавляем эффект в Set:
@@ -153,7 +152,6 @@ function whenDepsChange(update) {
 На данном этапе мы создали эффект, который автоматически отслеживает свои зависимости и запускается заново при изменении зависимости. Мы называем его **реактивным эффектом**.
 
 Vue предоставляет API, позволяющий создавать реактивные эффекты: [`watchEffect()`](/api/reactivity-core.html#watcheffect). Возможно, вы заметили, что она работает аналогично магической функции `whenDepsChange()` в примере. Теперь мы можем переделать исходный пример, используя реальные API Vue:
-
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -372,9 +370,9 @@ export function useImmer(baseState) {
 
 [Попробовать в песочнице](https://play.vuejs.org/#eNplU8Fu2zAM/RXOlzpAYu82zEu67lhgpw3bJcrBs5VYqywJkpxmMPzvoyjZNRodbJF84iOppzH7ZkxxHXhWZXvXWGE8OO4H88iU6I22HkYYHH/ue25hgrPVPTwUpQh28dc9MAXAVKOV83AUnvduC4Npa8+fg3GCw3I8PwbwGD64vPCSV8Cy77y2Cn4PnGXbFGu1wpC36EPHRO67c78cD6fgVfgOiOB9gnMtXczA1GnDFFPnQTVeaAVeXy6SSsyFavltE/OvKs+pGTg8zsxkHwl9KgIBtvbhzkl0yIWU+zIOFEeJBgKNxORoAewHSX/cSQHX3VnbA8vyMXa3pfqxb0i1CRXZWZb6w1U1snYOT40JvQ4+NVI0Lxi865NliTisMRHChOVSNaUUscCSKtyXq7LRdP6fDNvYPw3G85vftbzRtg6TrUAKxXe+s3q4dF/mQdC5bJtFTe362qB4tELVURKWAthhNc87+OhSw2V33htXleWgzMulaHQfFfj0ufhYfCpb4XySJHc9Zv7a63aQqKh0+xNRR8kiZ1K2sYhqeBI1xVHPi+xdV0upX3/w8yJ8fCiIYIrfCLPIaZH4n9rxnx7nlQQVH4YLHpTLW8YV8A0W1Ye4PO7sZiU/ylFca4mSP8yl5yvv/O4sZcSmw8/iW8bXdSTcjDiFgUz/AcH6WZQ=)
 
-### State Machines {#state-machines}
+### Конечные автоматы {#state-machines}
 
-[Конечные автоматы](https://en.wikipedia.org/wiki/Finite-state_machine)— это модель для описания всех возможных состояний, в которых может находиться приложение, и всех возможных способов перехода из одного состояния в другое. Хотя это может быть излишним для простых компонентов, это может помочь сделать сложные потоки состояний более надежными и управляемыми.
+[Конечные автоматы](https://en.wikipedia.org/wiki/Finite-state_machine) — это модель для описания всех возможных состояний, в которых может находиться приложение, и всех возможных способов перехода из одного состояния в другое. Хотя это может быть излишним для простых компонентов, это может помочь сделать сложные потоки состояний более надежными и управляемыми.
 
 Одной из самых популярных реализаций конечного автомата в JavaScript является [XState](https://xstate.js.org/). Вот composable, интегрирующийся с ним:
 
@@ -400,35 +398,35 @@ export function useMachine(options) {
 
 [RxJS](https://rxjs.dev/) - это библиотека для работы с асинхронными потоками событий. Библиотека [VueUse](https://vueuse.org/) предоставляет надстройку [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) для соединения потоков RxJS с системой реактивности Vue.
 
-## Connection to Signals {#connection-to-signals}
+## Подключение к сигналам {#connection-to-signals}
 
-Quite a few other frameworks have introduced reactivity primitives similar to refs from Vue's Composition API, under the term "signals":
+Довольно много других фреймворков внедрили реактивные примитивы, аналогичные ref из Composition API Vue, используя термин "сигналы":
 
-- [Solid Signals](https://www.solidjs.com/docs/latest/api#createsignal)
-- [Angular Signals](https://github.com/angular/angular/discussions/49090)
-- [Preact Signals](https://preactjs.com/guide/v10/signals/)
-- [Qwik Signals](https://qwik.builder.io/docs/components/state/#usesignal)
+- [Сигналы Solid](https://www.solidjs.com/docs/latest/api#createsignal)
+- [Сигналы Angular](https://github.com/angular/angular/discussions/49090)
+- [Сигналы Preact](https://preactjs.com/guide/v10/signals/)
+- [Сигналы Qwik](https://qwik.builder.io/docs/components/state/#usesignal)
 
-Fundamentally, signals are the same kind of reactivity primitive as Vue refs. It's a value container that provides dependency tracking on access, and side-effect triggering on mutation. This reactivity-primitive-based paradigm isn't a particularly new concept in the frontend world: it dates back to implementations like [Knockout observables](https://knockoutjs.com/documentation/observables.html) and [Meteor Tracker](https://docs.meteor.com/api/tracker.html) from more than a decade ago. Vue Options API and the React state management library [MobX](https://mobx.js.org/) are also based on the same principles, but hide the primitives behind object properties.
+По сути, сигналы представляют собой тот же реактивные примитивы, что и ref во Vue. Это контейнер для значений, который обеспечивает отслеживание зависимостей при доступе и вызов побочных эффектов при изменении. Парадигма, основанная на таких реактивных примитивах, не является новым концептом в мире фронтенда: она уходит корнями на десятки лет назад в такие реализации, как [Knockout observables](https://knockoutjs.com/documentation/observables.html) и [Meteor Tracker](https://docs.meteor.com/api/tracker.html). Options API Vue и библиотека управления состоянием React [MobX](https://mobx.js.org/) также основаны на таких же принципах, но скрывают примитивы за свойствами объектов.
 
-Although not a necessary trait for something to qualify as signals, today the concept is often discussed alongside the rendering model where updates are performed through fine-grained subscriptions. Due to the use of Virtual DOM, Vue currently [relies on compilers to achieve similar optimizations](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). However, we are also exploring a new Solid-inspired compilation strategy (Vapor Mode) that does not rely on Virtual DOM and takes more advantage of Vue's built-in reactivity system.
+Хотя это не является обязательным свойством для того, чтобы что-то квалифицировалось как сигналы, сегодня эта концепция часто обсуждается в контексте модели рендеринга, где обновления выполняются через детальные подписки. Из-за использования виртуального DOM в настоящее время Vue [полагается на компиляторы для достижения подобных оптимизаций](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). Тем не менее, мы также исследуем новую стратегию компиляции, вдохновленную Solid (режим Vapor), которая не зависит от виртуального DOM и более полно использует встроенную реактивную систему Vue.
 
-### API Design Trade-Offs {#api-design-trade-offs}
+### Компромисы дизайнов API {#api-design-trade-offs}
 
-The design of Preact and Qwik's signals are very similar to Vue's [shallowRef](/api/reactivity-advanced#shallowref): all three provide a mutable interface via the `.value` property. We will focus the discussion on Solid and Angular signals.
+Дизайн сигналов в Preact и Qwik очень схож с [shallowRef](/api/reactivity-advanced#shallowref) во Vue: все три предоставляют изменяемый интерфейс через свойство `.value`. В данном контексте мы сосредоточимся на обсуждении сигналов в Solid и Angular.
 
-#### Solid Signals {#solid-signals}
+#### Сигналы Solid {#solid-signals}
 
-Solid's `createSignal()` API design emphasizes read / write segregation. Signals are exposed as a read-only getter and a separate setter:
+Дизайн API `createSignal()` в библиотеке Solid подчеркивает разделение операций чтения и записи. Сигналы представлены в виде доступа только для чтения через метод-геттер и отдельного метода для установки значений:
 
 ```js
 const [count, setCount] = createSignal(0)
 
-count() // access the value
-setCount(1) // update the value
+count() // доступ к значению
+setCount(1) // изменение значения
 ```
 
-Notice how the `count` signal can be passed down without the setter. This ensures that the state can never be mutated unless the setter is also explicitly exposed. Whether this safety guarantee justifies the more verbose syntax could be subject to the requirement of the project and personal taste - but in case you prefer this API style, you can easily replicate it in Vue:
+Обратите внимание, что сигнал `count` может быть передан вниз без предоставления сеттера. Это гарантирует, что состояние никогда не может быть изменено, если сеттер также явно не предоставлен. Оправдывает ли эта гарантия безопасности более многословный синтаксис - вопрос, который может зависеть от требований проекта и личных предпочтений. Однако, если вам нравится такой стиль API, вы легко можете воссоздать его во Vue:
 
 ```js
 import { shallowRef, triggerRef } from 'vue'
@@ -446,25 +444,25 @@ export function createSignal(value, options) {
 
 [Попробовать в песочнице](https://play.vuejs.org/#eNpdUk1TgzAQ/Ss7uQAjgr12oNXxH+ix9IAYaDQkMV/qMPx3N6G0Uy9Msu/tvn2PTORJqcI7SrakMp1myoKh1qldI9iopLYwQadpa+krG0TLYYZeyxGSojSSs/d7E8vFh0ka0YhOCmPh0EknbB4mPYfTEeqbIelD1oiqXPRQCS+WjoojAW8A1Wmzm1A39KYZzHNVYiUib85aKeCx46z7rBuySqQe6h14uINN1pDIBWACVUcqbGwtl17EqvIiR3LyzwcmcXFuTi3n8vuF9jlYzYaBajxfMsDcomv6E/m9E51luN2NV99yR3OQKkAmgykss+SkMZerxMLEZFZ4oBYJGAA600VEryAaD6CPaJwJKwnr9ldR2WMedV1Dsi6WwB58emZlsAV/zqmH9LzfvqBfruUmNvZ4QN7VearjenP4aHwmWsABt4x/+tiImcx/z27Jqw==)
 
-#### Angular Signals {#angular-signals}
+#### Сигналы Angular {#angular-signals}
 
-Angular is undergoing some fundamental changes by foregoing dirty-checking and introducing its own implementation of a reactivity primitive. The Angular Signal API looks like this:
+Angular проходит через некоторые фундаментальные изменения, отказываясь от механизма грязной проверки (dirty-checking) и вводя собственную реализацию реактивного примитива. API сигналов в Angular выглядит следующим образом:
 
 ```js
 const count = signal(0)
 
-count() // access the value
-count.set(1) // set new value
-count.update((v) => v + 1) // update based on previous value
+count() // доступ к значению
+count.set(1) // изменение значения
+count.update((v) => v + 1) // изменение значение, основанное на предыдущем
 
-// mutate deep objects with same identity
+// изменение глубоких объектов с одинаковой идентичностью
 const state = signal({ count: 0 })
 state.mutate((o) => {
   o.count++
 })
 ```
 
-Again, we can easily replicate the API in Vue:
+Опять же, мы можем легко повторить такое API во Vue:
 
 ```js
 import { shallowRef, triggerRef } from 'vue'
@@ -488,9 +486,9 @@ export function signal(initialValue) {
 
 [Попробовать в песочнице](https://play.vuejs.org/#eNp9UslOwzAQ/ZVRLiRQEsqxpBUIvoADp0goTd3U4DiWl4AU5d8ZL3E3iZtn5r1Z3vOYvAiRD4Ykq6RUjaRCgyLaiE3FaSd6qWEERVteswU0fSeMJjuYYC/7Dm7youatYbW895D8S91UvOJNz5VGuOEa1oGePmRzYdebLSNYmRumaQbrjSfg8xYeEVsWfh/cBANNOsFqTTACKA/LzavrTtUKxjEyp6kssDZj3vygAPJjL1Bbo3XP4blhtPleV4nrlBuxw1npYLca4A6WWZU4PADljSQd4drRC8//rxfKaW+f+ZJg4oJbFvG8ZJFcaYreHL041Iz1P+9kvwAtadsS6d7Rm1rB55VRaLAzhvy6NnvDG01x1WAN5VTTmn3UzJAMRrudd0pa++LEc9wRpRDlHZT5YGu2pOzhWHAJWxvnakxOHufFxqx/4MxzcEinIYP+eV5ntOe5Rx94IYjopxOZUhnIEr+4xPMrjuG1LPFftkTj5DNJGhwYBZ4BJz3DV56FmJLpD1DrKXU=)
 
-Compared to Vue refs, Solid and Angular's getter-based API style provide some interesting trade-offs when used in Vue components:
+По сравнению с refs во Vue, стиль API с использованием геттеров в Solid и Angular предоставляет интересные компромиссы при использовании в компонентах Vue:
 
-- `()` is slightly less verbose than `.value`, but updating the value is more verbose.
-- There is no ref-unwrapping: accessing values always require `()`. This makes value access consistent everywhere. This also means you can pass raw signals down as component props.
+- `()` менее понятнее, чем `.value`, но обновление является более понятным.
+- Отсутствует автоматическое разворачивание ref: доступ к значениям всегда требует использования `()`. Это обеспечивает последовательность доступа к значениям во всех местах. Также это означает, что вы можете передавать напрямую сигналы в чистом виде в качестве свойств компонента.
 
-Whether these API styles suit you is to some extent subjective. Our goal here is to demonstrate the underlying similarity and trade-offs between these different API designs. We also want to show that Vue is flexible: you are not really locked into the existing APIs. Should it be necessary, you can create your own reactivity primitive API to suit more specific needs.
+Вопрос о том, подходят ли вам эти стили API, в некотором смысле субъективен. Наша цель здесь - продемонстрировать основные сходства и компромиссы между разными дизайнами API. Мы также хотим показать, что Vue гибок: вы не привязаны к существующим API. Если это необходимо, вы можете создать свой собственный API для реактивности, чтобы лучше соответствовать конкретным потребностям.
