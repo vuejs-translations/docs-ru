@@ -227,24 +227,26 @@ components/
 
 </div>
 
-## Order of words in component names {#order-of-words-in-component-names}
+## Порядок слов в именах компонентов {#order-of-words-in-component-names}
 
-**Component names should start with the highest-level (often most general) words and end with descriptive modifying words.**
+**Имена компонентов должны начинаться с общих слов и заканчиваться описательными словами.**
 
-::: details Detailed Explanation
-You may be wondering:
+::: details Подробное объяснение
+Вы можете подумать:
 
-> "Why would we force component names to use less natural language?"
+> "Почему мы должны пытаться использовать непривычный нам язык для имён компонентов?"
 
 In natural English, adjectives and other descriptors do typically appear before the nouns, while exceptions require connector words. For example:
+В английском языке прилагательные и другие описывающие слова идут до существительных, а исключения требуют связывающих слов. Например:
 
 - Coffee _with_ milk
 - Soup _of the_ day
 - Visitor _to the_ museum
 
-You can definitely include these connector words in component names if you'd like, but the order is still important.
+При желании вы можете включить эти связывающие слова в названия компонентов, но порядок все ещё остается важным.
 
 Also note that **what's considered "highest-level" will be contextual to your app**. For example, imagine an app with a search form. It may include components like this one:
+Также обратите внимание, что **общие слова зависят от контекста вашего приложения**. Например, представьте приложение с формой поиска. Оно может включать примерно такие компоненты:
 
 ```
 components/
@@ -257,6 +259,7 @@ components/
 ```
 
 As you might notice, it's quite difficult to see which components are specific to the search. Now let's rename the components according to the rule:
+Как вы могли заметить, довольно тяжело, какие конкретно компоненты относятся к поиску. Давайте переименуем компоненты, исходя из описанного выше правила:
 
 ```
 components/
@@ -269,16 +272,18 @@ components/
 ```
 
 Since editors typically organize files alphabetically, all the important relationships between components are now evident at a glance.
+Так как редакторы сортируют файлы в алфавитном порядке, все важные связи между компонентами видны с первого взгляда.
 
 You might be tempted to solve this problem differently, nesting all the search components under a "search" directory, then all the settings components under a "settings" directory. We only recommend considering this approach in very large apps (e.g. 100+ components), for these reasons:
+У вас может возникнуть соблазн решить эту проблему по-другому - компоненты поиска положить в папку "search", компоненты настроек - в папку "settings". Мы рекомендуем следовать этому правилу только в очень больших проектах (100+ компонентов) по этим причинам:
 
-- It generally takes more time to navigate through nested sub-directories, than scrolling through a single `components` directory.
-- Name conflicts (e.g. multiple `ButtonDelete.vue` components) make it more difficult to quickly navigate to a specific component in a code editor.
-- Refactoring becomes more difficult, because find-and-replace often isn't sufficient to update relative references to a moved component.
+- Навигация через папки занимает очень много времени, нежели скролл в одной единственной папке `components`.
+- Конфликты имен (например, множественные `ButtonDelete.vue` компоненты) усложняют процесс быстрой навигации к конкретному компоненту в редакторе кода.
+- Рефакторинг становится сложнее, потому что просто "найти и изменить" часто недостаточно для относительных ссылок. 
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -293,7 +298,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -307,115 +312,118 @@ components/
 
 </div>
 
-## Self-closing components {#self-closing-components}
+## Самозакрывающиеся компоненты {#self-closing-components}
 
-**Components with no content should be self-closing in [Single-File Components](/guide/scaling-up/sfc), string templates, and [JSX](/guide/extras/render-function#jsx-tsx) - but never in in-DOM templates.**
+**Компоненты без контента внутри должны быть самозакрывающимися в [Single-File Components](/guide/scaling-up/sfc), в строковых шаблонах и в [JSX](/guide/extras/render-function#jsx-tsx) - но не в сыром HTML.**
 
-Components that self-close communicate that they not only have no content, but are **meant** to have no content. It's the difference between a blank page in a book and one labeled "This page intentionally left blank." Your code is also cleaner without the unnecessary closing tag.
+Самозакрывающиеся компоненты не только говорят о том, что у них нет контента, но и **подразумевают**, что не должны иметь контента. Это разница между пустой страницей в книге и пустой страницей с подписью "Эта страница намеренно пустая." Ваш код становится также чище без ненужного закрытия тега.
 
-Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Vue's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
+К сожалению, HTML не разрешает пользовательским элементам быть самозакрывающимимся - только [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). Вот почему это правило возможно только при помощи компилятора шаблонов самого Vue - он "подгоняет" к соответствующему спецификации HTML шаблону.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
-<!-- In Single-File Components, string templates, and JSX -->
+<!-- Внутри SFC, строковых шаблонах и JSX -->
 <MyComponent></MyComponent>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component/>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components, string templates, and JSX -->
+<!-- Внутри SFC, строковых шаблонах и JSX -->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component></my-component>
 ```
 
 </div>
 
-## Component name casing in templates {#component-name-casing-in-templates}
+## Регистр имён компонентов в шаблонах {#component-name-casing-in-templates}
 
-**In most projects, component names should always be PascalCase in [Single-File Components](/guide/scaling-up/sfc) and string templates - but kebab-case in in-DOM templates.**
+**В большинстве проектов регистром имён компонентов должен быть PascalCase внутри [Single-File Components](/guide/scaling-up/sfc) и строковых литералах, но внутри сырого HTML регистром должен быть kebab-case.**
 
 PascalCase has a few advantages over kebab-case:
+PascalCase имеет несколько преимуществ над kebab-case:
 
-- Editors can autocomplete component names in templates, because PascalCase is also used in JavaScript.
-- `<MyComponent>` is more visually distinct from a single-word HTML element than `<my-component>`, because there are two character differences (the two capitals), rather than just one (a hyphen).
-- If you use any non-Vue custom elements in your templates, such as a web component, PascalCase ensures that your Vue components remain distinctly visible.
+- Редакторы могут автодополнять имена компонентов в шаблоне, потому что PascalCase также используется в JavaScript.
+- `<MyComponent>` визуально сильнее отличается от HTML-элемента в одно слово, чем `<my-component>`, потому что есть два отличия (две заглавные буквы), а не только одно (дефис).
+- Если вы используете пользовательские не Vue-элементы в шаблонах, например веб-компоненты, PascalCase обеспечивает визуальное отличие ваших Vue-компонентов.
 
-Unfortunately, due to HTML's case insensitivity, in-DOM templates must still use kebab-case.
+К сожалению, из-за нечувствительности HTML к регистру, шаблоны внутри сырого HTML должны использовать kebab-case.
 
-Also note that if you've already invested heavily in kebab-case, consistency with HTML conventions and being able to use the same casing across all your projects may be more important than the advantages listed above. In those cases, **using kebab-case everywhere is also acceptable.**
+Также стоит заметить, что если вы уже в большинстве шаблонов используете kebab-case, то следование HTML соглашениям и возможность иметь одинаковые регистр внутри всего вашего приложения могут быть более важными, чем описанные выше преимущества. В таких случаях, **используете kebab-case повсеместно**.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <mycomponent/>
 ```
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <myComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <MyComponent></MyComponent>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component></my-component>
 ```
 
-OR
+ИЛИ
 
 ```vue-html
-<!-- Everywhere -->
+<!-- Везде -->
 <my-component></my-component>
 ```
 
 </div>
 
-## Component name casing in JS/JSX {#component-name-casing-in-js-jsx}
+## Регистр имен компонентов в JS/JSX {#component-name-casing-in-js-jsx}
 
-**Component names in JS/[JSX](/guide/extras/render-function#jsx-tsx) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `app.component`.**
+**Имена компонентов в JS/[JSX](/guide/extras/render-function#jsx-tsx) должны быть всегда в PascalCase, хотя они могут иметь kebab-case внутри строк для простых приложений, которые используют регистрацию глобальных компонентов через `app.component`.**
 
-::: details Detailed Explanation
-In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Vue components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
+::: details Подробное объяснение
+В JavaScript PascalCase - это соглашение для классов и конструкторов прототипов - по сути, для всего, что может иметь отдельные экземпляры. Vue-компоненты также могут иметь экземпляры, так что имеет смысл использовать PascalCase. Дополнительное преимущество использовать PascalCase внутри JSX (и шаблонов) позволяет тому, что читает код, легче отличать компоненты и HTML-элементы.
 
 However, for applications that use **only** global component definitions via `app.component`, we recommend kebab-case instead. The reasons are:
+Однако, для приложений, которые используют **только** определение глобальных компонентов через `app.component`, мы рекомендуем использовать kebab-case. И вот почему:
 
 - It's rare that global components are ever referenced in JavaScript, so following a convention for JavaScript makes less sense.
-- These applications always include many in-DOM templates, where [kebab-case **must** be used](#component-name-casing-in-templates).
+- Редко приходится ссылаться на глобальные компоненты из JavaScript, так что следование соглашению для JavaScript имеет все меньший смысл.
+- Такие приложения всегда используют сырую HTML-разметку, где [kebab-case **должен** быть использован](#component-name-casing-in-templates).
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 app.component('myComponent', {
@@ -444,7 +452,7 @@ export default {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 app.component('MyComponent', {
