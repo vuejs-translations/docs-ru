@@ -1,4 +1,4 @@
-# Встроенные специальные элементы{#built-in-special-elements}
+# Встроенные специальные элементы {#built-in-special-elements}
 
 :::info Не компоненты
 `<component>` и `<slot>` являются компонентоподобными функциями и частью синтаксиса шаблона. Они не являются настоящими компонентами и удаляются при компиляции шаблона. Поэтому в шаблонах их принято писать со строчной буквы.
@@ -136,29 +136,29 @@
 
   Сам элемент будет заменен соответствующим содержимым слота.
 
-  Элементы `<slot>` в шаблонах Vue скомпилированы в JavaScript, поэтому их не следует путать с [собственными элементами `<slot>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot ).
+  Элементы `<slot>` в шаблонах Vue скомпилированы в JavaScript, поэтому их не следует путать с [собственными элементами `<slot>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
 
 - **См. также** [Компонент - Слоты](/guide/components/slots)
 
 ## `<template>` {#template}
 
-The `<template>` tag is used as a placeholder when we want to use a built-in directive without rendering an element in the DOM.
+Тег `<template>` используется как "псевдоэлемент", когда мы хотим использовать встроенную директиву без отрисовки элемента в DOM.
 
-- **Details**
+- **Подробности**
 
-  The special handling for `<template>` is only triggered if it is used with one of these directives:
+  Специальная обработка для `<template>` срабатывает только в том случае, если он используется с одной из этих директив:
 
-  - `v-if`, `v-else-if`, or `v-else`
+  - `v-if`, `v-else-if` или `v-else`
   - `v-for`
   - `v-slot`
 
-  If none of those directives are present then it will be rendered as a [native `<template>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) instead.
+  Если не присутствует ни одна из этих директив, то вместо этого он будет отображаться как [нативный элемент `<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).
 
-  A `<template>` with a `v-for` can also have a [`key` attribute](/api/built-in-special-attributes#key). All other attributes and directives will be discarded, as they aren't meaningful without a corresponding element.
+  Элемент`<template>` в связке с `v-for` также может иметь [атрибут `key`](/api/built-in-special-attributes#key). Все остальные атрибуты и директивы будут проигнорированы, так как они не имеют смысла без соответствующего элемента.
 
-  Single-file components use a [top-level `<template>` tag](/api/sfc-spec#language-blocks) to wrap the entire template. That usage is separate from the use of `<template>` described above. That top-level tag is not part of the template itself and doesn't support template syntax, such as directives.
+  Однофайловые компоненты используют [тег верхнего уровня `<template>`](/api/sfc-spec#language-blocks) для оборачивания всего шаблона. Это использование отличается от описанного выше использования `<template>`. Этот тег верхнего уровня не является частью самого шаблона и не поддерживает синтаксис шаблона, например директивы.
 
-- **See also**
-  - [Guide - `v-if` on `<template>`](/guide/essentials/conditional#v-if-on-template)
-  - [Guide - `v-for` on `<template>`](/guide/essentials/list#v-for-on-template)
-  - [Guide - Named slots](/guide/components/slots#named-slots)
+- **См. также**
+  - [Руководство - `v-if` и `<template>`](/guide/essentials/conditional#v-if-on-template)
+  - [Руководство - `v-for` и `<template>`](/guide/essentials/list#v-for-on-template)
+  - [Руководство - Именованные слоты](/guide/components/slots#named-slots)
