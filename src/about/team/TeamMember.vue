@@ -34,7 +34,7 @@ const avatarUrl = computed(() => {
       :href="`https://github.com/sponsors/${member.socials.github}`"
       no-icon
     >
-      <VTIconHeart class="sponsor-icon" /> Sponsor
+      <VTIconHeart class="sponsor-icon" /> Спонсор
     </VTLink>
 
     <figure class="avatar">
@@ -100,7 +100,7 @@ const avatarUrl = computed(() => {
 
         <section class="desc">
           <div class="desc-title">
-            <h2 class="sr-only">Languages</h2>
+            <h2 class="sr-only">Языки</h2>
             <VTIconGlobe class="desc-icon" />
           </div>
           <ul class="desc-list">
@@ -116,7 +116,7 @@ const avatarUrl = computed(() => {
 
         <section v-if="member.website" class="desc">
           <div class="desc-title">
-            <h2 class="sr-only">Website</h2>
+            <h2 class="sr-only">Сайт</h2>
             <VTIconLink class="desc-icon" />
           </div>
           <p class="desc-text">
