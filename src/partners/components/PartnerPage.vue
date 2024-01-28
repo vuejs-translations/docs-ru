@@ -31,7 +31,7 @@ function genMailLink(email: string) {
     <PartnerCard hero page :data="p" />
 
     <div class="description">
-      <h2>Об {{ name }}</h2>
+      <h2>Информация про {{ name }}</h2>
       <p v-for="desc in description" v-html="desc"></p>
     </div>
 

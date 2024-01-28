@@ -38,8 +38,7 @@ shuffleMembers(membersPartnerData as Member[])
     <TeamHero>
       <template #title>Знакомство с командой</template>
       <template #lead
-        >Развитие Vue и ее экосистемы осуществляется под руководством международного
-        команда, некоторые из которых решили
+        >Развитие Vue и ее экосистемы осуществляется под руководством международной команды, члены которой решили
         <span class="nowrap">рассказать о себе ниже.</span></template
       >
 
@@ -65,7 +64,7 @@ shuffleMembers(membersPartnerData as Member[])
       <template #title>Почетные члены основной команды</template>
       <template #lead
         >Здесь мы чествуем некоторых уже неактивных членов основной команды, которые внесли
-        ценный вклад в прошлое.</template
+        ценный вклад в прошлом.</template
       >
     </TeamList>
 

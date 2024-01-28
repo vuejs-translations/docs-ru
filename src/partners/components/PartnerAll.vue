@@ -21,7 +21,7 @@ function includes(a: string, b: string) {
 </script>
 
 <template>
-  <PartnerHero title="Браузер Все партнёры" />
+  <PartnerHero title="Обзор всех партнёров" />
   <div class="container">
     <VTIconSearch class="icon" />
     <input

@@ -6,7 +6,7 @@ defineProps<{ title?: string }>()
   <div class="PartnerHero">
     <h1 class="title">{{ title || 'Vue Partners' }}</h1>
     <p class="lead">
-      Партнеры Vue - это агентства, одобренные командой Vue, которые предоставляют первоклассные
+      Партнеры Vue - это агентства, одобренные командой Vue, которые предоставляют первоклассный
       Vue консалтинг и услуги по разработке. Если ваша компания
       заинтересована в том, чтобы быть включенной в список партнеров, пожалуйста
       <a href="https://airtable.com/shrCQhat57SApJI2l" target="_blank"
