@@ -1,15 +1,15 @@
-# Priority B Rules: Strongly Recommended {#priority-b-rules-strongly-recommended}
+# Правила приоритета B: Настоятельно рекомендуются {#priority-b-rules-strongly-recommended}
 
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
+Эти правила помогают улучшить читаемость и/или опыт разработчика в большинстве проектов. Ваш код все равно выполнится, если вы их нарушите, но эти нарушения должны быть редкими и обоснованными.
 
-## Component files {#component-files}
+## Файлы компонентов {#component-files}
 
-**Whenever a build system is available to concatenate files, each component should be in its own file.**
+**Несмотря на то, что ваша система сборки приложения может конкатенировать файлы, каждый компонент должен быть в отдельном файле.**
 
-This helps you to more quickly find a component when you need to edit it or review how to use it.
+Это поможет вам быстрее находить компонент, который нужно поменять или с которым нужно ознакомиться для дальнейшего использования.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 app.component('TodoList', {
@@ -24,7 +24,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -40,14 +40,14 @@ components/
 
 </div>
 
-## Single-file component filename casing {#single-file-component-filename-casing}
+## Регистр SFC-файла {#single-file-component-filename-casing}
 
-**Filenames of [Single-File Components](/guide/scaling-up/sfc) should either be always PascalCase or always kebab-case.**
+**Имена [однофайловых компонентов](/guide/scaling-up/sfc) должны всегда быть либо в PascalCase, либо в kebab-case.**
 
-PascalCase works best with autocompletion in code editors, as it's consistent with how we reference components in JS(X) and templates, wherever possible. However, mixed case filenames can sometimes create issues on case-insensitive file systems, which is why kebab-case is also perfectly acceptable.
+PascalCase работает лучше с автодополнением в редакторах кода, так как он соответствует тому, как мы ссылаемся на компоненты в JSX и в шаблонах, где это возможно. Однако имена файлов в смешанном стиле иногда могут создать проблемы в файловых системах, не зависящих от регистра, поэтому kebab-case также допустим.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -62,7 +62,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -76,28 +76,28 @@ components/
 
 </div>
 
-## Base component names {#base-component-names}
+## Имена базовых компоненов {#base-component-names}
 
-**Base components (a.k.a. presentational, dumb, or pure components) that apply app-specific styling and conventions should all begin with a specific prefix, such as `Base`, `App`, or `V`.**
+**Базовые компоненты (они же презентационные, глупые или чистые компоненты), которые используют специфичные для приложения стили и соглашения, должны всегда начинаться со специального префикса, например `Base`, `App` или `V`.**
 
-::: details Detailed Explanation
-These components lay the foundation for consistent styling and behavior in your application. They may **only** contain:
+::: details Подробное объяснение
+Эти компоненты закладывают основу для согласованного стиля и поведения в рамках вашего приложения. Они содержат **только**:
 
-- HTML elements,
-- other base components, and
-- 3rd-party UI components.
+- HTML-элементы,
+- другие базовые компоненты и
+- сторонние UI-компоненты.
 
-But they'll **never** contain global state (e.g. from a [Pinia](https://pinia.vuejs.org/) store).
+Но они никогда не будут содержать глобального состояния (например, из [Pinia-хранилища](https://pinia.vuejs.org/)).
 
-Their names often include the name of an element they wrap (e.g. `BaseButton`, `BaseTable`), unless no element exists for their specific purpose (e.g. `BaseIcon`). If you build similar components for a more specific context, they will almost always consume these components (e.g. `BaseButton` may be used in `ButtonSubmit`).
+Имена этих файлов часто содержат имя элемента, который используют (например, `BaseButton`, `BaseTable`), если не существует элемента для конкретной цели (например, `BaseIcon`). Если вы будете создавать похожие компоненты для более специфичного случая, они почти всегда будут использовать базовые компоненты (например `BaseButton` может быть использован в `ButtonSubmit`).
 
-Some advantages of this convention:
+Преимущества этого соглашения:
 
-- When organized alphabetically in editors, your app's base components are all listed together, making them easier to identify.
+- При алфавитном порядке расположения базовые компоненты вашего приложения будут перечисляться вместе, что облегчает их поиск.
 
-- Since component names should always be multi-word, this convention prevents you from having to choose an arbitrary prefix for simple component wrappers (e.g. `MyButton`, `VueButton`).
+- Поскольку имена компонентов всегда должны состоять из нескольких слов, это соглашение избавляет вас от необходимости выбрать произвольных префикс для простых компонентов-оберток (например, `MyButton`, `VueButton`).
 
-- Since these components are so frequently used, you may want to simply make them global instead of importing them everywhere. A prefix makes this possible with Webpack:
+- Посколько эти компоненты часто используются, вы, возможно, захотите сделать их глобальными, вместо того, чтобы импортировать их везде. Префикс позволяет сделать это в Webpack:
 
   ```js
   const requireComponent = require.context(
@@ -119,7 +119,7 @@ Some advantages of this convention:
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -131,7 +131,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -156,14 +156,14 @@ components/
 
 </div>
 
-## Tightly coupled component names {#tightly-coupled-component-names}
+## Имена тесносвязанных компонентов {#tightly-coupled-component-names}
 
-**Child components that are tightly coupled with their parent should include the parent component name as a prefix.**
+**Дочерние компоненты, которые тесно связаны с родителем, должны использовать имя родительского компонента как префикс.**
 
-If a component only makes sense in the context of a single parent component, that relationship should be evident in its name. Since editors typically organize files alphabetically, this also keeps these related files next to each other.
+Если компонент имеет смысл только в рамках одного родительского компонента, тогда это отношение должно быть очевидно из его имени. Так как редакторы обычно располагают файлы в алфавитном порядке, то это также позволит хранить связанные файлы рядом друг с другом.
 
-::: details Detailed Explanation
-You might be tempted to solve this problem by nesting child components in directories named after their parent. For example:
+::: details Подробное объяснение
+Возможно, у вас появится соблазн решить данную проблему, вложив дочерние компоненты в папки, которые названы в честь родителя компонентов. Например:
 
 ```
 components/
@@ -174,7 +174,7 @@ components/
    |- index.vue
 ```
 
-or:
+или:
 
 ```
 components/
@@ -185,14 +185,14 @@ components/
 |- TodoList.vue
 ```
 
-This isn't recommended, as it results in:
+Так делать не рекомендуется, так как в результате:
 
-- Many files with similar names, making rapid file switching in code editors more difficult.
-- Many nested sub-directories, which increases the time it takes to browse components in an editor's sidebar.
-  :::
+- Много файлов с одинаковыми именами, что затрудняет быстро переключаться между файлами в редакторе.
+- Много вложенных друг в друга папок, что увеличивает время поиска компонента в левом меню редактора. 
+:::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -210,7 +210,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -227,24 +227,24 @@ components/
 
 </div>
 
-## Order of words in component names {#order-of-words-in-component-names}
+## Порядок слов в именах компонентов {#order-of-words-in-component-names}
 
-**Component names should start with the highest-level (often most general) words and end with descriptive modifying words.**
+**Имена компонентов должны начинаться с общих слов и заканчиваться описательными словами.**
 
-::: details Detailed Explanation
-You may be wondering:
+::: details Подробное объяснение
+Вы можете подумать:
 
-> "Why would we force component names to use less natural language?"
+> "Почему мы должны пытаться использовать непривычный нам язык для имён компонентов?"
 
-In natural English, adjectives and other descriptors do typically appear before the nouns, while exceptions require connector words. For example:
+В английском языке прилагательные и другие описывающие слова идут до существительных, а исключения требуют связывающих слов. Например:
 
 - Coffee _with_ milk
 - Soup _of the_ day
 - Visitor _to the_ museum
 
-You can definitely include these connector words in component names if you'd like, but the order is still important.
+При желании вы можете включить эти связывающие слова в названия компонентов, но порядок все ещё остается важным.
 
-Also note that **what's considered "highest-level" will be contextual to your app**. For example, imagine an app with a search form. It may include components like this one:
+Также обратите внимание, что **общие слова зависят от контекста вашего приложения**. Например, представьте приложение с формой поиска. Оно может включать примерно такие компоненты:
 
 ```
 components/
@@ -256,7 +256,7 @@ components/
 |- TermsCheckbox.vue
 ```
 
-As you might notice, it's quite difficult to see which components are specific to the search. Now let's rename the components according to the rule:
+Как вы могли заметить, довольно тяжело увидеть, какие конкретно компоненты относятся к поиску. Давайте переименуем компоненты, исходя из описанного выше правила:
 
 ```
 components/
@@ -268,17 +268,17 @@ components/
 |- SettingsCheckboxTerms.vue
 ```
 
-Since editors typically organize files alphabetically, all the important relationships between components are now evident at a glance.
+Так как редакторы сортируют файлы в алфавитном порядке, все важные связи между компонентами видны с первого взгляда.
 
-You might be tempted to solve this problem differently, nesting all the search components under a "search" directory, then all the settings components under a "settings" directory. We only recommend considering this approach in very large apps (e.g. 100+ components), for these reasons:
+У вас может возникнуть соблазн решить эту проблему по-другому - компоненты поиска положить в папку "search", компоненты настроек - в папку "settings". Мы рекомендуем следовать этому правилу только в очень больших проектах (100+ компонентов) по этим причинам:
 
-- It generally takes more time to navigate through nested sub-directories, than scrolling through a single `components` directory.
-- Name conflicts (e.g. multiple `ButtonDelete.vue` components) make it more difficult to quickly navigate to a specific component in a code editor.
-- Refactoring becomes more difficult, because find-and-replace often isn't sufficient to update relative references to a moved component.
+- Навигация через папки занимает очень много времени, нежели скролл в одной единственной папке `components`.
+- Конфликты имен (например, множественные `ButtonDelete.vue` компоненты) усложняют процесс быстрой навигации к конкретному компоненту в редакторе кода.
+- Рефакторинг становится сложнее, потому что просто "найти и изменить" часто недостаточно для относительных ссылок. 
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -293,7 +293,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -307,115 +307,115 @@ components/
 
 </div>
 
-## Self-closing components {#self-closing-components}
+## Самозакрывающиеся компоненты {#self-closing-components}
 
-**Components with no content should be self-closing in [Single-File Components](/guide/scaling-up/sfc), string templates, and [JSX](/guide/extras/render-function#jsx-tsx) - but never in in-DOM templates.**
+**Компоненты без контента внутри должны быть самозакрывающимися в [однофайловых компонентах](/guide/scaling-up/sfc), в строковых шаблонах и в [JSX](/guide/extras/render-function#jsx-tsx) - но не в сыром HTML.**
 
-Components that self-close communicate that they not only have no content, but are **meant** to have no content. It's the difference between a blank page in a book and one labeled "This page intentionally left blank." Your code is also cleaner without the unnecessary closing tag.
+Самозакрывающиеся компоненты не только говорят о том, что у них нет контента, но и **подразумевают**, что не должны иметь контента. Это разница между пустой страницей в книге и пустой страницей с подписью "Эта страница намеренно пустая." Ваш код становится также чище без ненужного закрытия тега.
 
-Unfortunately, HTML doesn't allow custom elements to be self-closing - only [official "void" elements](https://www.w3.org/TR/html/syntax.html#void-elements). That's why the strategy is only possible when Vue's template compiler can reach the template before the DOM, then serve the DOM spec-compliant HTML.
+К сожалению, HTML не разрешает пользовательским элементам быть самозакрывающимимся - только [официальные самозакрывающиеся элементы](https://www.w3.org/TR/html/syntax.html#void-elements). Вот почему это правило возможно только при помощи компилятора шаблонов самого Vue - он "подгоняет" к соответствующему спецификации HTML шаблону.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
-<!-- In Single-File Components, string templates, and JSX -->
+<!-- Внутри SFC, строковых шаблонах и JSX -->
 <MyComponent></MyComponent>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component/>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components, string templates, and JSX -->
+<!-- Внутри SFC, строковых шаблонах и JSX -->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component></my-component>
 ```
 
 </div>
 
-## Component name casing in templates {#component-name-casing-in-templates}
+## Регистр имён компонентов в шаблонах {#component-name-casing-in-templates}
 
-**In most projects, component names should always be PascalCase in [Single-File Components](/guide/scaling-up/sfc) and string templates - but kebab-case in in-DOM templates.**
+**В большинстве проектов регистром имён компонентов должен быть PascalCase внутри [однофайловых компонентов](/guide/scaling-up/sfc) и строковых литералах, но внутри сырого HTML регистром должен быть kebab-case.**
 
-PascalCase has a few advantages over kebab-case:
+PascalCase имеет несколько преимуществ над kebab-case:
 
-- Editors can autocomplete component names in templates, because PascalCase is also used in JavaScript.
-- `<MyComponent>` is more visually distinct from a single-word HTML element than `<my-component>`, because there are two character differences (the two capitals), rather than just one (a hyphen).
-- If you use any non-Vue custom elements in your templates, such as a web component, PascalCase ensures that your Vue components remain distinctly visible.
+- Редакторы могут автодополнять имена компонентов в шаблоне, потому что PascalCase также используется в JavaScript.
+- `<MyComponent>` визуально сильнее отличается от HTML-элемента в одно слово, чем `<my-component>`, потому что есть два отличия (две заглавные буквы), а не только одно (дефис).
+- Если вы используете пользовательские не Vue-элементы в шаблонах, например веб-компоненты, PascalCase обеспечивает визуальное отличие ваших Vue-компонентов.
 
-Unfortunately, due to HTML's case insensitivity, in-DOM templates must still use kebab-case.
+К сожалению, из-за нечувствительности HTML к регистру, шаблоны внутри сырого HTML должны использовать kebab-case.
 
-Also note that if you've already invested heavily in kebab-case, consistency with HTML conventions and being able to use the same casing across all your projects may be more important than the advantages listed above. In those cases, **using kebab-case everywhere is also acceptable.**
+Также стоит заметить, что если вы уже в большинстве шаблонов используете kebab-case, то следование HTML соглашениям и возможность иметь одинаковые регистр внутри всего вашего приложения могут быть более важными, чем описанные выше преимущества. В таких случаях, **используете kebab-case повсеместно**.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <mycomponent/>
 ```
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <myComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <MyComponent></MyComponent>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- Внутри SFC и строковых шаблонах-->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- In in-DOM templates -->
+<!-- В сыром index.html -->
 <my-component></my-component>
 ```
 
-OR
+ИЛИ
 
 ```vue-html
-<!-- Everywhere -->
+<!-- Везде -->
 <my-component></my-component>
 ```
 
 </div>
 
-## Component name casing in JS/JSX {#component-name-casing-in-js-jsx}
+## Регистр имен компонентов в JS/JSX {#component-name-casing-in-js-jsx}
 
-**Component names in JS/[JSX](/guide/extras/render-function#jsx-tsx) should always be PascalCase, though they may be kebab-case inside strings for simpler applications that only use global component registration through `app.component`.**
+**Имена компонентов в JS/[JSX](/guide/extras/render-function#jsx-tsx) должны быть всегда в PascalCase, хотя они могут иметь kebab-case внутри строк для простых приложений, которые используют регистрацию глобальных компонентов через `app.component`.**
 
-::: details Detailed Explanation
-In JavaScript, PascalCase is the convention for classes and prototype constructors - essentially, anything that can have distinct instances. Vue components also have instances, so it makes sense to also use PascalCase. As an added benefit, using PascalCase within JSX (and templates) allows readers of the code to more easily distinguish between components and HTML elements.
+::: details Подробное объяснение
+В JavaScript PascalCase - это соглашение для классов и конструкторов прототипов - по сути, для всего, что может иметь отдельные экземпляры. Vue-компоненты также могут иметь экземпляры, так что имеет смысл использовать PascalCase. Дополнительное преимущество использовать PascalCase внутри JSX (и шаблонов) позволяет тому, что читает код, легче отличать компоненты и HTML-элементы.
 
-However, for applications that use **only** global component definitions via `app.component`, we recommend kebab-case instead. The reasons are:
+Однако, для приложений, которые используют **только** определение глобальных компонентов через `app.component`, мы рекомендуем использовать kebab-case. И вот почему:
 
-- It's rare that global components are ever referenced in JavaScript, so following a convention for JavaScript makes less sense.
-- These applications always include many in-DOM templates, where [kebab-case **must** be used](#component-name-casing-in-templates).
+- Редко приходится ссылаться на глобальные компоненты из JavaScript, так что следование соглашению для JavaScript имеет все меньший смысл.
+- Такие приложения всегда используют сырую HTML-разметку, где [kebab-case **должен** быть использован](#component-name-casing-in-templates).
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 app.component('myComponent', {
@@ -444,7 +444,7 @@ export default {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 app.component('MyComponent', {
@@ -471,14 +471,14 @@ export default {
 
 </div>
 
-## Full-word component names {#full-word-component-names}
+## Имена компонентов без аббревиатур {#full-word-component-names}
 
-**Component names should prefer full words over abbreviations.**
+**Имена компонентов должны использовать полноценные слова, а не аббревиатуры.**
 
-The autocompletion in editors make the cost of writing longer names very low, while the clarity they provide is invaluable. Uncommon abbreviations, in particular, should always be avoided.
+Автодополнение в редакторах не замедляется при использовании длинных имён, а ясность, которую они предлагают, бесценна. В частности, необычные аббревиатуры всегда должны избегаться.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```
 components/
@@ -489,7 +489,7 @@ components/
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```
 components/
@@ -499,12 +499,12 @@ components/
 
 </div>
 
-## Prop name casing {#prop-name-casing}
+## Регистр входных параметров {#prop-name-casing}
 
-**Prop names should always use camelCase during declaration. When used inside in-DOM templates, props should be kebab-cased. Single-File Components templates and [JSX](/guide/extras/render-function#jsx-tsx) can use either kebab-case or camelCase props. Casing should be consistent - if you choose to use camelCased props, make sure you don't use kebab-cased ones in your application**
+**Входные параметры должны объявляться всегда в camelCase. В сыром HTML-файле их объявление должно быть в kebab-case. Шаблоны однофайловых компонентов и [JSX](/guide/extras/render-function#jsx-tsx) могут использовать как kebab-case, так и camelCase для объявления входных параметров. Регистр должен быть везде одинаковым - выбирайте один стиль внутри всего вашего приложения (camelCase или kebab-case).**
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 <div class="options-api">
 
@@ -527,14 +527,14 @@ const props = defineProps({
 </div>
 
 ```vue-html
-// for in-DOM templates
+// Внутри сырого HTML-файла
 <welcome-message greetingText="hi"></welcome-message>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 <div class="options-api">
 
@@ -557,28 +557,28 @@ const props = defineProps({
 </div>
 
 ```vue-html
-// for SFC - please make sure your casing is consistent throughout the project
-// you can use either convention but we don't recommend mixing two different casing styles
+// Если используете SFC - убедитесь, что регистр консистентен по всему приложению
+// Конечно, вы можете использовать некое соглашение, но мы не рекомендуем миксовать два различных регистра
 <WelcomeMessage greeting-text="hi"/>
-// or
+// или
 <WelcomeMessage greetingText="hi"/>
 ```
 
 ```vue-html
-// for in-DOM templates
+// Внутри сырого HTML-файла
 <welcome-message greeting-text="hi"></welcome-message>
 ```
 
 </div>
 
-## Multi-attribute elements {#multi-attribute-elements}
+## Элементы с множеством атрибутов {#multi-attribute-elements}
 
-**Elements with multiple attributes should span multiple lines, with one attribute per line.**
+**Элементы с множеством атрибутов должны придерживаться правила: один атрибут - одна линия.**
 
-In JavaScript, splitting objects with multiple properties over multiple lines is widely considered a good convention, because it's much easier to read. Our templates and [JSX](/guide/extras/render-function#jsx-tsx) deserve the same consideration.
+В JavaScript внутри объектов каждое значение находится на отдельной линии - это распространенное соглашение, потому что так намного легче читать. Наши шаблоны и [JSX](/guide/extras/render-function#jsx-tsx) заслуживают того же.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
@@ -591,7 +591,7 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <img
@@ -610,14 +610,13 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 
 </div>
 
-## Simple expressions in templates {#simple-expressions-in-templates}
+## Простые выражения в шаблонах {#simple-expressions-in-templates}
 
-**Component templates should only include simple expressions, with more complex expressions refactored into computed properties or methods.**
-
-Complex expressions in your templates make them less declarative. We should strive to describe _what_ should appear, not _how_ we're computing that value. Computed properties and methods also allow the code to be reused.
+**Шаблоны компоненты должны в себя включать только простые выражения, более сложные должны выноситься либо в функции, либо в вычисляемые свойства.**
+Сложные выражения в наших шаблонах делают их менее декларативными. Мы должны стремиться описать _что_ мы ходим увидеть, а не _как_ вычислилось то или иное значение. Вычисляемые свойства и функции также позволяют переиспользовать код.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 {{
@@ -630,17 +629,17 @@ Complex expressions in your templates make them less declarative. We should stri
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- In a template -->
+<!-- Внутри шаблона -->
 {{ normalizedFullName }}
 ```
 
 <div class="options-api">
 
 ```js
-// The complex expression has been moved to a computed property
+// Сложное выражение превратилось в вычисляемое свойство
 computed: {
   normalizedFullName() {
     return this.fullName.split(' ')
@@ -655,7 +654,7 @@ computed: {
 <div class="composition-api">
 
 ```js
-// The complex expression has been moved to a computed property
+// Сложное выражение превратилось в вычисляемое свойство
 const normalizedFullName = computed(() =>
   fullName.value
     .split(' ')
@@ -668,30 +667,30 @@ const normalizedFullName = computed(() =>
 
 </div>
 
-## Simple computed properties {#simple-computed-properties}
+## Простые вычисляемые свойства {#simple-computed-properties}
 
-**Complex computed properties should be split into as many simpler properties as possible.**
+**Сложные вычисляемые свойства должны быть поделены на более простые насколько это возможно.**
 
-::: details Detailed Explanation
-Simpler, well-named computed properties are:
+::: details Подробное объяснение
+Простые, хорошо названные вычисляемые свойства:
 
-- **Easier to test**
+- **Проще тестируются**
 
-  When each computed property contains only a very simple expression, with very few dependencies, it's much easier to write tests confirming that it works correctly.
+  Когда каждое вычисляемое свойство содержит очень простое выражение - лишь с несколькими зависимостями - тогда легче писать тесты и проверять, что они работают корректно.
 
-- **Easier to read**
+- **Легче читаются**
 
-  Simplifying computed properties forces you to give each value a descriptive name, even if it's not reused. This makes it much easier for other developers (and future you) to focus in on the code they care about and figure out what's going on.
+  Упрощение вычисляемых свойств заставляет вас давать каждому значению понятное название, даже если оно не переиспользуется. Это позволяет легче другим разработчикам (и вам в будущем) сфокусироваться на коде и понять, что в нём происходит.
 
-- **More adaptable to changing requirements**
+- **Лучше адаптируются к меняющимся требованиям**
 
-  Any value that can be named might be useful to the view. For example, we might decide to display a message telling the user how much money they saved. We might also decide to calculate sales tax, but perhaps display it separately, rather than as part of the final price.
+  Каждое значение, которое может быть названо, может быть отображено. Например, мы решили показать сообщению пользователю, сколько денег он сохранил. Мы также можем решить рассчитать налог с продаж, но, возможно, отобразить его отдельно, а не как часть финальной цены.
 
-  Small, focused computed properties make fewer assumptions about how information will be used, so require less refactoring as requirements change.
+  Небольшие, точные вычисляемые свойства делают меньше предположений о том, как будет использоваться информация, поэтому требуют меньше рефакторинга при изменении требований.
   :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 <div class="options-api">
 
@@ -723,7 +722,7 @@ const price = computed(() => {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 <div class="options-api">
 
@@ -763,14 +762,14 @@ const finalPrice = computed(() => basePrice.value - discount.value)
 
 </div>
 
-## Quoted attribute values {#quoted-attribute-values}
+## Значения атрибутов в кавычках {#quoted-attribute-values}
 
-**Non-empty HTML attribute values should always be inside quotes (single or double, whichever is not used in JS).**
+**Непустые значения HTML-атрибутов должны быть всегда внутри кавычек (одинарных или двойных, в зависимости от того, что не используется в JS).**
 
-While attribute values without any spaces are not required to have quotes in HTML, this practice often leads to _avoiding_ spaces, making attribute values less readable.
+Хоть значения атрибутов без пробелов не обязаны иметь кавычки внутри HTML, такая практика часто приводит к _избеганию_ пробелов, делая значения атрибутов менее читабельными.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <input type=text>
@@ -783,7 +782,7 @@ While attribute values without any spaces are not required to have quotes in HTM
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <input type="text">
@@ -795,12 +794,12 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 </div>
 
-## Directive shorthands {#directive-shorthands}
+## Сокращения директив {#directive-shorthands}
 
-**Directive shorthands (`:` for `v-bind:`, `@` for `v-on:` and `#` for `v-slot`) should be used always or never.**
+**Сокращения директив (`:` для `v-bind:`, `@` для `v-on:` и `#` для `v-slot`) должны либо всегда использоваться, либо никогда.**
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <input
@@ -818,18 +817,18 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 ```vue-html
 <template v-slot:header>
-  <h1>Here might be a page title</h1>
+  <h1>Здесь могло быть название страницы</h1>
 </template>
 
 <template #footer>
-  <p>Here's some contact info</p>
+  <p>А здесь информация о контактах</p>
 </template>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <input
@@ -861,21 +860,21 @@ While attribute values without any spaces are not required to have quotes in HTM
 
 ```vue-html
 <template v-slot:header>
-  <h1>Here might be a page title</h1>
+  <h1>Здесь могло быть название страницы</h1>
 </template>
 
 <template v-slot:footer>
-  <p>Here's some contact info</p>
+  <p>А здесь информация о контактах</p>
 </template>
 ```
 
 ```vue-html
 <template #header>
-  <h1>Here might be a page title</h1>
+  <h1>Здесь могло быть название страницы</h1>
 </template>
 
 <template #footer>
-  <p>Here's some contact info</p>
+  <p>А здесь информация о контактах</p>
 </template>
 ```
 

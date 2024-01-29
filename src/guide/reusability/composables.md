@@ -184,29 +184,29 @@ const { data, error } = useFetch('...')
 </script>
 ```
 
-### Accepting Reactive State {#accepting-reactive-state}
+### Передача реактивного состояния {#accepting-reactive-state}
 
-`useFetch()` takes a static URL string as input - so it performs the fetch only once and is then done. What if we want it to re-fetch whenever the URL changes? In order to achieve this, we need to pass reactive state into the composable function, and let the composable create watchers that perform actions using the passed state.
+`useFetch()` принимает статическую URL строку в качестве входных данных, поэтому запрос выполняется только один раз и затем завершается. А если мы хотим выполнять повторные запросы каждый раз, когда URL изменяется? Для достижения этой цели нам нужно передавать реактивное состояние в composable функцию и далее она должна использовать наблюдателя, который будет отслеживать изменения состояния и выполнять нужное действие.
 
-For example, `useFetch()` should be able to accept a ref:
+Например, `useFetch()` должен иметь возможность принимать ref-ссылку:
 
 ```js
 const url = ref('/initial-url')
 
 const { data, error } = useFetch(url)
 
-// this should trigger a re-fetch
+// это должно вызывать повторный запрос
 url.value = '/new-url'
 ```
 
-Or, accept a getter function:
+Или передать геттер-функцию:
 
 ```js
-// re-fetch when props.id changes
+// повторно выполнить запрос при изменении props.id
 const { data, error } = useFetch(() => `/posts/${props.id}`)
 ```
 
-We can refactor our existing implementation with the [`watchEffect()`](/api/reactivity-core.html#watcheffect) and [`toValue()`](/api/reactivity-utilities.html#tovalue) APIs:
+Мы можем рефакторить нашу существующую реализацию с помощью API [`watchEffect()`](/api/reactivity-core.html#watcheffect) и [`toValue()`](/api/reactivity-utilities.html#tovalue):
 
 ```js{8,13}
 // fetch.js
@@ -217,7 +217,7 @@ export function useFetch(url) {
   const error = ref(null)
 
   const fetchData = () => {
-    // reset state before fetching..
+    // сброс состояния перед выполнением запроса..
     data.value = null
     error.value = null
 
@@ -235,11 +235,11 @@ export function useFetch(url) {
 }
 ```
 
-`toValue()` is an API added in 3.3. It is designed to normalize refs or getters into values. If the argument is a ref, it returns the ref's value; if the argument is a function, it will call the function and return its return value. Otherwise, it returns the argument as-is. It works similarly to [`unref()`](/api/reactivity-utilities.html#unref), but with special treatment for functions.
+`toValue()` - это API, добавленное в версии 3.3. Оно предназначено для нормализации ref-ссылок или геттеров в значения. Если аргумент - это ref-ссылка, оно возвращает его значение; если аргумент - это функция, она вызывает функцию и возвращает ее возвращаемое значение. В противном случае оно возвращает аргумент как есть. Оно работает аналогично [`unref()`](/api/reactivity-utilities.html#unref), но с особой обработкой для функций.
 
-Notice that `toValue(url)` is called **inside** the `watchEffect` callback. This ensures that any reactive dependencies accessed during the `toValue()` normalization are tracked by the watcher.
+Обратите внимание, что `toValue(url)` вызывается внутри коллбэка `watchEffect`. Это гарантирует, что все реактивные зависимости, к которым обращается при нормализации `toValue()`, будут отслеживаться наблюдателем.
 
-This version of `useFetch()` now accepts static URL strings, refs, and getters, making it much more flexible. The watch effect will run immediately, and will track any dependencies accessed during `toValue(url)`. If no dependencies are tracked (e.g. url is already a string), the effect runs only once; otherwise, it will re-run whenever a tracked dependency changes.
+В данной версии `useFetch()` теперь принимает статические строки URL, ref-ссылки и геттеры, что делает его гораздо более гибким. Эффект наблюдателя будет запущен сразу и будет отслеживать любые зависимости, к которым произошло обращение во время выполнения `toValue(url)`. Если зависимости не отслеживаются (например, url уже является строкой), эффект выполнится всего один раз; в противном случае он будет повторно запускаться при изменении отслеживаемой зависимости.
 
 Вот [обновленная версия `useFetch()`](https://play.vuejs.org/#eNp9Vdtu20YQ/ZUpUUA0qpAOjL4YktCbC7Rom8BN8sSHrMihtfZql9iLZEHgv2dml6SpxMiDIWkuZ+acmR2fs1+7rjgEzG6zlaut7Dw49KHbVFruO2M9nMFiu4Ta7LvgsYEeWmv2sKCkxSwoOPwTfb2b/EU5mopHR5GVro12HrbC4UerYA2Lnfeduy3LR2d0p0SNO6MatIU/dbI2DRZUtPSmMa4kgJQuG8qkjvLF28XVaAwRb2wxz69gvZkK/UQ5xUGogBQ/ZpyhEV4sAa01lnpeTwRyApsFWvT2RO6Eea40THBMgfq6NLwlS1/pVZnUJB3ph8c98fNIvwD+MaKBzkQut2xYbYP3RsPhTWvsusokSA0/Vxn8UitZP7GFSX/+8Sz7z1W2OZ9BQt+vypQXS1R+1cgDQciW4iMrimR0wu8270znfoC7SBaJWdAeLTa3QFgxuNijc+IBIy5PPyYOjU19RDEI954/Z/UptKTy6VvqA5XD1AwLTTl/0Aco4s5lV51F5sG+VJJ+v4qxYbmkfiiKYvSvyknPbJnNtoyW+HJpj4Icd22LtV+CN5/ikC4XuNL4HFPaoGsvie3FIqSJp1WIzabl00HxkoyetEVfufhv1kAu3EnX8z0CKEtKofcGzhMb2CItAELL1SPlFMV1pwVj+GROc/vWPoc26oDgdxhfSArlLnbWaBOcOoEzIP3CgbeifqLXLRyICaDBDnVD+3KC7emCSyQ4sifspOx61Hh4Qy/d8BsaOEdkYb1sZS2FoiJKnIC6FbqhsaTVZfk8gDgK6cHLPZowFGUzAQTNWl/BUSrFbzRYHXmSdeAp28RMsI0fyFDaUJg9Spd0SbERZcvZDBRleCPdQMCPh8ARwdRRnBCTjGz5WkT0i0GlSMqixTR6VKyHmmWEHIfV+naSOETyRx8vEYwMv7pa8dJU+hU9Kz2t86ReqjcgaTzCe3oGpEOeD4uyJOcjTXe+obScHwaAi82lo9dC/q/wuyINjrwbuC5uZrS4WAQeyTN9ftOXIVwy537iecoX92kR4q/F1UvqIMsSbq6vo5XF6ekCeEcTauVDFJpuQESvMv53IBXadx3r4KqMrt0w0kwoZY5/R5u3AZejvd5h/fSK/dE9s63K3vN7tQesssnnhX1An9x3//+Hz/R9cu5NExRFf8d5zyIF7jGF/RZ0Q23P4mK3f8XLRmfhg7t79qjdSIobjXLE+Cqju/b7d6i/tHtT3MQ8VrH/Ahstp5A=), с искусственной задержкой и рандомизированной ошибкой в демонстрационных целях.
 
@@ -257,16 +257,16 @@ Composable может принимать ref-аргументы, даже есл
 import { toValue } from 'vue'
 
 function useFeature(maybeRefOrGetter) {
-  // If maybeRefOrGetter is a ref or a getter,
-  // its normalized value will be returned.
-  // Otherwise, it is returned as-is.
+  // Если maybeRefOrGetter является ref-ссылкой или геттером,
+  // будет возвращено его нормализованное значение.
+  // В противном случае, будет возвращено "как есть".
   const value = toValue(maybeRefOrGetter)
 }
 ```
 
-If your composable creates reactive effects when the input is a ref or a getter, make sure to either explicitly watch the ref / getter with `watch()`, or call `toValue()` inside a `watchEffect()` so that it is properly tracked.
+Если ваш composable создает реактивные эффекты, когда на вход подается ref-ссылка или геттер, убедитесь, что вы либо явно следите за ref-ссылкой/геттером с помощью `watch()`, либо вызываете `toValue()` внутри `watchEffect()`, чтобы отслеживание выполнялось правильно.
 
-The [useFetch() implementation discussed earlier](#accepting-reactive-state) provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
+Рассмотренная ранее реализация [useFetch()](#accepting-reactive-state) представляет собой конкретный пример composable, принимающего в качестве входного аргумента ref-ссылки, геттеры и простые значения.
 
 ### Возвращаемые значения {#return-values}
 
@@ -303,7 +303,7 @@ console.log(mouse.x)
 
 Composables должны вызываться только **синхронно** в `<script setup>` или в хуке `setup()`. В некоторых случаях их можно также вызывать в хуках жизненного цикла, например `onMounted()`.
 
-These restrictions are important because these are the contexts where Vue is able to determine the current active component instance. Access to an active component instance is necessary so that:
+Эти ограничения важны, потому что именно в этих контекстах Vue может определить текущий активный экземпляр компонента. Доступ к активному экземпляру компонента необходим для того, чтобы:
 
 1. На него могут быть зарегистрированы хуки жизненного цикла.
 
@@ -377,7 +377,7 @@ export default {
 
 ### vs. React хуки {#vs-react-hooks}
 
-Если у вас есть опыт работы с React, вы можете заметить, что это очень похоже на пользовательские хуки React. Composition API был частично вдохновлен хуками React, и Vue composables действительно похожи на хуки React  с точки зрения возможностей логической композиции. Однако Vue composables основаны на мелкозернистой системе реактивности, которая принципиально отличается от модели выполнения хуков React. Более подробно этот вопрос рассматривается в [FAQ  по Composition API](/guide/extras/composition-api-faq#comparison-with-react-hooks).
+Если у вас есть опыт работы с React, вы можете заметить, что это очень похоже на пользовательские хуки React. Composition API был частично вдохновлен хуками React, и Vue composables действительно похожи на хуки React с точки зрения возможностей логической композиции. Однако, Vue composables основаны на мелкозернистой системе реактивности, которая принципиально отличается от модели выполнения хуков React. Более подробно этот вопрос рассматривается в [FAQ по Composition API](/guide/extras/composition-api-faq#comparison-with-react-hooks).
 
 ## Дополнительное чтение {#further-reading}
 

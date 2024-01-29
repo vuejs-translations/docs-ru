@@ -194,7 +194,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -219,10 +219,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
-:::tip
-Many of the examples for Composition API throughout the guide will be using the `<script setup>` syntax, which requires build tools. If you intend to use Composition API without a build step, consult the usage of the [`setup()` option](/api/composition-api-setup).
+:::tip Совет
+Многие примеры в руководстве по использованию Composition API будут использовать синтаксис `<script setup>`, который требует использования инструментов сборки. Если вы планируете использовать Composition API без этапа сборки, ознакомьтесь с использованием [опции `setup()`](/api/composition-api-setup).
 :::
 
 </div>
@@ -261,7 +261,7 @@ Many of the examples for Composition API throughout the guide will be using the 
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('Привет Vue!')
       return {
         message
       }
@@ -276,12 +276,12 @@ Many of the examples for Composition API throughout the guide will be using the 
 
 <div class="options-api">
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -321,7 +321,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -343,7 +343,7 @@ import { createApp } from 'vue'
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('Привет Vue!')
       return {
         message
       }
@@ -352,7 +352,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[Codepen демо](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 
@@ -413,7 +413,7 @@ export default {
 
 Если напрямую открыть `index.html` в браузере, то обнаружите, что он выдаёт ошибку, потому что ES-модули не могут работать по протоколу `file://`. Чтобы исправить эту ситуацию, необходимо раздавать `index.html` по протоколу `http://` с помощью локального HTTP-сервера.
 
-Due to security reasons, ES modules can only work over the `http://` protocol, which is what the browsers use when opening pages on the web. In order for ES modules to work on our local machine, we need to serve the `index.html` over the `http://` protocol, with a local HTTP server.
+Из-за соображений безопасности ES-модули могут работать только по протоколу `http://`, который используется браузерами при открытии страниц в сети Интернет. Чтобы ES-модули работали на локальной машине, необходимо предоставить `index.html` через протокол `http://`, используя локальный HTTP-сервер.
 
 Для запуска локального HTTP-сервера для начала нужно установить [Node.js](https://nodejs.org/en/), а затем запустить команду `npx serve` в том же каталоге, где находится HTML-файл. Можно использовать и любой другой HTTP-сервер, который умеет хостить статические файлы с правильными MIME-типами.
 

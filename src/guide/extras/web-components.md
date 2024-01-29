@@ -171,7 +171,6 @@ document.body.appendChild(
 
 [Provide / Inject API](/guide/components/provide-inject#provide-inject) и [его эквивалент в Composition API](/api/composition-api-dependency-injection#provide) также работают между пользовательскими элементами, определяемыми Vue. Однако обратите внимание, что это работает **только между пользовательскими элементами**. То есть пользовательский элемент, определяемый Vue, не сможет инжектировать свойства, предоставляемые компонентом Vue, не являющимся пользовательским элементом.
 
-
 ### Однофайловые компоненты как пользовательские элементы {#sfc-as-custom-element}
 
 Метод `defineCustomElement` также работает с однофайловыми компонентами Vue (SFC). Однако при стандартной настройке инструментов `<style>` внутри SFC все равно будут извлечены и объединены в один CSS-файл при production сборке. При использовании SFC в качестве пользовательского элемента часто более желательным вариантом будет внедрение тегов `<style>` в shadow root пользовательского элемента.
@@ -225,22 +224,22 @@ export function register() {
 
 Если компонентов слишком много, можно воспользоваться такими возможностями систем сборки, как [glob import](https://vitejs.dev/guide/features.html#glob-import) в Vite или [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) в webpack для загрузки всех компонентов из определённого каталог
 
-### Web Components and Typescript {#web-components-and-typescript}
+### Веб-компоненты и Typescript {#web-components-and-typescript}
 
-If you are developing an application or a library, you may want to [type check](/guide/scaling-up/tooling.html#typescript) your Vue components, including those that are defined as custom elements.
+Если вы разрабатываете приложение или библиотеку, вам может потребоваться [проверять типы](/guide/scaling-up/tooling.html#typescript) ваших Vue компонентов, включая те, которые определены как пользовательские элементы.
 
-Custom elements are registered globally using native APIs, so by default they won't have type inference when used in Vue templates. To provide type support for Vue components registered as custom elements, we can register global component typings using the the [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) in Vue templates and/or in [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+Пользовательские элементы регистрируются глобально с использованием нативного API, поэтому по умолчанию у них нет вывода типов при использовании в шаблонах Vue. Чтобы предоставить поддержку типов для Vue компонентов, зарегистрированных как пользовательские элементы, мы можем регистрировать глобальные типы компонентов, используя [интерфейс GlobalComponents](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) в шаблонах Vue и/или в [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
 
 ```typescript
 import { defineCustomElement } from 'vue'
 
-// vue SFC
+// однофайловый компонент Vue
 import CounterSFC from './src/components/counter.ce.vue'
 
-// turn component into web components
+// определение его как пользовательского элемента
 export const Counter = defineCustomElement(CounterSFC)
 
-// register global typings
+// регистрация глобальных типов
 declare module 'vue' {
   export interface GlobalComponents {
     'Counter': typeof Counter,
