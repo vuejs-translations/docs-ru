@@ -1,12 +1,12 @@
-# Component v-model {#component-v-model}
+# Компонент v-model {#component-v-model}
 
-## Basic Usage {#basic-usage}
+## Базовое использование {#basic-usage}
 
-`v-model` can be used on a component to implement a two-way binding.
+`v-model` можно использовать в компоненте для реализации двустороннего связывания.
 
 <div class="composition-api">
 
-Starting in Vue 3.4, the recommended approach to achieve this is using the [`defineModel()`](/api/sfc-script-setup#definemodel) macro:
+Начиная с Vue 3.4, для достижения этих целей, рекомендуется использовать использовать макрос [`defineModel()`](/api/sfc-script-setup#definemodel):
 
 ```vue
 <!-- Child.vue -->
@@ -23,19 +23,19 @@ function update() {
 </template>
 ```
 
-The parent can then bind a value with `v-model`:
+Далее родитель может связать значение с помощью `v-model`:
 
 ```vue-html
 <!-- Parent.vue -->
 <Child v-model="count" />
 ```
 
-The value returned by `defineModel()` is a ref. It can be accessed and mutated like any other ref, except that it acts as a two-way binding between a parent value and a local one:
+Значение, возвращаемое функцией `defineModel()`, представляет собой ссылку. К ней можно получить доступ и изменить так же, как и любую другую ссылку, за исключением того, что она действует как двустороннее связывание между родительским значением и локальным значением:
 
-- Its `.value` is synced with the value bound by the parent `v-model`;
-- When it is mutated by the child, it causes the parent bound value to be updated as well.
+- Значение `.value` синхронизировано с значением, связанным с родительским `v-model`;
+- Когда оно изменяется дочерним элементом, это также приводит к обновлению связанного с родителем значения.
 
-This means you can also bind this ref to a native input element with `v-model`, making it straightforward to wrap native input elements while providing the same `v-model` usage:
+Это означает, что вы также можете связать эту ссылку к нативному полю ввода с помощью `v-model`, что делает оборачивание элементов ввода простым и обеспечивает аналогичное использование `v-model`:
 
 ```vue
 <script setup>
@@ -47,16 +47,16 @@ const model = defineModel()
 </template>
 ```
 
-[Playground Example](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
+[Полный пример](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
 
-### Under the Hood {#under-the-hood}
+### Под капотом {#under-the-hood}
 
-`defineModel` is a convenience macro. The compiler expands it to the following:
+`defineModel` - это удобный макрос. Компилятор раскрывает его в следующее:
 
-- A prop named `modelValue`, which the local ref's value is synced with;
-- An event named `update:modelValue`, which is emitted when the local ref's value is mutated.
+- Свойство с именем `modelValue`, значение которого синхронизировано с значением локальной ссылки;
+- Событие с именем `update:modelValue`, которое возникает при изменении значения локальной ссылки.
 
-This is how you would implement the same child component shown above prior to 3.4:
+Вот как вы бы реализовали тот же дочерний компонент, который был показан выше до версии 3.4:
 
 ```vue
 <script setup>
@@ -72,15 +72,15 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-As you can see, it is quite a bit more verbose. However, it is helpful to understand what is happening under the hood.
+Как видите, это гораздо более многословно. Тем не менее, полезно знать, что происходит под капотом.
 
-Because `defineModel` declares a prop, you can therefore declare the underlying prop's options by passing it to `defineModel`:
+Поскольку `defineModel` объявляет входные параметры, вы можете также объявить входные параметры основного свойства, передав его в `defineModel`:
 
 ```js
-// making the v-model required
+// делает v-model обязательным
 const model = defineModel({ required: true })
 
-// providing a default value
+// установка значения по умолчанию
 const model = defineModel({ default: 0 })
 ```
 
@@ -88,13 +88,12 @@ const model = defineModel({ default: 0 })
 
 <div class="options-api">
 
-First let's revisit how `v-model` is used on a native element:
+Давайте сначала рассмотрим, как `v-model` используется в нативном элементе:
 
 ```vue-html
 <input v-model="searchText" />
 ```
-
-Under the hood, the template compiler expands `v-model` to the more verbose equivalent for us. So the above code does the same as the following:
+Под капотом компилятор шаблонов расширяет `v-model` до более подробного эквивалента для нас. Таким образом, приведенный выше код выполняет то же самое, что и следующий:
 
 ```vue-html
 <input
@@ -103,7 +102,7 @@ Under the hood, the template compiler expands `v-model` to the more verbose equi
 />
 ```
 
-When used on a component, `v-model` instead expands to this:
+При использовании в компоненте `v-model` вместо этого расширяется до этого:
 
 ```vue-html
 <CustomInput
@@ -112,12 +111,12 @@ When used on a component, `v-model` instead expands to this:
 />
 ```
 
-For this to actually work though, the `<CustomInput>` component must do two things:
+Для того чтобы это действительно работало, компонент `<CustomInput>` должен выполнить две вещи:
 
-1. Bind the `value` attribute of a native `<input>` element to the `modelValue` prop
-2. When a native `input` event is triggered, emit an `update:modelValue` custom event with the new value
+1. Привязать атрибут `value` элемента `<input>` к свойству `modelValue`
+2. При срабатывании события `input` элемента `<input>`, генерировать событие `update:modelValue` с новым значением
 
-Here's that in action:
+Вот это в действии:
 
 ```vue
 <!-- CustomInput.vue -->
@@ -136,15 +135,15 @@ export default {
 </template>
 ```
 
-Now `v-model` should work perfectly with this component:
+Теперь `v-model` должен отлично работать с этим компонентом:
 
 ```vue-html
 <CustomInput v-model="searchText" />
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFkctqwzAQRX9lEAEn4Np744aWrvoD3URdiHiSGvRCHpmC8b93JDfGKYGCkJjXvTrSJF69r8aIohHtcA69p6O0vfEuELzFgZx5tz4SXIIzUFT1JpfGCmmlxe/c3uFFRU0wSQtwdqxh0dLQwHSnNJep3ilS+8PSCxCQYrC3CMDgMKgrNlB8odaOXVJ2TgdvvNp6vSwHhMZrRcgRQLs1G5+M61A/S/ErKQXUR5immwXMWW1VEKX4g3j3Mo9QfXCeKU9FtvpQmp/lM0Oi6RP/qYieebHZNvyL0acLLODNmGYSxCogxVJ6yW1c2iWz/QOnEnY48kdUpMIVGSllD8t8zVZb+PkHqPG4iw==)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFkctqwzAQRX9lEAEn4Np744aWrvoD3URdiHiSGvRCHpmC8b93JDfGKYGCkJjXvTrSJF69r8aIohHtcA69p6O0vfEuELzFgZx5tz4SXIIzUFT1JpfGCmmlxe/c3uFFRU0wSQtwdqxh0dLQwHSnNJep3ilS+8PSCxCQYrC3CMDgMKgrNlB8odaOXVJ2TgdvvNp6vSwHhMZrRcgRQLs1G5+M61A/S/ErKQXUR5immwXMWW1VEKX4g3j3Mo9QfXCeKU9FtvpQmp/lM0Oi6RP/qYieebHZNvyL0acLLODNmGYSxCogxVJ6yW1c2iWz/QOnEnY48kdUpMIVGSllD8t8zVZb+PkHqPG4iw==)
 
-Another way of implementing `v-model` within this component is to use a writable `computed` property with both a getter and a setter. The `get` method should return the `modelValue` property and the `set` method should emit the corresponding event:
+Другой способ реализации `v-model` в этом компоненте - использовать вычисляемое свойство `computed` с геттером и сеттером. Метод `get` должен возвращать свойство `modelValue`, а метод `set` должен вызывать соответствующее событие:
 
 ```vue
 <!-- CustomInput.vue -->
@@ -172,9 +171,9 @@ export default {
 
 </div>
 
-## `v-model` arguments {#v-model-arguments}
+## Аргументы `v-model` {#v-model-arguments}
 
-`v-model` on a component can also accept an argument:
+`v-model` может принимать аргумент:
 
 ```vue-html
 <MyComponent v-model:title="bookTitle" />
@@ -182,7 +181,7 @@ export default {
 
 <div class="composition-api">
 
-In the child component, we can support the corresponding argument by passing a string to `defineModel()` as its first argument:
+В дочернем компоненте мы можем поддерживать соответствующий аргумент, передав строку в `defineModel()` в качестве его первого аргумента
 
 ```vue
 <!-- MyComponent.vue -->
@@ -195,16 +194,16 @@ const title = defineModel('title')
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFkl9PwjAUxb9K05dhglsMb2SQqOFBE9Soj31Zxh0Uu7bpHxxZ9t29LWOiQXzaes7p2a+9a+mt1unOA53S3JaGa0csOK/nTPJaK+NISwxUpCOVUTVJMJoM1nJ/r/BNgnS9nWYnWujFMCFMlkpaRxx3AsgsFI6S3XWtViBIYda+Dg3QFLUWkFwxmWcHFqTAhQPUCwe4IiTf3Mzbtq/qujzDddRPYfruaUzNGI1PRkmG0Twb+uiY/sI9cw0/0VdQcQnL0D5KovgfL5fa4/69jiDQOOTo+S6SOYtfrvg63VolkauNN0lLxOUCzLN2HMkYnZLoBK8QQn0+Rs0ZD+OjXm6g/Dijb20TNEZfDFgwOwQZPIdzAWQN9uLtKXIPJtL7gH3BfAWrhA+Mh9idlyvEPslF2of4J3G5freLxoG0x0MF0JDsYp5RHE6Y1F9H/8adpJO4j8mOdl/Hw/nf)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFkl9PwjAUxb9K05dhglsMb2SQqOFBE9Soj31Zxh0Uu7bpHxxZ9t29LWOiQXzaes7p2a+9a+mt1unOA53S3JaGa0csOK/nTPJaK+NISwxUpCOVUTVJMJoM1nJ/r/BNgnS9nWYnWujFMCFMlkpaRxx3AsgsFI6S3XWtViBIYda+Dg3QFLUWkFwxmWcHFqTAhQPUCwe4IiTf3Mzbtq/qujzDddRPYfruaUzNGI1PRkmG0Twb+uiY/sI9cw0/0VdQcQnL0D5KovgfL5fa4/69jiDQOOTo+S6SOYtfrvg63VolkauNN0lLxOUCzLN2HMkYnZLoBK8QQn0+Rs0ZD+OjXm6g/Dijb20TNEZfDFgwOwQZPIdzAWQN9uLtKXIPJtL7gH3BfAWrhA+Mh9idlyvEPslF2of4J3G5freLxoG0x0MF0JDsYp5RHE6Y1F9H/8adpJO4j8mOdl/Hw/nf)
 
-If prop options are also needed, they should be passed after the model name:
+Если необходимо передать входные параметры, то их следует передавать после имени модели:
 
 ```js
 const title = defineModel('title', { required: true })
 ```
 
 <details>
-<summary>Pre 3.4 Usage</summary>
+<summary>Использование до версии 3.4</summary>
 
 ```vue
 <!-- MyComponent.vue -->
@@ -222,13 +221,13 @@ defineEmits(['update:title'])
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNp9kE1rwzAMhv+KMIW00DXsGtKyMXYc7D7vEBplM8QfOHJoCfnvk+1QsjJ2svVKevRKk3h27jAGFJWoh7NXjmBACu4kjdLOeoIJPHYwQ+ethoJLi1vq7fpi+WfQ0JI+lCstcrkYQJqzNQMBKeoRjhG4LcYHbVvsofFfQUcCXhrteix20tRl9sIuOCBkvSHkCKD+fjxN04Ka57rkOOlrMwu7SlVHKdIrBZRcWpc3ntiLO7t/nKHFThl899YN248ikYpP9pj1V60o6sG1TMwDU/q/FZRxgeIPgK4uGcQLSZGlamz6sHKd1afUxOoGeeT298A9bHCMKxBfE3mTSNjl1vud5x8qNa76)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9kE1rwzAMhv+KMIW00DXsGtKyMXYc7D7vEBplM8QfOHJoCfnvk+1QsjJ2svVKevRKk3h27jAGFJWoh7NXjmBACu4kjdLOeoIJPHYwQ+ethoJLi1vq7fpi+WfQ0JI+lCstcrkYQJqzNQMBKeoRjhG4LcYHbVvsofFfQUcCXhrteix20tRl9sIuOCBkvSHkCKD+fjxN04Ka57rkOOlrMwu7SlVHKdIrBZRcWpc3ntiLO7t/nKHFThl899YN248ikYpP9pj1V60o6sG1TMwDU/q/FZRxgeIPgK4uGcQLSZGlamz6sHKd1afUxOoGeeT298A9bHCMKxBfE3mTSNjl1vud5x8qNa76)
 
 </details>
 </div>
 <div class="options-api">
 
-In this case, instead of the default `modelValue` prop and `update:modelValue` event, the child component should expect a `title` prop and emit an `update:title` event to update the parent value:
+В этом случае, вместо стандартного свойства `modelValue` и события `update:modelValue`, дочерний компонент должен ожидать свойство `title` и генерировать событие `update:title` для обновления значения в родительском компоненте:
 
 ```vue
 <!-- MyComponent.vue -->
@@ -248,15 +247,15 @@ export default {
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFUNFqwzAM/BVhCm6ha9hryMrGnvcFdR9Mo26B2DGuHFJC/n2yvZakDAohtuTTne5G8eHcrg8oSlFdTr5xtFe2Ma7zBF/Xz45vFi3B2XcG5K6Y9eKYVFZZHBK8xrMOLcGoLMDphrqUMC6Ypm18rzXp9SZjATxS8PZWAVBDLZYg+xfT1diC9t/BxGEctHFtlI2wKR78468q7ttzQcgoTcgVQPXzuh/HzAnTVBVcp/58qz+lMqHelEinElAwtCrufGIrHhJYBPdfEs53jkM4yEQpj8k+miYmc5DBcRKYZeXxqZXGukDZPF1dWhQHUiK3yl63YbZ97r6nIe6uoup6KbmFFfbRCnHGyI4iwyaPPnqffgGMlsEM)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFUNFqwzAM/BVhCm6ha9hryMrGnvcFdR9Mo26B2DGuHFJC/n2yvZakDAohtuTTne5G8eHcrg8oSlFdTr5xtFe2Ma7zBF/Xz45vFi3B2XcG5K6Y9eKYVFZZHBK8xrMOLcGoLMDphrqUMC6Ypm18rzXp9SZjATxS8PZWAVBDLZYg+xfT1diC9t/BxGEctHFtlI2wKR78468q7ttzQcgoTcgVQPXzuh/HzAnTVBVcp/58qz+lMqHelEinElAwtCrufGIrHhJYBPdfEs53jkM4yEQpj8k+miYmc5DBcRKYZeXxqZXGukDZPF1dWhQHUiK3yl63YbZ97r6nIe6uoup6KbmFFfbRCnHGyI4iwyaPPnqffgGMlsEM)
 
 </div>
 
-## Multiple `v-model` bindings {#multiple-v-model-bindings}
+## Множественные привязки `v-model` {#multiple-v-model-bindings}
 
-By leveraging the ability to target a particular prop and event as we learned before with [`v-model` arguments](#v-model-arguments), we can now create multiple `v-model` bindings on a single component instance.
+Используя возможность указывать конкретное свойство и событие, как мы узнали ранее с [аргументами `v-model`](#v-model-arguments), теперь мы можем создать несколько `v-model` привязок на одном экземпляре компонента.
 
-Each `v-model` will sync to a different prop, without the need for extra options in the component:
+Каждый `v-model` будет синхронизироваться с разным свойством, без необходимости в дополнительных параметрах в компоненте:
 
 ```vue-html
 <UserName
@@ -279,10 +278,10 @@ const lastName = defineModel('lastName')
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFkstuwjAQRX/F8iZUAqKKHQpIfbAoUmnVx86bKEzANLEt26FUkf+9Y4MDSAg2UWbu9fjckVv6oNRw2wAd08wUmitLDNhGTZngtZLakpZoKIkjpZY1SdCadNK3Ab3IazhowzQ2/ES0MVFIYSwpucbvxA/qJXO5FsldlKr8qDxL8EKW7kEQAQsLtapyC1gRkq3vp217mOccwf8wwLksRSlYIoMvCNkOarmEahyODAT2J4yGgtFzhx8UDf5/r6c4NEs7CNqnpxkvbO0kcVjNhCyh5AJe/SW9pBPOV3DJGvu3dsKFaiyxf8qTW9gheQwVs4Z90BDm5oF47cF/Ht4aZC75argxUmD61g9ktJC14hXoN2U5ZmJ0TILitbyq5O889KxuoB/7xRqKnwv9jdn5HqPvGnDVWwTpNJvrFSCul2efi4DeiRigqdB9RfwAI6vGM+5tj41YIvaJL9C+hOfNxerLzHYWhImhPKh3uuBnFJ/A05XoR9zRcBTOMeGo+wcs+yse)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFkstuwjAQRX/F8iZUAqKKHQpIfbAoUmnVx86bKEzANLEt26FUkf+9Y4MDSAg2UWbu9fjckVv6oNRw2wAd08wUmitLDNhGTZngtZLakpZoKIkjpZY1SdCadNK3Ab3IazhowzQ2/ES0MVFIYSwpucbvxA/qJXO5FsldlKr8qDxL8EKW7kEQAQsLtapyC1gRkq3vp217mOccwf8wwLksRSlYIoMvCNkOarmEahyODAT2J4yGgtFzhx8UDf5/r6c4NEs7CNqnpxkvbO0kcVjNhCyh5AJe/SW9pBPOV3DJGvu3dsKFaiyxf8qTW9gheQwVs4Z90BDm5oF47cF/Ht4aZC75argxUmD61g9ktJC14hXoN2U5ZmJ0TILitbyq5O889KxuoB/7xRqKnwv9jdn5HqPvGnDVWwTpNJvrFSCul2efi4DeiRigqdB9RfwAI6vGM+5tj41YIvaJL9C+hOfNxerLzHYWhImhPKh3uuBnFJ/A05XoR9zRcBTOMeGo+wcs+yse)
 
 <details>
-<summary>Pre 3.4 Usage</summary>
+<summary>Использование до версии 3.4</summary>
 
 ```vue
 <script setup>
@@ -308,7 +307,7 @@ defineEmits(['update:firstName', 'update:lastName'])
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqNUc1qwzAMfhVjCk6hTdg1pGWD7bLDGIydlh1Cq7SGxDaOEjaC332yU6cdFNpLsPRJ348y8idj0qEHnvOi21lpkHWAvdmWSrZGW2Qjs1Azx2qrWyZoVMzQZwf2rWrhhKVZbHhGGivVTqsOWS0tfTeeKBGv+qjEMkJNdUaeNXigyCYjZIEKhNY0FQJVjBXHh+04nvicY/QOBM4VGUFhJHrwBWPDutV7aPKwslbU35Q8FCX/P+GJ4oB/T3hGpEU2m+ArfpnxytX2UEsF71abLhk9QxDzCzn7QCvVYeW7XuGyWSpH0eP6SyuxS75Eb/akOpn302LFYi8SiO8bJ5PK9DhFxV/j0yH8zOnzoWr6+SbhbifkMSwSsgByk1zzsoABFKZY2QNgGpiW57Pdrx2z3JCeI99Svvxh7g8muf2x)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqNUc1qwzAMfhVjCk6hTdg1pGWD7bLDGIydlh1Cq7SGxDaOEjaC332yU6cdFNpLsPRJ348y8idj0qEHnvOi21lpkHWAvdmWSrZGW2Qjs1Azx2qrWyZoVMzQZwf2rWrhhKVZbHhGGivVTqsOWS0tfTeeKBGv+qjEMkJNdUaeNXigyCYjZIEKhNY0FQJVjBXHh+04nvicY/QOBM4VGUFhJHrwBWPDutV7aPKwslbU35Q8FCX/P+GJ4oB/T3hGpEU2m+ArfpnxytX2UEsF71abLhk9QxDzCzn7QCvVYeW7XuGyWSpH0eP6SyuxS75Eb/akOpn302LFYi8SiO8bJ5PK9DhFxV/j0yH8zOnzoWr6+SbhbifkMSwSsgByk1zzsoABFKZY2QNgGpiW57Pdrx2z3JCeI99Svvxh7g8muf2x)
 
 </details>
 </div>
@@ -339,15 +338,15 @@ export default {
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqNkk1rg0AQhv/KIAETSJRexYYWeuqhl9JTt4clmSSC7i7rKCnif+/ObtYkELAiujPzztejQ/JqTNZ3mBRJ2e5sZWgrVNUYbQm+WrQfskE4WN1AmuXRwQmpUELh2Qv3eJBdTTAIBbDTLluhoraA4VpjXHNwL0kuV0EIYJE6q6IFcKhsSwWk7/qkUq/nq5be+aa5JztGfrmHu8t8GtoZhI2pJaGzAMrT03YYQk0YR3BnruSOZe5CXhKnC3X7TaP3WBc+ZaOc/1kk3hDJvYILRQGfQzx3Rct8GiJZJ7fA7gg/AmesNszMrUIXFpxbwCfZSh09D0Hc7tbN6sAWm4qZf6edcZgxrMHSdA3RF7PTn1l8lTIdhbXp1/CmhOeJRNHLupv4eIaXyItPdJEFD7R8NM0Ce/d/ZCTtESnzlVZXhP/vHbeZaT0tPdf59uONfx7mDVM=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqNkk1rg0AQhv/KIAETSJRexYYWeuqhl9JTt4clmSSC7i7rKCnif+/ObtYkELAiujPzztejQ/JqTNZ3mBRJ2e5sZWgrVNUYbQm+WrQfskE4WN1AmuXRwQmpUELh2Qv3eJBdTTAIBbDTLluhoraA4VpjXHNwL0kuV0EIYJE6q6IFcKhsSwWk7/qkUq/nq5be+aa5JztGfrmHu8t8GtoZhI2pJaGzAMrT03YYQk0YR3BnruSOZe5CXhKnC3X7TaP3WBc+ZaOc/1kk3hDJvYILRQGfQzx3Rct8GiJZJ7fA7gg/AmesNszMrUIXFpxbwCfZSh09D0Hc7tbN6sAWm4qZf6edcZgxrMHSdA3RF7PTn1l8lTIdhbXp1/CmhOeJRNHLupv4eIaXyItPdJEFD7R8NM0Ce/d/ZCTtESnzlVZXhP/vHbeZaT0tPdf59uONfx7mDVM=)
 
 </div>
 
-## Handling `v-model` modifiers {#handling-v-model-modifiers}
+## Работа с модификаторами `v-model` {#handling-v-model-modifiers}
 
-When we were learning about form input bindings, we saw that `v-model` has [built-in modifiers](/guide/essentials/forms#modifiers) - `.trim`, `.number` and `.lazy`. In some cases, you might also want the `v-model` on your custom input component to support custom modifiers.
+Когда мы изучали привязки ввода формы, мы видели, что `v-model` имеет [встроенные модификаторы](/guide/essentials/forms#modifiers) - `.trim`, `.number` и `.lazy`. В некоторых случаях вам также может потребоваться, чтобы `v-model` в вашем компоненте ввода поддерживал пользовательские модификаторы.
 
-Let's create an example custom modifier, `capitalize`, that capitalizes the first letter of the string provided by the `v-model` binding:
+Давайте создадим пример пользовательского модификатора `capitalize`, который преобразует в верхний регистр первую букву строки, предоставленной привязкой `v-model`:
 
 ```vue-html
 <MyComponent v-model.capitalize="myText" />
@@ -355,7 +354,7 @@ Let's create an example custom modifier, `capitalize`, that capitalizes the firs
 
 <div class="composition-api">
 
-Modifiers added to a component `v-model` can be accessed in the child component by destructuring the `defineModel()` return value like this:
+Модификаторы, добавленные в компонент `v-model`, могут быть доступны в дочернем компоненте с помощью деструктуризации возвращаемого значения `defineModel()` следующим образом:
 
 ```vue{4}
 <script setup>
@@ -369,7 +368,7 @@ console.log(modifiers) // { capitalize: true }
 </template>
 ```
 
-To conditionally adjust how the value should be read / written based on modifiers, we can pass `get` and `set` options to `defineModel()`. These two options receive the value on get / set of the model ref and should return a transformed value. This is how we can use the `set` option to implement the `capitalize` modifier:
+Чтобы условно настроить чтение/запись значения на основе модификаторов, мы можем передать опции `get` и `set` в `defineModel()`. Эти две опции получают значение при получении / установке ссылки на модель и должны возвращать преобразованное значение. Вот как мы можем использовать `set` для реализации модификатора `capitalize`:
 
 ```vue{6-8}
 <script setup>
@@ -388,10 +387,10 @@ const [model, modifiers] = defineModel({
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNp9UsFu2zAM/RVClzhY5mzoLUgHdEUPG9Bt2LLTtIPh0Ik6WxIkyosb5N9LybFrFG1OkvgeyccnHsWNtXkbUKzE2pdOWQKPFOwnqVVjjSM4gsMKTlA508CMqbMRuu9uDd80ajrD+XISi3WZDCB1abQnaLoNHgiuY8VsNptLvV72TbkdPwgbWxeE/ALY7JUHpW0gKAurqKjVI3rAFl1He6V30JkA3AbdKvLXUzXt+8Zssc6fM6+l6NtLAUtusF6O3cRCvFB9yY2SiYFw+8KSYcY/qfEC+FCVQuf/8rxbrJTG+4hkxyiWq2ZtUQecQ3oDqAqyMWeieyQAu0bBaUh5ebkv3A1lH+Y5md/WorstPGZzeHfGfa1KzD6yxzH11B/TCjHC4dPlX1j3P0CdjQ5S79/Z3WhpPF91lDz7Uald/uCNZj/TFFJE91SN7rslxX5JsRrmk6Koa/P/a4qRC7gY4uUey3+vxB/8Icak+OHQo2tRihGjwu2QtUb47te3pHsEWXWomX0B/Ine1CFq7Gmfg96y7Akvqf2StoKXcePvDoTaD0NFocnhxJeClyRu2FujP8u9yq+GnxGnJxSEO+M=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9UsFu2zAM/RVClzhY5mzoLUgHdEUPG9Bt2LLTtIPh0Ik6WxIkyosb5N9LybFrFG1OkvgeyccnHsWNtXkbUKzE2pdOWQKPFOwnqVVjjSM4gsMKTlA508CMqbMRuu9uDd80ajrD+XISi3WZDCB1abQnaLoNHgiuY8VsNptLvV72TbkdPwgbWxeE/ALY7JUHpW0gKAurqKjVI3rAFl1He6V30JkA3AbdKvLXUzXt+8Zssc6fM6+l6NtLAUtusF6O3cRCvFB9yY2SiYFw+8KSYcY/qfEC+FCVQuf/8rxbrJTG+4hkxyiWq2ZtUQecQ3oDqAqyMWeieyQAu0bBaUh5ebkv3A1lH+Y5md/WorstPGZzeHfGfa1KzD6yxzH11B/TCjHC4dPlX1j3P0CdjQ5S79/Z3WhpPF91lDz7Uald/uCNZj/TFFJE91SN7rslxX5JsRrmk6Koa/P/a4qRC7gY4uUey3+vxB/8Icak+OHQo2tRihGjwu2QtUb47te3pHsEWXWomX0B/Ine1CFq7Gmfg96y7Akvqf2StoKXcePvDoTaD0NFocnhxJeClyRu2FujP8u9yq+GnxGnJxSEO+M=)
 
 <details>
-<summary>Pre 3.4 Usage</summary>
+<summary>Использование до версии 3.4</summary>
 
 ```vue{11-13}
 <script setup>
@@ -416,14 +415,14 @@ function emitValue(e) {
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNp9Us1Og0AQfpUJF5ZYqV4JNTaNxyYmVi/igdCh3QR2N7tDIza8u7NLpdU0nmB+v5/ZY7Q0Jj10GGVR7iorDYFD6sxDoWRrtCU4gsUaBqitbiHm1ngqrfuV5j+Fik7ldH6R83u5GaBQlVaOoO03+Emw8BtFHCeFyucjKMNxQNiapiTkCGCzlw6kMh1BVRpJZSO/0AEe0Pa0l2oHve6AYdBmvj+/ZHO4bfUWm/Q8uSiiEb6IYM4A+XxCi2bRH9ZX3BgVGKuNYwFbrKXCZx+Jo0cPcG9l02EGL2SZ3mxKr/VW1hKty9hMniy7hjIQCSweQByHBIZCDWzGDwi20ps0Yjxx4MR73Jktc83OOPFHGKk7VZHUKkyFgsAEAqcG2Qif4WWYUml3yOp8wldlDSLISX+TvPDstAemLeGbVvvSLkncJSnpV2PQrkqHLOfmVHeNrFDcMz3w0iBQE1cUzMYBbuS2f55CPj4D6o0/I41HzMKsP+u0kLOPoZWzkx1X7j18A8s0DEY=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9Us1Og0AQfpUJF5ZYqV4JNTaNxyYmVi/igdCh3QR2N7tDIza8u7NLpdU0nmB+v5/ZY7Q0Jj10GGVR7iorDYFD6sxDoWRrtCU4gsUaBqitbiHm1ngqrfuV5j+Fik7ldH6R83u5GaBQlVaOoO03+Emw8BtFHCeFyucjKMNxQNiapiTkCGCzlw6kMh1BVRpJZSO/0AEe0Pa0l2oHve6AYdBmvj+/ZHO4bfUWm/Q8uSiiEb6IYM4A+XxCi2bRH9ZX3BgVGKuNYwFbrKXCZx+Jo0cPcG9l02EGL2SZ3mxKr/VW1hKty9hMniy7hjIQCSweQByHBIZCDWzGDwi20ps0Yjxx4MR73Jktc83OOPFHGKk7VZHUKkyFgsAEAqcG2Qif4WWYUml3yOp8wldlDSLISX+TvPDstAemLeGbVvvSLkncJSnpV2PQrkqHLOfmVHeNrFDcMz3w0iBQE1cUzMYBbuS2f55CPj4D6o0/I41HzMKsP+u0kLOPoZWzkx1X7j18A8s0DEY=)
 
 </details>
 </div>
 
 <div class="options-api">
 
-Modifiers added to a component `v-model` will be provided to the component via the `modelModifiers` prop. In the below example, we have created a component that contains a `modelModifiers` prop that defaults to an empty object:
+Модификаторы, добавленные в компонент `v-model`, будут предоставляться компоненту через свойство `modelModifiers`. В приведенном ниже примере мы создали компонент, содержащий свойство `modelModifiers`, которое по умолчанию содержит пустой объект:
 
 ```vue{11}
 <script>
@@ -450,9 +449,9 @@ export default {
 </template>
 ```
 
-Notice the component's `modelModifiers` prop contains `capitalize` and its value is `true` - due to it being set on the `v-model` binding `v-model.capitalize="myText"`.
+Обратите внимание, что свойство компонента `modelModifiers` содержит `capitalize` и его значение - `true`, потому что оно установлено в связке `v-model` как `v-model.capitalize="myText"`.
 
-Now that we have our prop set up, we can check the `modelModifiers` object keys and write a handler to change the emitted value. In the code below we will capitalize the string whenever the `<input />` element fires an `input` event.
+Теперь, когда у нас есть настроенное свойство, мы можем проверить ключи объекта `modelModifiers` и написать обработчик для изменения переданного значения. В следующем коде мы преобразуем строку в верхний регистр при каждом срабатывании события `input` элемента `<input />`:
 
 ```vue{13-15}
 <script>
@@ -481,7 +480,7 @@ export default {
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFks1qg0AQgF9lkIKGpqa9iikNOefUtJfaw6KTZEHdZR1DbPDdO7saf0qgIq47//PNXL2N1uG5Ri/y4io1UtNrUspCK0Owa7aK/0osCQ5GFeCHq4nMuvlJCZCUeHEOGR5EnRNcrTS92VURXGex2qXVZ4JEsOhsAQxSbcrbDaBo9nihCHyXAaC1B3/4jVdDoXwhLHQuCPkGsD/JCmSpa4JUaEkilz9YAZ7RNHSS5REaVQPXgCay9vG0rPNToTLMw9FznXhdHYkHK04Qr4Zs3tL7g2JG8B4QbZS2LLqGXK5PkdcYwTsZrs1R6RU7lcmDRDPaM7AuWARMbf0KwbVdTNk4dyyk5f3l15r5YjRm8b+dQYF0UtkY1jo4fYDDLAByZBxWCmvAkIQ5IvdoBTcLeYCAiVbhvNwJvEk4GIK5M0xPwmwoeF6EpD60RrMVFXJXj72+ymWKwUvfXt+gfVzGB1tzcKfDZec+o/LfxsTdtlCj7bSpm3Xk4tjpD8FZ+uZMWTowu7MW7S+CWR77)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFks1qg0AQgF9lkIKGpqa9iikNOefUtJfaw6KTZEHdZR1DbPDdO7saf0qgIq47//PNXL2N1uG5Ri/y4io1UtNrUspCK0Owa7aK/0osCQ5GFeCHq4nMuvlJCZCUeHEOGR5EnRNcrTS92VURXGex2qXVZ4JEsOhsAQxSbcrbDaBo9nihCHyXAaC1B3/4jVdDoXwhLHQuCPkGsD/JCmSpa4JUaEkilz9YAZ7RNHSS5REaVQPXgCay9vG0rPNToTLMw9FznXhdHYkHK04Qr4Zs3tL7g2JG8B4QbZS2LLqGXK5PkdcYwTsZrs1R6RU7lcmDRDPaM7AuWARMbf0KwbVdTNk4dyyk5f3l15r5YjRm8b+dQYF0UtkY1jo4fYDDLAByZBxWCmvAkIQ5IvdoBTcLeYCAiVbhvNwJvEk4GIK5M0xPwmwoeF6EpD60RrMVFXJXj72+ymWKwUvfXt+gfVzGB1tzcKfDZec+o/LfxsTdtlCj7bSpm3Xk4tjpD8FZ+uZMWTowu7MW7S+CWR77)
 
 </div>
 
@@ -489,13 +488,13 @@ export default {
 
 <div class="options-api">
 
-For `v-model` bindings with both argument and modifiers, the generated prop name will be `arg + "Modifiers"`. For example:
+Для привязок `v-model` с аргументами и модификаторами, сгенерированное имя входного параметра будет `arg + "Modifiers"`. Например:
 
 ```vue-html
 <MyComponent v-model:title.capitalize="myText">
 ```
 
-The corresponding declarations should be:
+Соответствующие объявления должны быть следующими:
 
 ```js
 export default {
@@ -509,7 +508,7 @@ export default {
 
 </div>
 
-Here's another example of using modifiers with multiple `v-model` with different arguments:
+Вот еще один пример использования модификаторов с несколькими `v-model` и с разными аргументами:
 
 ```vue-html
 <UserName
@@ -531,7 +530,7 @@ console.log(lastNameModifiers) // { uppercase: true}
 ```
 
 <details>
-<summary>Pre 3.4 Usage</summary>
+<summary>Использование до версии 3.4</summary>
 
 ```vue{5,6,10,11}
 <script setup>
