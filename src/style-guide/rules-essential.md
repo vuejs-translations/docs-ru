@@ -1,62 +1,62 @@
-# Priority A Rules: Essential {#priority-a-rules-essential}
+# Правила приоритета А: Основные {#priority-a-rules-essential}
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+Эти правила помогают избегать ошибок, поэтому выучите и соблюдайте их во что бы то ни стало. Исключения могут присутствовать, но очень редко и совершаться теми, кто обладает высокой экспертизой насчет JavaScript и Vue.
 
-## Use multi-word component names {#use-multi-word-component-names}
+## Используйте несколько слов в именах компонентов {#use-multi-word-component-names}
 
-User component names should always be multi-word, except for root `App` components. This [prevents conflicts](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) with existing and future HTML elements, since all HTML elements are a single word.
+Пользовательские компоненты должны именоваться в несколько слов, за исключением корневых `App` компонентов. Это [предотвращает конфликты](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) с существующими и будушими HTML-элементами, так как всегда HTML-элементы пишутся в одно слово.
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
-<!-- in pre-compiled templates -->
+<!-- В прекомпилированных шаблонах -->
 <Item />
 
-<!-- in in-DOM templates -->
+<!-- Внутри сырого index.html -->
 <item></item>
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
-<!-- in pre-compiled templates -->
+<!-- В прекомпилированных шаблонах -->
 <TodoItem />
 
-<!-- in in-DOM templates -->
+<!-- Внутри сырого index.html -->
 <todo-item></todo-item>
 ```
 
 </div>
 
-## Use detailed prop definitions {#use-detailed-prop-definitions}
+## Используйте подробное описание входных параметров {#use-detailed-prop-definitions}
 
-In committed code, prop definitions should always be as detailed as possible, specifying at least type(s).
+При коммите кода объявление входных параметров должно быть максимально подробным - как минимум с указанием типа (типов).
 
-::: details Detailed Explanation
-Detailed [prop definitions](/guide/components/props#prop-validation) have two advantages:
+::: details Подробное объяснение
+Подробное [объявление входных параметров](/guide/components/props#prop-validation) имеет два преимущества:
 
-- They document the API of the component, so that it's easy to see how the component is meant to be used.
-- In development, Vue will warn you if a component is ever provided incorrectly formatted props, helping you catch potential sources of error.
+- Они документируют API компонента, что дает понимание того, как использовать компонент.
+- В режиме разработки Vue будет выводить ошибки (console.warn), если входные параметры некорректно предоставлены, помогая вам отловить потенциальные источники ошибок.
   :::
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
-// This is only OK when prototyping
+// Это "окей" только при прототипировании
 props: ['status']
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 props: {
@@ -65,7 +65,7 @@ props: {
 ```
 
 ```js
-// Even better!
+// Ещё лучше!
 props: {
   status: {
     type: String,
@@ -90,17 +90,17 @@ props: {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
-// This is only OK when prototyping
+// Это "окей" только при прототипировании
 const props = defineProps(['status'])
 ```
 
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 const props = defineProps({
@@ -109,7 +109,7 @@ const props = defineProps({
 ```
 
 ```js
-// Even better!
+// Ещё лучше!
 
 const props = defineProps({
   status: {
@@ -129,12 +129,12 @@ const props = defineProps({
 
 </div>
 
-## Use keyed `v-for` {#use-keyed-v-for}
+## Используйте :key при работе с `v-for` {#use-keyed-v-for}
 
-`key` with `v-for` is _always_ required on components, in order to maintain internal component state down the subtree. Even for elements though, it's a good practice to maintain predictable behavior, such as [object constancy](https://bost.ocks.org/mike/constancy/) in animations.
+`key` при работе с `v-for` _всегда_ необходим на компонентах, чтобы поддерживать внутреннее состояние компонента в поддереве. Однако даже для элементов поддерживать предсказуемое поведение - хорошая практика, как например [постоянство объектов](https://bost.ocks.org/mike/constancy/) в анимациях.
 
-::: details Detailed Explanation
-Let's say you have a list of todos:
+::: details Подробное объяснение
+Допустим, у вас есть список дел для выполнения:
 
 <div class="options-api">
 
@@ -144,11 +144,11 @@ data() {
     todos: [
       {
         id: 1,
-        text: 'Learn to use v-for'
+        text: 'Научиться использовать v-for'
       },
       {
         id: 2,
-        text: 'Learn to use key'
+        text: 'Научиться использовать key'
       }
     ]
   }
@@ -163,26 +163,26 @@ data() {
 const todos = ref([
   {
     id: 1,
-    text: 'Learn to use v-for'
+    text: 'Научиться использовать v-for'
   },
   {
     id: 2,
-    text: 'Learn to use key'
+    text: 'Научиться использовать key'
   }
 ])
 ```
 
 </div>
 
-Then you sort them alphabetically. When updating the DOM, Vue will optimize rendering to perform the cheapest DOM mutations possible. That might mean deleting the first todo element, then adding it again at the end of the list.
+Затем вы отсортируете их в алфавитном порядке. При обновлении DOM Vue оптимизирует рендеринг так, чтобы выполнить как можно меньше мутаций DOM. Это может означать удаление первого элемента в списке дел, а затем добавление его в конец списка.
 
-The problem is, there are cases where it's important not to delete elements that will remain in the DOM. For example, you may want to use `<transition-group>` to animate list sorting, or maintain focus if the rendered element is an `<input>`. In these cases, adding a unique key for each item (e.g. `:key="todo.id"`) will tell Vue how to behave more predictably.
+Проблема в том, что есть случаи, когда важно не удалять элементы, которые останутся в DOM. Например, вы можете захотеть использовать `<transition-group>` для анимации сортировки списка или удерживать фокус, если элементом в списке выступает `<input>`. В таких случаях добавление уникального ключа для каждого элемента (т.е. `:key="todo.id"`) подскажет Vue, как вести себя более предсказуемо.
 
-In our experience, it's better to _always_ add a unique key, so that you and your team simply never have to worry about these edge cases. Then in the rare, performance-critical scenarios where object constancy isn't necessary, you can make a conscious exception.
+Исходя из нашего опыта, лучше _всегда_ добавлять уникальный ключ - так вы и ваша команда буквально никогда не будете переживать о таких крайних случаях. Но в редких, критичных к производительности случаях, где постоянство внутри DOM не нужно, вы можете сделать сознательное исключение.
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <ul>
@@ -195,7 +195,7 @@ In our experience, it's better to _always_ add a unique key, so that you and you
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <ul>
@@ -210,18 +210,18 @@ In our experience, it's better to _always_ add a unique key, so that you and you
 
 </div>
 
-## Avoid `v-if` with `v-for` {#avoid-v-if-with-v-for}
+## Не используйте `v-if` вместе с `v-for` {#avoid-v-if-with-v-for}
 
-**Never use `v-if` on the same element as `v-for`.**
+**Никогда не используйте `v-if` на том же элементе, что и `v-for`.**
 
-There are two common cases where this can be tempting:
+Есть две распространенные ситуации, когда вы можете захотеть так сделать:
 
-- To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+- Чтобы отфильтровать элементы в списке (т.е. `v-for="user in users" v-if="user.isActive"`). В таких случаях замените `users` при помощи вычисляемого свойства, которое возвращает отфильтрованный список (т.е. `activeUsers`).
 
-- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
+- Чтобы избежать рендеринга списка, если он должен быть скрыт (т.е. `v-for="user in users" v-if="shouldShowUsers"`). В таких случаях используйте `v-if` на элементе выше (т.е. `ul`, `ol`).
 
-::: details Detailed Explanation
-When Vue processes directives, `v-if` has a higher priority than `v-for`, so that this template:
+::: details Подробное объяснение
+Когда Vue обрабатывает директивы, `v-if` имеет больший приоритет, чем `v-for`, так что этот шаблон:
 
 ```vue-html
 <ul>
@@ -235,9 +235,9 @@ When Vue processes directives, `v-if` has a higher priority than `v-for`, so tha
 </ul>
 ```
 
-Will throw an error, because the `v-if` directive will be evaluated first and the iteration variable `user` does not exist at this moment.
+Выкинет ошибку, потому что директива `v-if` будет обработана первее, и итерируемая переменная `user` не существует на этот момент.
 
-This could be fixed by iterating over a computed property instead, like this:
+Это должно быть исправлено при помощи итерации по вычисляемому свойству, например:
 
 <div class="options-api">
 
@@ -272,7 +272,7 @@ const activeUsers = computed(() => {
 </ul>
 ```
 
-Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` element:
+В качестве альтернативы мы можем использовать тег `<template>` с `v-for` снаружи `<li>` элемента:
 
 ```vue-html
 <ul>
@@ -287,7 +287,7 @@ Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` ele
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <ul>
@@ -304,7 +304,7 @@ Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` ele
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <ul>
@@ -329,24 +329,24 @@ Alternatively, we can use a `<template>` tag with `v-for` to wrap the `<li>` ele
 
 </div>
 
-## Use component-scoped styling {#use-component-scoped-styling}
+## Используйте scoped-стили {#use-component-scoped-styling}
 
-For applications, styles in a top-level `App` component and in layout components may be global, but all other components should always be scoped.
+Стили на уровне компонента `App` и лаяутов могут быть глобальными, но все стили остальных компонентов должны быть скрыты.
 
-This is only relevant for [Single-File Components](/guide/scaling-up/sfc). It does _not_ require that the [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) be used. Scoping could be through [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules), a class-based strategy such as [BEM](http://getbem.com/), or another library/convention.
+Это релевантно только для [однофайловых компонентов](/guide/scaling-up/sfc). Это _не_ требует использования [`scoped` атрибута](https://vue-loader.vuejs.org/en/features/scoped-css.html). Скрытие стилей может быть достигнуто также при помощи [CSS-модулей](https://vue-loader.vuejs.org/en/features/css-modules), методологии [BEM](http://getbem.com/) или других библиотек/соглашений.
 
-**Component libraries, however, should prefer a class-based strategy instead of using the `scoped` attribute.**
+**Библиотеки компонентов, однако, должны предпочитать стратегию, основанную на классах, вместо использования атрибута `scoped`.**
 
-This makes overriding internal styles easier, with human-readable class names that don't have too high specificity, but are still very unlikely to result in a conflict.
+Это позволяет легче переопределять внутренние стили, позволяя использовать человекочитаемые классы, которые не имеют слишком большой специфичности, но при этом с большей вероятностью не приведут к конфликтам.
 
-::: details Detailed Explanation
-If you are developing a large project, working with other developers, or sometimes include 3rd-party HTML/CSS (e.g. from Auth0), consistent scoping will ensure that your styles only apply to the components they are meant for.
+::: details Подробное объяснение
+Если вы разрабатываете огромный проект, работаете с другими разработчиками или иногда включаете HTML/CSS сторонних разработчиков (например, из Auth0), консистентное скрытие обеспечит применение стилей только к тем компонентам, к которым они предназначены.
 
-Beyond the `scoped` attribute, using unique class names can help ensure that 3rd-party CSS does not apply to your own HTML. For example, many projects use the `button`, `btn`, or `icon` class names, so even if not using a strategy such as BEM, adding an app-specific and/or component-specific prefix (e.g. `ButtonClose-icon`) can provide some protection.
+Помимо атрибута `scoped`, использование уникальных классов может гарантировать, что CSS сторонних разработчиков не будет применяться к вашему HTML. Например, много проектов используют `button`, `btn` или `icon` классы, поэтому даже если вы не используете такую стратегию, как BEM, добавление специфического для приложения и/или компонента префикса (например, `ButtonClose-icon`) может обеспечить некоторую защиту.
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <template>
@@ -363,14 +363,14 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <template>
   <button class="button button-close">×</button>
 </template>
 
-<!-- Using the `scoped` attribute -->
+<!-- Использует атрибут `scoped` -->
 <style scoped>
 .button {
   border: none;
@@ -388,7 +388,7 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
   <button :class="[$style.button, $style.buttonClose]">×</button>
 </template>
 
-<!-- Using CSS modules -->
+<!-- Использует CSS-модуль -->
 <style module>
 .button {
   border: none;
@@ -406,7 +406,7 @@ Beyond the `scoped` attribute, using unique class names can help ensure that 3rd
   <button class="c-Button c-Button--close">×</button>
 </template>
 
-<!-- Using the BEM convention -->
+<!-- Использует BEM-соглашение -->
 <style>
 .c-Button {
   border: none;
