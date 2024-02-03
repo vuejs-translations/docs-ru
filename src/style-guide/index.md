@@ -2,40 +2,40 @@
 outline: deep
 ---
 
-# Style Guide {#style-guide}
+# Руководство по стилю {#style-guide}
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
+Это официальное руководство по стилю для кода на Vue. Если вы видите Vue в проекте, это руководство поможет избежать ошибок, "велосипедов" и анти-паттернов. Однако, мы не считаем, что любое такое руководство является идеалом для всех команд или проектов, поэтому приветствуются разумные отклонения, основанные на прошлом опыте, окружающем вас технологическом стеке и личных ценностях.
 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+По большей части мы также избегаем предложений насчет JavaScript и HTML в целом. Мы не против, если вы используете точку с запятой или висячую запятую. Мы не против, если ваш HTML использует одинарные или двойные кавычки для значений атрибутов. Однако есть и исключения, когда мы обнаружили, что тот или иной паттерн полезен в контексте Vue.
 
-Finally, we've split rules into four categories:
+По итогу, мы разделили правила на четыре категории:
 
-## Rule Categories {#rule-categories}
+## Категории правил {#rule-categories}
 
-### Priority A: Essential (Error Prevention) {#priority-a-essential-error-prevention}
+### Правила приоритета А: Основные (Предотвращение ошибок) {#priority-a-essential-error-prevention}
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+Эти правила помогают избегать ошибок, поэтому выучите и соблюдайте их во что бы то ни стало. Исключения могут присутствовать, но очень редко и совершаться теми, кто обладает высокой экспертизой насчет JavaScript и Vue.
 
-- [See all priority A rules](./rules-essential)
+- [Посмотреть все правила приоритета А](./rules-essential)
 
-### Priority B: Strongly Recommended {#priority-b-strongly-recommended}
+### Правила приоритета B: Настоятельно рекомендуются {#priority-b-strongly-recommended}
 
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
+Эти правила помогают улучшить читаемость и/или опыт разработчика в большинстве проектов. Ваш код все равно выполнится, если вы их нарушите, но эти нарушения должны быть редкими и обоснованными.
 
-- [See all priority B rules](./rules-strongly-recommended)
+- [Посмотреть все правила приоритета B](./rules-strongly-recommended)
 
-### Priority C: Recommended {#priority-c-recommended}
+### Правила приоритета C: Рекомендуются {#priority-c-recommended}
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+При наличии нескольких одинаково хороших вариантов можно сделать произвольный выбор, чтобы обеспечить консистентность. В этих правилах мы описываем каждый приемлемый вариант и предлагаем выбор по умолчанию. Это означает, что вы можете выбрать разный вариант в собственной кодовой базе, пока вы соблюдаете консистентность и у вас есть веская причина. Пусть у вас будет действительно веская причина! Приспосабливаясь к стандарту общества, вы сможете:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1. Гораздо проще понимать большинство кода сообщества, который вы встретите
+2. Копировать и вставлять большое количество примеров кода сообщества без дальнейшей модификации
+3. Чаще находить сотрудников, которые уже привыкли к предпочитаемому стилю кода, по крайней мере, в отношении Vue
 
-- [See all priority C rules](./rules-recommended)
+- [Посмотреть все правила приоритета C](./rules-recommended)
 
-### Priority D: Use with Caution {#priority-d-use-with-caution}
+### Правила приоритета D: Используйте с осторожностью {#priority-d-use-with-caution}
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+Vue предоставляет некоторые возможности, которые обеспечивают "плавный" процесс миграции с устаревшей кодовой базы и учитывают редкие случаи. Если их использовать слишком часто, они могут сделать код сложно поддерживаемым или могут быть источниками багов. Эти правила "освещают" рисковые возможности Vue, объясняя, где и почему их стоит избегать.
 
-- [See all priority D rules](./rules-use-with-caution)
+- [Посмотреть все правила приоритета D](./rules-use-with-caution)
