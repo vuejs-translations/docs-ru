@@ -528,26 +528,26 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/style-guide/': [
     {
-      text: 'Style Guide',
+      text: 'Руководство по стилю',
       items: [
         {
-          text: 'Overview',
+          text: 'Обзор',
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: 'A - Основные',
           link: '/style-guide/rules-essential'
         },
         {
-          text: 'B - Strongly Recommended',
+          text: 'B - Настоятельно рекомендуются',
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: 'C - Recommended',
+          text: 'C - Рекомендуются',
           link: '/style-guide/rules-recommended'
         },
         {
-          text: 'D - Use with Caution',
+          text: 'D - Используйте с осторожностью',
           link: '/style-guide/rules-use-with-caution'
         }
       ]
