@@ -28,7 +28,7 @@ console.log('привет script setup')
 // переменная
 const msg = 'Hello!'
 
-// функции
+// функция
 function log() {
   console.log(msg)
 }
@@ -53,7 +53,7 @@ import { capitalize } from './helpers'
 
 ## Реактивность {#reactivity}
 
-Реактивное состояние должно быть явно создано с помощью [API реактивности](./reactivity-core). Аналогично значениям, возвращаемым функцией `setup()`, ref-ссылки автоматически разворачиваются при обращении к ним в шаблонах:
+Реактивное состояние должно быть явно создано с помощью [API реактивности](./reactivity-core). Аналогично значениям, возвращаемым функцией `setup()`, ref автоматически разворачиваются при обращении к ним в шаблонах:
 
 ```vue
 <script setup>
@@ -175,9 +175,9 @@ const emit = defineEmits(['change', 'delete'])
 
 - Опции, передаваемые в `defineProps` и `defineEmits`, будут подняты из setup в область видимости модуля. Поэтому опции не могут ссылаться на локальные переменные, объявленные в области видимости setup. Это приведет к ошибке компиляции. Однако они _могут_ ссылаться на импортированные привязки, поскольку они также находятся в области видимости модуля.
 
-### Type-only props/emit declarations<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
+### Объявление входных параметров/пользовательских событий только при помощи типов<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
 
-Props and emits can also be declared using pure-type syntax by passing a literal type argument to `defineProps` or `defineEmits`:
+Входные параметры и пользовательские события также можно объявить, используя только типы, передав литерал типа как аргумент в `defineProps` или `defineEmits`:
 
 ```ts
 const props = defineProps<{
@@ -190,28 +190,28 @@ const emit = defineEmits<{
   (e: 'update', value: string): void
 }>()
 
-// 3.3+: alternative, more succinct syntax
+// 3.3+: альтернатива, более лаконичный синтаксис
 const emit = defineEmits<{
-  change: [id: number] // named tuple syntax
+  change: [id: number] // синтаксис именованных кортежей
   update: [value: string]
 }>()
 ```
 
-- `defineProps` or `defineEmits` can only use either runtime declaration OR type declaration. Using both at the same time will result in a compile error.
+- `defineProps` или `defineEmits` могут использовать либо объявление только при помощи типов, либо объявление во время исполнения кода. Использование двух типов объявления вместе приведёт к ошибке компиляции.
 
-- When using type declaration, the equivalent runtime declaration is automatically generated from static analysis to remove the need for double declaration and still ensure correct runtime behavior.
+- При использовании объявления при помощи типов эквивалентное объявление во время исполнения кода автоматические генерируется на основе статического анализа, что устраняет необходимость в двойном объявлении и обеспечивает корректное поведение во время выполнения кода. 
 
-  - In dev mode, the compiler will try to infer corresponding runtime validation from the types. For example here `foo: String` is inferred from the `foo: string` type. If the type is a reference to an imported type, the inferred result will be `foo: null` (equal to `any` type) since the compiler does not have information of external files.
+  - В режиме разработки компилятор попытается вывести из типов соответствующую проверку во время выполнения. Например здесь `foo: String` выведится из `foo: string` типа. Если тип является ссылкой на импортированный тип, то выведенный результат будет равен `foo: null` (эквивалентно типу `any`), так как комплиятор ничего не знает о внешних файлах. 
 
-  - In prod mode, the compiler will generate the array format declaration to reduce bundle size (the props here will be compiled into `['foo', 'bar']`)
+  - В продакшене компилятор сгенерирует массив объявлений, дабы сократить размер итогового бандла (входные параметры в примере выше превратятся в `['foo', 'bar']`).
 
-- In version 3.2 and below, the generic type parameter for `defineProps()` were limited to a type literal or a reference to a local interface.
+- В версии 3.2 и ниже дженерик для `defineProps()` был ограничен литератом типа или ссылкой на локальный интерфейс.
 
-  This limitation has been resolved in 3.3. The latest version of Vue supports referencing imported and a limited set of complex types in the type parameter position. However, because the type to runtime conversion is still AST-based, some complex types that require actual type analysis, e.g. conditional types, are not supported. You can use conditional types for the type of a single prop, but not the entire props object.
+  Это ограничение было снято в версии 3.3. Последняя версия Vue поддерживает возможность ссылки на импортированные и ограниченный набор сложных типов в месте для использования типа. Однако, так как преобразование типов во время выполнения все еще основано на AST, некоторые сложные типы, требующие фактического анализа, например, условные типы, не поддерживаются. Вы можете использовать условные типы для типизации одного входного параметра, но не для цельного объекта входных параметров.  
 
-### Default props values when using type declaration {#default-props-values-when-using-type-declaration}
+### Значения по умолчанию во входных параметрах при объявлении с помощью типов {#default-props-values-when-using-type-declaration}
 
-One drawback of the type-only `defineProps` declaration is that it doesn't have a way to provide default values for the props. To resolve this problem, a `withDefaults` compiler macro is also provided:
+Один недостаток объявления `defineProps` только при помощи типов - нет возможности задать значениям по умолчанию для входных параметров. Чтобы решить эту проблему, предоставляется макрос компилятора `withDefaults`:
 
 ```ts
 export interface Props {
@@ -225,7 +225,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-This will be compiled to equivalent runtime props `default` options. In addition, the `withDefaults` helper provides type checks for the default values, and ensures the returned `props` type has the optional flags removed for properties that do have default values declared.
+Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
