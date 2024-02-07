@@ -320,7 +320,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 ```js
 h(
   'ul',
-  // предполагается, что `items` - это ref содержаший массив
+  // предполагается, что `items` - это ref содержащий массив
   items.value.map(({ id, text }) => {
     return h('li', { key: id }, text)
   })
