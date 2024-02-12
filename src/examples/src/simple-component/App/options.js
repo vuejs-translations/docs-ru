@@ -7,9 +7,9 @@ export default {
   data() {
     return {
       groceryList: [
-        { id: 0, text: 'Vegetables' },
-        { id: 1, text: 'Cheese' },
-        { id: 2, text: 'Whatever else humans are supposed to eat' }
+        { id: 0, text: 'Овощи' },
+        { id: 1, text: 'Сыр' },
+        { id: 2, text: 'Что угодно съедобное для человека' }
       ]
     }
   }
