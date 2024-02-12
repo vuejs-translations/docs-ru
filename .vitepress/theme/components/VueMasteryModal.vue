@@ -80,7 +80,7 @@ watch(
                 rel="sponsored noopener"
                 title="Vue.js Курс на Vue Mastery"
               >
-                Курс Введение в Vue.</a
+                Курс Введение во Vue.</a
               > (на англ.)
             </p>
           </div>
