@@ -284,7 +284,6 @@ const [modelValue, modelModifiers] = defineModel({
 
 ### Использование вместе с TypeScript <sup class="vt-badge ts" /> {#usage-with-typescript}
 
-Like `defineProps` and `defineEmits`, `defineModel` can also receive type arguments to specify the types of the model value and the modifiers:
 Как `defineProps` и `defineEmits`, `defineModel` также может принимать типы аргументов, чтобы определить типы значения модели и модификаторов:
 
 ```ts
