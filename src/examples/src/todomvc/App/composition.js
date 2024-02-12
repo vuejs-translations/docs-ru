@@ -19,7 +19,7 @@ export default {
     const filteredTodos = computed(() => filters[visibility.value](todos.value))
     const remaining = computed(() => filters.active(todos.value).length)
 
-    // обрабатка маршрутизации
+    // обработка маршрутизации
     window.addEventListener('hashchange', onHashChange)
     onHashChange()
 
