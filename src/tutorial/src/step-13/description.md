@@ -11,7 +11,7 @@
 const emit = defineEmits(['response'])
 
 // генерация события с параметром
-emit('response', 'hello from child')
+emit('response', 'приветсвие от дочернего компонента')
 </script>
 ```
 
@@ -25,7 +25,7 @@ export default {
   emits: ['response'],
   setup(props, { emit }) {
     // генерация события с параметром
-    emit('response', 'hello from child')
+    emit('response', 'приветсвие от дочернего компонента')
   }
 }
 ```
