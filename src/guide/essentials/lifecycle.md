@@ -63,4 +63,4 @@ setTimeout(() => {
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 
-Обратитесь к <span class="composition-api">[API хуков жизненного цикла](/api/composition-api-lifecycle)</span><span class="options-api">[API хуков жизненного цикла](/api/options-lifecycle)</span> за подробностями по всем хукам жизненного цикла и соответвующим вариантам использования
+Обратитесь к <span class="composition-api">[API хуков жизненного цикла](/api/composition-api-lifecycle)</span><span class="options-api">[API хуков жизненного цикла](/api/options-lifecycle)</span> за подробностями по всем хукам жизненного цикла и соответвующим вариантам использования.
