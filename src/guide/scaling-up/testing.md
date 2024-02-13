@@ -201,7 +201,7 @@ describe('increment', () => {
 
 ### Рекомендации {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM могут быть протестированы с помощью [`@vue/test-utils`](https://github.com/vuejs/test-utils).
+- [Vitest](https://vitest.dev/) для компонентов или composables, которые отрисовываются в режиме headless (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) во VueUse). Компоненты и DOM могут быть протестированы с помощью [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
 - [Компонентное тестирование с Cypress](https://on.cypress.io/component) для компонентов, чье ожидаемое поведение зависит от правильной отрисовки стилей или срабатывания собственных событий DOM. Может использоваться с библиотекой тестирования с помощью [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 

@@ -2,10 +2,10 @@
 
 `<script setup>` - это синтаксический сахар, обрабатываемый на этапе компиляции, для использования Composition API внутри однофайловых компонентов (SFC). Это рекомендуемый синтаксис при использовании однофайловых компонентов и Composition API. Он предоставляет ряд преимуществ по сравнению с обычным синтаксисом `<script>`:
 
-- Более лаконичный код с меньшим количеством boilerplate-кода
-- Возможность объявлять входные параметры и генерируемые события с использованием чистого TypeScript
-- Лучшая производительность во время выполнения (шаблон компилируется в render-функцию в той же области видимости, без промежуточной прокси)
-- Лучшая производительность IDE при определении типов (меньше работы для языкового сервера по извлечению типов из кода)
+- Более лаконичный код с меньшим количеством boilerplate-кода.
+- Возможность объявлять входные параметры и генерируемые события с использованием чистого TypeScript.
+- Лучшая производительность во время выполнения (шаблон компилируется в render-функцию в той же области видимости, без промежуточной прокси).
+- Лучшая производительность IDE при определении типов (меньше работы для языкового сервера по извлечению типов из кода).
 
 ## Базовый синтаксис {#basic-syntax}
 
@@ -28,7 +28,7 @@ console.log('привет script setup')
 // переменная
 const msg = 'Hello!'
 
-// функции
+// функция
 function log() {
   console.log(msg)
 }
@@ -53,7 +53,7 @@ import { capitalize } from './helpers'
 
 ## Реактивность {#reactivity}
 
-Реактивное состояние должно быть явно создано с помощью [API реактивности](./reactivity-core). Аналогично значениям, возвращаемым функцией `setup()`, ref-ссылки автоматически разворачиваются при обращении к ним в шаблонах:
+Реактивное состояние должно быть явно создано с помощью [API реактивности](./reactivity-core). Аналогично значениям, возвращаемым функцией `setup()`, ref автоматически разворачиваются при обращении к ним в шаблонах:
 
 ```vue
 <script setup>
@@ -175,9 +175,9 @@ const emit = defineEmits(['change', 'delete'])
 
 - Опции, передаваемые в `defineProps` и `defineEmits`, будут подняты из setup в область видимости модуля. Поэтому опции не могут ссылаться на локальные переменные, объявленные в области видимости setup. Это приведет к ошибке компиляции. Однако они _могут_ ссылаться на импортированные привязки, поскольку они также находятся в области видимости модуля.
 
-### Type-only props/emit declarations<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
+### Объявление входных параметров/пользовательских событий только при помощи типов<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
 
-Props and emits can also be declared using pure-type syntax by passing a literal type argument to `defineProps` or `defineEmits`:
+Входные параметры и пользовательские события также можно объявить, используя только типы, передав литерал типа как аргумент в `defineProps` или `defineEmits`:
 
 ```ts
 const props = defineProps<{
@@ -190,28 +190,28 @@ const emit = defineEmits<{
   (e: 'update', value: string): void
 }>()
 
-// 3.3+: alternative, more succinct syntax
+// 3.3+: альтернатива, более лаконичный синтаксис
 const emit = defineEmits<{
-  change: [id: number] // named tuple syntax
+  change: [id: number] // синтаксис именованных кортежей
   update: [value: string]
 }>()
 ```
 
-- `defineProps` or `defineEmits` can only use either runtime declaration OR type declaration. Using both at the same time will result in a compile error.
+- `defineProps` или `defineEmits` могут использовать либо объявление только при помощи типов, либо объявление во время исполнения кода. Использование двух типов объявления вместе приведёт к ошибке компиляции.
 
-- When using type declaration, the equivalent runtime declaration is automatically generated from static analysis to remove the need for double declaration and still ensure correct runtime behavior.
+- При использовании объявления при помощи типов эквивалентное объявление во время исполнения кода автоматические генерируется на основе статического анализа, что устраняет необходимость в двойном объявлении и обеспечивает корректное поведение во время выполнения кода. 
 
-  - In dev mode, the compiler will try to infer corresponding runtime validation from the types. For example here `foo: String` is inferred from the `foo: string` type. If the type is a reference to an imported type, the inferred result will be `foo: null` (equal to `any` type) since the compiler does not have information of external files.
+  - В режиме разработки компилятор попытается вывести из типов соответствующую проверку во время выполнения. Например здесь `foo: String` выведится из `foo: string` типа. Если тип является ссылкой на импортированный тип, то выведенный результат будет равен `foo: null` (эквивалентно типу `any`), так как комплиятор ничего не знает о внешних файлах. 
 
-  - In prod mode, the compiler will generate the array format declaration to reduce bundle size (the props here will be compiled into `['foo', 'bar']`)
+  - В продакшене компилятор сгенерирует массив объявлений, дабы сократить размер итогового бандла (входные параметры в примере выше превратятся в `['foo', 'bar']`).
 
-- In version 3.2 and below, the generic type parameter for `defineProps()` were limited to a type literal or a reference to a local interface.
+- В версии 3.2 и ниже дженерик для `defineProps()` был ограничен литератом типа или ссылкой на локальный интерфейс.
 
-  This limitation has been resolved in 3.3. The latest version of Vue supports referencing imported and a limited set of complex types in the type parameter position. However, because the type to runtime conversion is still AST-based, some complex types that require actual type analysis, e.g. conditional types, are not supported. You can use conditional types for the type of a single prop, but not the entire props object.
+  Это ограничение было снято в версии 3.3. Последняя версия Vue поддерживает возможность ссылки на импортированные и ограниченный набор сложных типов в месте для использования типа. Однако, так как преобразование типов во время выполнения все еще основано на AST, некоторые сложные типы, требующие фактического анализа, например, условные типы, не поддерживаются. Вы можете использовать условные типы для типизации одного входного параметра, но не для цельного объекта входных параметров.  
 
-### Default props values when using type declaration {#default-props-values-when-using-type-declaration}
+### Значения по умолчанию во входных параметрах при объявлении с помощью типов {#default-props-values-when-using-type-declaration}
 
-One drawback of the type-only `defineProps` declaration is that it doesn't have a way to provide default values for the props. To resolve this problem, a `withDefaults` compiler macro is also provided:
+Один недостаток объявления `defineProps` только при помощи типов - нет возможности задать значениям по умолчанию для входных параметров. Чтобы решить эту проблему, предоставляется макрос компилятора `withDefaults`:
 
 ```ts
 export interface Props {
@@ -225,72 +225,72 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-This will be compiled to equivalent runtime props `default` options. In addition, the `withDefaults` helper provides type checks for the default values, and ensures the returned `props` type has the optional flags removed for properties that do have default values declared.
+Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
-This macro can be used to declare a two-way binding prop that can be consumed via `v-model` from the parent component. Example usage is also discussed in the [Component `v-model`](/guide/components/v-model) guide.
+Этот макрос позволяет объявить двустороннее связывание для входного параметра, который может быть использовано внутри `v-model` из родительского компонента. Пример использования также рассматривает в руководстве [`v-model` на компоненте](/guide/components/v-model).
 
-Under the hood, this macro declares a model prop and a corresponding value update event. If the first argument is a literal string, it will be used as the prop name; Otherwise the prop name will default to `"modelValue"`. In both cases, you can also pass an additional object which can include the prop's options and the model ref's value transform options.
+Под капотом этот макрос объявляет модель входного параметра и соответствующее событие для обновления значения. Если первый аргумент это литерат строки, то он будет являться название входного параметра; иначе имя входного параметра будет по умолчанию `"modelValue"`. В обоих случаях вы можете передать дополнительный объект, который может содержать дополнительные опции для входного параметра и параметры преобразования значения модели.
 
 ```js
-// declares "modelValue" prop, consumed by parent via v-model
+// объявляет входной параметр "modelValue", который потребляется родителем через v-model
 const model = defineModel()
-// OR: declares "modelValue" prop with options
+// ИЛИ: объявляет входной параметр "modelValue" с дополнительными опциями
 const model = defineModel({ type: String })
 
-// emits "update:modelValue" when mutated
+// генерирует пользовательское событие "update:modelValue", когда меняется значение
 model.value = 'hello'
 
-// declares "count" prop, consumed by parent via v-model:count
+// объявляет входной параметр "count", который потребляется родителем через v-model:count
 const count = defineModel('count')
-// OR: declares "count" prop with options
+// ИЛИ: объявляет входной параметр "count" с дополнительными настройками
 const count = defineModel('count', { type: Number, default: 0 })
 
 function inc() {
-  // emits "update:count" when mutated
+  // генерирует пользовательское событие "update:count", когда меняется значение
   count.value++
 }
 ```
 
-### Modifiers and Transformers {#modifiers-and-transformers}
+### Модификаторы и дескрипторы get/set {#modifiers-and-transformers}
 
-To access modifiers used with the `v-model` directive, we can destructure the return value of `defineModel()` like this:
+Чтобы получить доступ к модификатором `v-model` директивы, мы можем деструктурировать возвращамое значение `defineModel()` вот так:
 
 ```js
 const [modelValue, modelModifiers] = defineModel()
 
-// corresponds to v-model.trim
+// все равно что v-model.trim
 if (modelModifiers.trim) {
   // ...
 }
 ```
 
-When a modifier is present, we likely need to transform the value when reading or syncing it back to the parent. We can achieve this by using the `get` and `set` transformer options:
+Когда есть модификатор, нам, скорее всего, потребуется преобразовать значение при чтении или синхронизации с родителем. Для этого мы можем использовать дескрипторы `get` и `set`:
 
 ```js
 const [modelValue, modelModifiers] = defineModel({
-  // get() omitted as it is not needed here
+  // get() опущен, так как он здесь не нужен
   set(value) {
-    // if the .trim modifier is used, return trimmed value
+    // если используется модификатор .trim, возвращает изменённое значение
     if (modelModifiers.trim) {
       return value.trim()
     }
-    // otherwise, return the value as-is
+    // в противном случае возвращаем значение как есть
     return value
   }
 })
 ```
 
-### Usage with TypeScript <sup class="vt-badge ts" /> {#usage-with-typescript}
+### Использование вместе с TypeScript <sup class="vt-badge ts" /> {#usage-with-typescript}
 
-Like `defineProps` and `defineEmits`, `defineModel` can also receive type arguments to specify the types of the model value and the modifiers:
+Как `defineProps` и `defineEmits`, `defineModel` также может принимать типы аргументов, чтобы определить типы значения модели и модификаторов:
 
 ```ts
 const modelValue = defineModel<string>()
 //    ^? Ref<string | undefined>
 
-// default model with options, required removes possible undefined values
+// Значение по умолчанию с опцией, которая удаляет возможные undefined значения
 const modelValue = defineModel<string>({ required: true })
 //    ^? Ref<string>
 
@@ -300,7 +300,7 @@ const [modelValue, modifiers] = defineModel<string, 'trim' | 'uppercase'>()
 
 ## defineExpose() {#defineexpose}
 
-Компоненты, использующие `<script setup>`, **по умолчанию закрытые** - т.е. публичный экземпляр компонента, получаемый через ссылку в шаблоне или цепочки `$parent`, **не** объявляет доступа к каким-либо привязкам внутри `<script setup>`.
+Компоненты, использующие `<script setup>`, **по умолчанию закрытые** - т.е. публичный экземпляр компонента, получаемый через ссылку в шаблоне или цепочки `$parent`, **не** даёт доступа к каким-либо привязкам внутри `<script setup>`.
 
 Для явного объявления свойств в компоненте `<script setup>` используйте макрос компилятора `defineExpose`:
 
@@ -318,11 +318,11 @@ defineExpose({
 </script>
 ```
 
-Когда родитель получает экземпляр этого компонента через ссылку в шаблоне, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ref-ссылки автоматически разворачиваются, как и для обычных экземпляров).
+Когда родитель получает экземпляр этого компонента через ref в шаблоне, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ref автоматически разворачиваются, как и для обычных экземпляров).
 
 ## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
 
-This macro can be used to declare component options directly inside `<script setup>` without having to use a separate `<script>` block:
+Этот макрос может быть использован для объявления опций компонента прямо внутри `<script setup>` без создания отдельного `<script>` тега:
 
 ```vue
 <script setup>
@@ -335,16 +335,16 @@ defineOptions({
 </script>
 ```
 
-- Only supported in 3.3+.
-- This is a macro. The options will be hoisted to module scope and cannot access local variables in `<script setup>` that are not literal constants.
+- Поддерживается только в версиях 3.3+.
+- Это макрос. Опции будут подняты в область видимости модуля и не смогут общараться к локальным переменным внутри `<script setup>`, которые не являются литеральными константами.
 
 ## defineSlots()<sup class="vt-badge ts"/> {#defineslots}
 
-This macro can be used to provide type hints to IDEs for slot name and props type checking.
+Это макрос может быть использован для создания подсказок типов в IDE для имен слотов и проверки типов входных параметров.
 
-`defineSlots()` only accepts a type parameter and no runtime arguments. The type parameter should be a type literal where the property key is the slot name, and the value type is the slot function. The first argument of the function is the props the slot expects to receive, and its type will be used for slot props in the template. The return type is currently ignored and can be `any`, but we may leverage it for slot content checking in the future.
+`defineSlots()` принимает аргументом только тип и никаких рантайм-значений. Параметр типа должен быть литералом типа, где ключ свойства - это имя слота, а тип значения - функция слота. Первый аргумент функции - это входной параметр, который слот ожидает получить, и его тип будет использоваться для входных параметров слота в шаблоне. Возвращаемый тип пока что игнорируется и может быть `any`, но в будущем мы можем использовать его для проверки содержимого слота.
 
-It also returns the `slots` object, which is equivalent to the `slots` object exposed on the setup context or returned by `useSlots()`.
+Этот макрос также возвращает объект `slots`, что эквивалентно объекту `slots`, который выставляется в контексте setup или возвращаемому функцией `useSlots()`.
 
 ```vue
 <script setup lang="ts">
@@ -354,9 +354,9 @@ const slots = defineSlots<{
 </script>
 ```
 
-- Only supported in 3.3+.
+- Поддерживается только в версиях 3.3+.
 
-## `useSlots()` & `useAttrs()` {#useslots-useattrs}
+## `useSlots()` и `useAttrs()` {#useslots-useattrs}
 
 Использование `slots` и `attrs` внутри `<script setup>` должно встречаться крайне редко, поскольку в шаблоне прямой доступ к ним можно получить через `$slots` и `$attrs`. В редких случаях, когда они всё же нужны, используйте вспомогательные методы `useSlots` и `useAttrs` соответственно:
 
@@ -369,13 +369,13 @@ const attrs = useAttrs()
 </script>
 ```
 
-`useSlots` и `useAttrs` - это runtime-функции, которые возвращают эквивалент `setupContext.slots` и `setupContext.attrs`. Они могут использоваться и в обычных функциях composition API.
+`useSlots` и `useAttrs` - это рантайм-функции, которые возвращают эквивалент `setupContext.slots` и `setupContext.attrs`. Они могут использоваться и в обычных функциях Composition API.
 
 ## Использование вместе с обычной секцией `<script>` {#usage-alongside-normal-script}
 
 `<script setup>` может использоваться вместе с обычной секцией `<script>`. Обычный `<script>` может понадобиться в случаях, когда необходимо:
 
-- бъявление опций, которые не могут быть выражены в `<script setup>`, например `inheritAttrs` или пользовательские опции, добавляемые плагинами.
+- Объявление опций, которые не могут быть выражены в `<script setup>`, например, `inheritAttrs` или пользовательские опции, добавляемые плагинами.
 - Объявление именованных экспортов.
 - Запуск side-эффектов или создание объектов, которые должны выполняться только один раз.
 
@@ -396,14 +396,14 @@ export default {
 </script>
 ```
 
-Support for combining `<script setup>` and `<script>` in the same component is limited to the scenarios described above. Specifically:
+Поддержка для совмещения `<script setup>` и `<script>` в одном компоненте ограничена в сценариях, описанных ниже. В частности: 
 
-- Do **NOT** use a separate `<script>` section for options that can already be defined using `<script setup>`, such as `props` and `emits`.
-- Variables created inside `<script setup>` are not added as properties to the component instance, making them inaccessible from the Options API. Mixing APIs in this way is strongly discouraged.
+- **Не используйте** отдельный `<script>` тег для опций, который уже объявлены при помощи `<script setup>`, такие как `props` и `emits`.
+- Переменные, созданные внутри `<script setup>`, не добавляются как свойства инстанса компонента, делая их невозможными к получению из Options API. Смешивать API таким образом категорически не рекомендуется.
 
-If you find yourself in one of the scenarios that is not supported then you should consider switching to an explicit [`setup()`](/api/composition-api-setup) function, instead of using `<script setup>`.
+Если вы оказались в одном из сценариев, которые не поддерживаются, то вам следует рассмотреть возможность перехода на явную функцию [`setup()`](/api/composition-api-setup) вместо использования `<script setup>`.
 
-## Top-level `await` {#top-level-await}
+## Верхнеуровневый `await` {#top-level-await}
 
 `await` верхнего уровня может быть использован внутри `<script setup>`. Полученный код будет скомпилирован как `async setup()`:
 
@@ -419,9 +419,9 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 `async setup()` должен использоваться в сочетании с `Suspense`, который в настоящее время является экспериментальной функцией. Мы планируем доработать и задокументировать его в одном из будущих релизов - но если вам интересно, то вы можете посмотреть его [тесты](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts), чтобы увидеть, как он работает.
 :::
 
-## Generics <sup class="vt-badge ts" /> {#generics}
+## Дженерики <sup class="vt-badge ts" /> {#generics}
 
-Generic type parameters can be declared using the `generic` attribute on the `<script>` tag:
+Дженерики могут быть объявлены с помощью атрибута `generic` в теге `<script>`:
 
 ```vue
 <script setup lang="ts" generic="T">
@@ -432,7 +432,7 @@ defineProps<{
 </script>
 ```
 
-The value of `generic` works exactly the same as the parameter list between `<...>` in TypeScript. For example, you can use multiple parameters, `extends` constraints, default types, and reference imported types:
+Значение `generic` работает точно также, как список параметров между `<...>` в TypeScript. Например, вы можете использовать множество параметров, `extends` для ограничений, устанавливать типы по умолчанию и ссылаться на импортированные типы:
 
 ```vue
 <script
@@ -448,7 +448,7 @@ defineProps<{
 </script>
 ```
 
-This will be compiled to equivalent runtime props `default` options. In addition, the `withDefaults` helper provides type checks for the default values, and ensures the returned `props` type has the optional flags removed for properties that do have default values declared.
+Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
-- Due to the difference in module execution semantics, code inside `<script setup>` relies on the context of an SFC. When moved into external `.js` or `.ts` files, it may lead to confusion for both developers and tools. Therefore, **`<script setup>`** cannot be used with the `src` attribute.
-- `<script setup>` does not support In-DOM Root Component Template.([Related Discussion](https://github.com/vuejs/core/issues/8391))
+- Из-за разницы в семантике выполнения модулей код внутри `<script setup>` полагается на контекст SFC. Если перенести их во внешние файлы `.js` или `.ts`, это может привести к путанице как для разработчиков, так и для инструментов. Поэтому **`<script setup>`** нельзя использовать с атрибутом `src`.
+- `<script setup>` не поддерживает шаблон корневого компонента In-DOM. ([Связанные обсуждения](https://github.com/vuejs/core/issues/8391))

@@ -99,7 +99,7 @@ export default {
 }
 ```
 
-Render-функция объявляется внутри `setup()`, поэтому она имеет доступ к реквизитам и любому реактивному состоянию, объявленному в той же области видимости.
+Render-функция объявляется внутри `setup()`, поэтому она имеет доступ к входным параметрам и любому реактивному состоянию, объявленному в той же области видимости.
 
 Кроме возврата одного vnode, можно также возвращать строки или массивы:
 
@@ -233,19 +233,19 @@ const vnode = <div id={dynamicId}>hello, {userName}</div>
 
 В `create-vue` и Vue CLI есть параметры для создания проектов с предварительно настроенной поддержкой JSX. Если вы настраиваете JSX вручную, обратитесь к документации по [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next) чтобы узнать больше.
 
-Хотя JSX впервые появился в React, на самом деле он не имеет определенной семантики во время выполнения и может быть скомпилирован в различные выходные данные. Если вы уже работали с JSX, обратите внимание, что **преобразование JSX в Vue отличается от преобразования JSX в React**, поэтому вы не можете использовать трансформацию JSX React в приложениях Vue. Некоторые заметные отличия от React JSX включают следующее:
+Хотя JSX впервые появился в React, на самом деле он не имеет определенной семантики во время выполнения и может быть скомпилирован в различные выходные данные. Если вы уже работали с JSX, обратите внимание, что **преобразование JSX во Vue отличается от преобразования JSX в React**, поэтому вы не можете использовать трансформацию JSX React в приложениях Vue. Некоторые заметные отличия от React JSX включают следующее:
 
 - В качестве входных параметров вы можете использовать такие HTML атрибуты как `class` и `for` - нет необходимости использовать `className` или `htmlFor`.
 - Передача дочерних элементов компоненту (т.е. слотов) [работает по-другому](#passing-slots).
 
-Определение типов Vue обеспечивает определение типов для использования TSX. При использовании TSX обязательно укажите `"jsx": "preserve"` в файле `tsconfig.json`, чтобы TypeScript оставлял синтаксис JSX нетронутым для обработки Vue JSX-преобразованием .
+Определение типов Vue обеспечивает определение типов для использования TSX. При использовании TSX обязательно укажите `"jsx": "preserve"` в файле `tsconfig.json`, чтобы TypeScript оставлял синтаксис JSX нетронутым для его обработки JSX-преобразованием Vue.
 
 
 ### JSX Type Inference {#jsx-type-inference}
 
-Similar to the transform, Vue's JSX also needs different type definitions.
+Подобно преобразованию, JSX Vue также нуждается в других определениях типов.
 
-Starting in Vue 3.4, Vue no longer implicitly registers the global `JSX` namespace. To instruct TypeScript to use Vue's JSX type definitions, make sure to include the following in your `tsconfig.json`:
+Начиная с версии Vue 3.4, Vue больше не регистрирует неявно глобальное пространство имен `JSX`. Чтобы указать TypeScript использовать определения типов JSX от Vue, обязательно включите в свой файл `tsconfig.json` следующее:
 
 ```json
 {
@@ -257,13 +257,13 @@ Starting in Vue 3.4, Vue no longer implicitly registers the global `JSX` namespa
 }
 ```
 
-You can also opt-in per file by adding a `/* @jsxImportSource vue */` comment at the top of the file.
+Вы также можете подписаться на каждый отдельный файл, добавив комментарий `/* @jsxImportSource vue */` вверху файла.
 
-If there is code that depends on the presence of the global `JSX` namespace,  you can retain the exact pre-3.4 global behavior by explicitly importing or referencing `vue/jsx` in your project, which registers the global `JSX` namespace.
+Если есть код, который зависит от наличия глобального пространства имен `JSX`, вы можете сохранить точное глобальное поведение до версии 3.4, явно импортировав или ссылаясь на `vue/jsx` в своем проекте, который регистрирует глобальное пространство имен `JSX`.
 
 ## Реализация возможностей шаблона с помощью render-функций {#render-function-recipes}
 
-Ниже мы приведем несколько общих возможностей реализации функций шаблона в виде эквивалентных им в render-функциях / JSX.
+Ниже мы приведем несколько общих возможностей реализации функций шаблона в виде эквивалентных им render-функций / JSX.
 
 ### `v-if` {#v-if}
 
@@ -320,7 +320,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 ```js
 h(
   'ul',
-  // assuming `items` is a ref with array value
+  // предполагается, что `items` - это ref, который содержит массив
   items.value.map(({ id, text }) => {
     return h('li', { key: id }, text)
   })
@@ -583,10 +583,10 @@ h(MyComponent, null, {
 
 ### Scoped Slots
 
-To render a scoped slot in the parent component, a slot is passed to the child. Notice how the slot now has a parameter `text`. The slot will be called in the child component and the data from the child component will be passed up to the parent component.
+Чтобы отобразить слот с ограниченной областью видимости в родительском компоненте, слот передается дочернему компоненту. Обратите внимание, что у слота есть параметр `text`. Слот будет вызван в дочернем компоненте, и данные из дочернего компонента будут переданы родительскому компоненту.
 
 ```js
-// parent component
+// родительский компонент
 export default {
   setup() {
     return () => h(MyComp, null, {
@@ -596,10 +596,10 @@ export default {
 }
 ```
 
-Remember to pass `null` so the slots will not be treated as props.
+Не забудьте передать `null`, чтобы слоты не рассматривались как props.
 
 ```js
-// child component
+// дочерний компонент
 export default {
   setup(props, { slots }) {
     const text = ref('hi')
@@ -608,7 +608,7 @@ export default {
 }
 ```
 
-JSX equivalent:
+Эквивалент JSX:
 
 ```jsx
 <MyComponent>{{
@@ -710,7 +710,7 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-With the Composition API, template refs are created by passing the `ref()` itself as a prop to the vnode:
+С Composition API ссылки на шаблон создаются путем передачи самого `ref()` в качестве props в vnode:
 
 ```js
 import { h, ref } from 'vue'
@@ -788,13 +788,13 @@ MyComponent.emits = ['click']
 MyComponent.inheritAttrs = false
 ```
 
-Функциональные компоненты могут зарегистрированы и использованы так же, как и обычные компоненты. Если передать функцию в качестве первого аргумента `h()`, то она будет рассматриваться как функциональный компонент.
+Функциональные компоненты могут быть зарегистрированы и использованы так же, как и обычные компоненты. Если передать функцию в качестве первого аргумента `h()`, то она будет рассматриваться как функциональный компонент.
 
-### Typing Functional Components<sup class="vt-badge ts" /> {#typing-functional-components}
+### Типизирование функциональных компонентов<sup class="vt-badge ts" /> {#typing-functional-components}
 
-Functional Components can be typed based on whether they are named or anonymous. Volar also supports type checking properly typed functional components when consuming them in SFC templates.
+Функциональные компоненты можно типизировать в зависимости от того, являются ли они именованными или анонимными. Volar также поддерживает проверку типов правильно типизированных функциональных компонентов при их использовании в шаблонах SFC.
 
-**Named Functional Component**
+**Именованный функциональный компонент**
 
 ```tsx
 import type { SetupContext } from 'vue'
@@ -829,7 +829,7 @@ FComponent.emits = {
 }
 ```
 
-**Anonymous Functional Component**
+**Анонимный функциональный компонент**
 
 ```tsx
 import type { FunctionalComponent } from 'vue'

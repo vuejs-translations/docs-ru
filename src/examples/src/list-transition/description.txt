@@ -1,2 +1,2 @@
-Переходы по списку FLIP с помощью встроенной <TransitionGroup>.
+Переходы по списку FLIP с помощью встроенного <TransitionGroup>.
 https://aerotwist.com/blog/flip-your-animations/

@@ -6,7 +6,7 @@
 
 ## PropType\<T> {#proptype-t}
 
-Используется для анотации входного параметра с более сложными типами по сравнению с runtime определением входных параметров
+Используется для аннотации входного параметра с более сложными типами по сравнению с runtime определением входных параметров
 
 - **Пример**
 
@@ -30,27 +30,27 @@
   }
   ```
 
-- **See also** [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props)
+- **Смотрите также:** [Руководство — Типизация входных параметров компонентов](/guide/typescript/options-api#typing-component-props)
 
 ## MaybeRef\<T> {#mayberef}
 
-Alias for `T | Ref<T>`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+Псевдоним для `T | Ref<T>`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
 
-- Only supported in 3.3+.
+- Поддерживается только в версиях 3.3+.
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Alias for `T | Ref<T> | (() => T)`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+Псевдоним для `T | Ref<T> | (() => T)`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
 
-- Only supported in 3.3+.
+- Поддерживается только в версиях 3.3+.
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are internal facing - i.e. the resolved props received by the component. This means boolean props and props with default values are always defined, even if they are not required.
+Извлекает типы значений из объекта входных параметров во время выполнения. Извлеченные типы являются внутренними, то есть разрешенными входными параметрами, полученными компонентом. Это означает, что булевы входные параметры и входные параметры со значениями по умолчанию всегда определены, даже если они не нужны.
 
-To extract public facing props, i.e. props that the parent is allowed to pass, use [`ExtractPublicPropTypes`](#extractpublicproptypes).
+Для извлечения общедоступных входных параметров, то есть входных параметров, которые разрешено передать родителю, используйте [`ExtractPublicPropTypes`](#extractpublicproptypes).
 
-- **Example**
+- **Пример**
 
   ```ts
   const propsOptions = {
@@ -77,7 +77,7 @@ To extract public facing props, i.e. props that the parent is allowed to pass, u
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are public facing - i.e. the props that the parent is allowed to pass.
+Извлечение типов входных параметров из объекта runtime props options. Извлеченные типы являются публичными — то есть входными параметрами, которые разрешено передавать родителю.
 
 - **Example**
 
