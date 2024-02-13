@@ -87,7 +87,7 @@ const model = defineModel({ default: 0 })
 ```
 
 :::warning
-If you have a `default` value for `defineModel` prop and you don't provide any value for this prop from the parent component, it can cause a de-synchronization between parent and child components. In the example below, the parent's `myRef` is undefined, but the child's `model` is 1:
+Если у вас есть значение `default` для свойства `defineModel`, и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В приведенном ниже примере родительский `myRef` не определен, а дочерний `model` равен 1:
 
 ```js
 // дочерний компонент:
