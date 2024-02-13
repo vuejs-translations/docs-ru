@@ -211,7 +211,7 @@ const value = inject('message', 'default value')
 const value = inject('key', () => new ExpensiveClass(), true)
 ```
 
-The third parameter indicates the default value should be treated as a factory function.
+Третий параметр указывает, что значение по умолчанию должно рассматриваться как фабричная функция.
 
 </div>
 
