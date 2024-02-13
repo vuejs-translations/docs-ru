@@ -86,6 +86,23 @@ const model = defineModel({ required: true })
 const model = defineModel({ default: 0 })
 ```
 
+:::warning
+Если у вас есть значение `default` для свойства `defineModel`, и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В приведенном ниже примере родительский `myRef` не определен, а дочерний `model` равен 1:
+
+```js
+// дочерний компонент:
+const model = defineModel({ default: 1 })
+
+// родительский компонент:
+const myRef = ref()
+```
+
+```html
+<Child v-model="myRef"></Child>
+```
+
+:::
+
 </div>
 
 <div class="options-api">
@@ -210,7 +227,11 @@ const title = defineModel('title', { required: true })
 ```vue
 <!-- MyComponent.vue -->
 <script setup>
-defineProps(['title'])
+defineProps({
+  title: {
+    required: true
+  }
+})
 defineEmits(['update:title'])
 </script>
 
