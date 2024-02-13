@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# Флаги времени компиляции {#compile-time-flags}
+# Флаги, используемые во время компиляции {#compile-time-flags}
 
 :::tip Примечание
 Флаги времени компиляции применяются только при использовании сборки `esm-bundler` Vue (т.е. `vue/dist/vue.esm-bundler.js`).
