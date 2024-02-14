@@ -1,4 +1,4 @@
 <p>Id задачи: {{ todoId }}</p>
-<button @click="todoId++" :disabled="!todoData">Запросить следующую задачу</button>
+<button @click="todoId++" :disabled="!todoData">Получение следующего задания</button>
 <p v-if="!todoData">Загрузка...</p>
 <pre v-else>{{ todoData }}</pre>
