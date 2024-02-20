@@ -283,8 +283,8 @@ setup(props) {
 
 ## Явное включение {#explicit-opt-in}
 
-:::danger No longer supported in core
-The following only applies up to Vue version 3.3 and below. Support has been removed in Vue core 3.4 and above, and `@vitejs/plugin-vue` 5.0 and above. If you intend to continue using the transform, please migrate to [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) instead.
+:::danger Больше не поддерживается во `vue/core`
+Все ниже применимо только до версии 3.3 или ниже. Поддержка была убрана во `Vue core 3.4` и выше, также как и в `@vitejs/plugin-vue` 5.0 и выше. Если вы хотите пользоваться `transform`, то лучше мигрируйте на [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html)
 :::
 
 ### Vite {#vite}

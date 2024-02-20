@@ -210,16 +210,14 @@ let x: string | number = 1
 Если используется Vue CLI или настройка на основе webpack, то для использования TypeScript в выражениях шаблонов требуется `vue-loader@^16.8.0`.
 :::
 
-### Usage with TSX {#usage-with-tsx}
+### Использование с `TSX` {#usage-with-tsx}
+Vue также поддерживает создание компонентов с помощью `JSX / TSX`. Подробности описаны в гайде [Рендер-функции & `JSX`](/guide/extras/render-function.html#jsx-tsx)
 
-Vue also supports authoring components with JSX / TSX. Details are covered in the [Render Function & JSX](/guide/extras/render-function.html#jsx-tsx) guide.
+## `Generic` компоненты {#generic-components}
+`Generic` компоненты поддерживаются двумя способами:
 
-## Generic Components {#generic-components}
-
-Generic components are supported in two cases:
-
-- In SFCs: [`<script setup>` with the `generic` attribute](/api/sfc-script-setup.html#generics)
-- Render function / JSX components: [`defineComponent()`'s function signature](/api/general.html#function-signature)
+- В `SFC`: [`<script setup>` с `generic` атрибутом](/api/sfc-script-setup.html#generics)
+- Рендер-функции / `JSX` компоненты: [сигнатура функции `defineComponent()`](/api/general.html#function-signature)
 
 ## Специфические рецепты API {#api-specific-recipes}
 
