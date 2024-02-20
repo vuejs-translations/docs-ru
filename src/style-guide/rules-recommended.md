@@ -1,55 +1,55 @@
-# Priority C Rules: Recommended {#priority-c-rules-recommended}
+# Правила приоритета C: Рекомендуются {#priority-c-rules-recommended}
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+При наличии нескольких одинаково хороших вариантов можно сделать произвольный выбор, чтобы обеспечить консистентность. В этих правилах мы описываем каждый приемлемый вариант и предлагаем выбор по умолчанию. Это означает, что вы можете выбрать другой вариант в собственной кодовой базе, пока вы соблюдаете консистентность и у вас есть веская причина. Пусть у вас будет действительно веская причина! Приспосабливаясь к стандарту общества, вы сможете:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1. Гораздо проще понимать большинство кода сообщества, который вы встретите
+2. Копировать и вставлять большинство примеров кода сообщества без дальнейшей модификации
+3. Чаще находить сотрудников, которые уже привыкли к предпочитаемому стилю кода, по крайней мере, в отношении Vue
 
-## Component/instance options order {#component-instance-options-order}
+## Порядок опций в компоненте/экземпляре {#component-instance-options-order}
 
-**Component/instance options should be ordered consistently.**
+**Порядок опций в компоненте/экземпляре должен сохранять консистентность.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add new properties from plugins.
+Это порядок по умолчанию, который рекомендуем для опций компонентов. Они разделены на категории, чтобы вы знали куда добавлять новые свойства из плагинов. 
 
-1. **Global Awareness** (requires knowledge beyond the component)
+1. **Глобальная осведомлённость** (требует знаний вне компонента)
 
    - `name`
 
-2. **Template Compiler Options** (changes the way templates are compiled)
+2. **Настройки компилятора шаблонов** (изменяется способ компиляции шаблонов)
 
    - `compilerOptions`
 
-3. **Template Dependencies** (assets used in the template)
+3. **Зависимости шаблона** (ресурсы, используемые в шаблоне)
 
    - `components`
    - `directives`
 
-4. **Composition** (merges properties into the options)
+4. **Композиция** (объединение свойств в опциях)
 
    - `extends`
    - `mixins`
    - `provide`/`inject`
 
-5. **Interface** (the interface to the component)
+5. **Интерфейс** (интерфейс компонента)
 
    - `inheritAttrs`
    - `props`
    - `emits`
 
-6. **Composition API** (the entry point for using the Composition API)
+6. **Composition API** (точка входа при использовании Composition API)
 
    - `setup`
 
-7. **Local State** (local reactive properties)
+7. **Локальное состояние** (локальные реактивные свойства)
 
    - `data`
    - `computed`
 
-8. **Events** (callbacks triggered by reactive events)
+8. **События** (коллбэки вызываемые реактивными событиями)
 
    - `watch`
-   - Lifecycle Events (in the order they are called)
+   - События хуков жизненного цикла (в порядке их вызова)
      - `beforeCreate`
      - `created`
      - `beforeMount`
@@ -64,28 +64,28 @@ This is the default order we recommend for component options. They're split into
      - `renderTracked`
      - `renderTriggered`
 
-9. **Non-Reactive Properties** (instance properties independent of the reactivity system)
+9. **Нереактивные свойства** (свойства экземпляра, не зависящие от реактивности)
 
    - `methods`
 
-10. **Rendering** (the declarative description of the component output)
+10. **Отрисовка** (декларативное описание вывода компонента)
     - `template`/`render`
 
-## Element attribute order {#element-attribute-order}
+## Порядок атрибутов элемента {#element-attribute-order}
 
-**The attributes of elements (including components) should be ordered consistently.**
+**Атрибуты элемента (включая компоненты) должны также сохранять консистентность.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
+Это порядок по умолчанию, который рекомендуем для опций компонентов. Они разделены на категории, чтобы вы знали куда добавлять пользовательские атрибуты и директивы.
 
-1. **Definition** (provides the component options)
+1. **Определение** (предоставляет параметры компонента)
 
    - `is`
 
-2. **List Rendering** (creates multiple variations of the same element)
+2. **Отображение списка** (создаёт несколько вариантов одного элемента)
 
    - `v-for`
 
-3. **Conditionals** (whether the element is rendered/shown)
+3. **Условия** (отрисовывается/отображается ли элемент)
 
    - `v-if`
    - `v-else-if`
@@ -93,44 +93,44 @@ This is the default order we recommend for component options. They're split into
    - `v-show`
    - `v-cloak`
 
-4. **Render Modifiers** (changes the way the element renders)
+4. **Модификаторы отрисовки** (изменяют способ отрисовки элемента)
 
    - `v-pre`
    - `v-once`
 
-5. **Global Awareness** (requires knowledge beyond the component)
+5. **Глобальная осведомлённость** (требует знания вне компонента)
 
    - `id`
 
-6. **Unique Attributes** (attributes that require unique values)
+6. **Уникальные атрибуты** (атрибуты, требующие уникальные значения)
 
    - `ref`
    - `key`
 
-7. **Two-Way Binding** (combining binding and events)
+7. **Двусторонняя привязка** (объединение привязки и событий)
 
    - `v-model`
 
-8. **Other Attributes** (all unspecified bound & unbound attributes)
+8. **Другие атрибуты** (все неуказанные связанные или несвязанные атрибуты)
 
-9. **Events** (component event listeners)
+9. **События** (слушатели событий компонента)
 
    - `v-on`
 
-10. **Content** (overrides the content of the element)
+10. **Содержимое** (перезаписывают содержимое элемента)
     - `v-html`
     - `v-text`
 
-## Empty lines in component/instance options {#empty-lines-in-component-instance-options}
+## Пустые строки между опций компонента/экземпляра {#empty-lines-in-component-instance-options}
 
-**You may want to add one empty line between multi-line properties, particularly if the options can no longer fit on your screen without scrolling.**
+**Можно добавить одну пустую строку между многострочными свойствами, особенно если опции не помещаются на экране без прокрутки.**
 
-When components begin to feel cramped or difficult to read, adding spaces between multi-line properties can make them easier to skim again. In some editors, such as Vim, formatting options like this can also make them easier to navigate with the keyboard.
+Когда компоненты начинают казаться тесными и трудночитаемыми, добавление пустых строк между многострочными свойствами может облегчить их чтение. В некоторых редакторах, таких как Vim, подобные опции форматирования могут также облегчить навигацию с помощью клавиатуры.
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 props: {
@@ -162,11 +162,11 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
-// No spaces are also fine, as long as the component
-// is still easy to read and navigate.
+// Отсутствие пробелов не мешает, если компонент
+// всё ещё легко читать и перемещаться по нему.
 props: {
   value: {
     type: String,
@@ -196,7 +196,7 @@ computed: {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 defineProps({
@@ -222,7 +222,7 @@ const inputClasses = computed(() => {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 defineProps({
@@ -253,9 +253,9 @@ const inputClasses = computed(() => {
 
 </div>
 
-## Single-file component top-level element order {#single-file-component-top-level-element-order}
+## Порядок секций в однофайловых компонентах {#single-file-component-top-level-element-order}
 
-**[Single-File Components](/guide/scaling-up/sfc) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
+**[Однофайловые компоненты](/guide/scaling-up/sfc) должны всегда последовательно содержать теги `<script>`, `<template>`, и `<style>`, причём `<style>` должен располагаться последним, поскольку как минимум один из двух других всегда необходим.**
 
 <div class="style-example style-example-bad">
 <h3>Плохо</h3>
