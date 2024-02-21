@@ -214,7 +214,7 @@ let x: string | number = 1
 Vue также поддерживает создание компонентов с помощью `JSX / TSX`. Подробности описаны в руководстве [Рендер-функции & `JSX`](/guide/extras/render-function.html#jsx-tsx)
 
 ## `Generic` компоненты {#generic-components}
-`Generic` компоненты поддерживаются двумя способами:
+`Generic` компоненты поддерживаются в двух случаях:
 
 - В `SFC`: [`<script setup>` с `generic` атрибутом](/api/sfc-script-setup.html#generics)
 - Рендер-функции / `JSX` компоненты: [сигнатура функции `defineComponent()`](/api/general.html#function-signature)
