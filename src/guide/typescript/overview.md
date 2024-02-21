@@ -211,7 +211,7 @@ let x: string | number = 1
 :::
 
 ### Использование с `TSX` {#usage-with-tsx}
-Vue также поддерживает создание компонентов с помощью `JSX / TSX`. Подробности описаны в гайде [Рендер-функции & `JSX`](/guide/extras/render-function.html#jsx-tsx)
+Vue также поддерживает создание компонентов с помощью `JSX / TSX`. Подробности описаны в руководстве [Рендер-функции & `JSX`](/guide/extras/render-function.html#jsx-tsx)
 
 ## `Generic` компоненты {#generic-components}
 `Generic` компоненты поддерживаются двумя способами:
