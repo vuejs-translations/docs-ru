@@ -358,8 +358,8 @@ import { createApp } from 'vue'
 
 Также можно добавлять записи и для других зависимостей в import map — но убедитесь, что они указывают на версию ES-модуля библиотеки, которую собираетесь использовать.
 
-:::tip Поддержка Import Maps в браузере
-Import Maps is a relatively new browser feature. Make sure to use a browser within its [support range](https://caniuse.com/import-maps). In particular, it is only supported in Safari 16.4+.
+:::tip Поддержка `Import Maps` в браузере
+`Import Maps` является относительно новой возможностью браузера. Убедитесь, что браузер её [поддерживает](https://caniuse.com/import-maps). В частности, поддерживается в `Safari` с версии `16.4+`.
 :::
 
 :::warning Примечание при использовании в production

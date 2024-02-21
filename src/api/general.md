@@ -101,12 +101,12 @@
 - **Тип**
 
   ```ts
-  // options syntax
+  // синтаксис Options API
   function defineComponent(
     component: ComponentOptions
   ): ComponentConstructor
 
-  // function syntax (requires 3.3+)
+  // синтаксис функции (требуется 3.3+)
   function defineComponent(
     setup: ComponentOptions['setup'],
     extraOptions?: ComponentOptions
@@ -129,7 +129,7 @@
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### Сигнатура Функции <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
 
   `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function).
 
