@@ -100,7 +100,7 @@ h(Transition, {
   </Transition>
   ```
 
-  Forcing a transition by changing the `key` attribute:
+  Принудительный эффект перехода путем изменения атрибута `key`:
 
   ```vue-html
   <Transition>

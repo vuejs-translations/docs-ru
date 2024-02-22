@@ -188,7 +188,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   methods: {
     handleChange(event) {
-      // `event` неявно имеет тип` type
+      // `event` неявно имеет тип `any`
       console.log(event.target.value)
     }
   }
