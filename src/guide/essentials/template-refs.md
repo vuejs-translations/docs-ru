@@ -67,7 +67,7 @@ export default {
 
 </div>
 
-Обратите внимание, что вы можете получить доступ к ссылке только **после того, как компонент смонтирован**. Если вы попытаетесь получить доступ к <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> в шаблоне, при первом рендеринге оно будет равно <span class="options-api">`undefined`</span><span class="composition-api">`null`</span>. Это происходит потому, что элемент не существует до завершения первого рендеринга!
+Обратите внимание, что вы можете получить доступ к ссылке только **после того, как компонент был смонтирован**. Если вы попытаетесь получить доступ к <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> в шаблоне, при первом рендеринге она будет равна <span class="options-api">`undefined`</span><span class="composition-api">`null`</span>. Это происходит потому, что элемент не существует до завершения первого рендеринга!
 
 <div class="composition-api">
 
