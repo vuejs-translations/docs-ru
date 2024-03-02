@@ -79,7 +79,7 @@ outline: deep
 
 <div class="composition-api">
 
- Since 3.3 you can also use [`defineOptions`](/api/sfc-script-setup#defineoptions) directly in `<script setup>`:
+Начиная с версии 3.3 вы также можете использовать [`defineOptions`](/api/sfc-script-setup#defineoptions) непосредственно в `<script setup>`:
 
 ```vue
 <script setup>
