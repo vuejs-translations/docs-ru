@@ -95,7 +95,7 @@ data() {
 <div :class="classObject"></div>
 ```
 
-This will render:
+Это будет отрендерено, как:
 
 ```vue-html
 <div class="active"></div>

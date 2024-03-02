@@ -12,7 +12,7 @@
 
 <div class="composition-api">
 
-To obtain the reference with Composition API, we need to declare a ref with a name that matches the template ref attribute's value:
+Чтобы получить ссылку с помощью Composition API, нам нужно объявить ref с именем, соответствующим значению атрибута ref в шаблоне:
 
 ```vue
 <script setup>
@@ -67,7 +67,7 @@ export default {
 
 </div>
 
-Note that you can only access the ref **after the component is mounted.** If you try to access <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> in a template expression, it will be <span class="options-api">`undefined`</span><span class="composition-api">`null`</span> on the first render. This is because the element doesn't exist until after the first render!
+Обратите внимание, что вы можете получить доступ к ссылке только **после того, как компонент был смонтирован**. Если вы попытаетесь получить доступ к <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> в шаблоне, при первом рендеринге она будет равна <span class="options-api">`undefined`</span><span class="composition-api">`null`</span>. Это происходит потому, что элемент не существует до завершения первого рендеринга!
 
 <div class="composition-api">
 
