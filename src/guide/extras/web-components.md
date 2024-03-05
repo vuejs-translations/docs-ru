@@ -22,7 +22,7 @@ Vue [безупречно получает 100% в тестах Custom Elements 
 app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 ```
 
-#### Пример конфигураци Vite {#example-vite-config}
+#### Пример конфигурации Vite {#example-vite-config}
 
 ```js
 // vite.config.js
@@ -47,15 +47,15 @@ export default {
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('vue')
       .use('vue-loader')
-      .tap(options => ({
+      .tap((options) => ({
         ...options,
         compilerOptions: {
           // считать все теги начинающиеся с ion- пользовательскими элементами
-          isCustomElement: tag => tag.startsWith('ion-')
+          isCustomElement: (tag) => tag.startsWith('ion-')
         }
       }))
   }
@@ -242,7 +242,7 @@ export const Counter = defineCustomElement(CounterSFC)
 // регистрация глобальных типов
 declare module 'vue' {
   export interface GlobalComponents {
-    'Counter': typeof Counter,
+    Counter: typeof Counter
   }
 }
 ```
