@@ -353,7 +353,7 @@ const foo = inject<string>('foo', 'bar') // тип: string
 const foo = inject('foo') as string
 ```
 
-## Типизация ссылко на шаблоны {#typing-template-refs}
+## Типизация ссылок на шаблоны {#typing-template-refs}
 
 Шаблонные ссылки должны создаваться с явным аргументом типа generic и начальным значением `null`:
 

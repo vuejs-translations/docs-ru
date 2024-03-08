@@ -48,7 +48,7 @@ Vue написан на TypeScript и обеспечивает первокла�
 
 - Если вы настроили псевдонимы распознавателя в инструменте сборки, например псевдоним `@/*`, настроенный по умолчанию в проекте `create-vue`, необходимо также настроить его для TypeScript с помощью [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths).
 
-- If you intend to use TSX with Vue, set [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) to `"preserve"`, and set [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) to `"vue"`.
+- Если вы собираетесь использовать TSX с Vue, установите [`CompilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) в `"preserve"` и установите [`CompilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource ) в `"vue"`.
 
 См. также:
 
