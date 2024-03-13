@@ -91,7 +91,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-> См. также: [Типизированная реактивность](/guide/typescript/composition-api#typing-ref)) <sup class="vt-badge ts" />
+> См. также: [Типизированная реактивность](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 Чтобы использовать реактивное состояние в шаблоне компонента, объявите и верните его из функции компонента `setup()`:
 
