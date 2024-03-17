@@ -150,7 +150,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Форматирование {#formatting}
 
-- Расширение [Vue - Официальный](https://github.com/vuejs/language-tools)(https://github.com/johnsoncodehk/volar) VSCode обеспечивает форматирование для Vue SFC из коробки.
+- Расширение [Vue - Официальный](https://github.com/vuejs/language-tools) VSCode обеспечивает форматирование для Vue SFC из коробки.
 
 - Кроме того, [Prettier](https://prettier.io/) предоставляет встроенную поддержку форматирования Vue SFC.
 
