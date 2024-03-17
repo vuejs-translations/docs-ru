@@ -102,7 +102,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 </TransitionGroup>
 ```
 
-Затем, в JavaScript-хуках, мы анимируем элемент с задержкой, отталкиваясь от этого data-атрибута. В данном примере для выполнения анимации используется библиотека [GreenSock](https://greensock.com/):
+Затем, в JavaScript-хуках, мы анимируем элемент с задержкой, отталкиваясь от этого data-атрибута. В данном примере для выполнения анимации используется библиотека [GSAP library](https://gsap.com/):
 
 ```js{5}
 function onEnter(el, done) {

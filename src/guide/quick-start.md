@@ -116,7 +116,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Теперь уже должен быть запущен первый проект! Обратите внимание, что примеры компонентов в сгенерированном проекте написаны с использованием [Composition API](/guide/introduction#composition-api) и `<script setup>`, а не [Options API](/guide/introduction#options-api). Вот несколько дополнительных советов:
 
-- Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [расширение Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling#ide-support).
+- Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling#ide-support).
 - Больше информации об инструментарии, включая интеграцию с бэкенд-фреймворками, обсуждается в разделе [Инструментарий](/guide/scaling-up/tooling).
 - Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vitejs.dev).
 - Если решили использовать TypeScript, ознакомьтесь с инструкцией по [использованию TypeScript](typescript/overview).
@@ -363,7 +363,9 @@ import { createApp } from 'vue'
 :::
 
 :::warning Примечание при использовании в production
-До сих пор в примерах использовалась сборка Vue для разработки — если собираетесь подключать Vue из CDN в production, обязательно ознакомьтесь с руководством [по публикации в production](/guide/best-practices/production-deployment#without-build-tools).
+На данный момент в примерах используется сборка Vue для разработки. Если вы собираетесь использовать Vue из CDN в рабочей среде, обязательно ознакомьтесь с [Руководством по производственному развертыванию](/guide/best-practices/production-deployment#without-build -инструменты).
+
+Хотя можно использовать Vue без системы сборки, можно рассмотреть альтернативный подход — использование [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue), который лучше подходит для контекста, в котором [`jquery/jquery`](https://github.com/jquery/jquery) (в прошлом) или [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (в настоящем) ) можно использовать вместо этого.
 :::
 
 ### Разделение на модули {#splitting-up-the-modules}
