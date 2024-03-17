@@ -53,8 +53,8 @@ Vue предоставляет первоклассные API для "ренде
 
 Хотя Vue в первую очередь предназначен для создания веб-приложений, его возможности ни в коем случае не ограничиваются только браузером. Вы можете:
 
-- создавать настольные приложения с помощью [Electron](https://www.electronjs.org/) или [Tauri](https://tauri.app)
+- создавать настольные приложения с помощью [Electron](https://www.electronjs.org/)
 - Создавать мобильные приложения с помощью [Ionic Vue](https://ionicframework.com/docs/vue/overview)
-- Создавать настольные и мобильные приложения из одной кодовой базы с помощью [Quasar](https://quasar.dev/)
+- Создавать настольные и мобильные приложения из одной кодовой базы с помощью [Quasar](https://quasar.dev/) или [Tauri](https://tauri.app)
 - Build 3D WebGL experiences with [TresJS](https://tresjs.org/)
 - Использовать Vue [Custom Renderer API](/api/custom-renderer) для создания пользовательских рендеров, ориентированных на [WebGL](https://troisjs.github.io/) или даже [на терминал](https://github.com/vue-terminal/vue-termui)!

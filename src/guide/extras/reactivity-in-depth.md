@@ -355,7 +355,7 @@ watchEffect(callback, {
 Мы можем интегрировать Immer с Vue с помощью простой композиции:
 
 ```js
-import produce from 'immer'
+import { produce } from 'immer'
 import { shallowRef } from 'vue'
 
 export function useImmer(baseState) {
@@ -368,7 +368,7 @@ export function useImmer(baseState) {
 }
 ```
 
-[Попробовать в песочнице](https://play.vuejs.org/#eNplU8Fu2zAM/RXOlzpAYu82zEu67lhgpw3bJcrBs5VYqywJkpxmMPzvoyjZNRodbJF84iOppzH7ZkxxHXhWZXvXWGE8OO4H88iU6I22HkYYHH/ue25hgrPVPTwUpQh28dc9MAXAVKOV83AUnvduC4Npa8+fg3GCw3I8PwbwGD64vPCSV8Cy77y2Cn4PnGXbFGu1wpC36EPHRO67c78cD6fgVfgOiOB9gnMtXczA1GnDFFPnQTVeaAVeXy6SSsyFavltE/OvKs+pGTg8zsxkHwl9KgIBtvbhzkl0yIWU+zIOFEeJBgKNxORoAewHSX/cSQHX3VnbA8vyMXa3pfqxb0i1CRXZWZb6w1U1snYOT40JvQ4+NVI0Lxi865NliTisMRHChOVSNaUUscCSKtyXq7LRdP6fDNvYPw3G85vftbzRtg6TrUAKxXe+s3q4dF/mQdC5bJtFTe362qB4tELVURKWAthhNc87+OhSw2V33htXleWgzMulaHQfFfj0ufhYfCpb4XySJHc9Zv7a63aQqKh0+xNRR8kiZ1K2sYhqeBI1xVHPi+xdV0upX3/w8yJ8fCiIYIrfCLPIaZH4n9rxnx7nlQQVH4YLHpTLW8YV8A0W1Ye4PO7sZiU/ylFca4mSP8yl5yvv/O4sZcSmw8/iW8bXdSTcjDiFgUz/AcH6WZQ=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9VMFu2zAM/RXNl6ZAYnfoTlnSdRt66DBsQ7vtEuXg2YyjRpYEUU5TBPn3UZLtuE1RH2KLfCIfycfsk8/GpNsGkmkyw8IK4xiCa8wVV6I22jq2Zw3CbV2DZQe2srpmZ2km/PmMK8a4KrRCxxbCQY1j1pgyd3DrD0s27++OFh689z/0OOEkTBlPvkNuFfvbAE/Gra/UilzOko0Mh2A+ufcHwd9ij8KtWUjwMsAqlxgjcLU854qrVaMKJ7RiTleVDBRHQpWwO4/xB8xHoRg2v+oyh/MioJepT0ClvTsxhnSUi1LOsthN6iMdCGgkBacTY7NGhjd9ScG2k5W2c56M9rG6ceBPdbOWm1AxO0/a+uiZFjJHpFv7Fj10XhdSFBtyntTJkzaxf/ZtQnYguoFNJkUkmAWGs2xAm47onqT/jPWHxjjYuUkJhba57+yUSaFg4tZWN9X6Y9eIcC8ZJ1FQkzo36QNqRZILQXjroAqnXb+9LQzVD3vtnMFpljXKbKq00HWU3/X7i/QivcxKgS5aUglVXjxNAGvK8KnWZSNJWa0KDoGChzmk3L28jSVcQX1o1d1puwfgOpdSP97BqsfQxhCCK9gFTC+tXu7/coR7R71rxRWXBL2FpHOMOAAeYVGJhBvFL3s+kGKIkW5zSfKfd+RHA2u3gzZEpML9y9JS06YtAq5DLFmOMWXsjkM6rET1YjzUcSMk2J/G1/h8TKGOb8HmV7bdQbqzhmLziv0Bd3Govywg2O1x8Umvua3ARffN/Q/S1sDZDfMN5x2glo3nGGFfGlUS7QEusL0NcxWq+o03OwcKu6Ke/+fwhIb89Y3Sj3Qv0w+9xg7/AWfvyMs=)
 
 ### Конечные автоматы {#state-machines}
 
@@ -402,10 +402,10 @@ export function useMachine(options) {
 
 Довольно много других фреймворков внедрили реактивные примитивы, аналогичные ref-ссылкам из Composition API Vue, используя термин "сигналы":
 
-- [Сигналы Solid](https://www.solidjs.com/docs/latest/api#createsignal)
-- [Сигналы Angular](https://github.com/angular/angular/discussions/49090)
-- [Сигналы Preact](https://preactjs.com/guide/v10/signals/)
-- [Сигналы Qwik](https://qwik.builder.io/docs/components/state/#usesignal)
+- [Solid Сигналы](https://www.solidjs.com/docs/latest/api#createsignal)
+- [Angular Сигналы](https://angular.io/guide/signals)
+- [Preact Сигналы](https://preactjs.com/guide/v10/signals/)
+- [Qwik Сигналы](https://qwik.builder.io/docs/components/state/#usesignal)
 
 По сути, сигналы представляют собой тот же реактивные примитивы, что и ref-ссылки во Vue. Это контейнер для значений, который обеспечивает отслеживание зависимостей при доступе и вызов побочных эффектов при изменении. Парадигма, основанная на таких реактивных примитивах, не является новым концептом в мире фронтенда: она уходит корнями на десятки лет назад в такие реализации, как [Knockout observables](https://knockoutjs.com/documentation/observables.html) и [Meteor Tracker](https://docs.meteor.com/api/tracker.html). Options API Vue и библиотека управления состоянием React [MobX](https://mobx.js.org/) также основаны на таких же принципах, но скрывают примитивы за свойствами объектов.
 
@@ -452,20 +452,14 @@ Angular проходит через некоторые фундаменталь�
 const count = signal(0)
 
 count() // доступ к значению
-count.set(1) // изменение значения
+count.set(1) // установка нового значения
 count.update((v) => v + 1) // изменение значение, основанное на предыдущем
-
-// изменение глубоких объектов с одинаковой идентичностью
-const state = signal({ count: 0 })
-state.mutate((o) => {
-  o.count++
-})
 ```
 
 Опять же, мы можем легко повторить такое API во Vue:
 
 ```js
-import { shallowRef, triggerRef } from 'vue'
+import { shallowRef } from 'vue'
 
 export function signal(initialValue) {
   const r = shallowRef(initialValue)
@@ -476,15 +470,11 @@ export function signal(initialValue) {
   s.update = (updater) => {
     r.value = updater(r.value)
   }
-  s.mutate = (mutator) => {
-    mutator(r.value)
-    triggerRef(r)
-  }
   return s
 }
 ```
 
-[Попробовать в песочнице](https://play.vuejs.org/#eNp9UslOwzAQ/ZVRLiRQEsqxpBUIvoADp0goTd3U4DiWl4AU5d8ZL3E3iZtn5r1Z3vOYvAiRD4Ykq6RUjaRCgyLaiE3FaSd6qWEERVteswU0fSeMJjuYYC/7Dm7youatYbW895D8S91UvOJNz5VGuOEa1oGePmRzYdebLSNYmRumaQbrjSfg8xYeEVsWfh/cBANNOsFqTTACKA/LzavrTtUKxjEyp6kssDZj3vygAPJjL1Bbo3XP4blhtPleV4nrlBuxw1npYLca4A6WWZU4PADljSQd4drRC8//rxfKaW+f+ZJg4oJbFvG8ZJFcaYreHL041Iz1P+9kvwAtadsS6d7Rm1rB55VRaLAzhvy6NnvDG01x1WAN5VTTmn3UzJAMRrudd0pa++LEc9wRpRDlHZT5YGu2pOzhWHAJWxvnakxOHufFxqx/4MxzcEinIYP+eV5ntOe5Rx94IYjopxOZUhnIEr+4xPMrjuG1LPFftkTj5DNJGhwYBZ4BJz3DV56FmJLpD1DrKXU=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNp9Ul1v0zAU/SuWX9ZCSRh7m9IKGHuAB0AD8WQJZclt6s2xLX+ESlH+O9d2krbr1Df7nnPu17k9/aR11nmgt7SwleHaEQvO6w2TvNXKONITyxtZihWpVKu9g5oMZGtUS66yvJSNF6V5lyjZk71ikslKSeuQ7qUj61G+eL+cgFr5RwGITAkXiyVZb5IAn2/IB+QWeeoHO8GPg1aL0gH+CCl215u7mJ3bW9L3s3IYihyxifMlFRpJqewL1qN3TknysRK8el4zGjNlXtdYa9GFrjryllwvGY18QrisDLQgXZTnSX8pF64zzD7pDWDghbbI5/Hoip7tFL05eLErhVD/HmB75Edpyd8zc9DUaAbso3TrZeU4tjfawSV3vBR/SuFhSfrQUXLHBMvmKqe8A8siK7lmsi5gAbJhWARiIGD9hM7BIfHSgjGaHljzlDyGF2MEPQs6g5dpcAIm8Xs+2XxODTgUn0xVYdJ5RxPhKOd4gdMsA/rgLEq3vEEHlEQPYrbgaqu5APNDh6KWUTyuZC2jcWvfYswZD6spXu2gen4l/mT3Icboz3AWpgNGZ8yVBttM8P2v77DH9wy2qvYC2RfAB7BK+NBjon32ssa2j3ix26/xsrhsftv7vQNpp6FCo4E5RD6jeE93F0Y/tHuT3URd2OLwHyXleRY=)
 
 По сравнению с refs-ссылками во Vue, стиль API с использованием геттеров в Solid и Angular предоставляет интересные компромиссы при использовании в компонентах Vue:
 

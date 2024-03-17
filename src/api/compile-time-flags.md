@@ -26,7 +26,7 @@ Vue будет работать, даже если эти флаги не буд
 
   Включите / отключите поддержку devtools в продакшн сборках. Это приведет к увеличению количества кода в пакете, поэтому рекомендуется включать эту функцию только для отладки.
 
-## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATATION_MISMATCH_DETAILS}
+## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
 
 - **По умолчанию:** `false`
 

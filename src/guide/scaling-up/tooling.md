@@ -86,10 +86,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Поддержка IDE {#ide-support}
 
-- Рекомендуемая настройка IDE - [VSCode](https://code.visualstudio.com/) + расширение [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Volar обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
+- Рекомендуемая настройка IDE - [VSCode](https://code.visualstudio.com/) + расширение [Vue — официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (ранее Volar). Обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
 
   :::tip Совет
-  Volar заменяет [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VSCode для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
+  Vue - Официальная замена (https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VSCode для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) также предоставляет отличную встроенную поддержку однофайловых компонентов Vue.
@@ -120,7 +120,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Основная статья: [Использование Vue с TypeScript](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) обеспечивает проверку типов для однофайловых компонентов с помощью секций `<script lang="ts">`, включая выражения в шаблонах и межкомпонентную валидацию входных параметров.
+- [Vue - Официальное расширение](https://github.com/vuejs/language-tools) обеспечивает проверку типов для однофайловых компонентов с помощью секций `<script lang="ts">`, включая выражения в шаблонах и межкомпонентную валидацию входных параметров.
 
 - Используйте [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) для выполнения аналогичной проверки типов из командной строки или для генерации файлов `d.ts` для SFC.
 
@@ -150,7 +150,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Форматирование {#formatting}
 
-- Расширение [Volar](https://github.com/johnsoncodehk/volar) VSCode обеспечивает форматирование для Vue SFC из коробки.
+- Расширение [Vue - Официальный](https://github.com/vuejs/language-tools) VSCode обеспечивает форматирование для Vue SFC из коробки.
 
 - Кроме того, [Prettier](https://prettier.io/) предоставляет встроенную поддержку форматирования Vue SFC.
 
