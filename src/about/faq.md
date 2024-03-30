@@ -1,4 +1,4 @@
-# Часто задаемые вопросы {#frequently-asked-questions}
+# Часто задаваемые вопросы {#frequently-asked-questions}
 
 ## Кто поддерживает Vue? {#who-maintains-vue}
 

@@ -4,7 +4,7 @@
 
 ## Используйте несколько слов в именах компонентов {#use-multi-word-component-names}
 
-Пользовательские компоненты должны именоваться в несколько слов, за исключением корневых `App` компонентов. Это [предотвращает конфликты](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) с существующими и будушими HTML-элементами, так как всегда HTML-элементы пишутся в одно слово.
+Пользовательские компоненты должны именоваться в несколько слов, за исключением корневых `App` компонентов. Это [предотвращает конфликты](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) с существующими и будущими HTML-элементами, так как всегда HTML-элементы пишутся в одно слово.
 
 <div class="style-example style-example-bad">
 <h3>Плохо</h3>
