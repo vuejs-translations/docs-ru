@@ -20,7 +20,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 :::tip Предварительные условия
 - Знакомство с командной строкой
-- Установленная [Node.js](https://nodejs.org/) 18.0 версии или выше
+- Установленная [Node.js](https://nodejs.org/) 18.3 версии или выше
 :::
 
 В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
@@ -36,21 +36,21 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
+
   ```sh
   $ pnpm create vue@latest
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
+
   ```sh
   $ yarn create vue@latest
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
+
   ```sh
   $ bun create vue@latest
   ```
@@ -78,35 +78,35 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ npm install
   $ npm run dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ pnpm install
   $ pnpm run dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ yarn
   $ yarn dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ bun install
   $ bun run dev
   ```
@@ -132,21 +132,21 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
+
   ```sh
   $ pnpm run build
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
+
   ```sh
   $ yarn build
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
+
   ```sh
   $ bun run build
   ```
@@ -419,7 +419,7 @@ export default {
 
 Для запуска локального HTTP-сервера для начала нужно установить [Node.js](https://nodejs.org/en/), а затем запустить команду `npx serve` в том же каталоге, где находится HTML-файл. Можно использовать и любой другой HTTP-сервер, который умеет хостить статические файлы с правильными MIME-типами.
 
-Как можно заметить, шаблон импортируемого компонента указан как строка JavaScript. При использовании VSCode можно установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и добавить к этой строке префикс комментарием `/*html*/` чтобы получить подсветку синтаксиса в них.
+Как можно заметить, шаблон импортируемого компонента указан как строка JavaScript. При использовании VS Code можно установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и добавить к этой строке префикс комментарием `/*html*/` чтобы получить подсветку синтаксиса в них.
 
 ## Следующие шаги {#next-steps}
 

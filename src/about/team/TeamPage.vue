@@ -1,5 +1,8 @@
 <script lang="ts">
-const shuffleMembers = (members: Member[], pinTheFirstMember = false): void => {
+const shuffleMembers = (
+  members: Member[],
+  pinTheFirstMember = false
+): void => {
   let offset = pinTheFirstMember ? 1 : 0
   // `i` is between `1` and `length - offset`
   // `j` is between `0` and `length - offset - 1`
@@ -7,11 +10,8 @@ const shuffleMembers = (members: Member[], pinTheFirstMember = false): void => {
   // `offset + j` is between `offset` and `length - 1`
   let i = members.length - offset
   while (i > 0) {
-    const j = Math.floor(Math.random() * i);
-    [
-      members[offset + i - 1],
-      members[offset + j]
-    ] = [
+    const j = Math.floor(Math.random() * i)
+    ;[members[offset + i - 1], members[offset + j]] = [
       members[offset + j],
       members[offset + i - 1]
     ]
@@ -37,44 +37,48 @@ shuffleMembers(membersPartnerData as Member[])
   <div class="TeamPage">
     <TeamHero>
       <template #title>Знакомство с командой</template>
-      <template #lead
-        >Развитие Vue и ее экосистемы осуществляется под руководством международной команды, члены которой решили
-        <span class="nowrap">рассказать о себе ниже.</span></template
-      >
+      <template #lead>
+        Развитие Vue и ее экосистемы осуществляется под руководством
+        международной команды, члены которой решили
+        <span class="nowrap">рассказать о себе ниже.</span>
+      </template>
 
       <template #action>
         <VTLink
           href="https://github.com/vuejs/governance/blob/master/Team-Charter.md"
           >Узнайте больше о командах</VTLink
         >
+          Learn more about teams
+        </VTLink>
       </template>
     </TeamHero>
 
-    <TeamList :members="membersCoreData as Member[]">
+    <TeamList :members="(membersCoreData as Member[])">
       <template #title>Члены основной команды</template>
-      <template #lead
-        >Члены основной команды - это те, кто активно участвует в
+      <template #lead>
+        Члены основной команды - это те, кто активно участвует в
         сопровождении одного или нескольких основных проектов. Они внесли значительный
         вклад в экосистему Vue, с долгосрочной приверженностью к
-        успеху проекта и его пользователей.</template
-      >
+        успеху проекта и его пользователей.
+      </template>
     </TeamList>
 
-    <TeamList :members="membersEmeritiData as Member[]">
+    <TeamList :members="(membersEmeritiData as Member[])">
       <template #title>Почетные члены основной команды</template>
-      <template #lead
-        >Здесь мы чествуем некоторых уже неактивных членов основной команды, которые внесли
-        ценный вклад в прошлом.</template
-      >
+      <template #lead>
+        Здесь мы чествуем некоторых уже неактивных членов основной команды, которые внесли
+        ценный вклад в прошлом.
+      </template>
     </TeamList>
 
-    <TeamList :members="membersPartnerData as Member[]">
+    <TeamList :members="(membersPartnerData as Member[])">
       <template #title>Партнеры сообщества</template>
-      <template #lead
-        >Некоторые члены сообщества Vue настолько обогатили его, что заслуживают особого упоминания.
+      <template #lead>
+        Некоторые члены сообщества Vue настолько обогатили его,
+        что заслуживают особого упоминания.
         Мы наладили более тесные отношения с этими ключевыми партнерами,
-        часто согласовывая с ними предстоящие функции и новости.</template
-      >
+        часто согласовывая с ними предстоящие функции и новости.
+      </template>
     </TeamList>
   </div>
 </template>
