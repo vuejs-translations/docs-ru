@@ -95,7 +95,7 @@ export default defineComponent({
 Это избавляет TypeScript от необходимости выводить тип `this` внутри этих функций, что, к сожалению, может привести к неудачному выводу типа. Это было ограничение [предыдущего дизайна](https://github.com/microsoft/TypeScript/issues/38845), и теперь оно улучшено в [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7#improved-function-inference-in-objects-and-methods).
 
 
-## Типизирование испукаемых событий компонента {#typing-component-emits}
+## Типизирование испускаемых событий компонента {#typing-component-emits}
 
 Мы можем объявить ожидаемый тип полезной нагрузки для испускаемого события, используя объектный синтаксис опции `emits`. Кроме того, все необъявленные генерируемые события будут вызывать ошибку типа при вызове:
 
