@@ -88,7 +88,7 @@ app.use(i18nPlugin, {
 
 Теперь наше исходное выражение `$translate('greetings.hello')` будет заменено на `Bonjour!` во время выполнения.
 
-Смотрите также: [Расширение глобальных свойств].(/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+Смотрите также: [Расширение глобальных свойств](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
 Используйте глобальные свойства редко, поскольку это может быстро запутать, если в приложении используется слишком много глобальных свойств, введенных различными плагинами.
