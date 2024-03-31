@@ -102,6 +102,7 @@ watch(
   color: #fff;
   margin-right: 18px;
   padding: 8px 1em 8px 3em;
+  white-space: nowrap;
 }
 
 .dark #vuemastery-action {
@@ -189,7 +190,7 @@ watch(
   #vuemastery-action {
     display: block;
     margin: 0px auto;
-    width: 150px;
+    width: max-content;
   }
 }
 </style>

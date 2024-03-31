@@ -46,10 +46,8 @@ shuffleMembers(membersPartnerData as Member[])
       <template #action>
         <VTLink
           href="https://github.com/vuejs/governance/blob/master/Team-Charter.md"
-          >Узнайте больше о командах</VTLink
-        >
-          Learn more about teams
-        </VTLink>
+          >
+          Узнайте больше о командах</VTLink>
       </template>
     </TeamHero>
 
