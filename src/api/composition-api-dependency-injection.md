@@ -38,8 +38,8 @@
   ```
 
 - **См. также**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+  - [Руководство - Provide / Inject](/guide/components/provide-inject)
+  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## inject() {#inject}
 
