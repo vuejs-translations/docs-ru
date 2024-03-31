@@ -587,7 +587,7 @@ export default {
 
 Sometimes you need to force the re-render of a DOM element in order for a transition to occur.
 
-Take this counter component for example.
+Take this counter component for example:
 
 <div class="composition-api">
 

@@ -266,7 +266,7 @@ html:not(.dark) .accent,
 
 @media (max-width: 768px) {
   .tagline {
-    font-size: 48px;
+    font-size: 38px;
     letter-spacing: -0.5px;
   }
 }
