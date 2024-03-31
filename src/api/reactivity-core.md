@@ -114,7 +114,7 @@
   - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
   - [Руководство — Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
   - [Руководство — Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
-  - [Guide - Performance - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
+  - [Руководство — Производительность — Стабильность у computed свойств](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
@@ -255,7 +255,7 @@
 
 - **Подробности**
 
-  Первый аргумент - функция эффекта, которую вы хотите запустить. Функция эффекта это функция, которую можно использовать для регистрации обратного вызова очистки. Обратный вызов очистки будет вызван непосредственно перед следующим повторным запуском эффекта и может использоваться для очистки недействительных сайд эффектов, например. ожидаемый асинхронный запрос (см. пример ниже).
+  Первый аргумент - функция эффекта, которую вы хотите запустить. Функция эффекта это функция, которую можно использовать для регистрации обратного вызова очистки. Обратный вызов очистки будет вызван непосредственно перед следующим повторным запуском эффекта и может использоваться для очистки недействительных сайд эффектов, например, ожидаемый асинхронный запрос (см. пример ниже).
 
   Второй аргумент - необязательный объект параметров, который может быть использован для настройки времени срабатывания эффекта или для отладки зависимостей эффекта.
 
@@ -465,22 +465,22 @@
   })
   ```
 
-  Stopping the watcher:
+  Остановка наблюдателя:
 
   ```js
   const stop = watch(source, callback)
 
-  // when the watcher is no longer needed:
+  // когда наблюдатель больше не нужен:
   stop()
   ```
 
-  Side effect cleanup:
+  Очистка сайд эффекта:
 
   ```js
   watch(id, async (newId, oldId, onCleanup) => {
     const { response, cancel } = doAsyncWork(newId)
-    // `cancel` will be called if `id` changes, cancelling
-    // the previous request if it hasn't completed yet
+    // `cancel` будет вызван при изменении `id`, отменяющий
+    // предыдущий запрос, если он еще не был выполнен
     onCleanup(cancel)
     data.value = await response
   })
