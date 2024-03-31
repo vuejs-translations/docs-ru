@@ -102,10 +102,10 @@
   const baz = inject('factory', () => new ExpensiveObject(), true)
   </script>
   ```
-  
-- **See also**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+
+- **См. также**
+  - [Руководство - Provide / Inject](/guide/components/provide-inject)
+  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
 
