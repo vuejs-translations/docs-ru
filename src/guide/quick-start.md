@@ -363,9 +363,9 @@ import { createApp } from 'vue'
 :::
 
 :::warning Примечание при использовании в production
-На данный момент в примерах используется сборка Vue для разработки. Если вы собираетесь использовать Vue из CDN в рабочей среде, обязательно ознакомьтесь с [Руководством по производственному развертыванию](/guide/best-practices/production-deployment#without-build -инструменты).
+На данный момент в примерах используется сборка Vue для разработки. Если вы собираетесь использовать Vue из CDN в рабочей среде, обязательно ознакомьтесь с [Руководством по производственному развертыванию](/guide/best-practices/production-deployment#without-build-tools).
 
-Хотя можно использовать Vue без системы сборки, можно рассмотреть альтернативный подход — использование [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue), который лучше подходит для контекста, в котором [`jquery/jquery`](https://github.com/jquery/jquery) (в прошлом) или [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (в настоящем) ) можно использовать вместо этого.
+Хотя можно использовать Vue без системы сборки, можно рассмотреть альтернативный подход — использование [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue), который лучше подходит для контекста, в котором [`jquery/jquery`](https://github.com/jquery/jquery) (в прошлом) или [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (в настоящем) можно использовать вместо этого.
 :::
 
 ### Разделение на модули {#splitting-up-the-modules}
