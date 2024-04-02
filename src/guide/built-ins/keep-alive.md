@@ -2,7 +2,7 @@
 import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </script>
 
-# Сохранение состояния {#keepalive}
+# KeepAlive {#keepalive}
 
 `<KeepAlive>` это встроенный компонент, который позволяет условно кэшировать экземпляры компонентов при динамическом переключении между несколькими компонентами.
 

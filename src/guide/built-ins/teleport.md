@@ -1,4 +1,4 @@
-# Телепорт {#teleport}
+# Teleport {#teleport}
 
  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-teleport" title="Бесплатный урок о телепортах во Vue.js"/>
 

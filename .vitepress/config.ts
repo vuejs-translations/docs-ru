@@ -227,15 +227,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Встроенные компоненты',
+      text: 'Built-in Components',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
-          text: 'Переходы в списках',
+          text: 'TransitionGroup',
           link: '/guide/built-ins/transition-group'
         },
-        { text: 'Сохранение состояния', link: '/guide/built-ins/keep-alive' },
-        { text: 'Телепорт', link: '/guide/built-ins/teleport' },
+        { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
+        { text: 'Teleport', link: '/guide/built-ins/teleport' },
         { text: 'Suspense', link: '/guide/built-ins/suspense' }
       ]
     },
