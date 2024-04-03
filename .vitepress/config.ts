@@ -227,7 +227,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Built-in Components',
+      text: 'Встроенные компоненты',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
