@@ -43,7 +43,7 @@ data() {
 <div class="composition-api">
 
 ```js
-const parentMessage = ref('Parent')
+const parentMessage = ref('Родитель')
 const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
 ```
 
