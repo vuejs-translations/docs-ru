@@ -722,14 +722,14 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
 
-    // algolia: {
-    //   indexName: 'vuejs_ru',
-    //   appId: 'ML0LEBN7FQ',
-    //   apiKey: 'f49cbd92a74532cc55cfbffa5e5a7d01',
-    //   searchParameters: {
-    //     facetFilters: ['version:v3']
-    //   }
-    // },
+    algolia: {
+      indexName: 'ru-vuejs',
+      appId: '5RTQ6TI35H',
+      apiKey: 'c4095d6d1e93c25ca93b3ca0030338ef',
+      searchParameters: {
+        facetFilters: ['version:v3']
+      }
+    },
 
     // carbonAds: {
     //   code: 'CEBDT27Y',
