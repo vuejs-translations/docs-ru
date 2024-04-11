@@ -291,7 +291,7 @@ provide('read-only-count', readonly(count))
 
 <div class="options-api">
 
-Чтобы сделать инъекции реактивно связанной с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core#computed):
+Чтобы сделать инъекции реактивно связанными с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core#computed):
 
 ```js{10}
 import { computed } from 'vue'
