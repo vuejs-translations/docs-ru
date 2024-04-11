@@ -141,4 +141,4 @@ export default {
 
 **Связанные**
 
-- [`<KeepAlive>` API reference](/api/built-in-components#keepalive)
+- [Справочник API — `<KeepAlive>`](/api/built-in-components#keepalive)

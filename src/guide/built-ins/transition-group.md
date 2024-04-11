@@ -132,4 +132,4 @@ function onEnter(el, done) {
 
 **Связанные**
 
-- [`<TransitionGroup>` API reference](/api/built-in-components#transitiongroup)
+- [Справочник API — `<TransitionGroup>`](/api/built-in-components#transitiongroup)
