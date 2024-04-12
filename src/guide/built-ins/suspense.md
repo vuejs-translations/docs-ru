@@ -135,6 +135,6 @@ const posts = await res.json()
 
 ---
 
-**Related**
+**Связанное**
 
-- [`<Suspense>` API reference](/api/built-in-components#suspense)
+- [Справочник API — `<Suspense>`](/api/built-in-components#suspense)
