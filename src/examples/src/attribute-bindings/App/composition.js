@@ -4,14 +4,14 @@ export default {
   setup() {
     const message = ref('Привет Мир!')
     const isRed = ref(true)
-    const color = ref('зеленый')
+    const color = ref('green')
 
     function toggleRed() {
       isRed.value = !isRed.value
     }
 
     function toggleColor() {
-      color.value = color.value === 'зеленый' ? 'синий' : 'зеленый'
+      color.value = color.value === 'green' ? 'blue' : 'green'
     }
 
     return {
