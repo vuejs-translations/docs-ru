@@ -7,7 +7,7 @@ export default {
   },
   setup() {
     const searchQuery = ref('')
-    const gridColumns = ['имя', 'сила']
+    const gridColumns = ['name', 'power']
     const gridData = [
       { name: 'Чак Норис', power: Infinity },
       { name: 'Брюс Ли', power: 9000 },
