@@ -86,7 +86,7 @@ const model = defineModel({ required: true })
 const model = defineModel({ default: 0 })
 ```
 
-:::warning
+:::Предупреждение
 Если у вас есть значение `default` для свойства `defineModel`, и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В приведенном ниже примере родительский `myRef` не определен, а дочерний `model` равен 1:
 
 ```js
@@ -507,7 +507,7 @@ export default {
 
 </div>
 
-### Modifiers for `v-model` with arguments {#modifiers-for-v-model-with-arguments}
+### Модификаторы с аргументами для `v-model` {#modifiers-for-v-model-with-arguments}
 
 <div class="options-api">
 
