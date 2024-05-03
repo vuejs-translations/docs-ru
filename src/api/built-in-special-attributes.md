@@ -1,4 +1,4 @@
-# Built-in Special Attributes {#built-in-special-attributes}
+# Встроенные специальные атрибуты {#built-in-special-attributes}
 
 ## key {#key}
 
@@ -82,8 +82,8 @@
 
 - **См. также**
   - [Руководство — Ссылки на элементы шаблона](/guide/essentials/template-refs)
-  - [Guide - Typing Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
-  - [Guide - Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Типизация ссылок на шаблоны](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Типизация ссылок на шаблоны компонентов](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## is {#is}
 
