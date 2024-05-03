@@ -363,7 +363,7 @@
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
-    once?: boolean // default: false (3.4+)
+    once?: boolean // по умолчанию: false (3.4+)
   }
   ```
 

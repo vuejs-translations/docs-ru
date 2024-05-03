@@ -401,7 +401,7 @@
 
 - **Пример**
 
-  Array syntax:
+  Синтаксис массива:
 
   ```js
   export default {
@@ -412,7 +412,7 @@
   }
   ```
 
-  Object syntax:
+  Синтаксис объекта:
 
   ```js
   export default {
