@@ -14,7 +14,7 @@ outline: deep
 
 ```vue-html
 <!-- шаблон <MyButton> -->
-<button>нажми на меня</button>
+<button>Нажми на меня</button>
 ```
 
 И родитель, использующий этот компонент:
@@ -26,7 +26,7 @@ outline: deep
 Окончательный вариант DOM будет выглядеть так:
 
 ```html
-<button class="large">нажми на меня</button>
+<button class="large">Нажми на меня</button>
 ```
 
 В данном случае `<MyButton>` не объявил `class` в качестве принимаемого атрибута. Поэтому `class` рассматривается как обычный атрибут и автоматически добавляется к корневому элементу `<MyButton>`.
@@ -37,13 +37,13 @@ outline: deep
 
 ```vue-html
 <!-- шаблон <MyButton> -->
-<button class="btn">нажми на меня</button>
+<button class="btn">Нажми на меня</button>
 ```
 
 Тогда окончательный DOM будет выглядеть так:
 
 ```html
-<button class="btn large">нажми на меня</button>
+<button class="btn large">Нажми на меня</button>
 ```
 
 ### Наследование слушателей `v-on` {#v-on-listener-inheritance}
@@ -112,7 +112,7 @@ defineOptions({
 
 ```vue-html
 <div class="btn-wrapper">
-  <button class="btn">нажми на меня</button>
+  <button class="btn">Нажми на меня</button>
 </div>
 ```
 
@@ -120,7 +120,7 @@ defineOptions({
 
 ```vue-html{2}
 <div class="btn-wrapper">
-  <button class="btn" v-bind="$attrs">нажми на меня</button>
+  <button class="btn" v-bind="$attrs">Нажми на меня</button>
 </div>
 ```
 

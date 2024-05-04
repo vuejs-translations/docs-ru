@@ -67,7 +67,7 @@ whenDepsChange(update)
 
 Мы не можем отслеживать чтение и запись локальных переменных, как в примере. В обычном JavaScript для этого просто нет механизма. Но что мы **можем** сделать, так это перехватить чтение и запись **свойств объекта**.
 
-Существует два способа перехвата доступа к свойствам в JavaScript: [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) и [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Во Vue 2 геттеры / сеттеры использовались исключительно из-за ограничений поддержки браузерами. Во Vue 3 прокси используются для реактивных объектов, а геттеры / сеттеры - для ссылок. Вот псевдокод, иллюстрирующий их работу:
+Существует два способа перехвата доступа к свойствам в JavaScript: [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) / [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) и [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Во Vue 2 геттеры / сеттеры использовались исключительно из-за ограничений поддержки браузерами. Во Vue 3 прокси используются для реактивных объектов, а геттеры / сеттеры - для ссылок. Вот псевдокод, иллюстрирующий их работу:
 
 ```js{4,9,17,22}
 function reactive(obj) {
@@ -191,7 +191,7 @@ import { ref, watchEffect } from 'vue'
 const count = ref(0)
 
 watchEffect(() => {
-  document.body.innerHTML = `подсчет равен: ${count.value}`
+  document.body.innerHTML = `Подсчет равен: ${count.value}`
 })
 
 // обноление DOM
@@ -409,7 +409,7 @@ export function useMachine(options) {
 
 По сути, сигналы представляют собой те же реактивные примитивы, что и ref-ссылки во Vue. Это контейнер для значений, который обеспечивает отслеживание зависимостей при доступе и вызов побочных эффектов при изменении. Парадигма, основанная на таких реактивных примитивах, не является новым концептом в мире фронтенда: она уходит корнями на десятки лет назад в такие реализации, как [Knockout observables](https://knockoutjs.com/documentation/observables.html) и [Meteor Tracker](https://docs.meteor.com/api/tracker.html). Options API Vue и библиотека управления состоянием React [MobX](https://mobx.js.org/) также основаны на таких же принципах, но скрывают примитивы за свойствами объектов.
 
-Хотя это не является обязательным свойством для того, чтобы что-то квалифицировалось как сигналы, сегодня эта концепция часто обсуждается в контексте модели рендеринга, где обновления выполняются через детальные подписки. Из-за использования виртуального DOM в настоящее время Vue [полагается на компиляторы для достижения подобных оптимизаций](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). Тем не менее, мы также исследуем новую стратегию компиляции, вдохновленную Solid (режим Vapor), которая не зависит от виртуального DOM и более полно использует встроенную реактивную систему Vue.
+Хотя это не является обязательным свойством для того, чтобы что-то квалифицировалось как сигналы, сегодня эта концепция часто обсуждается в контексте модели рендеринга, где обновления выполняются через детальные подписки. Из-за использования виртуального DOM в настоящее время Vue [полагается на компиляторы для достижения подобных оптимизаций](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). Тем не менее, мы также исследуем новую стратегию компиляции, вдохновленную Solid [режим Vapor](https://github.com/vuejs/core-vapor), которая не зависит от виртуального DOM и более полно использует встроенную реактивную систему Vue.
 
 ### Компромисы дизайнов API {#api-design-trade-offs}
 

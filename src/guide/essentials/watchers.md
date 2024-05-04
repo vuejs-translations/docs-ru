@@ -109,7 +109,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 ### Типы источников watch {#watch-source-types}
 
-Первым аргументом `watch` могут быть различные типы реактивных "источников": это может быть ref (включая вычисляемые refs), реактивный объект, геттер-функция или массив из нескольких источников:
+Первым аргументом `watch` могут быть различные типы реактивных "источников": это может быть ref (включая вычисляемые refs), реактивный объект, [геттер-функция](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) или массив из нескольких источников:
 
 ```js
 const x = ref(0)
@@ -141,7 +141,7 @@ const obj = reactive({ count: 0 })
 
 // это не сработает, потому что мы передаем число в watch()
 watch(obj.count, (count) => {
-  console.log(`count равен: ${count}`)
+  console.log(`Счетчик равен: ${count}`)
 })
 ```
 
@@ -152,7 +152,7 @@ watch(obj.count, (count) => {
 watch(
   () => obj.count,
   (count) => {
-    console.log(`count равен: ${count}`)
+    console.log(`Счетчик равен: ${count}`)
   }
 )
 ```
@@ -279,7 +279,7 @@ watch(
 Обратный вызов наблюдателя будет выполняться всякий раз, когда изменяется отслеживаемый источник. Если вы хотите, чтобы обратный вызов запускался только один раз при изменении источника, используйте параметр `once: true`.
 
 <div class="options-api">
-  
+
 ```js
 export default {
   watch: {

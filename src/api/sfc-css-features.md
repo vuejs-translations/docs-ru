@@ -120,7 +120,7 @@
 
 Полученные классы хэшируются во избежание коллизий, что позволяет добиться того же эффекта, что и при выборе CSS с ограниченной областью действия только для текущего компонента.
 
-Обратитесь к [спецификации CSS модулей](https://github.com/css-modules/css-modules) для получения более подробной информации, такой как [глобальные исключения](https://github.com/css-modules/css-modules#exceptions) и [композиция](https://github.com/css-modules/css-modules#composition).
+Обратитесь к [спецификации CSS модулей](https://github.com/css-modules/css-modules) для получения более подробной информации, такой как [глобальные исключения](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#exceptions) и [композиция](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#composition).
 
 ### Внедрение пользовательского имени {#custom-inject-name}
 
@@ -183,9 +183,10 @@ export default {
 
 ```vue
 <script setup>
-const theme = {
-  color: 'red'
-}
+import { ref } from 'vue'
+const theme = ref({
+    color: 'red',
+})
 </script>
 
 <template>
