@@ -10,6 +10,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@hywax/vitepress-yandex-metrika": "^0.3.4",
     "@vue/repl": "^4.0.1",
     "@vue/theme": "^2.2.5",
     "dynamics.js": "^1.1.5",

@@ -1,5 +1,7 @@
 import './styles/index.css'
-import { h, App } from 'vue'
+import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
+import type { EnhanceAppContext } from 'vitepress'
+import { h } from 'vue'
 import { VPTheme } from '@vue/theme'
 import PreferenceSwitch from './components/PreferenceSwitch.vue'
 import {
@@ -22,11 +24,21 @@ export default Object.assign({}, VPTheme, {
       'aside-mid': () => h(SponsorsAside)
     })
   },
-  enhanceApp({ app }: { app: App }) {
-    app.provide('prefer-composition', preferComposition)
-    app.provide('prefer-sfc', preferSFC)
-    app.provide('filter-headers', filterHeadersByPreference)
-    app.component('VueSchoolLink', VueSchoolLink)
+  enhanceApp(ctx: EnhanceAppContext) {
+    ctx.app.provide('prefer-composition', preferComposition)
+    ctx.app.provide('prefer-sfc', preferSFC)
+    ctx.app.provide('filter-headers', filterHeadersByPreference)
+    ctx.app.component('VueSchoolLink', VueSchoolLink)
     // app.component('TextAd', TextAd)
+
+    yandexMetrika(ctx, {
+      enabled: import.meta.env.MODE === 'production',
+      counter: {
+        id: 97196107,
+        initParams: {
+          trustedDomains: ['ru.vuejs.org']
+        },
+      },
+    })
   }
 })
