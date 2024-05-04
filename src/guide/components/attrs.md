@@ -75,11 +75,11 @@ outline: deep
 
 ## Отключение наследования атрибутов {#disabling-attribute-inheritance}
 
-Если **необходимо отключить** автоматическое наследование атрибутов компонентом, то это можно сделав с помощью опции `inheritAttrs: false`.
+Если **необходимо отключить** автоматическое наследование атрибутов компонентом, то это можно сделать с помощью опции `inheritAttrs: false`.
 
 <div class="composition-api">
 
-Начиная с версии 3.3 вы также можете использовать [`defineOptions`](/api/sfc-script-setup#defineoptions) непосредственно в `<script setup>`:
+Начиная с версии 3.3, вы также можете использовать [`defineOptions`](/api/sfc-script-setup#defineoptions) непосредственно в `<script setup>`:
 
 ```vue
 <script setup>

@@ -18,7 +18,7 @@ if (typeof window !== 'undefined') {
 }
 </script>
 
-# Component Events {#component-events}
+# События компонентов {#component-events}
 
 > Подразумевается, что вы уже изучили и разобрались с разделом [Основы компонентов](/guide/essentials/component-basics). Если нет — прочитайте его сначала.
 
