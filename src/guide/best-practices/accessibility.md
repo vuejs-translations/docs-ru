@@ -154,8 +154,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 Обратите внимание, можно добавить `autocomplete='on'` к самому элементу формы, и этот атрибут применится ко всем полям формы. Каждому полю можно задать свои [значения атрибута autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
 
 ### Метки {#labels}
@@ -166,8 +164,6 @@ watch(
 <label for="name">Название:</label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
-
-<!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 Если посмотреть элемент через инструменты разработки (например, DevTools в браузере Chrome) и перейти на вкладку Accessibility внутри раздела Elements, то можно увидеть, что имя поля извлекается из связанной с ним метки:
 
@@ -201,8 +197,6 @@ watch(
 />
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 Можно убедиться самостоятельно что имя элемента изменилось с помощью инструментов разработки Chrome DevTools:
 
 ![Инструменты разработчика в Chrome показывают имя поля из aria-label](./images/AccessibleARIAlabelDevTools.png)
@@ -232,8 +226,6 @@ watch(
   <button type="submit">Отправить</button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
@@ -265,9 +257,7 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
-Через Chrome DevTools можно увидеть применённое описание:
+Вы можете просмотреть описание, заглянув в Chrome DevTools:
 
 ![Инструменты разработчика в Chrome показывают имя поля из aria-labelledby и описание с использованием aria-describedby](./images/AccessibleARIAdescribedby.png)
 
@@ -352,8 +342,6 @@ watch(
 </fieldset>
 ```
 
-<!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ### Скрытие содержимого {#hiding-content}
 
 Обычно не рекомендуется визуально скрывать лейблы, даже если для поля ввода задано вспомогательное имя. Тем не менее, если смысл поля понятен из контекста, то лейбл можно скрыть.
@@ -386,8 +374,6 @@ watch(
 }
 ```
 
-<!-- <common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 #### `aria-hidden="true"` {#aria-hidden-true}
 
 Добавление `aria-hidden="true"` скроет элемент от обнаружения вспомогательными технологиями, но оставит его визуально доступным для остальных пользователей. Не используйте его на фокусируемых элементах, только для декоративных, дублирующихся или не отображаемых на экране элементов.
@@ -413,8 +399,6 @@ watch(
   <input type="submit" value="Отправить" />
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ### Функциональные изображения {#functional-images}
 
@@ -449,8 +433,6 @@ watch(
   </button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ## Стандарты {#standards}
 

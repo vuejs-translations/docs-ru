@@ -19,7 +19,7 @@ function update() {
 </script>
 
 <template>
-  <div>parent bound v-model is: {{ model }}</div>
+  <div>Parent bound v-model is: {{ model }}</div>
 </template>
 ```
 
@@ -47,7 +47,7 @@ const model = defineModel()
 </template>
 ```
 
-[Полный пример](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
 
 ### Под капотом {#under-the-hood}
 
@@ -59,6 +59,7 @@ const model = defineModel()
 Вот как вы бы реализовали тот же дочерний компонент, который был показан выше до версии 3.4:
 
 ```vue
+<!-- Child.vue -->
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -72,7 +73,17 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-Как видите, это гораздо более многословно. Тем не менее полезно знать, что происходит под капотом.
+Then, `v-model="modelValue"` in the parent component will be compiled to:
+
+```vue-html
+<!-- Parent.vue -->
+<Child
+  :modelValue="foo"
+  @update:modelValue="$event => (foo = $event)"
+/>
+```
+
+As you can see, it is quite a bit more verbose. However, it is helpful to understand what is happening under the hood.
 
 Поскольку `defineModel` объявляет входные параметры, вы можете также объявить входные параметры основного свойства, передав его в `defineModel`:
 
@@ -211,7 +222,7 @@ const title = defineModel('title')
 </template>
 ```
 
-[Попробовать в песочнице](https://play.vuejs.org/#eNqFkl9PwjAUxb9K05dhglsMb2SQqOFBE9Soj31Zxh0Uu7bpHxxZ9t29LWOiQXzaes7p2a+9a+mt1unOA53S3JaGa0csOK/nTPJaK+NISwxUpCOVUTVJMJoM1nJ/r/BNgnS9nWYnWujFMCFMlkpaRxx3AsgsFI6S3XWtViBIYda+Dg3QFLUWkFwxmWcHFqTAhQPUCwe4IiTf3Mzbtq/qujzDddRPYfruaUzNGI1PRkmG0Twb+uiY/sI9cw0/0VdQcQnL0D5KovgfL5fa4/69jiDQOOTo+S6SOYtfrvg63VolkauNN0lLxOUCzLN2HMkYnZLoBK8QQn0+Rs0ZD+OjXm6g/Dijb20TNEZfDFgwOwQZPIdzAWQN9uLtKXIPJtL7gH3BfAWrhA+Mh9idlyvEPslF2of4J3G5freLxoG0x0MF0JDsYp5RHE6Y1F9H/8adpJO4j8mOdl/Hw/nf)
+[Попробовать в песочнице](https://play.vuejs.org/#eNqFU9tu2zAM/RVBKOAWyGIM25PhFbugDxuwC7a+VX3wEiZ1K0uCRHkuDP/7SKlxk16BILbIQ/KcQ3mUn5xb9hFkJeuw8q3DU2XazlmP4vvtF0tvBgyKjbedKJblXozLCmWUgSHB17BpokYxKiPEaocKlRgPOk0Lzq8bbI5PMlYIDxi92Z2E+GvtzXmLGipR9G86uwYtGr+NHTeAoemc5tEMnfhBf/Sry1kBHRAI1SDQSYj66u3pON73FdNUlxRLuX12d9MqZNQHJecKJUVJ8Lqc+8qFfODGgYlPueK8dWTIRZHaF5fJCuhadumiiI5cgTy6uHxVUmtcxGwC3jomizCgkjlU9Y2OKZjZ5+jHVETRI556fDhyIY6gZylIXgMp4g4nufSxdgwrazbtdnkdrCHlSaCSvPhWg//psLUmKEn7z7OVbLS2/76lGPoISX2quYLVzRPx6zBwTMlfHgL4nmTMucwxp8/+/EjK5yTtMLLoF5K/IVgdmWOGfY5mTbT3cInt1/QptGZ7Hs4GBBN2ophounoJryStn+/Cc9Lv6b5bvt9dWTn9B6F1Lrs=)
 
 Если необходимо передать входные параметры, то их следует передавать после имени модели:
 
@@ -546,7 +557,7 @@ const [firstName, firstNameModifiers] = defineModel('firstName')
 const [lastName, lastNameModifiers] = defineModel('lastName')
 
 console.log(firstNameModifiers) // { capitalize: true }
-console.log(lastNameModifiers) // { uppercase: true}
+console.log(lastNameModifiers) // { uppercase: true }
 </script>
 ```
 
@@ -564,7 +575,7 @@ lastNameModifiers: { default: () => ({}) }
 defineEmits(['update:firstName', 'update:lastName'])
 
 console.log(props.firstNameModifiers) // { capitalize: true }
-console.log(props.lastNameModifiers) // { uppercase: true}
+console.log(props.lastNameModifiers) // { uppercase: true }
 </script>
 ```
 
@@ -588,7 +599,7 @@ export default {
   emits: ['update:firstName', 'update:lastName'],
   created() {
     console.log(this.firstNameModifiers) // { capitalize: true }
-    console.log(this.lastNameModifiers) // { uppercase: true}
+    console.log(this.lastNameModifiers) // { uppercase: true }
   }
 }
 </script>

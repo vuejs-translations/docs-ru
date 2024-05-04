@@ -199,7 +199,7 @@ const { data, error } = useFetch(url)
 url.value = '/new-url'
 ```
 
-Или передать геттер-функцию:
+Или передать [геттер-функцию](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description):
 
 ```js
 // повторно выполнить запрос при изменении props.id

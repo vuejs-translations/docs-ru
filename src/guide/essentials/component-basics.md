@@ -469,6 +469,7 @@ export default {
 Такого можно добиться при помощи пользовательского элемента `<slot>` у Vue:
 
 ```vue{4}
+<!-- AlertBox.vue -->
 <template>
   <div class="alert-box">
     <strong>Эта ошибка для демонстрационных целей</strong>

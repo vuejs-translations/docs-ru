@@ -49,7 +49,7 @@ const nav: ThemeConfig['nav'] = [
           { text: 'UI компоненты', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'Сертификация',
-            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+            link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
           },
           { text: 'Вакансии', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
@@ -113,6 +113,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: 'Нормы поведения', link: '/about/coc' },
+      { text: 'Политика конфиденциальности', link: '/about/privacy' },
       {
         text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
@@ -636,22 +637,30 @@ export default defineConfigWithTheme<ThemeConfig>({
         'utf-8'
       )
     ],
-    // [
-    //   'script',
-    //   {
-    //     src: 'https://cdn.usefathom.com/script.js',
-    //     'data-site': 'XNOLWPLB',
-    //     'data-spa': 'auto',
-    //     defer: ''
-    //   }
-    // ],
-    // [
-    //   'script',
-    //   {
-    //     src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
-    //     async: 'true'
-    //   }
-    // ]
+    [
+      'script',
+      {},
+      fs.readFileSync(
+        path.resolve(__dirname, './inlined-scripts/uwu.js'),
+        'utf-8'
+      )
+    ],
+    [
+      'script',
+      {
+        src: 'https://cdn.usefathom.com/script.js',
+        'data-site': 'XNOLWPLB',
+        'data-spa': 'auto',
+        defer: ''
+      }
+    ],
+    [
+      'script',
+      {
+        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
+        async: 'true'
+      }
+    ]
   ],
 
   themeConfig: {

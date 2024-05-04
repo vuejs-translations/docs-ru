@@ -389,13 +389,18 @@ defineProps({
     type: String,
     required: true
   },
-  // Число со значением по умолчанию
+  // Required but nullable string
   propD: {
+    type: [String, null],
+    required: true
+  },
+  // Number with a default value
+  propE: {
     type: Number,
     default: 100
   },
   // Объект со значением по умолчанию
-  propE: {
+  propF: {
     type: Object,
     // Для объектов или массивов значения по умолчанию
     // должны возвращаться из функции. Функция получает необработанные
@@ -406,16 +411,17 @@ defineProps({
   },
   // Пользовательская функция для валидации
   // полный перечень входных параметров передается в качестве 2-го аргумента в 3.4+
-  propF: {
+  propG: {
     validator(value, props) {
       // Значение должно соответствовать одной из этих строк
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
   // Функция с значением по умолчанию
-  propG: {
+  propH: {
     type: Function,
-    // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, служащая в качестве значения по умолчанию
+    // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, 
+    // служащая в качестве значения по умолчанию
     default() {
       return 'Функция по умолчанию'
     }
@@ -443,13 +449,18 @@ export default {
       type: String,
       required: true
     },
-    // Число со значением по умолчанию
+    // Required but nullable string
     propD: {
+      type: [String, null],
+      required: true
+    },
+    // Число со значением по умолчанию
+    propE: {
       type: Number,
       default: 100
     },
     // Объект со значением по умолчанию
-    propE: {
+    propF: {
       type: Object,
       // Для объектов или массивов значения по умолчанию
       // должны возвращаться из функции. Функция получает необработанные
@@ -460,16 +471,17 @@ export default {
     },
     // Пользовательская функция для валидации
     // полный перечень входных параметров передается в качестве 2-го аргумента в 3.4+
-    propF: {
+    propG: {
       validator(value, props) {
         // Значение должно соответствовать одной из этих строк
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // Функция с значением по умолчанию
-    propG: {
+    propH: {
       type: Function,
-      // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, служащая в качестве значения по умолчанию
+      // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, 
+      // служащая в качестве значения по умолчанию
       default() {
         return 'Функция по умолчанию'
       }
@@ -555,6 +567,39 @@ export default {
 
 Vue будет использовать `instanceof Person` для проверки того, действительно ли значение входного параметра `author` является экземпляром класса `Person`.
 
+### Nullable Type {#nullable-type}
+
+If the type is required but nullable, you can use the array syntax that includes `null`:
+
+<div class="composition-api">
+
+```js
+defineProps({
+  id: {
+    type: [String, null],
+    required: true
+  }
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  props: {
+    id: {
+      type: [String, null],
+      required: true
+    }
+  }
+}
+```
+
+</div>
+
+Note that if `type` is just `null` without using the array syntax, it will allow any type.
+
 ## Булево преобразование {#boolean-casting}
 
 Входные параметры с типом `Boolean` имеют специальные правила приведения, чтобы имитировать поведение собственных булевых атрибутов. Дан  `<MyComponent>` со следующим объявлением:
@@ -626,7 +671,7 @@ export default {
     disabled: [Boolean, Number]
   }
 }
-  
+
 // disabled будет преобразован в true
 export default {
   props: {
@@ -640,7 +685,7 @@ export default {
     disabled: [Number, Boolean]
   }
 }
-  
+
 // disabled будет разобран как пустая строка (disabled="")
 export default {
   props: {
