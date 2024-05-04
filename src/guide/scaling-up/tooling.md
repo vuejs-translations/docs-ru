@@ -113,7 +113,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - [Документация](https://devtools.vuejs.org/)
 - [Расширение для Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Расширение для Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- - [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
+- [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
 - [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}
