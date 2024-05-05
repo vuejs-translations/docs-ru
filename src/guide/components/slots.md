@@ -296,14 +296,13 @@ function BaseLayout(slots) {
 }
 ```
 
-## Conditional Slots {#conditional-slots}
+## Условные слоты {#conditional-slots}
 
-Sometimes you want to render something based on whether or not a slot is present. 
+Иногда вы хотите отрендерить что-то в зависимости от того, присутствует ли слот или нет. 
 
-You can use the [$slots](/api/component-instance.html#slots) property in combination with a [v-if](/guide/essentials/conditional.html#v-if) to achieve this.
+Вы можете использовать свойство [$slots](/api/component-instance.html#slots) в сочетании с [v-if](/guide/essentials/conditional.html#v-if) для достижения этой цели.
 
-In the example below we define a Card component with three conditional slots: `header`, `footer` and the `default` one.
-When the header / footer / default is present we want to wrap them to provide additional styling:
+В приведенном ниже примере мы определяем компонент Card с тремя условными слотами: `header`, `footer` и `default`. Когда присутствует header / footer / default, мы хотим обернуть их, чтобы обеспечить дополнительную стилизацию:
 
 ```vue-html
 <template>
