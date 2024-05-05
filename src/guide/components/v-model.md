@@ -73,7 +73,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-Then, `v-model="modelValue"` in the parent component will be compiled to:
+Затем `v-model="modelValue"` в родительском компоненте будет скомпилирован в:
 
 ```vue-html
 <!-- Parent.vue -->
@@ -83,7 +83,7 @@ Then, `v-model="modelValue"` in the parent component will be compiled to:
 />
 ```
 
-As you can see, it is quite a bit more verbose. However, it is helpful to understand what is happening under the hood.
+Как вы можете видеть, это требует чуть больше кода. Тем не менее, полезно знать, что происходит под капотом.
 
 Поскольку `defineModel` объявляет входные параметры, вы можете также объявить входные параметры основного свойства, передав его в `defineModel`:
 

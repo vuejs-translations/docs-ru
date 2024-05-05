@@ -389,12 +389,12 @@ defineProps({
     type: String,
     required: true
   },
-  // Required but nullable string
+  // Обязательное, но нулевое значение строкового типа
   propD: {
     type: [String, null],
     required: true
   },
-  // Number with a default value
+  // Число со значением по умолчанию
   propE: {
     type: Number,
     default: 100
@@ -449,7 +449,7 @@ export default {
       type: String,
       required: true
     },
-    // Required but nullable string
+    // Обязательное, но нулевое значение строкового типа
     propD: {
       type: [String, null],
       required: true
@@ -567,9 +567,9 @@ export default {
 
 Vue будет использовать `instanceof Person` для проверки того, действительно ли значение входного параметра `author` является экземпляром класса `Person`.
 
-### Nullable Type {#nullable-type}
+### Обнуляемый Тип {#nullable-type}
 
-If the type is required but nullable, you can use the array syntax that includes `null`:
+Если тип является обязательным, но допускает значение null, вы можете использовать синтаксис массива, который включает `null`:
 
 <div class="composition-api">
 
@@ -598,7 +598,7 @@ export default {
 
 </div>
 
-Note that if `type` is just `null` without using the array syntax, it will allow any type.
+Обратите внимание, что если `type` просто равен `null` без использования синтаксиса массива, то будет разрешен любой тип.
 
 ## Булево преобразование {#boolean-casting}
 
