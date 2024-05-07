@@ -505,7 +505,7 @@ export default {
 
 </div>
 
-### Модификаторы с `v-model` с аргументами {#modifiers-for-v-model-with-arguments}
+### Модификаторы с аргументами для `v-model` {#modifiers-for-v-model-with-arguments}
 
 <div class="options-api">
 
