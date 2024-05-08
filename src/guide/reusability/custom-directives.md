@@ -210,8 +210,8 @@ app.directive('demo', (el, binding) => {
 
 ## Использование в компонентах {#usage-on-components}
 
-:::warning Not recommended
-Using custom directives on components is not recommended, unexpected behaviour may occur when a component has multiple root nodes.
+:::warning Не рекомендуется
+Использование пользовательских директив для компонентов не рекомендуется, так как может вызвать непредвиденное поведение при наличии у компонента нескольких корневых узлов.
 :::
 
 При использовании в компонентах пользовательские директивы всегда будут применяться к корневому узлу компонента, аналогично [передаче обычных атрибутов](/guide/components/attrs.html).

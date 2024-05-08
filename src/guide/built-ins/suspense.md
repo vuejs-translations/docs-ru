@@ -133,9 +133,9 @@ const posts = await res.json()
 
 Во Vue Router встроена поддержка [ленивой загрузки компонентов](https://vue-router-ru.netlify.app/guide/advanced/lazy-loading.html) с помощью динамического импорта. Они отличаются от асинхронных компонентов и в настоящее время не вызывают `<Suspense>`. Однако они могут иметь в качестве потомков асинхронные компоненты, которые могут вызывать `<Suspense>` обычным способом.
 
-## Nested Suspense {#nested-suspense}
+## Вложенные Suspense {#nested-suspense}
 
-When we have multiple async components (common for nested or layout-based routes) like this:
+Когда у нас есть несколько асинхронных компонентов (обычно для вложенных или основанных на лаяуте маршрутов), как например:
 
 ```vue-html
 <Suspense>
@@ -145,21 +145,21 @@ When we have multiple async components (common for nested or layout-based routes
 </Suspense>
 ```
 
-`<Suspense>` creates a boundary that will resolve all the async components down the tree, as expected. However, when we change `DynamicAsyncOuter`, `<Suspense>` awaits it correctly, but when we change `DynamicAsyncInner`, the nested `DynamicAsyncInner` renders an empty node until it has been resolved (instead of the previous one or fallback slot).
+`<Suspense>` создает "границу", которая будет регулировать все асинхронные компоненты вниз по дереву, как и ожидается. Однако, когда мы изменяем `DynamicAsyncOuter`, `<Suspense>` это корректно обрабатывает, но когда мы изменяем `DynamicAsyncInner`, вложенный `DynamicAsyncInner` отображает пустой node-узел, пока он не будет разрешен (вместо предыдущего или fallback-слота).
 
-In order to solve that, we could have a nested suspense to handle the patch for the nested component, like:
+Чтобы решить эту проблему, мы могли бы иметь вложенный `<Suspense>` для обработки патча для вложенного компонента, например:
 
 ```vue-html
 <Suspense>
   <component :is="DynamicAsyncOuter">
-    <Suspense suspensible> <!-- this -->
+    <Suspense suspensible> <!-- этот -->
       <component :is="DynamicAsyncInner" />
     </Suspense>
   </component>
 </Suspense>
 ```
 
-If you don't set the `suspensible` prop, the inner `<Suspense>` will be treated like a sync component by the parent `<Suspense>`. That means that it has its own fallback slot and if both `Dynamic` components change at the same time, there might be empty nodes and multiple patching cycles while the child `<Suspense>` is loading its own dependency tree, which might not be desirable. When it's set, all the async dependency handling is given to the parent `<Suspense>` (including the events emitted) and the inner `<Suspense>` serves solely as another boundary for the dependency resolution and patching.
+Если вы не установите параметр `suspensible`, внутренний `<Suspense>` будет рассматриваться родительским `<Suspense>` как синхронным компонентом. Это означает, что у него есть свой собственный fallback-слот, и если оба компонента `Dynamic` изменятся одновременно, могут возникнуть пустые node-узлы и несколько циклов исправления, пока дочерний `<Suspense>` будет загружать свое собственное дерево зависимостей, что может быть нежелательно. Когда этот параметр установлен, вся асинхронная обработка зависимостей передается родительскому `<Suspense>` (включая пользовательские события), а внутренний `<Suspense>` служит только как еще одна "граница" для разрешения зависимостей и исправления.
 
 ---
 

@@ -76,7 +76,6 @@ const props = defineProps<{
 .price {
   text-align: right;
   flex-shrink: 0;
-  width: 56px;
 }
 
 .value {

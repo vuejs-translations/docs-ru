@@ -408,7 +408,7 @@ export default {
     const count = ref(0)
     return { count }
   },
-  template: `<div>Count is: {{ count }}</div>`
+  template: `<div>Счётчик: {{ count }}</div>`
 }
 ```
 
