@@ -23,11 +23,11 @@
       <div class="vm-banner-wrapper">
         <div class="vm-banner-content">
           <h1 class="vm-banner-title">
-            FREE WEEKEND <span>MAY 10-12</span>
+            БЕСПЛАТНЫЕ ВЫХОДНЫЕ <span>10-12 МАЯ</span>
           </h1>
-          <p class="vm-banner-sub">Watch all Vue Mastery courses free</p>
+          <p class="vm-banner-sub">Смотрите все Vue Mastery курсы бесплатно</p>
         </div>
-        <button id="vm-banner-cta">Get Access</button>
+        <button id="vm-banner-cta">Получить доступ</button>
       </div>
       <button id="vm-banner-close" @click.prevent="closeBanner">
         <VTIconPlus class="close" />

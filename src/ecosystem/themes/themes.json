@@ -1,48 +1,48 @@
 [
   {
     "name": "Creative Tim",
-    "description": "With the examples below built by our partners from [Creative Tim](https://creative-tim.com?affiliate_id=116187) you can see how a real-world application is built, the technology stack behind it and how most of the concepts you've learned so far apply in a real-world application.",
+    "description": "На примерах, созданных нашими партнерами из [Creative Tim](https://creative-tim.com?affiliate_id=116187), вы можете увидеть, как создается реальное приложение, какой технологический стек за ним стоит и как большинство концепций, которые вы изучили до сих пор, применяются в реальном приложении.",
     "seeMoreUrl": "https://www.creative-tim.com/bootstrap-themes/vuejs-themes?affiliate_id=116187",
     "products": [
       {
         "name": "Vue Argon Design System",
         "price": 0,
-        "description": "Free Vue.js Design System",
+        "description": "Бесплатная дизайн-система для Vue.js",
         "url": "https://www.creative-tim.com/product/vue-argon-design-system?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-argon-design-system/vue-argon-design-system.jpg"
       },
       {
         "name": "Vue Black Dashboard Pro",
         "price": 59,
-        "description": "Premium Vue.js Admin Template",
+        "description": "Премиальный шаблон для административных панелей Vue.js",
         "url": "https://www.creative-tim.com/product/vue-black-dashboard-pro?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard-pro/vue-black-dashboard-pro.jpg"
       },
       {
         "name": "Vue Paper Dashboard 2 Pro",
         "price": 59,
-        "description": "Premium Vue.js Admin Template",
+        "description": "Премиальный шаблон для административных панелей Vue.js",
         "url": "https://www.creative-tim.com/product/vue-paper-dashboard-2-pro?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard-pro/vue-black-dashboard-pro.jpg"
       },
       {
         "name": "Vue Material Kit",
         "price": 0,
-        "description": "Free Vue.js UI Kit",
+        "description": "Бесплатная Vue.js UI-библиотека",
         "url": "https://www.creative-tim.com/product/vue-material-kit?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-material-kit/vue-material-kit.jpg"
       },
       {
         "name": "Vue Black Dashboard",
         "price": 0,
-        "description": "Free Vue.js Admin Template",
+        "description": "Премиальный шаблон для административных панелей Vue.js",
         "url": "https://www.creative-tim.com/product/vue-black-dashboard?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard/vue-black-dashboard.jpg"
       },
       {
         "name": "Vue Now UI Kit Pro",
         "price": 79,
-        "description": "Premium Vue.js UI Kit",
+        "description": "Бесплатная Vue.js UI-библиотека",
         "url": "https://www.creative-tim.com/product/vue-now-ui-kit-pro?affiliate_id=116187",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-now-ui-kit-pro/vue-now-ui-kit-pro.jpg"
       }
@@ -50,48 +50,48 @@
   },
   {
     "name": "MDBootstrap",
-    "description": "Check out the themes, UI Kits and plugins below built by our partners from [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Learn how to use Vue in professional projects along such technologies as Bootstrap. Templates & ready components make your development faster and more efficient.",
+    "description": "Ознакомьтесь с темами, UI-библиотеками и плагинами, созданными нашими партнерами из [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Узнайте, как использовать Vue в профессиональных проектах вместе с такими технологиями, как Bootstrap. Шаблоны и готовые компоненты сделают вашу разработку быстрее и эффективнее.",
     "seeMoreUrl": "https://mdbootstrap.com/docs/vue/?utm_ref_id=82665",
     "products": [
       {
         "url": "https://mdbootstrap.com/docs/vue/pro/?utm_ref_id=82665",
         "name": "Vue Material Bootstrap Pro",
-        "description": "Premium Vue.js UI Kit",
+        "description": "Премиальная Vue.js UI-библиотека",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/ui-kit.jpg",
         "price": 199
       },
       {
         "url": "https://mdbootstrap.com/docs/vue/?utm_ref_id=82665",
         "name": "Vue Material Bootstrap Kit",
-        "description": "Free Vue.js UI Kit",
+        "description": "Бесплатная Vue.js UI-библиотека",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/ui-kit.jpg",
         "price": 0
       },
       {
         "url": "https://mdbootstrap.com/docs/vue/templates/admin-dashboard/?utm_ref_id=82665",
         "name": " Vue Admin Bootstrap Pro",
-        "description": "Premium Vue.js Templates Pack",
+        "description": "Премиальный набор шаблонов Vue.js",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/admin-pack.jpg",
         "price": 199
       },
       {
         "url": "https://mdbootstrap.com/freebies/vue/admin-dashboard?utm_ref_id=82665",
         "name": "Vue Admin Bootstrap",
-        "description": "Free Vue.js Templates Pack",
+        "description": "Бесплатный набор шаблонов Vue.js",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/admin-pack.jpg",
         "price": 0
       },
       {
         "url": "https://mdbootstrap.com/docs/vue/plugins/calendar/?utm_ref_id=82665",
         "name": "Vue Calendar Bootstrap",
-        "description": "Premium Vue.js Plugin",
+        "description": "Премиальный Vue.js плагин",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/plugins/calendar.jpg",
         "price": 199
       },
       {
         "url": "https://mdbootstrap.com/docs/vue/plugins/color-picker/?utm_ref_id=82665",
         "name": "Vue Color Picker Bootstrap",
-        "description": "Premium Vue.js Plugin",
+        "description": "Премиальный Vue.js плагин",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/plugins/color-picker.jpg",
         "price": 199
       }
@@ -99,48 +99,48 @@
   },
   {
     "name": "PrimeVue",
-    "description": "The open-source UI component library [PrimeVue](https://www.primefaces.org/primevue/?af_id=4218) offers over 90 flexible components to build your apps with! They have a ton of different component themes and application templates available to get the look & feel that suits you best.",
+    "description": "Библиотека компонентов пользовательского интерфейса с открытым исходным кодом [PrimeVue](https://www.primefaces.org/primevue/?af_id=4218) предлагает более 90 гибких компонентов для создания ваших приложений! У них есть тонна различных тем компонентов и шаблонов приложений, чтобы получить то, что вам больше всего нравится.",
     "seeMoreUrl": "https://www.primefaces.org/primevue/?af_id=4218",
     "products": [
       {
         "name": "Sakai",
         "price": 0,
-        "description": "Free Admin Template",
+        "description": "Бесплатный шаблон для административных панелей",
         "url": "https://www.primefaces.org/sakai-vue/#/?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/sakai.jpg"
       },
       {
         "name": "Apollo",
         "price": 59,
-        "description": "Next-Gen Application Template",
+        "description": "Шаблон приложений нового поколения",
         "url": "https://www.primefaces.org/layouts/apollo-vue?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/apollo.jpg"
       },
       {
         "name": "Atlantis",
         "price": 59,
-        "description": "Premium Admin Template",
+        "description": "Премиальный шаблон для административных панелей",
         "url": "https://www.primefaces.org/layouts/atlantis-vue?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/atlantis.jpg"
       },
       {
         "name": "Freya",
         "price": 59,
-        "description": "Premium Admin Template",
+        "description": "Премиальный шаблон для административных панелей",
         "url": "https://www.primefaces.org/layouts/freya-vue?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/freya.jpg"
       },
       {
         "name": "Ultima",
         "price": 79,
-        "description": "Material Design Admin Template",
+        "description": "Шаблон для административных панелей в Material Design стиле",
         "url": "https://www.primefaces.org/layouts/ultima-vue?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/ultima.jpg"
       },
       {
         "name": "Diamond",
         "price": 59,
-        "description": "PrimeOne Design Admin Template",
+        "description": "Шаблон для административных панелей в PrimeOne стиле",
         "url": "https://www.primefaces.org/layouts/diamond-vue?af_id=4218",
         "image": "https://www.primefaces.org/vue-templates/diamond.jpg"
       }
@@ -148,48 +148,48 @@
   },
   {
     "name": "Flatlogic",
-    "description": "Check out the admin dashboard templates built by our partners from [Flatlogic](https://flatlogic.com/templates?ref=x-fdkuTAVW). With these themes you can see how real applications are built. Additionally, these templates will help you to start a new application and save you time and money.",
+    "description": "Ознакомьтесь с шаблонами административных панелей, созданными нашими партнерами из [Flatlogic](https://flatlogic.com/templates?ref=x-fdkuTAVW). С помощью этих тем вы сможете увидеть, как создаются реальные приложения. Кроме того, эти шаблоны помогут вам начать новое приложение и сэкономят ваше время и деньги.",
     "seeMoreUrl": "https://flatlogic.com/templates?ref=x-fdkuTAVW",
     "products": [
       {
         "name": "Sing App Vue",
         "price": 99,
-        "description": "Vue Admin Dashboard Template",
+        "description": "Шаблон панели администратора Vue.js",
         "url": "https://flatlogic.com/templates/sing-app-vue?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/sing_vue_full-cb6b9fdd0465a0d60c0fafa2deca1929cc4966957c8e1ce57565a5e2f45ff043.webp"
       },
       {
         "name": "Sing App Vue Node.js",
         "price": 149,
-        "description": "Vue Admin Dashboard Template with Node.JS Backend",
+        "description": "Шаблон панели администратора Vue.js с бекендом на Node.JS",
         "url": "https://flatlogic.com/templates/sing-app-vue-node-js?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/sing_vue_full_nodejs-78af09220a2d085fec9bbc1071879915b30737f25d72669152f3b090291609aa.webp"
       },
       {
         "name": "Light Blue Vue",
         "price": 99,
-        "description": "Vue Admin Dashboard Template",
+        "description": "Шаблон панели администратора Vue.js",
         "url": "https://flatlogic.com/templates/light-blue-vue?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/light_blue_vue_full-e044d30242912d5756b190e576bf30ea967b725c09d2e371a7eabf1c6a9c33b2.webp"
       },
       {
         "name": "Light Blue Vue Admin",
         "price": 0,
-        "description": "Free and Open Source Vue JS Template for Admin Dashboard",
+        "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом",
         "url": "https://flatlogic.com/templates/light-blue-vue-lite?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/light_blue_vue_lite-c1937a2a01e5e8e8ede29a3ead011126e9dab5c58b9017daefe36411f9a1089e.webp"
       },
       {
         "name": "Sing App Vue Dashboard",
         "price": 0,
-        "description": "Free and Open Source Vue.js Admin Dashboard Template",
+        "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом",
         "url": "https://flatlogic.com/templates/sing-app-vue-dashboard?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/sing_vue_lite-ae3ec037404bc9ae29599a16afe276e638bd916713d75946c604feb69323ec21.webp"
       },
       {
         "name": "Light Blue Vue Node.js",
         "price": 149,
-        "description": "Vue Admin Template with Node.JS Backend",
+        "description": "Шаблон панели администратора Vue.js с бекендом на Node.JS",
         "url": "https://flatlogic.com/templates/light-blue-vue-node-js?ref=x-fdkuTAVW",
         "image": "https://flatlogic.com/assets/templates/light_blue_vue_full_nodejs-06f941c849f0a83a3c0d38c728101eace06a7515ea048f12bcd91f165280246f.webp"
       }
@@ -197,20 +197,20 @@
   },
   {
     "name": "WrapPixel",
-    "description": "Check out developer friendly vue js admin dashboard templates built by our partners from [WrapPixel](https://wrappixel.com). Download them to start building your real time web application quickly to save hundreds of hours in development and design.",
+    "description": "Ознакомьтесь с удобными для разработчиков шаблонами административных панелей Vue.js, созданными нашими партнерами из [WrapPixel](https://wrappixel.com). Скачайте их, чтобы быстро создать свое веб-приложение в реальном времени и сэкономить сотни часов на разработку и дизайн.",
     "seeMoreUrl": "https://www.wrappixel.com/templates/category/vuejs-templates/",
     "products": [
       {
         "name": "Spike Free VueJs Admin Template",
         "price": 0,
-        "description": "Free & Open Source VueJs Admin Template",
+        "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом",
         "url": "https://www.wrappixel.com/templates/spike-free-vuejs-admin-template/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2023/10/spike-free-vuetify-vuejs-admin-template-wp.jpg"
       },
       {
         "name": "Spike Vue3 Admin Dashboard",
         "price": 49,
-        "description": "Powerful Vue3 Dashboard Theme",
+        "description": "Административная панель на Vue3",
         "url": "https://www.wrappixel.com/templates/spike-vuejs-admin-dashboard/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2023/09/spike-vuejs-admin-dashboard-prev-img.jpg"
       },
@@ -224,14 +224,14 @@
       {
         "name": "Free MaterialPro Vuetify Admin",
         "price": 0,
-        "description": "Free Vuetify Dashboard Template",
+        "description": "Бесплатный шаблон панели администратора на Vuetify",
         "url": "https://www.wrappixel.com/templates/materialpro-vuetify-admin-lite/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2020/05/materialpro-vuejs-lite-admin-wp-20.jpg"
       },
       {
         "name": "Free AdminPro VueJs Lite",
         "price": 0,
-        "description": "Free & Open Source VueJs Admin Template",
+        "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом",
         "url": "https://www.wrappixel.com/templates/adminpro-vuetify-admin-lite/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2020/11/feature_image.jpg"
       },
@@ -246,32 +246,32 @@
   },
   {
   "name": "CodedThemes",
-  "description": "Explore Vue.js admin dashboard templates crafted with developers in mind by our partners at [CodedThemes](https://codedthemes.com). Download now to expedite the development of your real-time web applications, saving you countless hours in design and development.",
+  "description": "Изучите шаблоны административных панелей Vue.js, созданные нашими партнерами из [CodedThemes](https://codedthemes.com) с учетом пожеланий разработчиков. Скачайте их прямо сейчас, чтобы ускорить разработку ваших веб-приложений в реальном времени и сэкономить бесчисленное количество часов на проектирование и разработку.",
   "seeMoreUrl": "https://codedthemes.com/item/category/templates/vue-template/",
   "products": [
     {
       "name": "Free Berry Vuetify VueJs Admin Template",
       "price": 0,
-      "description": "Free & Open Source VueJs Admin Template with well known desing of Berry",
+      "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом в популярном дизайне Berry",
       "url": "https://codedthemes.com/item/berry-free-vuetify-vuejs-admin-template/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Berry-free-vue.png"
     },
     {
       "name": "Berry Vue3 Admin Dashboard",
       "price": 49,
-      "description": "Discover our visually captivating Vue 3 Dashboard Theme!",
+      "description": "Откройте для себя нашу визуально захватывающую тему административной панели Vue 3!",
       "url": "https://codedthemes.com/item/berry-vue-admin-dashboard/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Berry-pro-vue.png"
     },
     {
       "name": "Mantis Vue3 Admin Dashboard",
       "price": 49,
-      "description": "Simple yet rebust to start any development with latest VueJs and Vuetify",
+      "description": "Простой, но надежный способ начать любую разработку с помощью новейших Vue.js и Vuetify",
       "url": "https://codedthemes.com/item/mantis-vue-admin-template/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Mantis-pro-vue.png"
     },
     {
-      "name": "Free Mantis Vuetify VueJs Admin Template",
+      "name": "Бесплатный шаблон панели администратора Mantis вместе с Vuetify и Vue.js",
       "price": 0,
       "description": "Free Vuetify Dashboard Template with simplest design and code",
       "url": "https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/?ref=evan.vuejs",
@@ -280,7 +280,7 @@
     {
       "name": "Free Able Pro VueJs",
       "price": 0,
-      "description": "Free & Open Source Able pro VueJs Admin Template",
+      "description": "Бесплатный шаблон для панели администратора с открытым исходным кодом Able Pro",
       "url": "https://codedthemes.com/item/able-pro-free-vuejs-admin-dashboard/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Able+pro-free-vue.png"
     },
