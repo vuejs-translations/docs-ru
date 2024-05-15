@@ -195,7 +195,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -220,7 +220,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
 :::tip Совет
 Многие примеры в руководстве по использованию Composition API будут использовать синтаксис `<script setup>`, который требует использования инструментов сборки. Если вы планируете использовать Composition API без этапа сборки, ознакомьтесь с использованием [опции `setup()`](/api/composition-api-setup).
@@ -277,12 +277,12 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 <div class="options-api">
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -322,7 +322,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -353,7 +353,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 
