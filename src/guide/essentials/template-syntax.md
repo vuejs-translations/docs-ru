@@ -99,7 +99,8 @@ Vue использует синтаксис шаблонов, основанны
 ```js
 const objectOfAttrs = {
   id: 'container',
-  class: 'wrapper'
+  class: 'wrapper',
+  style: 'background-color:green'
 }
 ```
 

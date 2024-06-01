@@ -443,33 +443,37 @@ function MyComponent(slots) {
 Если вы смешиваете именованные слоты со слотами с ограниченной областью видимости по умолчанию, вам необходимо использовать явный тег `<template>` для слота по умолчанию. Попытка разместить директиву `v-slot` непосредственно на компоненте приведет к ошибке компиляции. Это сделано для того, чтобы избежать двусмысленности относительно области видимости входного параметра слота по умолчанию. Например:
 
 ```vue-html
+<!-- <MyComponent> template -->
+<div>
+  <slot :message="hello"></slot>
+  <slot name="footer" />
+</div>
+```
+
+```vue-html
 <!-- Этот шаблон не скомпилируется -->
-<template>
-  <MyComponent v-slot="{ message }">
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- сообщение принадлежит слоту по умолчанию и здесь недоступно -->
     <p>{{ message }}</p>
-    <template #footer>
-      <!-- message принадлежит слоту по умолчанию и здесь недоступно -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+  </template>
+</MyComponent>
 ```
 
 Использование явного тега `<template>` для слота по умолчанию помогает понять, что входной параметр `message` недоступен внутри другого слота:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- Использование явного слота по умолчанию -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
+<MyComponent>
+  <!-- Использование явного слота по умолчанию -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
 
-    <template #footer>
-      <p>Here's some contact info</p>
-    </template>
-  </MyComponent>
-</template>
+  <template #footer>
+    <p>Here's some contact info</p>
+  </template>
+</MyComponent>
 ```
 
 ### Пример необычного списка {#fancy-list-example}
