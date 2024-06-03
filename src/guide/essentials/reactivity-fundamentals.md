@@ -431,7 +431,7 @@ console.log(proxy.nested === raw) // false
 
 ### Ограничения `reactive()` {#limitations-of-reactive}
 
-API `reactive()` имеет два ограничения:
+API `reactive()` имеет несколько ограничений:
 
 1. **Ограниченные типы значений:** работает только для типов объектов (objects, arrays, и [типы коллекций](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections) такие как `Map` и `Set`). Он не может удерживать [примитивные типы](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) такие как `string`, `number` или `boolean`.
 
