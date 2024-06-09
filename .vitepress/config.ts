@@ -673,7 +673,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         link: 'https://vuejs.org',
         text: 'English',
         repo: 'https://github.com/vuejs/docs'
-    	},
+      },
       {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
@@ -759,7 +759,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'translation-gang/docs-ru',
+      repo: 'vuejs-translations/docs-ru',
       text: 'Исправить эту страницу на GitHub'
     },
 
@@ -775,7 +775,6 @@ export default defineConfigWithTheme<ThemeConfig>({
   markdown: {
     theme: 'github-dark',
     config(md) {
-      // @ts-expect-error - broken type output in vitepress
       md.use(headerPlugin)
       // .use(textAdPlugin)
     }
