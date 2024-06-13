@@ -269,7 +269,7 @@ E2E-тесты проверяют многие уровни приложения
 
 - [Playwright](https://playwright.dev/) также является отличным решением для E2E-тестирования, поддерживающим все современные движки рендеринга, включая Chromium, WebKit и Firefox. Тестируйте на Windows, Linux и macOS, локально или в CI, headless или headed, с нативной мобильной эмуляцией Google Chrome для Android и Mobile Safari.
 
-- [Nightwatch](https://nightwatchjs.org/) то решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров, включая нативное мобильное тестирование. Решения на основе Selenium будут медленнее, чем Playwright или Cypress.
+- [Nightwatch](https://nightwatchjs.org/) это решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров, включая нативное мобильное тестирование. Решения на основе Selenium будут медленнее, чем Playwright или Cypress.
 
 - [WebdriverIO](https://webdriver.io/) это фреймворк автоматизации тестирования для web и мобильного тестирования, основанный на протоколе WebDriver.
 
