@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hywax/vitepress-yandex-metrika':
+        specifier: ^0.4.0
+        version: 0.4.0(vitepress@1.2.3(@algolia/client-search@4.23.3)(@types/node@20.14.1)(postcss@8.4.38)(search-insights@2.14.0)(terser@5.31.0)(typescript@5.4.5))
       '@vue/repl':
         specifier: ^4.2.1
         version: 4.2.1
@@ -290,6 +293,11 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@hywax/vitepress-yandex-metrika@0.4.0':
+    resolution: {integrity: sha512-KMtlBKOWLu2mCMXwxRRm7oZs6kd/AA2u3Yv/90uhZPhyrFkjQ8oVsRiHH6OhqWVUsVD6GKFAWf8o274I0JIDZg==}
+    peerDependencies:
+      vitepress: ^1.1.4
 
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
@@ -986,6 +994,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.20.2':
     optional: true
+
+  '@hywax/vitepress-yandex-metrika@0.4.0(vitepress@1.2.3(@algolia/client-search@4.23.3)(@types/node@20.14.1)(postcss@8.4.38)(search-insights@2.14.0)(terser@5.31.0)(typescript@5.4.5))':
+    dependencies:
+      vitepress: 1.2.3(@algolia/client-search@4.23.3)(@types/node@20.14.1)(postcss@8.4.38)(search-insights@2.14.0)(terser@5.31.0)(typescript@5.4.5)
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
