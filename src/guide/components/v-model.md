@@ -19,7 +19,8 @@ function update() {
 </script>
 
 <template>
-  <div>Родительский v-model: {{ model }}</div>
+  <div>Родительский связанный v-model - это: {{ model }}</div>
+  <button @click="update">Увеличение</button>
 </template>
 ```
 
@@ -73,7 +74,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-Затем `v-model="modelValue"` в родительском компоненте будет скомпилирован в:
+Затем `v-model="foo"` в родительском компоненте будет скомпилирован в:
 
 ```vue-html
 <!-- Parent.vue -->
