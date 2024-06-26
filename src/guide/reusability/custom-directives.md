@@ -111,23 +111,23 @@ app.directive('focus', {
 const myDirective = {
   // вызывается до применения атрибутов
   // связанного элемента или слушателей событий
-  created(el, binding, vnode, prevVnode) {
+  created(el, binding, vnode) {
     // подробнее об аргументах см. ниже
   },
   // вызывается непосредственно перед вставкой элемента в DOM.
-  beforeMount(el, binding, vnode, prevVnode) {},
+  beforeMount(el, binding, vnode) {},
   // вызывается, когда родительский компонент связанного
   // элемента и все его дочерние элементы смонтированы.
-  mounted(el, binding, vnode, prevVnode) {},
+  mounted(el, binding, vnode) {},
   // вызывается перед обновлением родительского компонента
   beforeUpdate(el, binding, vnode, prevVnode) {},
   // вызывается после обновления родительского
   // компонента и всех его дочерних компонентов
   updated(el, binding, vnode, prevVnode) {},
   // вызывается перед размонтированием родительского компонента
-  beforeUnmount(el, binding, vnode, prevVnode) {},
+  beforeUnmount(el, binding, vnode) {},
   // вызывается при размонтировании родительского компонента
-  unmounted(el, binding, vnode, prevVnode) {}
+  unmounted(el, binding, vnode) {}
 }
 ```
 
