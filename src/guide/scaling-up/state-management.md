@@ -158,7 +158,7 @@ export default {
 ```vue-html{2}
 <template>
   <button @click="store.count++">
-    Из компнента B: {{ store.count }}
+    Из компонента B: {{ store.count }}
   </button>
 </template>
 ```
