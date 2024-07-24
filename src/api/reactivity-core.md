@@ -46,7 +46,7 @@
 
 ## computed() {#computed}
 
-Принимает геттер и возвращает иммутабельный (доступен только для чтения) реактивный [ref-объект](#ref) для возвращаемого значения из геттера. Также можно вернуть объект используя функции `get` и `set` для создания ref-объекта с возможностью записи.
+Принимает [геттер функцию](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) и возвращает иммутабельный (доступен только для чтения) реактивный [ref-объект](#ref) для возвращаемого значения из геттера. Также можно вернуть объект, используя функции `get` и `set` для создания ref-объекта с возможностью записи.
 
 - **Тип**
 
@@ -363,7 +363,7 @@
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
-    once?: boolean // default: false (3.4+)
+    once?: boolean // по умолчанию: false (3.4+)
   }
   ```
 

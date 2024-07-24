@@ -85,7 +85,7 @@ import MyComponent from './MyComponent.vue'
 
 ### Динамические компоненты {#dynamic-components}
 
-Поскольку на компоненты ссылаются на переменные, а не регистрируют их под строковыми ключами, то при использовании динамических компонентов внутри `<script setup>` следует использовать динамическую привязку с помощью `:is`:
+Поскольку на компоненты ссылаются как на переменные, а не регистрируют их под строковыми ключами, то при использовании динамических компонентов внутри `<script setup>` следует использовать динамическую привязку с помощью `:is`:
 
 ```vue
 <script setup>
@@ -227,6 +227,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
+:::info
+Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value.
+:::
+
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
 Этот макрос позволяет объявить двустороннее связывание для входного параметра, который может быть использовано внутри `v-model` из родительского компонента. Пример использования также рассматривает в руководстве [`v-model` на компоненте](/guide/components/v-model).
@@ -253,7 +257,7 @@ function inc() {
 }
 ```
 
-:::warning
+:::warning Предупреждение
 Если у вас есть значение `default` для свойства `defineModel`, и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В приведенном ниже примере родительский `myRef` не определен, а дочерний `model` равен 1:
 
 ```js
@@ -432,7 +436,7 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 Кроме того, ожидаемое выражение будет автоматически скомпилировано в формат, сохраняющий контекст текущего экземпляра компонента после `await`.
 
 :::warning Примечание
-`async setup()` должен использоваться в сочетании с `Suspense`, который в настоящее время является экспериментальной функцией. Мы планируем доработать и задокументировать его в одном из будущих релизов - но если вам интересно, то вы можете посмотреть его [тесты](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts), чтобы увидеть, как он работает.
+`async setup()` должен использоваться в сочетании с [`Suspense`](/guide/built-ins/suspense.html), который в настоящее время является экспериментальной функцией. Мы планируем доработать и задокументировать его в одном из будущих релизов - но если вам интересно, то вы можете посмотреть его [тесты](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts), чтобы увидеть, как он работает.
 :::
 
 ## Дженерики <sup class="vt-badge ts" /> {#generics}
@@ -464,7 +468,26 @@ defineProps<{
 </script>
 ```
 
-Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
+In order to use a reference to a generic component in a `ref` you need to use the [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) library as `InstanceType` won't work.
+
+```vue
+<script
+  setup
+  lang="ts"
+>
+import componentWithoutGenerics from '../component-without-generics.vue';
+import genericComponent from '../generic-component.vue';
+
+import type { ComponentExposed } from 'vue-component-type-helpers';
+
+// Works for a component without generics
+ref<InstanceType<typeof componentWithoutGenerics>>();
+
+ref<ComponentExposed<typeof genericComponent>>();
+```
+
+
+## Restrictions {#restrictions}
 
 - Из-за разницы в семантике выполнения модулей код внутри `<script setup>` полагается на контекст SFC. Если перенести их во внешние файлы `.js` или `.ts`, это может привести к путанице как для разработчиков, так и для инструментов. Поэтому **`<script setup>`** нельзя использовать с атрибутом `src`.
 - `<script setup>` не поддерживает шаблон корневого компонента In-DOM. ([Связанные обсуждения](https://github.com/vuejs/core/issues/8391))

@@ -66,9 +66,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vue Router for Single Page Application development? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Pinia for state management? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vitest for Unit testing? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
-<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add an End-to-End Testing Solution? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Cypress / Playwright</span></span>
-<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add ESLint for code quality? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add an End-to-End Testing Solution? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Cypress / Nightwatch / Playwright</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add ESLint for code quality? <span style="color:#888;">… No / <span style="color:#89DDFF;text-decoration:underline">Yes</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Prettier for code formatting? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
+<span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add Vue DevTools 7 extension for debugging? (experimental) <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
 <span></span>
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
@@ -194,7 +195,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -219,7 +220,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
 :::tip Совет
 Многие примеры в руководстве по использованию Composition API будут использовать синтаксис `<script setup>`, который требует использования инструментов сборки. Если вы планируете использовать Composition API без этапа сборки, ознакомьтесь с использованием [опции `setup()`](/api/composition-api-setup).
@@ -276,12 +277,12 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 <div class="options-api">
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -321,7 +322,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -352,7 +353,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen демо](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[Codepen демо >](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 
@@ -363,9 +364,9 @@ import { createApp } from 'vue'
 :::
 
 :::warning Примечание при использовании в production
-На данный момент в примерах используется сборка Vue для разработки. Если вы собираетесь использовать Vue из CDN в рабочей среде, обязательно ознакомьтесь с [Руководством по производственному развертыванию](/guide/best-practices/production-deployment#without-build -инструменты).
+На данный момент в примерах используется сборка Vue для разработки. Если вы собираетесь использовать Vue из CDN в рабочей среде, обязательно ознакомьтесь с [Руководством по производственному развертыванию](/guide/best-practices/production-deployment#without-build-tools).
 
-Хотя можно использовать Vue без системы сборки, можно рассмотреть альтернативный подход — использование [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue), который лучше подходит для контекста, в котором [`jquery/jquery`](https://github.com/jquery/jquery) (в прошлом) или [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (в настоящем) ) можно использовать вместо этого.
+Хотя можно использовать Vue без системы сборки, можно рассмотреть альтернативный подход — использование [`vuejs/petite-vue`](https://github.com/vuejs/petite-vue), который лучше подходит для контекста, в котором [`jquery/jquery`](https://github.com/jquery/jquery) (в прошлом) или [`alpinejs/alpine`](https://github.com/alpinejs/alpine) (в настоящем) можно использовать вместо этого.
 :::
 
 ### Разделение на модули {#splitting-up-the-modules}
@@ -407,7 +408,7 @@ export default {
     const count = ref(0)
     return { count }
   },
-  template: `<div>count is {{ count }}</div>`
+  template: `<div>Счётчик: {{ count }}</div>`
 }
 ```
 

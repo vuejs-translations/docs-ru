@@ -49,7 +49,7 @@ const nav: ThemeConfig['nav'] = [
           { text: 'UI компоненты', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'Сертификация',
-            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+            link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
           },
           { text: 'Вакансии', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
@@ -58,8 +58,8 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Официальные библиотеки',
         items: [
-          { text: 'Vue Router', link: 'https://router.vuejs.org/' },
-          { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
+          { text: 'Vue Router', link: 'https://vue-router-ru.netlify.app/' },
+          { text: 'Pinia', link: 'https://pinia-ru.netlify.app/' },
           { text: 'Инструментарий', link: '/guide/scaling-up/tooling.html' }
         ]
       },
@@ -113,6 +113,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: 'Нормы поведения', link: '/about/coc' },
+      { text: 'Политика конфиденциальности', link: '/about/privacy' },
       {
         text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
@@ -231,11 +232,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
-          text: 'Переходы в списках',
+          text: 'TransitionGroup',
           link: '/guide/built-ins/transition-group'
         },
-        { text: 'Сохранение состояния', link: '/guide/built-ins/keep-alive' },
-        { text: 'Телепорт', link: '/guide/built-ins/teleport' },
+        { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
+        { text: 'Teleport', link: '/guide/built-ins/teleport' },
         { text: 'Suspense', link: '/guide/built-ins/suspense' }
       ]
     },
@@ -636,22 +637,30 @@ export default defineConfigWithTheme<ThemeConfig>({
         'utf-8'
       )
     ],
-    // [
-    //   'script',
-    //   {
-    //     src: 'https://cdn.usefathom.com/script.js',
-    //     'data-site': 'XNOLWPLB',
-    //     'data-spa': 'auto',
-    //     defer: ''
-    //   }
-    // ],
-    // [
-    //   'script',
-    //   {
-    //     src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
-    //     async: 'true'
-    //   }
-    // ]
+    [
+      'script',
+      {},
+      fs.readFileSync(
+        path.resolve(__dirname, './inlined-scripts/uwu.js'),
+        'utf-8'
+      )
+    ],
+    [
+      'script',
+      {
+        src: 'https://cdn.usefathom.com/script.js',
+        'data-site': 'XNOLWPLB',
+        'data-spa': 'auto',
+        defer: ''
+      }
+    ],
+    [
+      'script',
+      {
+        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
+        async: 'true'
+      }
+    ]
   ],
 
   themeConfig: {
@@ -660,6 +669,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     i18n,
 
     localeLinks: [
+      {
+        link: 'https://vuejs.org',
+        text: 'English',
+        repo: 'https://github.com/vuejs/docs'
+      },
       {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
@@ -716,20 +730,22 @@ export default defineConfigWithTheme<ThemeConfig>({
         repo: 'https://github.com/vuejs-translations/docs-cs'
       },
       {
+        link: 'https://zh-hk.vuejs.org',
+        text: '繁體中文',
+        repo: 'https://github.com/vuejs-translations/docs-zh-hk'
+      },
+      {
         link: '/translations/',
         text: 'Help Us Translate!',
         isTranslationsDesc: true
       }
     ],
 
-    // algolia: {
-    //   indexName: 'vuejs_ru',
-    //   appId: 'ML0LEBN7FQ',
-    //   apiKey: 'f49cbd92a74532cc55cfbffa5e5a7d01',
-    //   searchParameters: {
-    //     facetFilters: ['version:v3']
-    //   }
-    // },
+    algolia: {
+      indexName: 'ru-vuejs',
+      appId: '5RTQ6TI35H',
+      apiKey: 'c4095d6d1e93c25ca93b3ca0030338ef',
+    },
 
     // carbonAds: {
     //   code: 'CEBDT27Y',
@@ -743,7 +759,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'translation-gang/docs-ru',
+      repo: 'vuejs-translations/docs-ru',
       text: 'Исправить эту страницу на GitHub'
     },
 

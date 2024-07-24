@@ -11,7 +11,7 @@ const description = computed(() => {
   // replace markdown link to html tag.
   // [name](https://...) -> <a href="https://...">name</a>
   return props.provider.description.replace(
-    /\[([^\]]+)\]\(([^\)]+)\)/,
+    /\[([^\]]+)\]\(([^\)]+)\)/g,
     '<a href="$2" class="link" target="_blank" rel="noopener">$1</a>'
   )
 })
@@ -32,7 +32,7 @@ const description = computed(() => {
 
     <div class="action">
       <VTLink class="action-link" :href="provider.seeMoreUrl" no-icon>
-        See More Themes from {{ provider.name }}
+        Посмотреть другие темы от {{ provider.name }}
       </VTLink>
     </div>
   </section>

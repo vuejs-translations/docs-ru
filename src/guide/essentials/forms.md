@@ -164,26 +164,26 @@ export default {
 ```vue-html
 <div>Отмеченные имена: {{ checkedNames }}</div>
 
-<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
 <label for="jack">Jack</label>
 
-<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<input type="checkbox" id="john" value="John" v-model="checkedNames" />
 <label for="john">John</label>
 
-<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
 <label for="mike">Mike</label>
 ```
 
 <div class="demo">
   <div>Отмеченные имена: {{ checkedNames }}</div>
 
-  <input type="checkbox" id="demo-jack" value="Jack" v-model="checkedNames">
+  <input type="checkbox" id="demo-jack" value="Jack" v-model="checkedNames" />
   <label for="demo-jack">Jack</label>
 
-  <input type="checkbox" id="demo-john" value="John" v-model="checkedNames">
+  <input type="checkbox" id="demo-john" value="John" v-model="checkedNames" />
   <label for="demo-john">John</label>
 
-  <input type="checkbox" id="demo-mike" value="Mike" v-model="checkedNames">
+  <input type="checkbox" id="demo-mike" value="Mike" v-model="checkedNames" />
   <label for="demo-mike">Mike</label>
 </div>
 
@@ -363,7 +363,7 @@ export default {
 
 ## Привязка значений {#value-bindings}
 
-Для радиокнопок и выпадающих списков в качестве привязываемых значений `v-model` обычно будут статические строки (или булево для чекбокса):
+Для радиокнопок и выпадающих списков в качестве привязываемых значений `v-model` обычно будут статические строки (или булевые значения для чекбокса):
 
 ```vue-html
 <!-- `picked` будет строкой "a" при выборе -->

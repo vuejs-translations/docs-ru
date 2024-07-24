@@ -84,6 +84,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 Это будет скомпилировано во время выполнения в эквивалентные параметры `по умолчанию`. Кроме того, помощник `withDefaults` обеспечивает проверку типов для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены необязательные флаги для свойств, для которых объявлены значения по умолчанию.
 
+:::info
+Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value.
+:::
+
 ### Без `<script setup>` {#without-script-setup}
 
 Если не используется `<script setup>`, то для включения функции определения типа входного параметра необходимо использовать `defineComponent()`. Тип объекта входного параметра, переданного в `setup()` выводится из параметра `props`.

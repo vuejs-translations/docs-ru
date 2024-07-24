@@ -3,7 +3,7 @@ export default {
     return {
       message: 'Привет Мир!',
       isRed: true,
-      color: 'зеленый'
+      color: 'green'
     }
   },
   methods: {
@@ -11,7 +11,7 @@ export default {
       this.isRed = !this.isRed
     },
     toggleColor() {
-      this.color = this.color === 'зеленый' ? 'синий' : 'зеленый'
+      this.color = this.color === 'green' ? 'blue' : 'green'
     }
   }
 }

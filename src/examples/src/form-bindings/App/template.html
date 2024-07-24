@@ -1,5 +1,6 @@
 <h2>Текстовый ввод</h2>
-<input v-model="text"> {{ text }}
+<input v-model="text">
+<p>{{ text }}</p>
 
 <h2>Чекбокс</h2>
 <input type="checkbox" id="checkbox" v-model="checked">
@@ -18,14 +19,13 @@
 <label for="mike">Майк</label>
 <p>Выбранные имена: <pre>{{ checkedNames }}</pre></p>
 
-<h2>Радиобатон</h2>
+<h2>Радиокнопка</h2>
 <input type="radio" id="one" value="Один" v-model="picked">
 <label for="one">Один</label>
 <br>
 <input type="radio" id="two" value="Два" v-model="picked">
 <label for="two">Два</label>
-<br>
-<span>Выбрано: {{ picked }}</span>
+<p>Выбрано: {{ picked }}</p>
 
 <h2>Выбор</h2>
 <select v-model="selected">
@@ -34,7 +34,7 @@
   <option>B</option>
   <option>C</option>
 </select>
-<span>Выбрано: {{ selected }}</span>
+<p>Выбрано: {{ selected }}</p>
 
 <h2>Множественный выбор</h2>
 <select v-model="multiSelected" multiple style="width:100px">
@@ -42,4 +42,4 @@
   <option>B</option>
   <option>C</option>
 </select>
-<span>Выбрано: {{ multiSelected }}</span>
+<p>Выбрано: {{ multiSelected }}</p>

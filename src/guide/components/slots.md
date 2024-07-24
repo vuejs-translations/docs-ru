@@ -104,7 +104,7 @@ function FancyButton(slotContent) {
 
 ## Содержимое слота по умолчанию {#fallback-content}
 
-Бывают случаи, когда полезно указать для слота запасное (т.е. по умолчанию) содержимое, которое будет отображаться только при отсутствии содержимого. Например, в компоненте `<SubmitButton>` component:
+Бывают случаи, когда полезно указать для слота запасное (т.е. по умолчанию) содержимое, которое будет отображаться только при отсутствии содержимого. Например, в компоненте `<SubmitButton>`:
 
 ```vue-html
 <button type="submit">
@@ -296,6 +296,34 @@ function BaseLayout(slots) {
 }
 ```
 
+## Условные слоты {#conditional-slots}
+
+Иногда вы хотите отрендерить что-то в зависимости от того, присутствует ли слот или нет. 
+
+Вы можете использовать свойство [$slots](/api/component-instance.html#slots) в сочетании с [v-if](/guide/essentials/conditional.html#v-if) для достижения этой цели.
+
+В приведенном ниже примере мы определяем компонент Card с тремя условными слотами: `header`, `footer` и `default`. Когда присутствует header / footer / default, мы хотим обернуть их, чтобы обеспечить дополнительную стилизацию:
+
+```vue-html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+    
+    <div v-if="$slots.default" class="card-content">
+      <slot />
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+[Попробовать в песочнице](https://play.vuejs.org/#eNqVVMtu2zAQ/BWCLZBLIjVoTq4aoA1yaA9t0eaoCy2tJcYUSZCUKyPwv2dJioplOw4C+EDuzM4+ONYT/aZ1tumBLmhhK8O1IxZcr29LyTutjCN3zNRkZVRHLrLcXzz9opRFHvnIxIuDTgvmAG+EFJ4WTnhOCPnQAqvBjHFE2uvbh5Zbgj/XAolwkWN4TM33VI/UalixXvjyo5yeqVVKOpCuyP0ob6utlHL7vUE3U4twkWP4hJq/jiPP4vSSOouNrHiTPVolcclPnl3SSnWaCzC/teNK2pIuSEA8xoRQ/3+GmDM9XKZ41UK1PhF/tIOPlfSPAQtmAyWdMMdMAy7C9/9+wYDnCexU3QtknwH/glWi9z1G2vde1tj2Hi90+yNYhcvmwd4PuHabhvKNeuYu8EuK1rk7M/pLu5+zm5BXyh1uMdnOu3S+95pvSCWYtV9xQcgqaXogj2yu+AqBj1YoZ7NosJLOEq5S9OXtPZtI1gFSppx8engUHs+vVhq9eVhq9ORRrXdpRyseSqfo6SmmnONK6XTw9yis24q448wXSG+0VAb3sSDXeiBoDV6TpWDV+ktENatrdMGCfAoBfL1JYNzzpINJjVFoJ9yKUKho19ul6OFQ6UYPx1rjIpPYeXIc/vXCgjetawzbni0dPnhhJ3T3DMVSruI=)
+
 ## Динамическое имя слота {#dynamic-slot-names}
 
 [Динамические аргументы директивы](/guide/essentials/template-syntax.md#dynamic-arguments) также работают и с `v-slot`, что позволяет указывать динамическое имя слота:
@@ -415,33 +443,37 @@ function MyComponent(slots) {
 Если вы смешиваете именованные слоты со слотами с ограниченной областью видимости по умолчанию, вам необходимо использовать явный тег `<template>` для слота по умолчанию. Попытка разместить директиву `v-slot` непосредственно на компоненте приведет к ошибке компиляции. Это сделано для того, чтобы избежать двусмысленности относительно области видимости входного параметра слота по умолчанию. Например:
 
 ```vue-html
-<!-- Этот шаблон не скомпилируется -->
-<template>
-  <MyComponent v-slot="{ message }">
-    <p>{{ message }}</p>
-    <template #footer>
-      <!-- message принадлежит слоту по умолчанию и здесь недоступно -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+<!-- <MyComponent> template -->
+<div>
+  <slot :message="hello"></slot>
+  <slot name="footer" />
+</div>
 ```
 
-Использование явного тега `<template>` для слота по умолчанию помогает дать понять, что входной параметр `message` недоступен внутри другого слота:
+```vue-html
+<!-- Этот шаблон не скомпилируется -->
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- сообщение принадлежит слоту по умолчанию и здесь недоступно -->
+    <p>{{ message }}</p>
+  </template>
+</MyComponent>
+```
+
+Использование явного тега `<template>` для слота по умолчанию помогает понять, что входной параметр `message` недоступен внутри другого слота:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- Использование явного слота по умолчанию -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
+<MyComponent>
+  <!-- Использование явного слота по умолчанию -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
 
-    <template #footer>
-      <p>Here's some contact info</p>
-    </template>
-  </MyComponent>
-</template>
+  <template #footer>
+    <p>Here's some contact info</p>
+  </template>
+</MyComponent>
 ```
 
 ### Пример необычного списка {#fancy-list-example}

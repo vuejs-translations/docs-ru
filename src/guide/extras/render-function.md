@@ -369,7 +369,7 @@ h(
       /* ... */
     }
   },
-  'click me'
+  'Click Me'
 )
 ```
 
@@ -379,7 +379,7 @@ h(
     /* ... */
   }}
 >
-  нажмите здесь
+  Нажмите меня
 </button>
 ```
 
@@ -728,7 +728,7 @@ export default {
 </div>
 <div class="options-api">
 
-With the Options API, template refs are created by passing the ref name as a string in the vnode props:
+С Options API ссылки на шаблон создаются путем передачи соответствующего имени ref в виде строки в vnode props:
 
 ```js
 export default {

@@ -66,7 +66,7 @@ export default {
 
 - [Gridsome: `<page-query>`](https://gridsome.org/docs/querying-data/)
 - [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
-- [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
+- [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n#i18n-custom-block)
 
 Обработка пользовательских секций зависит от инструментария — если вы хотите создать свои собственные интеграции пользовательских секций, обратитесь к разделу [инструментарий SFC](/guide/scaling-up/tooling#sfc-custom-block-integrations) для более подробной информации.
 

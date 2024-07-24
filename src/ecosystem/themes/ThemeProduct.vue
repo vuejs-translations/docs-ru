@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VTLink } from '@vue/theme'
 
-const props = defineProps<{
+defineProps<{
   product: Record<string, any>
 }>()
 </script>
@@ -76,7 +76,6 @@ const props = defineProps<{
 .price {
   text-align: right;
   flex-shrink: 0;
-  width: 56px;
 }
 
 .value {
