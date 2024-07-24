@@ -190,11 +190,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Другие онлайн-игровые площадки {#other-online-playgrounds}
 
-- [Игровая площадка VueUse](https://play.vueuse.org)
+- [Песочница VueUse](https://play.vueuse.org)
 - [Vue + Vite на Repl.it](https://replit.com/@templates/VueJS-with-Vite)
 - [Vue на CodeSandbox](https://codesandbox.io/p/devbox/github/codesandbox/sandbox-templates/tree/main/vue-vite)
 - [Vue на Codepen](https://codepen.io/pen/editor/vue)
-- [Vue на Components.studio](https://components.studio/create/vue3)
 - [Vue на WebComponents.dev](https://webcomponents.dev/create/cevue)
 
 <!-- TODO ## Backend Framework Integrations -->
