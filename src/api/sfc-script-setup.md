@@ -228,7 +228,7 @@ const props = withDefaults(defineProps<Props>(), {
 Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
 :::info
-Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value.
+Обратите внимание, что значения по умолчанию для изменяемых ссылочных типов (таких как массивы или объекты) следует оборачивать в функции, чтобы избежать случайного изменения и внешних побочных эффектов. Это гарантирует, что каждый экземпляр компонента получит свою собственную копию значения по умолчанию.
 :::
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
