@@ -197,7 +197,7 @@
   },
   {
     "name": "WrapPixel",
-    "description": "Ознакомьтесь с [dashboard templates](https://www.wrappixel.com/templates/category/admin-dashboard-templates/?ref=320) built by our partners from [WrapPixel](https://www.wrappixel.com/?ref=320). Download highly customizable [Vue templates](https://www.wrappixel.com/templates/category/vuejs-templates/?ref=320) to start building your real time web application quickly to save hundreds of hours in development and design.",
+    "description": "Ознакомьтесь с [шаблонами панели администратора](https://www.wrappixel.com/templates/category/admin-dashboard-templates/?ref=320), созданными нашими партнерами из [WrapPixel](https://www.wrappixel.com/?ref=320). Скачайте высоко настраиваемые [Vue шаблоны](https://www.wrappixel.com/templates/category/vuejs-templates/?ref=320), чтобы быстро начать создание вашего веб-приложения в реальном времени и сэкономить сотни часов на разработку и дизайн.",
     "seeMoreUrl": "https://www.wrappixel.com/templates/category/vuejs-templates/?ref=320",
     "products": [
       {
@@ -273,7 +273,7 @@
     {
       "name": "Бесплатный шаблон панели администратора Mantis вместе с Vuetify и Vue.js",
       "price": 0,
-      "description": "Free Vuetify Dashboard Template with simplest design and code",
+      "description": "Бесплатный шаблон панели управления на Vuetify с простейшим дизайном и кодом",
       "url": "https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Mantis-free-vue.png"
     },
@@ -301,42 +301,42 @@
       {
         "name": "Materio - Vue Admin Template",
         "price": 0,
-        "description": "Free & Open Source VueJS Admin inspired by Material Design",
+        "description": "Бесплатная и с открытым исходным кодом VueJS панель администратора, вдохновленная Material Design",
         "url": "https://themeselection.com/item/materio-free-vuetify-vuejs-admin-template/?ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template-free/banner/banner.png"
       },
       {
         "name": "Materio - Vue Admin Template",
         "price": 69,
-        "description": "Most Powerful & Comprehensive VueJS Admin built for developers",
+        "description": "Самая мощная и всеобъемлющая панель администратора на VueJS, созданная для разработчиков.",
         "url": "https://themeselection.com/item/materio-vuetify-vuejs-admin-template/?ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template/banner/banner.png"
       },
       {
         "name": "Sneat - Vue Laravel Admin",
         "price": 0,
-        "description": "Free & Open Source VueJS Laravel Admin using Sneat Design System",
+        "description": "Бесплатная и с открытым исходным кодом панель администратора на VueJS и Laravel с использованием Sneat Design System.",
         "url": "https://themeselection.com/item/sneat-free-vuetify-vuejs-laravel-admin-template/ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/sneat/sneat-vuetify-vuejs-laravel-admin-template-free/banner/banner.png"
       },
       {
         "name": "Sneat - Vue Laravel Admin",
         "price": 79,
-        "description": "Production Ready, Carefully Crafted VueJS Laravel Dashboard",
+        "description": "Готовая к использованию, тщательно разработанная панель администратора на VueJS и Laravel.",
         "url": "https://themeselection.com/item/sneat-vuetify-vuejs-laravel-admin-template/?ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/sneat/sneat-vuetify-vuejs-laravel-admin-template/banner/banner.png"
       },
       {
         "name": "Materio - NuxtJS Dashboard",
         "price": 0,
-        "description": "Free & Open Source NuxtJS Admin inspired by Material Design",
+        "description": "Бесплатная и с открытым исходным кодом NuxtJS панель администратора, вдохновленная Material Design",
         "url": "https://themeselection.com/item/materio-free-vuetify-nuxtjs-admin-template/?ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-nuxtjs-admin-template-free/banner/banner.png"
       },
       {
         "name": "Materio - NuxtJS Dashboard",
         "price": 79,
-        "description": "Incredibly versatile, flexible and powerful NuxtJS Admin Template",
+        "description": "Невероятно универсальный, гибкий и мощный шаблон панели администратора на NuxtJS.",
         "url": "https://themeselection.com/item/materio-vuetify-nuxtjs-admin-template/?ref=14",
         "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-nuxtjs-admin-template/banner/banner.png"
       }
@@ -344,48 +344,48 @@
   },
   {
     "name": "AdminMart",
-    "description": "Check out top [Vue dashboard templates](https://adminmart.com/templates/vuejs-admin/?ref=34) built by our partners from [AdminMart](https://adminmart.com/?ref=34). Download them to speed up your web development process and build top class web applications.",
+    "description": "Ознакомьтесь с первоклассными шаблонами [Vue dashboard](https://adminmart.com/templates/vuejs-admin/?ref=34), созданными нашими партнерами из [AdminMart](https://adminmart.com/?ref=34). Скачайте их, чтобы ускорить процесс разработки и создать веб-приложения высшего класса.",
     "seeMoreUrl": "https://adminmart.com/templates/vuejs-admin/?ref=34",
     "products": [
       {
         "name": "Matdash Free Vuejs Admin Dashboard",
         "price": 0,
-        "description": "Free & Open Source VueJs Admin Template",
+        "description": "Бесплатный и с открытым исходным кодом VueJs шаблон панели администратора",
         "url": "https://adminmart.com/product/matdash-free-vuejs-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2024/05/matdash-vuetifi-vuejs-2.png"
       },
       {
         "name": "Matdash Vuejs Admin Dashboard",
         "price": 49,
-        "description": "Empowering Developers with Unmatched Flexibility and Power",
+        "description": "Предоставление разработчикам непревзойденной гибкости и мощи",
         "url": "https://adminmart.com/product/matdash-vuejs-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2024/05/matdash-vuetify-vuejs-admin-dashboard.png"
       },
       {
         "name": "Modernize Vuetify 3 & Vue 3 Admin Dashboard",
         "price": 49,
-        "description": "Developer Friendly & Most Powerful Vue Admin Dashboard Template",
+        "description": "Удобный для разработчиков и самый мощный шаблон панели администратора Vue",
         "url": "https://adminmart.com/product/modernize-vuetify-vue-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2023/02/modernize-vuetify-admin-dashboard-min.png"
       },
       {
         "name": "Modernize Free Vuetify + Vue js Admin Dashboard",
         "price": 0,
-        "description": "Free & Open Source VueJs Admin Template",
+        "description": "Бесплатный и с открытым исходным кодом VueJs шаблон панели администратора",
         "url": "https://adminmart.com/product/modernize-free-vuetify-vue-js-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2023/02/modernize-free-vuetify-admin-dashboard-am-min1.png"
       },
       {
         "name": "Modernize Free NuxtJs Admin Dashboard Template",
         "price": 0,
-        "description": "Free NuxtJs Dashboard Template",
+        "description": "Бесплатный NuxtJs шаблон панели администратора",
         "url": "https://adminmart.com/product/modernize-free-vuetify-vue-js-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2023/02/modernize-free-nuxt-admin-dashboard-am-min.png"
       },
       {
         "name": "Modernize Nuxt Js Admin Dashboard",
         "price": 49,
-        "description": "Rapidly Build Powerful Dashboards with NuxtJs - Vuetify: A Developer's Dream",
+        "description": "Быстро создавайте мощные панели администрирования с помощью NuxtJs — Vuetify: мечта разработчика",
         "url": "https://adminmart.com/product/modernize-nuxt-js-admin-dashboard/?ref=34",
         "image": "https://adminmart.com/wp-content/uploads/2023/02/modernize-nuxt-js-admin-dashboard.png"
       }
