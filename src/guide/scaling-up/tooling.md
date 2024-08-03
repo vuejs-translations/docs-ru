@@ -56,7 +56,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue) официальный инструмент для инициализации проекта Vue.
+Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue), официальный инструмент для инициализации проекта Vue.
 
 - Чтобы узнать больше о Vite, ознакомьтесь с [документацией  Vite](https://vitejs.dev).
 - Чтобы настроить специфическое для Vue поведение в проекте Vite, например, передать опции компилятору Vue, ознакомьтесь с документацией для [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme).
@@ -65,7 +65,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ### Vue CLI {#vue-cli}
 
-[Vue CLI](https://cli.vuejs.org/) - это официальная цепочка инструментов для Vue, основанная на webpack. В настоящее время он находится в режиме поддержки, и мы рекомендуем начинать новые проекты с Vite, если только вы не полагаетесь на специфические возможности, доступные только для webpack. В большинстве случаев Vite обеспечивает более высокий уровень качества работы разработчиков.
+[Vue CLI](https://cli.vuejs.org/) - это официальный набор инструментов для Vue, основанный на webpack. В настоящее время он находится в режиме поддержки, и мы рекомендуем начинать новые проекты с Vite, если только вы не полагаетесь на специфические возможности, доступные только для webpack. В большинстве случаев Vite обеспечивает более высокий уровень качества работы разработчиков.
 
 Информация о миграции с Vue CLI на Vite:
 
@@ -106,7 +106,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Бесплатный урок по инструментам разработчика Vue.js"/>
 
-Расширение devtools для браузера Vue позволяет исследовать дерево компонентов приложения Vue, проверять состояние отдельных компонентов, отслеживать события управления состоянием и определять производительность.
+Расширение devtools для браузера Vue позволяет исследовать дерево компонентов приложения Vue, проверять состояние отдельных компонентов, отслеживать события управления состоянием и измерять производительность.
 
 ![Скриншот devtools](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
@@ -188,7 +188,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Официальный загрузчик, обеспечивающий поддержку Vue SFC в webpack. Если вы используете Vue CLI, см. также [документацию по изменению параметров `vue-loader` во Vue CLI](https://cli.vuejs.org/ru/guide/webpack#%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BA-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D1%87%D0%B8%D0%BA%D0%B0).
 
-## Другие онлайн-игровые площадки {#other-online-playgrounds}
+## Другие онлайн-площадки {#other-online-playgrounds}
 
 - [Песочница VueUse](https://play.vueuse.org)
 - [Vue + Vite на Repl.it](https://replit.com/@templates/VueJS-with-Vite)
