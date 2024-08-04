@@ -47,7 +47,7 @@ interface Book {
 export default defineComponent({
   props: {
     book: {
-      // предостление более конкретного типа `Object`.
+      // предоставление более конкретного типа `Object`.
       type: Object as PropType<Book>,
       required: true
     },
