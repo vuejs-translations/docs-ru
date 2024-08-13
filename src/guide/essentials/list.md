@@ -427,7 +427,19 @@ methods: {
 
 Обратите внимание на использование `reverse()` и `sort()` в вычисляемых свойствах! Эти два метода изменят исходный массив, а этого следует избегать в геттерах вычисляемых свойств. Поэтому перед вызовом этих методов создайте копию исходного массива:
 
+<div class="composition-api">
+
 ```diff
 - return numbers.reverse()
 + return [...numbers].reverse()
 ```
+
+</div>
+<div class="options-api">
+
+```diff
+- return this.numbers.reverse()
++ return [...this.numbers].reverse()
+```
+
+</div>
