@@ -423,7 +423,7 @@ import type { ComponentPublicInstance } from 'vue'
 const child = ref<ComponentPublicInstance | null>(null)
 ```
 
-In cases where the component referenced is a [generic component](/guide/typescript/overview.html#generic-components), for instance `MyGenericModal`:
+В случаях, когда компонент, на который делается ссылка (ref), является [дженерик-компонентом](/guide/typescript/overview.html#generic-components), например `MyGenericModal`:
 
 ```vue
 <!-- MyGenericModal.vue -->
@@ -440,7 +440,7 @@ defineExpose({
 </script>
 ```
 
-It needs to be referenced using `ComponentExposed` from the [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) library as `InstanceType` won't work.
+На него необходимо ссылаться с помощью `ComponentExposed` из библиотеки [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), поскольку `InstanceType` не будет работать.
 
 ```vue
 <!-- App.vue -->
