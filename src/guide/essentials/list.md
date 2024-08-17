@@ -134,7 +134,7 @@ items.forEach((item, index) => {
 
 ## Отображение свойств объекта через `v-for` {#v-for-with-an-object}
 
-Также можно использовать `v-for` для итерирования по свойствам объекта. При итерации по объекту порядок обхода свойств будет как и в `Object.keys()`:
+You can also use `v-for` to iterate through the properties of an object. The iteration order will be based on the result of calling `Object.values()` on the object:
 
 <div class="composition-api">
 
