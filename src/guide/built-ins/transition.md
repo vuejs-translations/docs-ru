@@ -363,7 +363,7 @@ function onEnter(el, done) {
 // вызывается по завершении перехода enter.
 function onAfterEnter(el) {}
 
-// called when the enter transition is cancelled before completion.
+// вызывается, когда переход enter отменяется до завершения.
 function onEnterCancelled(el) {}
 
 // вызывается перед хуком leave.
@@ -408,7 +408,7 @@ export default {
     // вызывается по завершении перехода на enter.
     onAfterEnter(el) {},
 
-    // called when the enter transition is cancelled before completion.
+    // вызывается, когда переход enter отменяется до завершения.
     onEnterCancelled(el) {},
 
     // вызывается перед хуком leave.
