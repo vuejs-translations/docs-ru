@@ -101,7 +101,13 @@
 
   </div>
 
-- **См. также** [Передача обычных атрибутов](/guide/components/attrs)
+- **См. также**
+
+  - [Передача обычных атрибутов](/guide/components/attrs)
+  <div class="composition-api">
+
+  - [Using `inheritAttrs` in normal `<script>`](/api/sfc-script-setup.html#usage-alongside-normal-script)
+  </div>
 
 ## components {#components}
 
