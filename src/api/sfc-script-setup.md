@@ -209,12 +209,48 @@ const emit = defineEmits<{
 
   Это ограничение было снято в версии 3.3. Последняя версия Vue поддерживает возможность ссылки на импортированные и ограниченный набор сложных типов в месте для использования типа. Однако, так как преобразование типов во время выполнения все еще основано на AST, некоторые сложные типы, требующие фактического анализа, например, условные типы, не поддерживаются. Вы можете использовать условные типы для типизации одного входного параметра, но не для цельного объекта входных параметров.  
 
-### Значения по умолчанию во входных параметрах при объявлении с помощью типов {#default-props-values-when-using-type-declaration}
+### Reactive Props Destructure <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-Один недостаток объявления `defineProps` только при помощи типов - нет возможности задать значениям по умолчанию для входных параметров. Чтобы решить эту проблему, предоставляется макрос компилятора `withDefaults`:
+In Vue 3.5 and above, variables destructured from the return value of `defineProps` are reactive. Vue's compiler automatically prepends `props.` when code in the same `<script setup>` block accesses variables destructured from `defineProps`:
 
 ```ts
-export interface Props {
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // runs only once before 3.5
+  // re-runs when the "foo" prop changes in 3.5+
+  console.log(foo)
+})
+```
+
+The above is compiled to the following equivalent:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` transformed to `props.foo` by the compiler
+  console.log(props.foo)
+})
+```
+
+In addition, you can use JavaScript's native default value syntax to declare default values for the props. This is particularly useful when using the type-based props declaration:
+
+```ts
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+```
+
+### Default props values when using type declaration <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
+
+In 3.5 and above, default values can be naturally declared when using Reactive Props Destructure. But in 3.4 and below, Reactive Props Destructure is not enabled by default. In order to declare props default values with type-based declaration, the `withDefaults` compiler macro is needed:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
@@ -228,10 +264,12 @@ const props = withDefaults(defineProps<Props>(), {
 Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
 :::info
-Обратите внимание, что значения по умолчанию для изменяемых ссылочных типов (таких как массивы или объекты) следует оборачивать в функции, чтобы избежать случайного изменения и внешних побочных эффектов. Это гарантирует, что каждый экземпляр компонента получит свою собственную копию значения по умолчанию.
+Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions when using `withDefaults` to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value. This is **not** necessary when using default values with destructure.
 :::
 
-## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+## defineModel() {#definemodel}
+
+- Only available in 3.4+
 
 Этот макрос позволяет объявить двустороннее связывание для входного параметра, который может быть использовано внутри `v-model` из родительского компонента. Пример использования также рассматривает в руководстве [`v-model` на компоненте](/guide/components/v-model).
 
@@ -340,7 +378,9 @@ defineExpose({
 
 Когда родитель получает экземпляр этого компонента через ref в шаблоне, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ref автоматически разворачиваются, как и для обычных экземпляров).
 
-## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
+## defineOptions() {#defineoptions}
+
+- Only supported in 3.3+
 
 Этот макрос может быть использован для объявления опций компонента прямо внутри `<script setup>` без создания отдельного `<script>` тега:
 
@@ -355,10 +395,11 @@ defineOptions({
 </script>
 ```
 
-- Поддерживается только в версиях 3.3+.
 - Это макрос. Опции будут подняты в область видимости модуля и не смогут обращаться к локальным переменным внутри `<script setup>`, которые не являются литеральными константами.
 
 ## defineSlots()<sup class="vt-badge ts"/> {#defineslots}
+
+- Поддерживается только в версиях 3.3+.
 
 Это макрос может быть использован для создания подсказок типов в IDE для имен слотов и проверки типов входных параметров.
 
@@ -373,9 +414,6 @@ const slots = defineSlots<{
 }>()
 </script>
 ```
-
-- Поддерживается только в версиях 3.3+.
-
 ## `useSlots()` и `useAttrs()` {#useslots-useattrs}
 
 Использование `slots` и `attrs` внутри `<script setup>` должно встречаться крайне редко, поскольку в шаблоне прямой доступ к ним можно получить через `$slots` и `$attrs`. В редких случаях, когда они всё же нужны, используйте вспомогательные методы `useSlots` и `useAttrs` соответственно:
@@ -485,7 +523,6 @@ ref<InstanceType<typeof componentWithoutGenerics>>();
 
 ref<ComponentExposed<typeof genericComponent>>();
 ```
-
 
 ## Restrictions {#restrictions}
 

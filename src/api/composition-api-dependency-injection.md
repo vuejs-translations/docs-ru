@@ -107,7 +107,9 @@
   - [Руководство - Provide / Inject](/guide/components/provide-inject)
   - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
-## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
+## hasInjectionContext() {#has-injection-context}
+
+- Only supported in 3.3+
 
 Возвращает `true`, если [inject()](#inject) можно использовать без предупреждения о вызове в неправильном месте (например, вне `setup()`). Этот метод предназначен для библиотек, которые хотят использовать `inject()` внутри себя без предупреждения для конечного пользователя.
 

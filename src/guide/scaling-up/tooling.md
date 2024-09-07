@@ -108,17 +108,14 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Браузерные инструменты разработчика {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Бесплатный урок по инструментам разработчика Vue.js"/>
-
 Расширение devtools для браузера Vue позволяет исследовать дерево компонентов приложения Vue, проверять состояние отдельных компонентов, отслеживать события управления состоянием и измерять производительность.
 
-![Скриншот devtools](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![Скриншот devtools](./images/devtools.png)
 
 - [Документация](https://devtools.vuejs.org/)
-- [Расширение для Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Расширение для Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
-- [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
+- [Расширение для Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Vite плагин](https://devtools.vuejs.org/guide/vite-plugin)
+- [Автономное приложение Electron](https://devtools.vuejs.org/guide/standalone)
 
 ## TypeScript {#typescript}
 

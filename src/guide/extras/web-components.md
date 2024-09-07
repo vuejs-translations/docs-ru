@@ -47,15 +47,15 @@ export default {
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('vue')
       .use('vue-loader')
-      .tap(options => ({
+      .tap((options) => ({
         ...options,
         compilerOptions: {
           // считать все теги начинающиеся с ion- пользовательскими элементами
-          isCustomElement: tag => tag.startsWith('ion-')
+          isCustomElement: (tag) => tag.startsWith('ion-')
         }
       }))
   }
@@ -81,7 +81,7 @@ module.exports = {
 
 ### defineCustomElement {#definecustomelement}
 
-Vue позволяет создавать пользовательские элементы с точно таким же же API компонентов Vue с помощью метода [`defineCustomElement`](/api/general#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
+Vue позволяет создавать пользовательские элементы с точно таким же же API компонентов Vue с помощью метода [`defineCustomElement`](/api/custom-elements#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -171,6 +171,20 @@ document.body.appendChild(
 
 [Provide / Inject API](/guide/components/provide-inject#provide-inject) и [его эквивалент в Composition API](/api/composition-api-dependency-injection#provide) также работают между пользовательскими элементами, определяемыми Vue. Однако обратите внимание, что это работает **только между пользовательскими элементами**. То есть пользовательский элемент, определяемый Vue, не сможет инжектировать свойства, предоставляемые компонентом Vue, не являющимся пользовательским элементом.
 
+#### App Level Config <sup class="vt-badge" data-text="3.5+" /> {#app-level-config}
+
+You can configure the app instance of a Vue custom element using the `configureApp` option:
+
+```js
+defineCustomElement(MyComponent, {
+  configureApp(app) {
+    app.config.errorHandler = (err) => {
+      /* ... */
+    }
+  }
+})
+```
+
 ### Однофайловые компоненты как пользовательские элементы {#sfc-as-custom-element}
 
 Метод `defineCustomElement` также работает с однофайловыми компонентами Vue (SFC). Однако при стандартной настройке инструментов `<style>` внутри SFC все равно будут извлечены и объединены в один CSS-файл при production сборке. При использовании SFC в качестве пользовательского элемента часто более желательным вариантом будет внедрение тегов `<style>` в shadow root пользовательского элемента.
@@ -242,7 +256,7 @@ export const Counter = defineCustomElement(CounterSFC)
 // регистрация глобальных типов
 declare module 'vue' {
   export interface GlobalComponents {
-    'Counter': typeof Counter,
+    Counter: typeof Counter
   }
 }
 ```

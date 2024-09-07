@@ -129,7 +129,9 @@
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Сигнатура Функции <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### Сигнатура Функции {#function-signature}
+
+  - Поддерживается только в 3.3+
 
   `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function).
 
@@ -223,46 +225,3 @@
   ```
 
 - **См. также** [Руководство — Асинхронные компоненты](/guide/components/async)
-
-## defineCustomElement() {#definecustomelement}
-
-Этот метод принимает тот же аргумент, что и [`defineComponent`](#definecomponent), но вместо него возвращает нативный [Пользовательский элемент](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
-
-- **Тип**
-
-  ```ts
-  function defineCustomElement(
-    component:
-      | (ComponentOptions & { styles?: string[] })
-      | ComponentOptions['setup']
-  ): {
-    new (props?: object): HTMLElement
-  }
-  ```
-
-  > Тип упрощен для удобства чтения.
-
-- **Подробности**
-
-  Помимо обычных параметров компонента, `defineCustomElement()` также поддерживает специальную опцию `styles`, которая должна быть массивом инлайновых CSS строк, для определения CSS, который следует вставить в теневой корень элемента.
-
-  Возвращаемое значение — конструктор пользовательского элемента, который может быть зарегистрирован с помощью [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
-
-- **Пример**
-
-  ```js
-  import { defineCustomElement } from 'vue'
-
-  const MyVueElement = defineCustomElement({
-    /* опции компонента */
-  })
-
-  // Регистрация пользовательского элемента
-  customElements.define('my-vue-element', MyVueElement)
-  ```
-
-- **См. также**
-
-  - [Руководство — Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
-
-  - Также обратите внимание, что `defineCustomElement()` требует [специальной настройки](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами (SFC).

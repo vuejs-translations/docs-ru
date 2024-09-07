@@ -336,8 +336,10 @@
 
 Этот метод можно использовать как не связанную с компонентами замену `onUnmounted` в переиспользуемых функциях композиций, поскольку функция `setup()` каждого компонента Vue также вызывается в области действия эффекта.
 
+A warning will be thrown if this function is called without an active effect scope. In 3.5+, this warning can be suppressed by passing `true` as the second argument.
+
 - **Тип**
 
   ```ts
-  function onScopeDispose(fn: () => void): void
+  function onScopeDispose(fn: () => void, failSilently?: boolean): void
   ```

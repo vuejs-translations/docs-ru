@@ -368,6 +368,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'Внедрение зависимостей',
           link: '/api/composition-api-dependency-injection'
+        },
+        {
+          text: 'Helpers',
+          link: '/api/composition-api-helpers'
         }
       ]
     },
@@ -417,6 +421,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Продвинутое API',
       items: [
+        { text: 'Пользовательские элементы', link: '/api/custom-elements' },
         { text: 'Render-функция', link: '/api/render-function' },
         { text: 'Отрисовка на стороне сервера', link: '/api/ssr' },
         { text: 'Вспомогательные типы TypeScript', link: '/api/utility-types' },

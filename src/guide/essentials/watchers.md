@@ -224,6 +224,8 @@ watch(
 
 </div>
 
+In Vue 3.5+, the `deep` option can also be a number indicating the max traversal depth - i.e. how many levels should Vue traverse an object's nested properties.
+
 :::warning Используйте с осторожностью
 Глубокий наблюдатель требует обхода всех вложенных свойств в просматриваемом объекте и может быть дорогостоящим при использовании на больших структурах данных. Используйте его только в случае необходимости и помните о последствиях для производительности.
 :::
@@ -272,7 +274,9 @@ watch(
 
 </div>
 
-## Once Watchers <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
+## Once Watchers {#once-watchers}
+
+- Only supported in 3.4+
 
 Обратный вызов наблюдателя будет выполняться всякий раз, когда изменяется отслеживаемый источник. Если вы хотите, чтобы обратный вызов запускался только один раз при изменении источника, используйте параметр `once: true`.
 
@@ -361,6 +365,128 @@ watchEffect(async () => {
 - `watchEffect`, с другой стороны, объединяет отслеживание зависимостей и побочный эффект в одну фазу. Он автоматически отслеживает каждое реактивное свойство, доступ к которому осуществляется во время его синхронного выполнения. Это более удобно и обычно приводит к более лаконичному коду, но делает его реактивные зависимости менее явными.
 
 </div>
+
+## Side Effect Cleanup {#side-effect-cleanup}
+
+Sometimes we may perform side effects, e.g. asynchronous requests, in a watcher:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId) => {
+  fetch(`/api/${newId}`).then(() => {
+    // callback logic
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId) {
+      fetch(`/api/${newId}`).then(() => {
+        // callback logic
+      })
+    }
+  }
+}
+```
+
+</div>
+
+But what if `id` changes before the request completes? When the previous request completes, it will still fire the callback with an ID value that is already stale. Ideally, we want to be able to cancel the stale request when `id` changes to a new value.
+
+We can use the [`onWatcherCleanup()`](/api/reactivity-core#onwatchercleanup) <sup class="vt-badge" data-text="3.5+" /> API to register a cleanup function that will be called when the watcher is invalidated and is about to re-run:
+
+<div class="composition-api">
+
+```js {10-13}
+import { watch, onWatcherCleanup } from 'vue'
+
+watch(id, (newId) => {
+  const controller = new AbortController()
+
+  fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+    // callback logic
+  })
+
+  onWatcherCleanup(() => {
+    // abort stale request
+    controller.abort()
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js {12-15}
+import { onWatcherCleanup } from 'vue'
+
+export default {
+  watch: {
+    id(newId) {
+      const controller = new AbortController()
+
+      fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+        // callback logic
+      })
+
+      onWatcherCleanup(() => {
+        // abort stale request
+        controller.abort()
+      })
+    }
+  }
+}
+```
+
+</div>
+
+Note that `onWatcherCleanup` is only supported in Vue 3.5+ and must be called during the synchronous execution of a `watchEffect` effect function or `watch` callback function: you cannot call it after an `await` statement in an async function.
+
+Alternatively, an `onCleanup` function is also passed to watcher callbacks as the 3rd argument<span class="composition-api">, and to the `watchEffect` effect function as the first argument</span>:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId, oldId, onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // cleanup logic
+  })
+})
+
+watchEffect((onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // cleanup logic
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId, oldId, onCleanup) {
+      // ...
+      onCleanup(() => {
+        // cleanup logic
+      })
+    }
+  }
+}
+```
+
+</div>
+
+This works in versions before 3.5. In addition, `onCleanup` passed via function argument is bound to the watcher instance so it is not subject to the synchronously constraint of `onWatcherCleanup`.
 
 ## Время обратного вызова {#callback-flush-timing}
 

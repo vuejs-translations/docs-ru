@@ -114,7 +114,7 @@
   - [Руководство — Вычисляемые свойства](/guide/essentials/computed)
   - [Руководство — Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
   - [Руководство — Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
-  - [Руководство — Производительность — Стабильность у computed свойств](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
+  - [Руководство — Производительность — Стабильность у computed свойств](/guide/best-practices/performance#computed-stability)
 
 ## reactive() {#reactive}
 
@@ -240,7 +240,7 @@
   function watchEffect(
     effect: (onCleanup: OnCleanup) => void,
     options?: WatchEffectOptions
-  ): StopHandle
+  ): WatchHandle
 
   type OnCleanup = (cleanupFn: () => void) => void
 
@@ -250,7 +250,12 @@
     onTrigger?: (event: DebuggerEvent) => void
   }
 
-  type StopHandle = () => void
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
+  }
   ```
 
 - **Подробности**
@@ -297,6 +302,47 @@
   stop()
   ```
 
+  Pausing / resuming the watcher: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // temporarily pause the watcher
+  pause()
+
+  // resume later
+  resume()
+
+  // stop
+  stop()
+  ```
+
+  Side effect cleanup:
+
+  ```js
+  watchEffect(async (onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
+  Side effect cleanup in 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watchEffect(async () => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
   Параметры:
 
   ```js
@@ -335,14 +381,14 @@
     source: WatchSource<T>,
     callback: WatchCallback<T>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   // отслеживание нескольких источников
   function watch<T>(
     sources: WatchSource<T>[],
     callback: WatchCallback<T[]>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   type WatchCallback<T> = (
     value: T,
@@ -359,11 +405,18 @@
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // по умолчанию: false
-    deep?: boolean // по умолчанию: false
+    deep?: boolean | number // по умолчанию: false
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
     once?: boolean // по умолчанию: false (3.4+)
+  }
+
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
   }
   ```
 
@@ -387,10 +440,10 @@
   Третий необязательный аргумент представляет собой объект параметров, поддерживающий следующие настройки:
 
   - **`immediate`**: запуск обратного вызова сразу при создании наблюдателя. При первом вызове старое значение будет `undefined`.
-  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких изменениях. См. раздел [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
+  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких изменениях. In 3.5+, this can also be a number indicating the max traversal depth. See [Deep Watchers](/guide/essentials/watchers#deep-watchers). См. раздел [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: настройка времени срабатывания обратного вызова. Смотрите [Время срабатывания](/guide/essentials/watchers#callback-flush-timing) и [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: отладка зависимостей наблюдателя. См. раздел [Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging).
-  - **`once`**: запустить обратный вызов только один раз. Наблюдатель автоматически останавливается после первого выполнения обратного вызова. <sup class="vt-badge" data-text="3.4+" />
+  - **`once`**: (3.4+) запустить обратный вызов только один раз. Наблюдатель автоматически останавливается после первого выполнения обратного вызова. <sup class="vt-badge" data-text="3.4+" />
 
   По сравнению с [`watchEffect()`](#watcheffect), `watch()` позволяет нам:
 
@@ -474,6 +527,21 @@
   stop()
   ```
 
+  Pausing / resuming the watcher: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // temporarily pause the watcher
+  pause()
+
+  // resume later
+  resume()
+
+  // stop
+  stop()
+  ```
+
   Очистка сайд эффекта:
 
   ```js
@@ -486,8 +554,46 @@
   })
   ```
 
+  Side effect cleanup in 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watch(id, async (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 - **См. также**
 
   - [Руководство — Наблюдатели](/guide/essentials/watchers)
   - [Руководство — Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
 
+
+## onWatcherCleanup() <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
+
+Register a cleanup function to be executed when the current watcher is about to re-run. Can only be called during the synchronous execution of a `watchEffect` effect function or `watch` callback function (i.e. it cannot be called after an `await` statement in an async function.)
+
+- **Type**
+
+  ```ts
+  function onWatcherCleanup(
+    cleanupFn: () => void,
+    failSilently?: boolean
+  ): void
+  ```
+
+- **Example**
+
+  ```ts
+  import { watch, onWatcherCleanup } from 'vue'
+
+  watch(id, (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onWatcherCleanup(cancel)
+  })
+  ```

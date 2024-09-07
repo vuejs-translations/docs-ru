@@ -68,10 +68,21 @@ const props = defineProps<Props>()
 
 ### Значения по умолчанию входных параметров {#props-default-values}
 
-При использовании объявления на основе типов мы теряем возможность объявлять значения по умолчанию для входных параметров. Это можно решить с помощью макроса компилятора `withDefaults`:
+When using type-based declaration, we lose the ability to declare default values for the props. This can be resolved by using [Reactive Props Destructure](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />:
 
 ```ts
-export interface Props {
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+```
+
+In 3.4 and below, Reactive Props Destructure is not enabled by default. An alternative is to use the `withDefaults` compiler macro:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
@@ -84,8 +95,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 Это будет скомпилировано во время выполнения в эквивалентные параметры `по умолчанию`. Кроме того, помощник `withDefaults` обеспечивает проверку типов для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены необязательные флаги для свойств, для которых объявлены значения по умолчанию.
 
-:::info Примечание
-Обратите внимание, что значения по умолчанию для изменяемых ссылочных типов (таких как массивы или объекты) следует оборачивать в функции, чтобы избежать случайного изменения и внешних побочных эффектов. Это гарантирует, что каждый экземпляр компонента получит свою собственную копию значения по умолчанию.
+:::info
+Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions when using `withDefaults` to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value. This is **not** necessary when using default values with destructure.
 :::
 
 ### Без `<script setup>` {#without-script-setup}
@@ -359,6 +370,17 @@ const foo = inject('foo') as string
 
 ## Типизация ссылок на шаблоны {#typing-template-refs}
 
+With Vue 3.5 and `@vue/language-tools` 2.1 (powering both the IDE language service and `vue-tsc`), the type of refs created by `useTemplateRef()` in SFCs can be **automatically inferred** for static refs based on what element the matching `ref` attribute is used on.
+
+In cases where auto-inference is not possible, you can still cast the template ref to an explicit type via the generic argument:
+
+```ts
+const el = useTemplateRef<HTMLInputElement>(null)
+```
+
+<details>
+<summary>Usage before 3.5</summary>
+
 Шаблонные ссылки должны создаваться с явным аргументом типа generic и начальным значением `null`:
 
 ```vue
@@ -377,50 +399,45 @@ onMounted(() => {
 </template>
 ```
 
+</details>
+
 Чтобы получить правильный интерфейс DOM, вы можете посмотреть такие страницы, как [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#technical_summary).
 
 Обратите внимание, что для обеспечения строгой безопасности типов при обращении к `el.value` необходимо использовать опциональную цепочку или защиту типов. Это связано с тем, что начальное значение ref является `null` до тех пор, пока компонент не будет монтирован, а также может быть установлено в `null`, если ссылаемый элемент будет размонтирован с помощью `v-if`.
 
 ## Типизация ссылок на шаблоны компонентов {#typing-component-template-refs}
 
-Иногда для вызова публичного метода дочернего компонента требуется определить ссылку на шаблон. Например, у нас есть дочерний компонент `MyModal` с методом, открывающим модальное окно:
+With Vue 3.5 and `@vue/language-tools` 2.1 (powering both the IDE language service and `vue-tsc`), the type of refs created by `useTemplateRef()` in SFCs can be **automatically inferred** for static refs based on what element or component the matching `ref` attribute is used on.
 
-```vue
-<!-- MyModal.vue -->
-<script setup lang="ts">
-import { ref } from 'vue'
+In cases where auto-inference is not possible (e.g. non-SFC usage or dynamic components), you can still cast the template ref to an explicit type via the generic argument.
 
-const isContentShown = ref(false)
-const open = () => (isContentShown.value = true)
-
-defineExpose({
-  open
-})
-</script>
-```
-
-Для того чтобы получить тип экземпляра `MyModal`, необходимо сначала получить его тип через `typeof`, а затем использовать встроенную в TypeScript утилиту `InstanceType` для извлечения типа экземпляра:
+In order to get the instance type of an imported component, we need to first get its type via `typeof`, then use TypeScript's built-in `InstanceType` utility to extract its instance type:
 
 ```vue{5}
 <!-- App.vue -->
 <script setup lang="ts">
-import MyModal from './MyModal.vue'
+import { useTemplateRef } from 'vue'
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
 
-const modal = ref<InstanceType<typeof MyModal> | null>(null)
+type FooType = InstanceType<typeof Foo>
+type BarType = InstanceType<typeof Bar>
 
-const openModal = () => {
-  modal.value?.open()
-}
+const compRef = useTemplateRef<FooType | BarType>('comp')
 </script>
+
+<template>
+  <component :is="Math.random() > 0.5 ? Foo : Bar" ref="comp" />
+</template>
 ```
 
 В случаях, когда точный тип компонента недоступен или не важен, вместо него можно использовать `ComponentPublicInstance`. В этом случае будут указаны только те свойства, которые являются общими для всех компонентов, например `$el`:
 
 ```ts
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = ref<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance | null>(null)
 ```
 
 В случаях, когда компонент, на который делается ссылка (ref), является [дженерик-компонентом](/guide/typescript/overview.html#generic-components), например `MyGenericModal`:
@@ -445,11 +462,11 @@ defineExpose({
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
+import type { ComponentExposed } from 'vue-component-type-helpers'
 
-import type { ComponentExposed } from 'vue-component-type-helpers';
-
-const modal = ref<ComponentExposed<typeof MyModal> | null>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyModal>>(null)
 
 const openModal = () => {
   modal.value?.open('newValue')
@@ -457,3 +474,4 @@ const openModal = () => {
 </script>
 ```
 
+Note that with `@vue/language-tools` 2.1+, static template refs' types can be automatically inferred and the above is only needed in edge cases.

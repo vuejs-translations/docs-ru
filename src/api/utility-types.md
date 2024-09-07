@@ -34,15 +34,15 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-Псевдоним для `T | Ref<T>`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
-
 - Поддерживается только в версиях 3.3+.
+
+Псевдоним для `T | Ref<T>`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Псевдоним для `T | Ref<T> | (() => T)`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
-
 - Поддерживается только в версиях 3.3+.
+- 
+Псевдоним для `T | Ref<T> | (() => T)`. Полезно для аннотирования аргументов [Composables](/guide/reusability/composables.html).
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
@@ -77,9 +77,9 @@
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-Извлечение типов входных параметров из объекта runtime props options. Извлеченные типы являются публичными — то есть входными параметрами, которые разрешено передавать родителю.
-
 - Поддерживается только в версиях 3.3+.
+
+Извлечение типов входных параметров из объекта runtime props options. Извлеченные типы являются публичными — то есть входными параметрами, которые разрешено передавать родителю.
 
 - **Пример**
 
