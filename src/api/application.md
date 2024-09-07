@@ -92,7 +92,7 @@
 
 ## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
 
-Registers a callback to be called when the app is unmounted.
+Регистрирует коллбэк, который будет вызван при размонтировании компонента.
 
 - **Type**
 
@@ -285,7 +285,7 @@ Registers a callback to be called when the app is unmounted.
 
 ## app.runWithContext() {#app-runwithcontext}
 
-- Only supported in 3.3+
+- Поддерживается только в 3.3+
 
   Выполняет переданную функцию в контексте текущего экземпляра приложения.
 
@@ -628,38 +628,38 @@ console.log(app.config)
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-Configure a prefix for all IDs generated via [useId()](/api/general#useid) inside this application.
+Настройте префикс для всех идентификаторов, сгенерированных через [useId()](/api/general#useid) внутри этого приложения.
 
-- **Type:** `string`
+- **Тип:** `string`
 
-- **Default:** `undefined`
+- **По умолчанию:** `undefined`
 
-- **Example**
+- **Пример**
 
   ```js
   app.config.idPrefix = 'my-app'
   ```
 
   ```js
-  // in a component:
+  // в компоненте:
   const id1 = useId() // 'my-app:0'
   const id2 = useId() // 'my-app:1'
   ```
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
 
-Force unhandled errors to be thrown in production mode.
+Принудительно обрабатывает необработанные ошибки в продакшен режиме.
 
-- **Type:** `boolean`
+- **Тип:** `boolean`
 
-- **Default:** `false`
+- **По умолчанию:** `false`
 
-- **Details**
+- **Подробности**
 
-  By default, errors thrown inside a Vue application but not explicitly handled have different behavior between development and production modes:
+  По умолчанию ошибки, возникающие внутри приложения Vue, но не обработанные явно, имеют разное поведение в режимах разработки и продакшена:
 
-  - In development, the error is thrown and can possibly crash the application. This is to make the error more prominent so that it can be noticed and fixed during development.
+  - В процессе разработки ошибка выбрасывается и может привести к краху приложения. Это сделано для того, чтобы сделать ошибку более заметной, чтобы ее можно было заметить и исправить во время разработки.
 
-  - In production, the error will only be logged to the console to minimize the impact to end users. However, this may prevent errors that only happen in production from being caught by error monitoring services.
+  - В продакшене ошибка будет выведена только в консоли, чтобы минимизировать воздействие на конечных пользователей. Однако это может помешать службам мониторинга ошибок отлавливать ошибки, которые происходят только в продакшене.
 
-  By setting `app.config.throwUnhandledErrorInProduction` to `true`, unhandled errors will be thrown even in production mode.
+  Если установить `app.config.throwUnhandledErrorInProduction` в `true`, то необработанные ошибки будут выданы даже в продакшен режиме.
