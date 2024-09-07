@@ -209,32 +209,32 @@ const emit = defineEmits<{
 
   Это ограничение было снято в версии 3.3. Последняя версия Vue поддерживает возможность ссылки на импортированные и ограниченный набор сложных типов в месте для использования типа. Однако, так как преобразование типов во время выполнения все еще основано на AST, некоторые сложные типы, требующие фактического анализа, например, условные типы, не поддерживаются. Вы можете использовать условные типы для типизации одного входного параметра, но не для цельного объекта входных параметров.  
 
-### Reactive Props Destructure <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
+### Реактивная деструктуризация входных параметров <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-In Vue 3.5 and above, variables destructured from the return value of `defineProps` are reactive. Vue's compiler automatically prepends `props.` when code in the same `<script setup>` block accesses variables destructured from `defineProps`:
+Во Vue 3.5 и выше переменные, деструктурированные из возвращаемого значения `defineProps`, являются реактивными. Компилятор Vue автоматически добавляет префикс `props.`, когда код в одном и том же блоке `<script setup>` обращается к переменным, деструктурированным из `defineProps`:
 
 ```ts
 const { foo } = defineProps(['foo'])
 
 watchEffect(() => {
-  // runs only once before 3.5
-  // re-runs when the "foo" prop changes in 3.5+
+  // выполняется только один раз до 3.5
+  // повторно запускается при изменении входного параметра "foo" в 3.5+
   console.log(foo)
 })
 ```
 
-The above is compiled to the following equivalent:
+Все вышесказанное сводится к следующему эквиваленту:
 
 ```js {5}
 const props = defineProps(['foo'])
 
 watchEffect(() => {
-  // `foo` transformed to `props.foo` by the compiler
+  // `foo` преобразуется компилятором в `props.foo`
   console.log(props.foo)
 })
 ```
 
-In addition, you can use JavaScript's native default value syntax to declare default values for the props. This is particularly useful when using the type-based props declaration:
+Кроме того, вы можете использовать нативный JavaScript синтаксис для значений по умолчанию, чтобы задекларировать значения по умолчанию для входных параметров. Это особенно полезно при использовании объявления входных параметров на основе типов:
 
 ```ts
 interface Props {
@@ -245,9 +245,9 @@ interface Props {
 const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
 ```
 
-### Default props values when using type declaration <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
+### Значения входных параметров по умолчанию при использовании объявления типов <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
 
-In 3.5 and above, default values can be naturally declared when using Reactive Props Destructure. But in 3.4 and below, Reactive Props Destructure is not enabled by default. In order to declare props default values with type-based declaration, the `withDefaults` compiler macro is needed:
+В версии 3.5 и выше значения по умолчанию могут быть объявлены естественным образом при использовании Reactive Props Destructure. Но в 3.4 и ниже Reactive Props Destructure не включена по умолчанию. Чтобы объявить входные параметры по умолчанию с помощью объявления на основе типов, необходим макрос компилятора `withDefaults`:
 
 ```ts
 interface Props {
@@ -264,12 +264,12 @@ const props = withDefaults(defineProps<Props>(), {
 Это объявление будет преобразовано в эквивалентный аналог `default` как при объявлении входных параметров во время выполнения кода. Кроме того, макрос `withDefaults` предоставляет проверку типа для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены флаги необязательных свойств (?) для свойств, у которых объявлены значения по умолчанию.
 
 :::info
-Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions when using `withDefaults` to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value. This is **not** necessary when using default values with destructure.
+Обратите внимание, что значения по умолчанию для изменяемых ссылочных типов (например, массивов или объектов) следует оборачивать в функции при использовании `withDefaults`, чтобы избежать случайного изменения и внешних побочных эффектов. Это гарантирует, что каждый инстанс компонента получит свою собственную копию значения по умолчанию. Это **не** необходимо при использовании значений по умолчанию с деструктуризацией.
 :::
 
 ## defineModel() {#definemodel}
 
-- Only available in 3.4+
+- Доступно только в 3.4+
 
 Этот макрос позволяет объявить двустороннее связывание для входного параметра, который может быть использовано внутри `v-model` из родительского компонента. Пример использования также рассматривает в руководстве [`v-model` на компоненте](/guide/components/v-model).
 
@@ -380,7 +380,7 @@ defineExpose({
 
 ## defineOptions() {#defineoptions}
 
-- Only supported in 3.3+
+- Поддерживается только в 3.3+
 
 Этот макрос может быть использован для объявления опций компонента прямо внутри `<script setup>` без создания отдельного `<script>` тега:
 
