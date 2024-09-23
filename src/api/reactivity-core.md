@@ -280,19 +280,6 @@
   // -> выведет 1
   ```
 
-  Очистка сайд эффекта:
-
-  ```js
-  watchEffect(async (onCleanup) => {
-    const { response, cancel } = doAsyncWork(id.value)
-    // `cancel` будет вызван при изменении `id`.
-    // таким образом, предыдущий ожидающий запрос будет отменен
-    // если он еще не выполнен
-    onCleanup(cancel)
-    data.value = await response
-  })
-  ```
-
   Остановка наблюдателя:
 
   ```js
@@ -530,7 +517,7 @@
   Pausing / resuming the watcher: <sup class="vt-badge" data-text="3.5+" />
 
   ```js
-  const { stop, pause, resume } = watchEffect(() => {})
+  const { stop, pause, resume } = watch(() => {})
 
   // temporarily pause the watcher
   pause()

@@ -261,13 +261,11 @@ E2E-тесты проверяют многие уровни приложения
 
 ### Рекомендации {#recommendation-2}
 
-- [Cypress](https://www.cypress.io/)
+- [Playwright](https://playwright.dev/) тируйте на Windows, Linux и macOS, локально или на CI, в режиме headless или headed с нативной эмуляцией мобильных версий Google Chrome для Android и Mobile Safari. У него информативный интерфейс, отличная отладка, встроенные утверждения, параллелизация, трассировка и он разработан для устранения нестабильных тестов. Поддержка [Component Testing](https://playwright.dev/docs/component-testing) доступна, но помечена как экспериментальная. Playwright является open source и поддерживается Microsoft.
 
-  В целом мы считаем, что Cypress предоставляет наиболее полное решение E2E, обладающее такими возможностями, как информативный графический интерфейс, удобную отладку, встроенные утверждения и заглушки, flake-устойчивость, распараллеливание и моментальные снимки. Как уже упоминалось выше, в нем также реализована поддержка [компонентного тестирования](https://docs.cypress.io/guides/component-testing/introduction). Однако он поддерживает только браузеры на базе Chromium, Firefox и Electron. Поддержка WebKit доступна, но отмечена как экспериментальная.
+- [Cypress](https://www.cypress.io/) имеет информативный графический интерфейс, отличную отладку, встроенные утверждения, заглушки, устойчивость к нестабильности и снимки. Как упоминалось выше, он обеспечивает стабильную поддержку [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). Cypress поддерживает браузеры на основе Chromium, Firefox и Electron. Поддержка WebKit доступна, но помечена как экспериментальная. Cypress лицензирован по MIT, но некоторые функции, такие как параллелизация, требуют подписки на Cypress Cloud.
 
 ### Другие варианты {#other-options-2}
-
-- [Playwright](https://playwright.dev/) также является отличным решением для E2E-тестирования, поддерживающим все современные движки рендеринга, включая Chromium, WebKit и Firefox. Тестируйте на Windows, Linux и macOS, локально или в CI, headless или headed, с нативной мобильной эмуляцией Google Chrome для Android и Mobile Safari.
 
 - [Nightwatch](https://nightwatchjs.org/) это решение для E2E-тестирования на базе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает ему самую широкую поддержку браузеров, включая нативное мобильное тестирование. Решения на основе Selenium будут медленнее, чем Playwright или Cypress.
 
