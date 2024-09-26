@@ -104,7 +104,7 @@ export default {
 ```js
 const app = createApp({})
 
-// сделать v-focus пригодным для использования во всех компонентах
+// сделать v-highlight пригодным для использования во всех компонентах
 app.directive('highlight', {
   /* ... */
 })
