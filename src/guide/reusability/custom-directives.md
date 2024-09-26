@@ -120,7 +120,7 @@ app.directive('highlight', {
 
 ```vue
 <script setup>
-// включение v-highlight в шаблоне
+// включение v-focus в шаблоне
 const vFocus = {
   mounted: (el) => el.focus()
 }
