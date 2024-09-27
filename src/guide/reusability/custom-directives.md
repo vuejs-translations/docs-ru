@@ -104,7 +104,7 @@ export default {
 ```js
 const app = createApp({})
 
-// сделать v-focus пригодным для использования во всех компонентах
+// сделать v-highlight пригодным для использования во всех компонентах
 app.directive('highlight', {
   /* ... */
 })
@@ -120,7 +120,7 @@ app.directive('highlight', {
 
 ```vue
 <script setup>
-// включение v-highlight в шаблоне
+// включение v-focus в шаблоне
 const vFocus = {
   mounted: (el) => el.focus()
 }
