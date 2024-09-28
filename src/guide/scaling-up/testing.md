@@ -261,7 +261,7 @@ E2E-тесты проверяют многие уровни приложения
 
 ### Рекомендации {#recommendation-2}
 
-- [Playwright](https://playwright.dev/) тируйте на Windows, Linux и macOS, локально или на CI, в режиме headless или headed с нативной эмуляцией мобильных версий Google Chrome для Android и Mobile Safari. У него информативный интерфейс, отличная отладка, встроенные утверждения, параллелизация, трассировка и он разработан для устранения нестабильных тестов. Поддержка [Component Testing](https://playwright.dev/docs/component-testing) доступна, но помечена как экспериментальная. Playwright является open source и поддерживается Microsoft.
+- [Playwright](https://playwright.dev/) тируйте на Windows, Linux и macOS, локально или на CI, в режиме headless или headed с нативной эмуляцией мобильных версий Google Chrome для Android и Mobile Safari. У него информативный интерфейс, отличная отладка, встроенные утверждения, параллелизация, трассировка и он разработан для устранения нестабильных тестов. Поддержка [Component Testing](https://playwright.dev/docs/test-components) доступна, но помечена как экспериментальная. Playwright является open source и поддерживается Microsoft.
 
 - [Cypress](https://www.cypress.io/) имеет информативный графический интерфейс, отличную отладку, встроенные утверждения, заглушки, устойчивость к нестабильности и снимки. Как упоминалось выше, он обеспечивает стабильную поддержку [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). Cypress поддерживает браузеры на основе Chromium, Firefox и Electron. Поддержка WebKit доступна, но помечена как экспериментальная. Cypress лицензирован по MIT, но некоторые функции, такие как параллелизация, требуют подписки на Cypress Cloud.
 

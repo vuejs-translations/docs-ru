@@ -112,7 +112,7 @@ export default defineComponent({
 См. также:
 
 - [Заметка о webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
-- [типы тестов для `defineComponent`](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
+- [типы тестов для `defineComponent`](https://github.com/vuejs/core/blob/main/packages-private/dts-test/defineComponent.test-d.tsx)
 
 :::tip Совет
 `defineComponent()` также позволяет выводить типы для компонентов, определенных в простом JavaScript.
