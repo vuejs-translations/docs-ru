@@ -263,7 +263,7 @@ const fullName = computed({
 
 ## Getting the previous value {#previous}
 
-- Only supported in 3.4+
+- Поддерживается только в версиях 3.4+
 
 In case you need it, you can get the previous value returned by the computed property accessing
 the first argument of the getter:
