@@ -1,10 +1,10 @@
-# Composition API: Helpers {#composition-api-helpers}
+# Composition API: Хэлперы {#composition-api-helpers}
 
 ## useAttrs() {#useattrs}
 
-Returns the `attrs` object from the [Setup Context](/api/composition-api-setup#setup-context), which includes the [fallthrough attributes](/guide/components/attrs#fallthrough-attributes) of the current component. This is intended to be used in `<script setup>` where the setup context object is not available.
+Возвращает из [Setup контекста](/api/composition-api-setup#setup-context) объект `attrs`, который включает в себя [обычные атрибуты](/guide/components/attrs#fallthrough-attributes) переданные текущему компоненту. Это предназначено для использования в `<script setup>`, где объект Setup контекст недоступен.
 
-- **Type**
+- **Тип**
 
   ```ts
   function useAttrs(): Record<string, unknown>
@@ -12,11 +12,11 @@ Returns the `attrs` object from the [Setup Context](/api/composition-api-setup#s
 
 ## useSlots() {#useslots}
 
-Returns the `slots` object from the [Setup Context](/api/composition-api-setup#setup-context), which includes parent passed slots as callable functions that return Virtual DOM nodes. This is intended to be used in `<script setup>` where the setup context object is not available.
+Возвращает из [Setup контекста](/api/composition-api-setup#setup-context) объект `slots`, включаещий переданные родителю слоты в виде вызываемых функции, возвращающих виртуальные узлы DOM. Это предназначено для использования в `<script setup>`, где объект Setup контекст недоступен.
 
-If using TypeScript, [`defineSlots()`](/api/sfc-script-setup#defineslots) should be preferred instead.
+При использовании TypeScript, вместо этого следует использовать [`defineSlots()`](/api/sfc-script-setup#defineslots).
 
-- **Type**
+- **Тип**
 
   ```ts
   function useSlots(): Record<string, (...args: any[]) => VNode[]>
@@ -24,11 +24,11 @@ If using TypeScript, [`defineSlots()`](/api/sfc-script-setup#defineslots) should
 
 ## useModel() {#usemodel}
 
-This is the underlying helper that powers [`defineModel()`](/api/sfc-script-setup#definemodel). If using `<script setup>`, `defineModel()` should be preferred instead.
+Это базовый хэлпер, который обеспечивает работу [`defineModel()`](/api/sfc-script-setup#definemodel). Если вы используете `<script setup>`, вместо него следует предпочесть `defineModel()`.
 
-- Only available in 3.4+
+- Доступно только в версиях 3.4+
 
-- **Type**
+- **Тип**
 
   ```ts
   function useModel(
@@ -48,7 +48,7 @@ This is the underlying helper that powers [`defineModel()`](/api/sfc-script-setu
 ]
   ```
 
-- **Example**
+- **Пример**
 
   ```js
   export default {
@@ -61,21 +61,21 @@ This is the underlying helper that powers [`defineModel()`](/api/sfc-script-setu
   }
   ```
 
-- **Details**
+- **Подробности**
 
-  `useModel()` can be used in non-SFC components, e.g. when using raw `setup()` function. It expects the `props` object as the first argument, and the model name as the second argument. The optional third argument can be used to declare custom getter and setter for the resulting model ref. Note that unlike `defineModel()`, you are responsible for declaring the props and emits yourself.
+  `useModel()` может использоваться в компонентах, не относящихся к SFC, например, при использовании необработанной функции `setup()`. В качестве первого аргумента она принимает объект `props`, а в качестве второго - имя модели. Необязательный третий аргумент может быть использован для объявления пользовательских геттеров и сеттеров для получившейся ref модели. Обратите внимание, что в отличие от `defineModel()`, вы сами должны объявить входные параметры(`props`) и эмиттеры.
 
 ## useTemplateRef() <sup class="vt-badge" data-text="3.5+" /> {#usetemplateref}
 
-Returns a shallow ref whose value will be synced with the template element or component with a matching ref attribute.
+Возвращает неглубокую ref ссылку, значение которой будет синхронизировано с  `<template>` элементом или компонентом с соответствующим атрибутом ref.
 
-- **Type**
+- **Тип**
 
   ```ts
   function useTemplateRef<T>(key: string): Readonly<ShallowRef<T | null>>
   ```
 
-- **Example**
+- **Пример**
 
   ```vue
   <script setup>
@@ -93,22 +93,22 @@ Returns a shallow ref whose value will be synced with the template element or co
   </template>
   ```
 
-- **See also**
-  - [Guide - Template Refs](/guide/essentials/template-refs)
-  - [Guide - Typing Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
-  - [Guide - Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+- **См. также**
+  - [Руководство - Ссылки на элементы шаблона](/guide/essentials/template-refs)
+  - [Руководство - Типизация ссылок на шаблоны](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Типизация ссылок на шаблоны компонентов](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## useId() <sup class="vt-badge" data-text="3.5+" /> {#useid}
 
-Used to generate unique-per-application IDs for accessibility attributes or form elements.
+Используется для генерации уникальных для каждого приложения идентификаторов для атрибутов доступности или элементов формы.
 
-- **Type**
+- **Тип**
 
   ```ts
   function useId(): string
   ```
 
-- **Example**
+- **Пример**
 
   ```vue
   <script setup>
@@ -125,10 +125,10 @@ Used to generate unique-per-application IDs for accessibility attributes or form
   </template>
   ```
 
-- **Details**
+- **Подробности**
 
-  IDs generated by `useId()` are unique-per-application. It can be used to generate IDs for form elements and accessibility attributes. Multiple calls in the same component will generate different IDs; multiple instances of the same component calling `useId()` will also have different IDs.
+  Идентификаторы, генерируемые с помощью `useId()`, уникальны для каждого приложения. Этот хэлпер можно использовать для генерации идентификаторов для элементов формы и атрибутов доступности. Несколько вызовов в одном и том же компоненте будут генерировать разные идентификаторы, несколько экземпляров одного и того же компонента, вызывающих `useId()`, также будут иметь разные идентификаторы.
 
-  IDs generated by `useId()` are also guaranteed to be stable across the server and client renders, so they can be used in SSR applications without leading to hydration mismatches.
+  Идентификаторы, сгенерированные с помощью `useId()`, также гарантированно стабильны и для серверного и для клиентского рендеринга, поэтому их использование в SSR приложениях не приведёт к несоответствию гидратации.
 
-  If you have more than one Vue application instance of the same page, you can avoid ID conflicts by giving each app an ID prefix via [`app.config.idPrefix`](/api/application#app-config-idprefix).
+  Если у вас есть несколько экземпляров Vue-приложения для одной и той же страницы, вы можете избежать конфликтов идентификаторов, задав каждому приложению свой ID-префикс через [`app.config.idPrefix`](/api/application#app-config-idprefix).
