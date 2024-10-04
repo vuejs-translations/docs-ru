@@ -386,9 +386,7 @@
   type WatchSource<T> =
     | Ref<T> // ref
     | (() => T) // геттер
-    | T extends object
-    ? T
-    : never // реактивный объект
+    | (T extends object ? T : never) // реактивный объект
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // по умолчанию: false

@@ -12,8 +12,7 @@
 
 <div class="composition-api">
 
-To obtain the reference with Composition API, we can use the [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text=
-"3.5+" /> helper:
+To obtain the reference with Composition API, we can use the [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> helper:
 
 ```vue
 <script setup>
