@@ -45,7 +45,7 @@
   type ModelRef<T, M extends PropertyKey = string, G = T, S = T> = Ref<G, S> & [
     ModelRef<T, M, G, S>,
     Record<M, true | undefined>
-]
+  ]
   ```
 
 - **Пример**

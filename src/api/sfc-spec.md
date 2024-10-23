@@ -136,6 +136,13 @@ p {{ msg }}
 </unit-test>
 ```
 
+:::warning Note
+While using aliases in `src`, don't start with `~`, anything after it is interpreted as a module request. This means you can reference assets inside node modules:
+```vue
+<img src="~some-npm-package/foo.png">
+```
+:::
+
 ## Комментарии {#comments}
 
 Внутри каждой секции следует использовать синтаксис комментариев используемого языка (HTML, CSS, JavaScript, Pug и т.д.). Для комментариев верхнего уровня используйте синтаксис комментариев HTML: `<!-- комментарий верхнего уровня -->`
