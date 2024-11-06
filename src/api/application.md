@@ -628,7 +628,7 @@ console.log(app.config)
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-Настройте префикс для всех идентификаторов, сгенерированных через [useId()](/api/general#useid) внутри этого приложения.
+Настройте префикс для всех идентификаторов, сгенерированных через [useId()](/api/composition-api-helpers.html#useid) внутри этого приложения.
 
 - **Тип:** `string`
 

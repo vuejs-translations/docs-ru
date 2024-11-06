@@ -153,6 +153,26 @@ useCssModule()
 useCssModule('classes')
 ```
 
+- **Example**
+
+```vue
+<script setup lang="ts">
+import { useCssModule } from 'vue'
+
+const classes = useCssModule()
+</script>
+
+<template>
+  <p :class="classes.red">red</p>
+</template>
+
+<style module>
+.red {
+  color: red;
+}
+</style>
+```
+
 ## `v-bind()` внутри CSS {#v-bind-in-css}
 
 Однофайловые компоненты в секциях `<style>` поддерживают привязку значений CSS к динамическому состоянию компонента через CSS-функцию `v-bind`:

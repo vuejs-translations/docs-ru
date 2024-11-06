@@ -261,7 +261,7 @@ const fullName = computed({
 
 </div>
 
-## Getting the previous value {#previous}
+## Getting the Previous Value {#previous}
 
 - Поддерживается только в версиях 3.4+
 
