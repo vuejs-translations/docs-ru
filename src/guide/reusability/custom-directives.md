@@ -142,7 +142,7 @@ const focus = {
 
 export default {
   directives: {
-    // включение v-highlight в шаблоне
+    // включение v-focus в шаблоне
     focus
   }
 }
