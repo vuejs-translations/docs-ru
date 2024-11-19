@@ -32,7 +32,6 @@ onMounted(() => {
 ```
 
 При использовании Typescript, поддержка Vue IDE и `vue-tsc` автоматически определят тип `input.value`, основываясь для какого элемента или компонента используется соответствующий `ref` атрибут.
-When using TypeScript, Vue's IDE support and `vue-tsc` will automatically infer the type of `input.value` based on what element or component the matching `ref` attribute is used on.
 
 <details>
 <summary>Использование до версии 3.5</summary>
