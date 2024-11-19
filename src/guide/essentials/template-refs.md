@@ -12,7 +12,7 @@
 
 <div class="composition-api">
 
-To obtain the reference with Composition API, we can use the [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> helper:
+Чтобы получить ссылку с помощью Composition API, мы можем использовать [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> хэлпер.
 
 ```vue
 <script setup>
@@ -31,12 +31,12 @@ onMounted(() => {
 </template>
 ```
 
-When using TypeScript, Vue's IDE support and `vue-tsc` will automatically infer the type of `input.value` based on what element or component the matching `ref` attribute is used on.
+При использовании Typescript, поддержка Vue IDE и `vue-tsc` автоматически определят тип `input.value`, основываясь для какого элемента или компонента используется соответствующий `ref` атрибут.
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
-In versions before 3.5 where `useTemplateRef()` was not introduced, we need to declare a ref with a name that matches the template ref attribute's value:
+В версиях до 3.5, где не был введен `useTemplateRef()`, нужно было объявлять `ref` c именем, соответствующим значению атрибута `ref`
 
 ```vue
 <script setup>
@@ -146,9 +146,9 @@ onMounted(() => console.log(itemRefs.value))
 [Try it in the Playground](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
-In versions before 3.5 where `useTemplateRef()` was not introduced, we need to declare a ref with a name that matches the template ref attribute's value. The ref should also contain an array value:
+В версиях до 3.5, где не был введен `useTemplateRef()`, нужно было объявлять `ref` c именем, соответствующим значению атрибута `ref`. Ссылка также должна содержать значение массива:
 
 ```vue
 <script setup>
@@ -246,7 +246,7 @@ onMounted(() => {
 ```
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
 ```vue
 <script setup>
