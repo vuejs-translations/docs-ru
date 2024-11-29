@@ -224,7 +224,7 @@ watch(
 
 </div>
 
-In Vue 3.5+, the `deep` option can also be a number indicating the max traversal depth - i.e. how many levels should Vue traverse an object's nested properties.
+В Vue 3.5+ опция `deep` также может быть числом, указывающим максимальную глубину обхода — то есть на сколько уровней вложенности Vue должен проходить по свойствам объекта.
 
 :::warning Используйте с осторожностью
 Глубокий наблюдатель требует обхода всех вложенных свойств в просматриваемом объекте и может быть дорогостоящим при использовании на больших структурах данных. Используйте его только в случае необходимости и помните о последствиях для производительности.
@@ -368,7 +368,7 @@ watchEffect(async () => {
 
 ## Side Effect Cleanup {#side-effect-cleanup}
 
-Sometimes we may perform side effects, e.g. asynchronous requests, in a watcher:
+Иногда мы можем получить побочные эффекты, например при асинхронных запросах:
 
 <div class="composition-api">
 
@@ -397,9 +397,9 @@ export default {
 
 </div>
 
-But what if `id` changes before the request completes? When the previous request completes, it will still fire the callback with an ID value that is already stale. Ideally, we want to be able to cancel the stale request when `id` changes to a new value.
+Но что, если `id` изменится до завершения запроса? Когда запрос завершится, мы получим данные с предыдущем запрошенным значением. В идеале, мы хотим иметь возможность отменить запрос, при изменении `id`.
 
-We can use the [`onWatcherCleanup()`](/api/reactivity-core#onwatchercleanup) <sup class="vt-badge" data-text="3.5+" /> API to register a cleanup function that will be called when the watcher is invalidated and is about to re-run:
+Мы можем использовать [`onWatcherCleanup()`](/api/reactivity-core#onwatchercleanup) <sup class="vt-badge" data-text="3.5+" /> API для регистрации функции очистки, которая будет вызываться, когда наблюдатель становится недействительным и собирается перезапуститься:
 
 <div class="composition-api">
 
@@ -446,9 +446,9 @@ export default {
 
 </div>
 
-Note that `onWatcherCleanup` is only supported in Vue 3.5+ and must be called during the synchronous execution of a `watchEffect` effect function or `watch` callback function: you cannot call it after an `await` statement in an async function.
+Обратите внимание, что `onWatcherCleanup` поддерживается только в Vue 3.5+ и должен вызываться во время синхронного вызова функции эффекта `watchEffect` или обратного вызова `watch`. Ты не сможешь его вызвать после `await` в асинхронной функции.
 
-Alternatively, an `onCleanup` function is also passed to watcher callbacks as the 3rd argument<span class="composition-api">, and to the `watchEffect` effect function as the first argument</span>:
+Альтернативно, в функцию `onCleanup` передается в колбэк `watch` в качестве третьего аргумент, и в `watchEffect` в качестве первого аргумента:
 
 <div class="composition-api">
 
@@ -486,7 +486,7 @@ export default {
 
 </div>
 
-This works in versions before 3.5. In addition, `onCleanup` passed via function argument is bound to the watcher instance so it is not subject to the synchronously constraint of `onWatcherCleanup`.
+Это работает в версии до 3.5. Кроме того, `onCleanup`, передаваемый через аргумент функции, привязан к экземпляру наблюдателя, поэтому на него не распространяется синхронное ограничение `onWatcherCleanup`.
 
 ## Время обратного вызова {#callback-flush-timing}
 
