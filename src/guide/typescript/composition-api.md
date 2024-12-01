@@ -375,7 +375,7 @@ With Vue 3.5 and `@vue/language-tools` 2.1 (powering both the IDE language servi
 In cases where auto-inference is not possible, you can still cast the template ref to an explicit type via the generic argument:
 
 ```ts
-const el = useTemplateRef<HTMLInputElement>(null)
+const el = useTemplateRef<HTMLInputElement>('el')
 ```
 
 <details>
@@ -437,7 +437,7 @@ const compRef = useTemplateRef<FooType | BarType>('comp')
 import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = useTemplateRef<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance>('child')
 ```
 
 В случаях, когда компонент, на который делается ссылка (ref), является [дженерик-компонентом](/guide/typescript/overview.html#generic-components), например `MyGenericModal`:
@@ -466,7 +466,7 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')

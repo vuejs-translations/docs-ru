@@ -1,6 +1,29 @@
 <script setup>
 import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
+<style>
+.lambdatest {
+  background-color: var(--vt-c-bg-soft);
+  border-radius: 8px;
+  padding: 12px 16px 12px 12px;
+  font-size: 13px;
+  a {
+    display: flex;
+    color: var(--vt-c-text-2);
+  }
+  img {
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-right: 24px;
+  }
+  .testing-partner {
+    color: var(--vt-c-text-1);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+</style>
 
 # Тестирование {#testing}
 
@@ -40,7 +63,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ```js
 // helpers.js
-export function increment (current, max = 10) {
+export function increment(current, max = 10) {
   if (current < max) {
     return current + 1
   }
@@ -129,62 +152,66 @@ describe('increment', () => {
 <VTCodeGroup>
   <VTCodeGroupTab label="Vue Test Utils">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  const wrapper = mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+const wrapper = mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  expect(wrapper.find(valueSelector).text()).toContain('0')
+expect(wrapper.find(valueSelector).text()).toContain('0')
 
-  await wrapper.find(buttonSelector).trigger('click')
+await wrapper.find(buttonSelector).trigger('click')
 
-  expect(wrapper.find(valueSelector).text()).toContain('1')
-  ```
+expect(wrapper.find(valueSelector).text()).toContain('1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Cypress">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  cy.get(valueSelector).should('be.visible').and('contain.text', '0')
-    .get(buttonSelector).click()
-    .get(valueSelector).should('contain.text', '1')
-  ```
+cy.get(valueSelector)
+  .should('be.visible')
+  .and('contain.text', '0')
+  .get(buttonSelector)
+  .click()
+  .get(valueSelector)
+  .should('contain.text', '1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Testing Library">
 
-  ```js
-  const { getByText } = render(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+```js
+const { getByText } = render(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  getByText('0') // Неявное утверждение, что "0" находится внутри компонента
+getByText('0') // Неявное утверждение, что "0" находится внутри компонента
 
-  const button = getByRole('button', { name: /increment/i })
+const button = getByRole('button', { name: /increment/i })
 
-  // Отправляем событие клика на нашу кнопку увеличения.
-  await fireEvent.click(button)
+// Отправляем событие клика на нашу кнопку увеличения.
+await fireEvent.click(button)
 
-  getByText('1')
+getByText('1')
 
-  await fireEvent.click(button)
-  ```
+await fireEvent.click(button)
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
@@ -264,6 +291,16 @@ E2E-тесты проверяют многие уровни приложения
 - [Playwright](https://playwright.dev/) тируйте на Windows, Linux и macOS, локально или на CI, в режиме headless или headed с нативной эмуляцией мобильных версий Google Chrome для Android и Mobile Safari. У него информативный интерфейс, отличная отладка, встроенные утверждения, параллелизация, трассировка и он разработан для устранения нестабильных тестов. Поддержка [Component Testing](https://playwright.dev/docs/test-components) доступна, но помечена как экспериментальная. Playwright является open source и поддерживается Microsoft.
 
 - [Cypress](https://www.cypress.io/) имеет информативный графический интерфейс, отличную отладку, встроенные утверждения, заглушки, устойчивость к нестабильности и снимки. Как упоминалось выше, он обеспечивает стабильную поддержку [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). Cypress поддерживает браузеры на основе Chromium, Firefox и Electron. Поддержка WebKit доступна, но помечена как экспериментальная. Cypress лицензирован по MIT, но некоторые функции, такие как параллелизация, требуют подписки на Cypress Cloud.
+
+<div class="lambdatest">
+  <a href="https://lambdatest.com" target="_blank">
+    <img src="/images/lambdatest.svg">
+    <div>
+      <div class="testing-partner">Testing Sponsor</div>
+      <div>Lambdatest is a cloud platform for running E2E, accessibility, and visual regression tests across all major browsers and real devices, with AI assisted test generation!</div>
+    </div>
+  </a>
+</div>
 
 ### Другие варианты {#other-options-2}
 

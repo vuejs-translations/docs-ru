@@ -403,7 +403,7 @@ export function useMachine(options) {
 Довольно много других фреймворков внедрили реактивные примитивы, аналогичные ref-ссылкам из Composition API Vue, используя термин "сигналы":
 
 - [Solid Сигналы](https://www.solidjs.com/docs/latest/api#createsignal)
-- [Angular Сигналы](https://angular.io/guide/signals)
+- [Angular Сигналы](https://angular.dev/guide/signals)
 - [Preact Сигналы](https://preactjs.com/guide/v10/signals/)
 - [Qwik Сигналы](https://qwik.builder.io/docs/components/state/#usesignal)
 
