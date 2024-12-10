@@ -99,7 +99,7 @@ function dismiss() {
   <Transition name="fly-in">
     <div class="preference-tooltip" v-if="show">
       <template v-if="source === 'default'">
-        <p>Дефолтный стиль API теперь Composition API.</p>
+        <p>Теперь по умолчанию используется Composition API.</p>
         <p>
           Некоторые страницы содержат различный контент основанный на выбранном стиле API.
           Используйте переключатель для переключения между стилями API.
