@@ -223,10 +223,6 @@ data() {
 
 ## `v-for` и `v-if` {#v-for-with-v-if}
 
-:::warning Примечание
-Обратите внимание, **не рекомендуется** использовать вместе `v-if` и `v-for` на одном элементе. Подробнее можно прочитать в разделе [рекомендаций](/style-guide/rules-essential#avoid-v-if-with-v-for).
-:::
-
 Когда они указаны вместе на одном узле, у `v-if` будет больший приоритет, чем у `v-for`. И поэтому в условии `v-if` не будет доступа к переменным из области видимости `v-for`:
 
 ```vue-html
@@ -247,6 +243,16 @@ data() {
   </li>
 </template>
 ```
+
+:::warning Note
+It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence.
+
+There are two common cases where this can be tempting:
+
+- To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+
+- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
+:::
 
 ## Сохранение состояния с помощью `key` {#maintaining-state-with-key}
 
@@ -274,7 +280,7 @@ data() {
 `key` в данном случае — специальный атрибут, связываемый через `v-bind`. Его не следует путать с переменной с именем key при [использовании `v-for` с объектами](#v-for-with-an-object).
 :::
 
-[Рекомендуется](/style-guide/rules-essential#use-keyed-v-for) всегда указывать атрибут `key` с `v-for`, кроме случаев когда итерируемое содержимое DOM простое (т.е. не содержит компонентов или элементов DOM с состоянием), или когда сознательно полагаетесь на стратегию обновления по умолчанию для улучшения производительности.
+Рекомендуется всегда указывать атрибут `key` с `v-for`, кроме случаев когда итерируемое содержимое DOM простое (т.е. не содержит компонентов или элементов DOM с состоянием), или когда сознательно полагаетесь на стратегию обновления по умолчанию для улучшения производительности.
 
 Привязка `key` ожидает использования примитивных значений — строк и чисел. Не используйте объекты в качестве ключей для `v-for`. Подробное использование атрибута `key` описано в [документации API](/api/built-in-special-attributes#key).
 

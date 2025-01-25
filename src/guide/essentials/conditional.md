@@ -110,8 +110,8 @@ const awesome = ref(true)
 
 ## `v-if` вместе с `v-for` {#v-if-with-v-for}
 
-:::warning Примечание
-Совместное использование `v-if` и `v-for` **не рекомендуется**. Подробнее можно прочитать в разделе [рекомендаций](/style-guide/rules-essential#avoid-v-if-with-v-for).
-:::
-
 При одновременном использовании `v-if` и `v-for` на одном элементе, `v-if` будет исполняться первым. Подробнее в разделе [отрисовки списков](list#v-for-with-v-if).
+
+::: warning Note
+It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence. Refer to [list rendering guide](list#v-for-with-v-if) for details.
+:::

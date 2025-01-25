@@ -1,5 +1,9 @@
 # Правила приоритета B: Настоятельно рекомендуются {#priority-b-rules-strongly-recommended}
 
+::: warning Note
+This Vue.js Style Guide is outdated and needs to be reviewed. If you have any questions or suggestions, please [open an issue](https://github.com/vuejs/docs/issues/new).
+:::
+
 Эти правила помогают улучшить читаемость и/или опыт разработчика в большинстве проектов. Ваш код все равно выполнится, если вы их нарушите, но эти нарушения должны быть редкими и обоснованными.
 
 ## Файлы компонентов {#component-files}

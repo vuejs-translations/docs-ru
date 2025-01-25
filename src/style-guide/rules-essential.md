@@ -1,5 +1,10 @@
 # Правила приоритета А: Основные {#priority-a-rules-essential}
 
+::: warning Note
+This Vue.js Style Guide is outdated and needs to be reviewed. If you have any questions or suggestions, please [open an issue](https://github.com/vuejs/docs/issues/new).
+:::
+
+These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
 Эти правила помогают избегать ошибок, поэтому выучите и соблюдайте их во что бы то ни стало. Исключения могут присутствовать, но очень редко и совершаться теми, кто обладает высокой экспертизой насчет JavaScript и Vue.
 
 ## Используйте несколько слов в именах компонентов {#use-multi-word-component-names}

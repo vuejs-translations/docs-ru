@@ -314,6 +314,8 @@ defineExpose({
 
 Когда родитель получает экземпляр этого компонента через ссылки шаблона, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ссылки автоматически разворачиваются, как и для обычных экземпляров).
 
+Note that defineExpose must be called before any await operation. Otherwise, properties and methods exposed after the await operation will not be accessible. 
+
 См. также: [Типизированные ссылки на шаблоны компонентов](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
