@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hywax/vitepress-yandex-metrika':
+        specifier: ^0.4.0
+        version: 0.4.0(vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.7.5)(postcss@8.5.1)(search-insights@2.17.2)(typescript@5.6.3))
       '@vue/repl':
         specifier: ^4.4.2
         version: 4.4.3
@@ -382,6 +385,11 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@hywax/vitepress-yandex-metrika@0.4.0':
+    resolution: {integrity: sha512-KMtlBKOWLu2mCMXwxRRm7oZs6kd/AA2u3Yv/90uhZPhyrFkjQ8oVsRiHH6OhqWVUsVD6GKFAWf8o274I0JIDZg==}
+    peerDependencies:
+      vitepress: ^1.1.4
 
   '@iconify-json/simple-icons@1.2.21':
     resolution: {integrity: sha512-aqbIuVshMZ2fNEhm25//9DoKudboXF3CpoEQJJlHl9gVSVNOTr4cgaCIZvgSEYmys2HHEfmhcpoZIhoEFZS8SQ==}
@@ -1358,6 +1366,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@hywax/vitepress-yandex-metrika@0.4.0(vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.7.5)(postcss@8.5.1)(search-insights@2.17.2)(typescript@5.6.3))':
+    dependencies:
+      vitepress: 1.6.3(@algolia/client-search@5.20.0)(@types/node@22.7.5)(postcss@8.5.1)(search-insights@2.17.2)(typescript@5.6.3)
 
   '@iconify-json/simple-icons@1.2.21':
     dependencies:
