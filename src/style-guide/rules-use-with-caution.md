@@ -1,7 +1,7 @@
 # Правила приоритета D: Используйте с осторожностью {#priority-d-rules-use-with-caution}
 
-::: warning Note
-This Vue.js Style Guide is outdated and needs to be reviewed. If you have any questions or suggestions, please [open an issue](https://github.com/vuejs/docs/issues/new).
+::: warning Примечание
+Это руководство по стилю Vue.js устарело и нуждается в пересмотре. Если у вас есть вопросы или предложения, пожалуйста, [откройте проблему](https://github.com/vuejs-translations/docs-ru/issues/new).
 :::
 
 Vue предоставляет некоторые возможности, которые обеспечивают "плавный" процесс миграции с устаревшей кодовой базы и учитывают редкие случаи. Если их использовать слишком часто, они могут сделать код сложно поддерживаемым или могут быть источниками багов. Эти правила "освещают" рисковые возможности Vue, объясняя, где и почему их стоит избегать.

@@ -188,7 +188,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/component-basics'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'Хуки жизненного цикла',
           link: '/guide/essentials/lifecycle'
         }
       ]

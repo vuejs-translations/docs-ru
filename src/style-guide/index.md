@@ -4,8 +4,8 @@ outline: deep
 
 # Руководство по стилю {#style-guide}
 
-::: warning Note
-This Vue.js Style Guide is outdated and needs to be reviewed. If you have any questions or suggestions, please [open an issue](https://github.com/vuejs/docs/issues/new).
+::: warning Примечание
+Это руководство по стилю Vue.js устарело и нуждается в пересмотре. Если у вас есть вопросы или предложения, пожалуйста, [откройте проблему](https://github.com/vuejs-translations/docs-ru/issues/new).
 :::
 
 Это официальное руководство по стилю для кода на Vue. Если вы видите Vue в проекте, это руководство поможет избежать ошибок, "велосипедов" и анти-паттернов. Однако, мы не считаем, что любое такое руководство является идеалом для всех команд или проектов, поэтому приветствуются разумные отклонения, основанные на прошлом опыте, окружающем вас технологическом стеке и личных ценностях.

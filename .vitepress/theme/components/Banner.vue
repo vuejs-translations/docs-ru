@@ -27,20 +27,20 @@ function dismiss() {
         <span style="color:#f97844">Mad</span>
         <span>Vue</span>
       </span>
-      <span class="vt-tagline"> · The Vue.js Event in Madrid</span>
-      <span class="vt-place"> · Spain</span>
-      <span class="vt-date"> · 29 May 2025</span>
+      <span class="vt-tagline"> · Мероприятие Vue.js в Мадриде</span>
+      <span class="vt-place"> · Испания</span>
+      <span class="vt-date"> · 29 мая 2025</span>
       <a target="_blank" class="vt-primary-action"
         href="https://madvue.es/?utm_source=vuejs&utm_content=top_banner">
-        Register
+        Регистрация
       </a>
     </p>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
     <p class="vt-banner-text vt-coupon">
-      <span class="vt-text-primary">Early bird</span> tickets available
-      <span class="vt-text-primary">Get 30% off</span>
+      <span class="vt-text-primary">Ранние билеты</span> в продаже
+      <span class="vt-text-primary">Получите скидку 30%</span>
     </p>
   </div>
 </template>
