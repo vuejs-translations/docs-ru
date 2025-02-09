@@ -22,32 +22,16 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <p class="vt-banner-text">
-      <span class="vt-text-primary">
-        <span style="color:#f97844">Mad</span>
-        <span>Vue</span>
-      </span>
-      <span class="vt-tagline"> · Мероприятие Vue.js в Мадриде</span>
-      <span class="vt-place"> · Испания</span>
-      <span class="vt-date"> · 29 мая 2025</span>
-      <a target="_blank" class="vt-primary-action"
-        href="https://madvue.es/?utm_source=vuejs&utm_content=top_banner">
-        Регистрация
-      </a>
-    </p>
+    <a target="_blank"></a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
-    <p class="vt-banner-text vt-coupon">
-      <span class="vt-text-primary">Ранние билеты</span> в продаже
-      <span class="vt-text-primary">Получите скидку 30%</span>
-    </p>
   </div>
 </template>
 
 <style>
 html:not(.banner-dismissed) {
-  --vt-banner-height: 60px;
+  --vt-banner-height: 30px;
 }
 </style>
 
@@ -66,10 +50,12 @@ html:not(.banner-dismissed) {
   font-weight: 600;
   color: #fff;
   background-color: var(--vt-c-green);
-  background: #0f172a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(66, 184, 131, 1) 0%,
+    rgba(39, 179, 137, 1) 19%,
+    rgba(100, 126, 255, 1) 100%
+  );
 }
 
 .banner-dismissed .banner {
@@ -84,7 +70,7 @@ button {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 20px 10px;
+  padding: 5px;
 }
 
 .close {
@@ -93,64 +79,10 @@ button {
   fill: #fff;
   transform: rotate(45deg);
 }
-
-.vt-banner-text {
-  color: #fff;
-  font-size: 16px;
-}
-
-.vt-text-primary {
-  color: #c4d141;
-}
-
-.vt-primary-action {
-  background: #f97844;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 5px;
-  font-size: 14px;
-  text-decoration: none;
-  margin: 0 20px;
-  font-weight: bold;
-}
-
-.vt-primary-action:hover {
-  text-decoration: none;
-  background: #c4d141;
-}
-
-@media (max-width: 1280px) {
-  .banner .vt-banner-text {
-    font-size: 14px;
-  }
-
-  .vt-tagline {
+/*
+@media (max-width: 720px) {
+  a > span {
     display: none;
   }
-}
-
-@media (max-width: 780px) {
-  .vt-tagline {
-    display: none;
-  }
-
-  .vt-coupon {
-    display: none;
-  }
-
-  .vt-primary-action {
-    margin: 0 10px;
-    padding: 5px 8px;
-  }
-
-  .vt-time-now {
-    display: none;
-  }
-}
-
-@media (max-width: 560px) {
-  .vt-place {
-    display: none;
-  }
-}
+} */
 </style>

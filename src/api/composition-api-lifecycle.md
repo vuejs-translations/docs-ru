@@ -11,7 +11,7 @@
 - **Тип**
 
   ```ts
-  function onMounted(callback: () => void): void
+  function onMounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -53,7 +53,7 @@
 - **Тип**
 
   ```ts
-  function onUpdated(callback: () => void): void
+  function onUpdated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -96,7 +96,7 @@
 - **Тип**
 
   ```ts
-  function onUnmounted(callback: () => void): void
+  function onUnmounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -135,7 +135,7 @@
 - **Тип**
 
   ```ts
-  function onBeforeMount(callback: () => void): void
+  function onBeforeMount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -151,7 +151,7 @@
 - **Тип**
 
   ```ts
-  function onBeforeUpdate(callback: () => void): void
+  function onBeforeUpdate(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -167,7 +167,7 @@
 - **Тип**
 
   ```ts
-  function onBeforeUnmount(callback: () => void): void
+  function onBeforeUnmount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **Подробности**
@@ -282,7 +282,7 @@
 - **Тип**
 
   ```ts
-  function onActivated(callback: () => void): void
+  function onActivated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
@@ -296,7 +296,7 @@
 - **Тип**
 
   ```ts
-  function onDeactivated(callback: () => void): void
+  function onDeactivated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **См. также** [Руководство — Жизненный цикл кэшированного экземпляра](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
