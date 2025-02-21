@@ -323,6 +323,20 @@ data() {
 
 Аналогично можно использовать и вычисляемые свойства, возвращающие объект стилей.
 
+`:style` directives can also coexist with regular style attributes, just like `:class`.
+
+Template:
+
+```vue-html
+<h1 style="color: red" :style="'font-size: 1em'">hello</h1>
+```
+
+It will render:
+
+```vue-html
+<h1 style="color: red; font-size: 1em;">hello</h1>
+```
+
 ### Синтаксис с массивом {#binding-to-arrays-1}
 
 Синтаксис с массивом для `:style` позволяет применить несколько объектов стилей к одному и тому же элементу:

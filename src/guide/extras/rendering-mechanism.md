@@ -69,23 +69,23 @@ const vnode = {
 
 Ниже мы рассмотрим несколько основных оптимизаций, выполненных компилятором шаблонов Vue для повышения производительности виртуального DOM во время выполнения.
 
-### Статический подъем {#static-hoisting}
+### Cache Static {#cache-static}
 
 Довольно часто в шаблоне встречаются части, не содержащие динамических привязок:
 
 ```vue-html{2-3}
 <div>
-  <div>foo</div> <!-- поднятый -->
-  <div>bar</div> <!-- поднятый -->
+  <div>foo</div> <!-- cached -->
+  <div>bar</div> <!-- cached -->
   <div>{{ dynamic }}</div>
 </div>
 ```
 
-[Проверить в обозревателе шаблонов](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGNhY2hlZCAtLT5cbiAgPGRpdj5iYXI8L2Rpdj4gPCEtLSBjYWNoZWQgLS0+XG4gIDxkaXY+e3sgZHluYW1pYyB9fTwvZGl2PlxuPC9kaXY+XG4iLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)
 
-Разделы `foo` и `bar` статичны - повторное создание vnode и их изменение при каждом рендере не требуется. Компилятор Vue автоматически выносит вызовы создания vnode из функции рендеринга и повторно использует одни и те же vnode при каждом рендеринге. Кроме того, рендерер может полностью пропустить их изменение, когда замечает, что старый и новый vnode - это один и тот же vnode.
+The `foo` and `bar` divs are static - re-creating vnodes and diffing them on each re-render is unnecessary. The renderer creates these vnodes during the initial render, caches them, and reuses the same vnodes for every subsequent re-render. The renderer is also able to completely skip diffing them when it notices the old vnode and the new vnode are the same one.
 
-Кроме того, при наличии достаточного количества последовательных статических элементов они сжимаются в один "статический vnode", который содержит обычную HTML-строку для всех этих узлов ([пример](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Эти статические узлы монтируются путем непосредственного указания `innerHTML`. Они также кэшируют соответствующие им DOM-узлы при первоначальном монтировании - если тот же самый фрагмент контента будет повторно использован в другом месте приложения, новые DOM-узлы будут созданы с помощью встроенной функции `cloneNode()`, что очень эффективно.
+In addition, when there are enough consecutive static elements, they will be condensed into a single "static vnode" that contains the plain HTML string for all these nodes ([Example](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). These static vnodes are mounted by directly setting `innerHTML`.
 
 ### Флаги патчей {#patch-flags}
 
