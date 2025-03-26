@@ -323,15 +323,15 @@ data() {
 
 Аналогично можно использовать и вычисляемые свойства, возвращающие объект стилей.
 
-`:style` directives can also coexist with regular style attributes, just like `:class`.
+`:style` директивы могут сосуществовать с обычными атрибутами стиля, как и `:class`.
 
-Template:
+Шаблон:
 
 ```vue-html
 <h1 style="color: red" :style="'font-size: 1em'">hello</h1>
 ```
 
-It will render:
+Рендер:
 
 ```vue-html
 <h1 style="color: red; font-size: 1em;">hello</h1>
