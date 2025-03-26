@@ -261,12 +261,11 @@ const fullName = computed({
 
 </div>
 
-## Getting the Previous Value {#previous}
+## Получение предыдщуего значения {#previous}
 
 - Поддерживается только в версиях 3.4+
 
-In case you need it, you can get the previous value returned by the computed property accessing
-the first argument of the getter:
+Если вам понадобится, вы можете получить предыдущее значение, возвращенное вычисляемым свойством, обратившись к первому аргументу геттера:
 
 <div class="options-api">
 
@@ -278,9 +277,9 @@ export default {
     }
   },
   computed: {
-    // This computed will return the value of count when it's less or equal to 3.
-    // When count is >=4, the last value that fulfilled our condition will be returned
-    // instead until count is less or equal to 3
+    // Это вычисление вернет значение count, если оно меньше или равно 3.
+    // Если count >=4, вместо него будет возвращено последнее значение, выполнившее наше условие,
+    // пока count не станет меньше или равно 3.
     alwaysSmall(previous) {
       if (this.count <= 3) {
         return this.count
@@ -301,9 +300,9 @@ import { ref, computed } from 'vue'
 
 const count = ref(2)
 
-// This computed will return the value of count when it's less or equal to 3.
-// When count is >=4, the last value that fulfilled our condition will be returned
-// instead until count is less or equal to 3
+// Это вычисление вернет значение count, если оно меньше или равно 3.
+// Если count >=4, вместо него будет возвращено последнее значение, выполнившее наше условие,
+// пока count не станет меньше или равно 3.
 const alwaysSmall = computed((previous) => {
   if (count.value <= 3) {
     return count.value
@@ -315,7 +314,7 @@ const alwaysSmall = computed((previous) => {
 ```
 </div>
 
-In case you're using a writable computed:
+В случае если вы используете вычисляемое свойство с возможностью записи:
 
 <div class="options-api">
 
