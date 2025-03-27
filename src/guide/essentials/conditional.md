@@ -113,5 +113,5 @@ const awesome = ref(true)
 При одновременном использовании `v-if` и `v-for` на одном элементе, `v-if` будет исполняться первым. Подробнее в разделе [отрисовки списков](list#v-for-with-v-if).
 
 ::: warning Примечание
-It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence. Refer to [list rendering guide](list#v-for-with-v-if) for details.
+**Не** рекомендуется использовать `v-if` и `v-for` на одном и том же элементе из-за неявного старшинства. Подробнее в разделе [отрисовки списков](list#v-for-with-v-if).
 :::
