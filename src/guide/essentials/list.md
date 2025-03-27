@@ -244,14 +244,14 @@ data() {
 </template>
 ```
 
-:::warning Note
-It's **not** recommended to use `v-if` and `v-for` on the same element due to implicit precedence.
+:::warning Примечание
+**Не** рекомендуется использовать `v-if` и `v-for` на одном и том же элементе из-за неявного приоритета.
 
-There are two common cases where this can be tempting:
+Есть два распространенных случая, когда это может быть заманчиво:
 
-- To filter items in a list (e.g. `v-for="user in users" v-if="user.isActive"`). In these cases, replace `users` with a new computed property that returns your filtered list (e.g. `activeUsers`).
+- Чтобы отфильтровать элементы в списке (например `v-for="user in users" v-if="user.isActive"`). В этих случаях, замените `users` на новое вычисляемое свойство, которое возвращает ваш отфильтрованный список (например `activeUsers`).
 
-- To avoid rendering a list if it should be hidden (e.g. `v-for="user in users" v-if="shouldShowUsers"`). In these cases, move the `v-if` to a container element (e.g. `ul`, `ol`).
+- Чтобы не отображать список, если он должен быть скрыт (например `v-for="user in users" v-if="shouldShowUsers"`). В этих случаях, переместите `v-if` в элемент контейнера (например `ul`, `ol`).
 :::
 
 ## Сохранение состояния с помощью `key` {#maintaining-state-with-key}
