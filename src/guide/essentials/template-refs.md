@@ -18,7 +18,7 @@
 <script setup>
 import { useTemplateRef, onMounted } from 'vue'
 
-// the first argument must match the ref value in the template
+// первый аргумент должен совпадать с значением ref в шаблоне
 const input = useTemplateRef('my-input')
 
 onMounted(() => {
@@ -236,7 +236,7 @@ import Child from './Child.vue'
 const childRef = useTemplateRef('child')
 
 onMounted(() => {
-  // childRef.value will hold an instance of <Child />
+  // childRef.value будет содержать объект <Child />
 })
 </script>
 
@@ -314,7 +314,7 @@ defineExpose({
 
 Когда родитель получает экземпляр этого компонента через ссылки шаблона, полученный экземпляр будет иметь вид `{ a: number, b: number }` (ссылки автоматически разворачиваются, как и для обычных экземпляров).
 
-Note that defineExpose must be called before any await operation. Otherwise, properties and methods exposed after the await operation will not be accessible. 
+Обратите внимание, что defineExpose должен вызываться перед любой операцией await. В противном случае свойства и методы, раскрытые после операции await, будут недоступны.
 
 См. также: [Типизированные ссылки на шаблоны компонентов](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
