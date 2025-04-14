@@ -18,8 +18,8 @@ defineProps<{
         </div>
       </div>
       <div v-if="showDetails" class="developer-compensations__details">
-        <p>No other costs.</p>
-        <p>One month trial period, thereafter, one month notice period.</p>
+        <p>Без дополнительных затрат.</p>
+        <p>Испытательный срок - 1 месяц, далее - уведомление за 1 месяц.</p>
       </div>
     </div>
   </div>

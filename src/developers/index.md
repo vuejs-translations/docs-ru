@@ -1,7 +1,7 @@
 ---
 page: true
 footer: false
-title: Vue Developers
+title: Vue разработчики
 ---
 
 <script setup>

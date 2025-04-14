@@ -30,7 +30,7 @@ const hireUsLink = computed(() => generateUTMUrl(partnerConfig.hireUsButtonUrl, 
     <div class="developer-page__back">
       <a href="./index.html">
         <VTIconChevronLeft class="developer-page__icon" />
-        All Vue.js certified developers
+        Все сертифицированные Vue.js разработчики
       </a>
     </div>
 
@@ -48,7 +48,7 @@ const hireUsLink = computed(() => generateUTMUrl(partnerConfig.hireUsButtonUrl, 
         <div class="developer-page__main-info">
           <h2 v-if="name" class="developer-page__name">{{ name }}</h2>
           <a v-if="hireUsLink" class="accent-button developer-page__main-action" :href="hireUsLink" target="_blank">
-            Get in contact
+            Связаться
           </a>
 
           <p v-if="location" class="developer-page__location">
@@ -64,7 +64,7 @@ const hireUsLink = computed(() => generateUTMUrl(partnerConfig.hireUsButtonUrl, 
         <DeveloperCompensations
           v-if="compensations"
           class="developer-page__text-section"
-          title="Compensation"
+          title="Оплата"
           :compensations="compensations"
           :showDetails="true"
         />
@@ -72,7 +72,7 @@ const hireUsLink = computed(() => generateUTMUrl(partnerConfig.hireUsButtonUrl, 
         <DeveloperProficiencies
           v-if="proficiencies"
           class="developer-page__text-section"
-          title="Proficiencies"
+          title="Профессиональные навыки"
           :proficiencies="proficiencies"
         />
 
@@ -98,14 +98,14 @@ const hireUsLink = computed(() => generateUTMUrl(partnerConfig.hireUsButtonUrl, 
         <DeveloperExperiences
           v-if="experiences"
           class="developer-page__text-section"
-          title="Selected experience"
+          title="Избранный опыт"
           :experiences="experiences"
         />
 
         <DeveloperEducation
           v-if="education"
           class="developer-page__text-section"
-          title="Education"
+          title="Образование"
           :education="education"
         />
       </div>
