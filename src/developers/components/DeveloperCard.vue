@@ -52,7 +52,7 @@ const trimmedDescription = truncateTextFromArray(description, 220)
 
     <DeveloperCompensations
       v-if="hero && compensations"
-      title="Compensation"
+      title="Оплата"
       :compensations="compensations"
       class="developer-card__section developer-card__compensation"
     />
@@ -60,7 +60,7 @@ const trimmedDescription = truncateTextFromArray(description, 220)
     <DeveloperProficiencies
       v-if="proficiencies"
       :proficiencies="proficiencies"
-      :title="hero ? 'Main proficiencies' : undefined"
+      :title="hero ? 'Основные навыки' : undefined"
       enable-show-all
       class="developer-card__section developer-card__proficiencies"
       @click.stop

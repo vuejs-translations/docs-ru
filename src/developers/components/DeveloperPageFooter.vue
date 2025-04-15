@@ -45,7 +45,7 @@ const { logo, partnerName } = partnerConfig
     </div>
 
     <a class="partner-footer__contact-button accent-button" :href="hireUsLink" target="_blank">
-      Get in contact
+      Связаться
     </a>
   </footer>
 </template>

@@ -25,29 +25,29 @@ const partnerConfig = {
 
   // Hero Section
   pageHeroBanner: {
-    title: 'Find top Vue.js developers for your team',
-    description1: 'Access certified Vue.js developers available for your next project.',
-    description2: 'Proxify handles the vetting process to ensure top-tier quality and reliability.',
+    title: 'Найдите лучших Vue.js разработчиков для вашей команды',
+    description1: 'Получите доступ к сертифицированным Vue.js разработчикам для вашего следующего проекта.',
+    description2: 'Proxify проводит тщательный отбор специалистов, гарантируя высочайшее качество и надежность.',
     hireButton: {
       url: hireUrl,
-      label: 'Find Vue.js developers now'
+      label: 'Найдите разработчиков Vue.js'
     },
-    footer: "Get matched with a top Vue.js developer in less than 48 hours",
+    footer: 'Найдите лучшего Vue.js разработчика менее чем за 48 часов',
   },
 
   // Hero Section
   pageJoinSection: {
-    title: 'Become a listed developer',
-    description: 'Get a long-term part-time or full-time position at company looking for a Vue.js developer.',
+    title: 'Попасть в список разработчиков',
+    description: 'Получите долгосрочную работу с частичной или полной занятостью в компании, которая ищет Vue.js разработчика.',
     applyButton: {
       url: applyUrl,
-      label: 'Apply to join'
+      label: 'Подать заявку на вступление'
     }
   },
 
   // Footer Configuration
   pageFooter: {
-    text: `This highly vetted developer is brought to you by Vue’s partner:`,
+    text: 'Этот тщательно отобранный разработчик предоставлен партнёром Vue:',
     email: 'vue@proxify.io',
     phone: '+44 20 4614 2667',
     websiteVueLink: vueArticleUrl,
@@ -56,14 +56,14 @@ const partnerConfig = {
 
   // Diagram sections
   profileDiagram: {
-    title: 'Candidate profile',
-    prependText: 'How our developers score in the parameters that correlate best with future success in the role.'
+    title: 'Профиль кандидата',
+    prependText: 'Как наши разработчики оцениваются по параметрам, которые наиболее точно предсказывают успех в данной роли.'
   },
 
   scoreDiagram: {
-    title: 'Engineering excellence score',
-    prependText: 'The practical score range is 0 to 300. This is the distribution of scores for all evaluated Vue.js developers, and here’s where your candidate scored.',
-    appendText: 'Data from 3,661 evaluated Vue.js developers and 38,008 applicants.'
+    title: 'Оценка инженерного мастерства',
+    prependText: 'Шкала оценки варьируется от 0 до 300. На графике показаны распределение баллов всех оценённых Vue.js разработчиков и как оценён ваш кандидат.',
+    appendText: 'Данные по 3 661 оценённому Vue.js разработчику из 38 008 кандидатов.'
   },
 
   // Proficiency Section

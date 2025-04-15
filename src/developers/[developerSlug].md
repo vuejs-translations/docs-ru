@@ -1,7 +1,7 @@
 ---
 page: true
 footer: false
-title: Vue Developer
+title: Vue разработчик
 ---
 
 <script setup>
@@ -15,7 +15,7 @@ const developer = ref(developersData.find(dev => dev.slug === page.value.params.
 
 onMounted(() => {
   if (developer.value) {
-    document.title = `${developer.value.name} - Vue Developer | Vue.js`
+    document.title = `${developer.value.name} - Vue разработчик | Vue.js`
   }
 })
 </script>
