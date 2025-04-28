@@ -113,7 +113,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 ![Скриншот devtools](./images/devtools.png)
 
 - [Документация](https://devtools.vuejs.org/)
-- [Расширение для Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Расширение для Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Vite плагин](https://devtools.vuejs.org/guide/vite-plugin)
 - [Автономное приложение Electron](https://devtools.vuejs.org/guide/standalone)
 

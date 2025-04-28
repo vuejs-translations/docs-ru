@@ -1,7 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme, type HeadConfig } from 'vitepress'
+import { defineConfigWithTheme, type HeadConfig, type Plugin } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
+import llmstxt from 'vitepress-plugin-llms'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 // import { textAdPlugin } from './textAdMdPlugin'
@@ -734,7 +735,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       {
         link: 'https://ru.vuejs.org',
         text: 'Русский',
-        repo: 'https://github.com/translation-gang/docs-ru'
+        repo: 'https://github.com/vuejs-translations/docs-ru'
       },
       {
         link: 'https://cs.vuejs.org',
@@ -745,6 +746,11 @@ export default defineConfigWithTheme<ThemeConfig>({
         link: 'https://zh-hk.vuejs.org',
         text: '繁體中文',
         repo: 'https://github.com/vuejs-translations/docs-zh-hk'
+      },
+      {
+        link: 'https://pl.vuejs.org',
+        text: 'Polski',
+        repo: 'https://github.com/vuejs-translations/docs-pl',
       },
       {
         link: '/translations/',
@@ -816,6 +822,30 @@ export default defineConfigWithTheme<ThemeConfig>({
     },
     json: {
       stringify: true
-    }
+    },
+    plugins: [
+      llmstxt({
+        ignoreFiles: [
+          'about/team/**/*',
+          'about/team.md',
+          'about/privacy.md',
+          'about/coc.md',
+          'developers/**/*',
+          'ecosystem/themes.md',
+          'examples/**/*',
+          'partners/**/*',
+          'sponsor/**/*',
+          'index.md'
+        ],
+        customLLMsTxtTemplate: `\
+# Vue.js
+
+Vue.js - The Progressive JavaScript Framework
+
+## Table of Contents
+
+{toc}`
+      }) as Plugin
+    ]
   }
 })

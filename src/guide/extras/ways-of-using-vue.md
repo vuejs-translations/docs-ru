@@ -53,7 +53,7 @@ Vue предоставляет первоклассные API для "ренде
 
 Хотя Vue в первую очередь предназначен для создания веб-приложений, его возможности ни в коем случае не ограничиваются только браузером. Вы можете:
 
-- создавать настольные приложения с помощью [Electron](https://www.electronjs.org/)
+- создавать настольные приложения с помощью [Electron](https://www.electronjs.org/) или [Wails](https://wails.io)
 - Создавать мобильные приложения с помощью [Ionic Vue](https://ionicframework.com/docs/vue/overview)
 - Создавать настольные и мобильные приложения из одной кодовой базы с помощью [Quasar](https://quasar.dev/) или [Tauri](https://tauri.app)
 - Build 3D WebGL experiences with [TresJS](https://tresjs.org/)

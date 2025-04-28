@@ -280,7 +280,7 @@ export default {
     // Это вычисление вернет значение count, если оно меньше или равно 3.
     // Если count >=4, вместо него будет возвращено последнее значение, выполнившее наше условие,
     // пока count не станет меньше или равно 3.
-    alwaysSmall(previous) {
+    alwaysSmall(_, previous) {
       if (this.count <= 3) {
         return this.count
       }

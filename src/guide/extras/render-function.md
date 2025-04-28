@@ -710,7 +710,25 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-С Composition API ссылки на шаблон создаются путем передачи самого `ref()` в качестве props в vnode:
+With the Composition API, when using [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" />  template refs are created by passing the string value as prop to the vnode:
+
+```js
+import { h, useTemplateRef } from 'vue'
+
+export default {
+  setup() {
+    const divEl = useTemplateRef('my-div')
+
+    // <div ref="my-div">
+    return () => h('div', { ref: 'my-div' })
+  }
+}
+```
+
+<details>
+<summary>Usage before 3.5</summary>
+
+In versions before 3.5 where useTemplateRef() was not introduced, template refs are created by passing the ref() itself as a prop to the vnode:
 
 ```js
 import { h, ref } from 'vue'
@@ -724,22 +742,7 @@ export default {
   }
 }
 ```
-
-or (with version >= 3.5)
-
-```js
-import { h, useTemplateRef } from 'vue'
-
-export default {
-  setup() {
-    const divEl = useTemplateRef('my-div')
-
-    // <div ref="divEl">
-    return () => h('div', { ref: 'my-div' })
-  }
-}
-```
-
+</details>
 </div>
 <div class="options-api">
 
