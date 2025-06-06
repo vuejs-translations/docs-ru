@@ -174,7 +174,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 ```
 
-Здесь использовали [unpkg](https://unpkg.com/), но также можно использовать любой другой CDN, который публикует npm-пакеты, например [jsdelivr](https://www.jsdelivr.com/package/npm/vue) или [cdnjs](https://cdnjs.com/libraries/vue). И конечно же, всегда можно скачать этот файл и заниматься его хостингом его самостоятельно.
+Здесь использовали [unpkg](https://unpkg.com/), но также можно использовать любой другой CDN, который публикует npm-пакеты, например [jsdelivr](https://www.jsdelivr.com/package/npm/vue) или [cdnjs](https://cdnjs.com/libraries/vue). И конечно же, всегда можно скачать этот файл и заниматься его хостингом самостоятельно.
 
 При использовании Vue из CDN нет никакого «шага сборки». Это значительно упрощает конфигурацию и подходит для улучшения статического HTML или для интеграции с бэкенд-фреймворком. Но в таком случае не получится использовать синтаксис однофайловых компонентов (SFC).
 
