@@ -11,7 +11,7 @@
     "type": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@hywax/vitepress-yandex-metrika": "^0.4.0",
+    "@hywax/vitepress-yandex-metrika": "^1.0.0",
     "@vue/repl": "^4.4.2",
     "@vue/theme": "^2.3.0",
     "dynamics.js": "^1.1.5",

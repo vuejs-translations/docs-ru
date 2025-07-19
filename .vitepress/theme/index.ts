@@ -13,10 +13,10 @@ import VueSchoolLink from './components/VueSchoolLink.vue'
 import ScrimbaLink from './components/ScrimbaLink.vue'
 import Banner from './components/Banner.vue'
 // import TextAd from './components/TextAd.vue'
+import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
 
 import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css'
 import 'virtual:group-icons.css'
-// import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
@@ -28,7 +28,7 @@ export default Object.assign({}, VPTheme, {
       'aside-mid': () => h(SponsorsAside)
     })
   },
-  enhanceApp({ app }: { app: App }) {
+  enhanceApp({ app, router }: { app: App }) {
     app.provide('prefer-composition', preferComposition)
     app.provide('prefer-sfc', preferSFC)
     app.provide('filter-headers', filterHeadersByPreference)
@@ -36,14 +36,14 @@ export default Object.assign({}, VPTheme, {
     app.component('ScrimbaLink', ScrimbaLink)
     // app.component('TextAd', TextAd)
 
-    // yandexMetrika(ctx, {
-    //   enabled: import.meta.env.MODE === 'production',
-    //   counter: {
-    //     id: 97196107,
-    //     initParams: {
-    //       trustedDomains: ['ru.vuejs.org']
-    //     },
-    //   },
-    // })
+    yandexMetrika(router, {
+      enabled: import.meta.env.MODE === 'production',
+      counter: {
+        id: 97196107,
+        initParams: {
+          trustedDomains: ['ru.vuejs.org']
+        },
+      },
+    })
   }
 })
