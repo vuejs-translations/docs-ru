@@ -293,8 +293,7 @@ setup(props) {
 - Применяется к SFC и файлам js(x)/ts(x). Перед применением преобразования выполняется быстрая проверка использования файлов, поэтому для файлов, не использующих макросы, не должно быть никаких потерь производительности.
 - Обратите внимание, что `reactivityTransform` теперь является опцией корневого уровня плагина, а не вложенной в `script.refSugar`, поскольку она влияет не только на SFC.
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   plugins: [
     vue({
@@ -309,8 +308,7 @@ export default {
 - В настоящее время влияет только на SFC
 - Требуется `vue-loader@>=17.0.0`
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -331,8 +329,7 @@ module.exports = {
 - В настоящее время влияет только на SFC
 - Требуется `vue-loader@>=17.0.0`
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   module: {
     rules: [

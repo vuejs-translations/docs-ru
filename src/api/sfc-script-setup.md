@@ -298,16 +298,20 @@ function inc() {
 :::warning Предупреждение
 Если у вас есть значение `default` для свойства `defineModel`, и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В приведенном ниже примере родительский `myRef` не определен, а дочерний `model` равен 1:
 
-```js
-// дочерний компонент:
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
-
-// родительский компонент:
-const myRef = ref()
+</script>
 ```
 
-```html
-<Child v-model="myRef"></Child>
+```vue [Parent.vue]
+<script setup>
+const myRef = ref()
+</script>
+
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 :::
 

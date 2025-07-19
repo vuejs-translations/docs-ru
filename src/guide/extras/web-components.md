@@ -24,8 +24,7 @@ app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 
 #### Пример конфигурации Vite {#example-vite-config}
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import vue from '@vitejs/plugin-vue'
 
 export default {
@@ -44,8 +43,7 @@ export default {
 
 #### Пример конфигурации Vue CLI {#example-vue-cli-config}
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -219,8 +217,7 @@ customElements.define('my-example', ExampleElement)
 
 Рекомендуется экспортировать отдельные конструкторы элементов, чтобы позволить их импортировать по необходимости или регистрировать с нужными именами тегов. Также можно экспортировать удобную функцию для автоматической регистрации всех элементов. Вот пример точки входа пользовательской библиотеки пользовательских элементов на Vue:
 
-```js
-// elements.js
+```js [elements.js]
 
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
@@ -312,9 +309,7 @@ This approach is one possible way to do it, but it may vary depending on the fra
 
 Suppose we have a custom element with some JS properties and events defined, and it is shipped in a library called `some-lib`:
 
-```ts
-// file: some-lib/src/SomeElement.ts
-
+```ts [some-lib/src/SomeElement.ts]
 // Define a class with typed JS properties.
 export class SomeElement extends HTMLElement {
   foo: number = 123
@@ -352,9 +347,7 @@ The implementation details have been omitted, but the important part is that we 
 
 Let's create a type helper for easily registering custom element type definitions in Vue:
 
-```ts
-// file: some-lib/src/DefineCustomElement.ts
-
+```ts [some-lib/src/DefineCustomElement.ts]
 // We can re-use this type helper per each element we need to define.
 type DefineCustomElement<
   ElementType extends HTMLElement,
@@ -395,9 +388,7 @@ We marked `$props` and `$emit` as deprecated so that when we get a `ref` to a cu
 
 Using the type helper we can now select the JS properties that should be exposed for type checking in Vue templates:
 
-```ts
-// file: some-lib/src/SomeElement.vue.ts
-
+```ts [some-lib/src/SomeElement.vue.ts]
 import {
   SomeElement,
   SomeElementAttributes,
@@ -420,7 +411,7 @@ declare module 'vue' {
 
 Suppose that `some-lib` builds its source TypeScript files into a `dist/` folder. A user of `some-lib` can then import `SomeElement` and use it in a Vue SFC like so:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // This will create and register the element with the browser.
 import 'some-lib/dist/SomeElement.js'
@@ -466,7 +457,7 @@ onMounted(() => {
 
 If an element does not have type definitions, the types of the properties and events can be defined in a more manual fashion:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // Suppose that `some-lib` is plain JS without type definitions, and TypeScript
 // cannot infer the types:

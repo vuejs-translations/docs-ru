@@ -1,5 +1,9 @@
 # TypeScript с Composition API {#typescript-with-composition-api}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-ts-composition-api" title="Free Vue.js TypeScript with Composition API Lesson" type="scrimba">
+  Watch an interactive video lesson on Scrimba
+</ScrimbaLink>
+
 > На этой странице предполагается, что вы уже прочитали обзор по [использованию Vue с TypeScript](./overview).
 
 ## Типизация входных параметров компонента {#typing-component-props}
@@ -413,8 +417,7 @@ In cases where auto-inference is not possible (e.g. non-SFC usage or dynamic com
 
 In order to get the instance type of an imported component, we need to first get its type via `typeof`, then use TypeScript's built-in `InstanceType` utility to extract its instance type:
 
-```vue{5}
-<!-- App.vue -->
+```vue{6,7} [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import Foo from './Foo.vue'
@@ -442,8 +445,7 @@ const child = useTemplateRef<ComponentPublicInstance>('child')
 
 В случаях, когда компонент, на который делается ссылка (ref), является [дженерик-компонентом](/guide/typescript/overview.html#generic-components), например `MyGenericModal`:
 
-```vue
-<!-- MyGenericModal.vue -->
+```vue [MyGenericModal.vue]
 <script setup lang="ts" generic="ContentType extends string | number">
 import { ref } from 'vue'
 
@@ -459,8 +461,7 @@ defineExpose({
 
 На него необходимо ссылаться с помощью `ComponentExposed` из библиотеки [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), поскольку `InstanceType` не будет работать.
 
-```vue
-<!-- App.vue -->
+```vue [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'

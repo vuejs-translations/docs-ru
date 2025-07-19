@@ -61,8 +61,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Возьмём, к примеру, функцию `increment`:
 
-```js
-// helpers.js
+```js [helpers.js]
 export function increment(current, max = 10) {
   if (current < max) {
     return current + 1
@@ -75,8 +74,7 @@ export function increment(current, max = 10) {
 
 Если ни одно из этих утверждений не сработает, то ясно, что проблема кроется в функции `increment`.
 
-```js{4-16}
-// helpers.spec.js
+```js{3-15} [helpers.spec.js]
 import { increment } from './helpers'
 
 describe('increment', () => {
@@ -149,10 +147,9 @@ describe('increment', () => {
 
   Мы ничего не знаем о реализации Stepper, только то, что "входом" является параметр `max`, а "выходом" - состояние DOM в том виде, в котором его увидит пользователь.
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="Vue Test Utils">
+::: code-group
 
-```js
+```js [Vue Test Utils]
 const valueSelector = '[data-testid=stepper-value]'
 const buttonSelector = '[data-testid=increment]'
 
@@ -169,10 +166,7 @@ await wrapper.find(buttonSelector).trigger('click')
 expect(wrapper.find(valueSelector).text()).toContain('1')
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="Cypress">
-
-```js
+```js [Cypress]
 const valueSelector = '[data-testid=stepper-value]'
 const buttonSelector = '[data-testid=increment]'
 
@@ -191,10 +185,7 @@ cy.get(valueSelector)
   .should('contain.text', '1')
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="Testing Library">
-
-```js
+```js [Testing Library]
 const { getByText } = render(Stepper, {
   props: {
     max: 1
@@ -213,8 +204,7 @@ getByText('1')
 await fireEvent.click(button)
 ```
 
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 **НЕ ДЕЛАЙТЕ**
 
@@ -320,8 +310,7 @@ E2E-тесты проверяют многие уровни приложения
 
 Далее обновите конфигурацию Vite, добавив в нее блок опцию `test`:
 
-```js{6-12}
-// vite.config.js
+```js{5-11} [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -339,9 +328,7 @@ export default defineConfig({
 :::tip Совет
 Если вы используете TypeScript, добавьте `vitest/globals` в поле `types` в файле `tsconfig.json`.
 
-```json
-// tsconfig.json
-
+```json [tsconfig.json]
 {
  "compilerOptions": {
     "types": ["vitest/globals"]
@@ -353,8 +340,7 @@ export default defineConfig({
 
 Затем создайте в проекте файл, заканчивающийся `*.test.js`. Все тестовые файлы можно разместить в каталоге test в корне проекта или в каталогах test рядом с исходными файлами. Vitest будет автоматически искать их, используя соглашение об именовании.
 
-```js
-// MyComponent.test.js
+```js [MyComponent.test.js]
 import { render } from '@testing-library/vue'
 import MyComponent from './MyComponent.vue'
 
@@ -372,7 +358,7 @@ test('это должно работать', () => {
 
 Наконец, обновите файл `package.json`, добавив в него тестовый сценарий, и запустите его:
 
-```json{4}
+```json{4} [package.json]
 {
   // ...
   "scripts": {
@@ -398,8 +384,7 @@ Composable зависит от экземпляра хост-компонент�
 
 Если composable использует только Reactivity API, то его можно протестировать путем прямого обращения к нему и утверждения возвращаемого состояния / методов:
 
-```js
-// counter.js
+```js [counter.js]
 import { ref } from 'vue'
 
 export function useCounter() {
@@ -413,8 +398,7 @@ export function useCounter() {
 }
 ```
 
-```js
-// counter.test.js
+```js [counter.test.js]
 import { useCounter } from './counter.js'
 
 test('useCounter', () => {
@@ -428,8 +412,7 @@ test('useCounter', () => {
 
 Composable, который полагается на хуки жизненного цикла или Provide / Inject, должен быть обернут в компонент-хост для тестирования. Мы можем создать помощника, как показано ниже:
 
-```js
-// test-utils.js
+```js [test-utils.js]
 import { createApp } from 'vue'
 
 export function withSetup(composable) {
@@ -448,7 +431,7 @@ export function withSetup(composable) {
 }
 ```
 
-```js
+```js [foo.test.js]
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
 

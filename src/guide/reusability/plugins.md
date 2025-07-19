@@ -40,8 +40,7 @@ const myPlugin = {
 
 Начнём с настройки объекта плагина. Рекомендуется создать его в отдельном файле и экспортировать, как показано ниже, чтобы держать логику отдельно.
 
-```js
-// plugins/i18n.js
+```js [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // Здесь содержится код плагина
@@ -56,8 +55,7 @@ export default {
 
 Поскольку эта функция должна быть глобально доступной во всех шаблонах, мы сделаем ее таковой, присоединив к `app.config.globalProperties` нашего плагина:
 
-```js{4-11}
-// plugins/i18n.js
+```js{3-10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // введение глобально доступного метода $translate()
@@ -98,8 +96,7 @@ app.use(i18nPlugin, {
 
 Плагины также позволяют нам использовать `provide`, чтобы предоставить пользователям плагина доступ к функции или атрибуту. Например, мы можем позволить приложению иметь доступ к параметру `options`, чтобы иметь возможность использовать объект с переводами.
 
-```js{10}
-// plugins/i18n.js
+```js{3} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)
@@ -111,7 +108,7 @@ export default {
 
 <div class="composition-api">
 
-```vue
+```vue{4}
 <script setup>
 import { inject } from 'vue'
 
@@ -124,7 +121,7 @@ console.log(i18n.greetings.hello)
 </div>
 <div class="options-api">
 
-```js
+```js{2}
 export default {
   inject: ['i18n'],
   created() {

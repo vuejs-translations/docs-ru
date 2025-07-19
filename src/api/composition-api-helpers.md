@@ -132,3 +132,7 @@
   Идентификаторы, сгенерированные с помощью `useId()`, также гарантированно стабильны и для серверного и для клиентского рендеринга, поэтому их использование в SSR приложениях не приведёт к несоответствию гидратации.
 
   Если у вас есть несколько экземпляров Vue-приложения для одной и той же страницы, вы можете избежать конфликтов идентификаторов, задав каждому приложению свой ID-префикс через [`app.config.idPrefix`](/api/application#app-config-idprefix).
+
+  :::warning Caution
+  `useId()` should be not be called inside a `computed()` property as it may cause instance conflicts. Instead, declare the ID outside of `computed()` and reference it within the computed function.
+  :::

@@ -12,8 +12,12 @@ import {
 } from './components/preferences'
 import SponsorsAside from './components/SponsorsAside.vue'
 import VueSchoolLink from './components/VueSchoolLink.vue'
+import ScrimbaLink from './components/ScrimbaLink.vue'
 import Banner from './components/Banner.vue'
 // import TextAd from './components/TextAd.vue'
+
+import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css'
+import 'virtual:group-icons.css'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
@@ -25,11 +29,12 @@ export default Object.assign({}, VPTheme, {
       'aside-mid': () => h(SponsorsAside)
     })
   },
-  enhanceApp(ctx: EnhanceAppContext) {
-    ctx.app.provide('prefer-composition', preferComposition)
-    ctx.app.provide('prefer-sfc', preferSFC)
-    ctx.app.provide('filter-headers', filterHeadersByPreference)
-    ctx.app.component('VueSchoolLink', VueSchoolLink)
+  enhanceApp({ app }: { app: App }) {
+    app.provide('prefer-composition', preferComposition)
+    app.provide('prefer-sfc', preferSFC)
+    app.provide('filter-headers', filterHeadersByPreference)
+    app.component('VueSchoolLink', VueSchoolLink)
+    app.component('ScrimbaLink', ScrimbaLink)
     // app.component('TextAd', TextAd)
 
     yandexMetrika(ctx, {

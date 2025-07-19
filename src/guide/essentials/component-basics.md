@@ -1,5 +1,9 @@
 # Основы компонентов {#components-basics}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Free Vue.js Components Basics Lesson" type="scrimba">
+  Watch an interactive video lesson on Scrimba
+</ScrimbaLink>
+
 Компоненты позволяют нам разделить пользовательский интерфейс на независимые и многократно используемые части и думать о каждой части в отдельности. Обычно приложение организовано в виде дерева вложенных друг в друга компонентов:
 
 ![Дерево компонентов](./images/components.png)
@@ -184,8 +188,7 @@ import ButtonCounter from './ButtonCounter.vue'
 
 <div class="options-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script>
 export default {
   props: ['title']
@@ -202,8 +205,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 </script>
@@ -348,8 +350,8 @@ const postFontSize = ref(1)
 
 Теперь давайте добавим кнопку в шаблон компонента `<BlogPost>`:
 
-```vue{5}
-<!-- BlogPost.vue, не добавлен <script> -->
+```vue{5} [BlogPost.vue]
+<!-- не добавлен <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -369,8 +371,8 @@ const postFontSize = ref(1)
 
 Тогда дочерний компонент может сгенерировать событие с помощью встроенного [метода `$emit`](/api/component-instance#emit), передавая ему имя события:
 
-```vue{5}
-<!-- BlogPost.vue, не добавлен <script> -->
+```vue{5} [BlogPost.vue]
+<!-- не добавлен <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -396,8 +398,7 @@ const postFontSize = ref(1)
 
 <div class="options-api">
 
-```vue{5}
-<!-- BlogPost.vue -->
+```vue{4} [BlogPost.vue]
 <script>
 export default {
   props: ['title'],
@@ -409,8 +410,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue{4}
-<!-- BlogPost.vue -->
+```vue{3} [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 defineEmits(['enlarge-text'])
@@ -468,8 +468,7 @@ export default {
 
 Такого можно добиться при помощи пользовательского элемента `<slot>` у Vue:
 
-```vue{5}
-<!-- AlertBox.vue -->
+```vue{4} [AlertBox.vue]
 <template>
   <div class="alert-box">
     <strong>Эта ошибка для демонстрационных целей</strong>

@@ -32,8 +32,7 @@ import { ... } from 'vue/dist/vue.esm-bundler.js'
 
 внутри ваших скриптов, или настройте ваш сборщик так, чтобы он мог обработать `vue`. Небольшой конфиг для [Vite](https://vitejs.dev/):
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   resolve: {
     alias: {

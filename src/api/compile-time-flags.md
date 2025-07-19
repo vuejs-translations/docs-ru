@@ -40,8 +40,7 @@ Vue будет работать, даже если эти флаги не буд
 
 `@vitejs/plugin-vue` автоматически предоставляет значения по умолчанию для этих флагов. Для того чтобы изменить значения по умолчанию, используйте опцию Vite [`define` config](https://vitejs.dev/config/shared-options.html#define):
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -56,8 +55,7 @@ export default defineConfig({
 
 `@vue/cli-service` автоматически предоставляет значения по умолчанию для некоторых из этих флагов. Чтобы настроить / изменить значения:
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('define').tap((definitions) => {
@@ -76,8 +74,7 @@ module.exports = {
 
 Флаги должны быть определены с помощью функции webpack [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   // ...
   plugins: [
@@ -94,8 +91,7 @@ module.exports = {
 
 Флаги должны быть определены с помощью [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
 
-```js
-// rollup.config.js
+```js [rollup.config.js]
 import replace from '@rollup/plugin-replace'
 
 export default {
