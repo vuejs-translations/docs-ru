@@ -1,7 +1,5 @@
 import './styles/index.css'
-import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
-import type { EnhanceAppContext } from 'vitepress'
-import { h } from 'vue'
+import { h, App } from 'vue'
 import { VPTheme } from '@vue/theme'
 import PreferenceSwitch from './components/PreferenceSwitch.vue'
 import SecurityUpdateBtn from './components/SecurityUpdateBtn.vue'
@@ -18,6 +16,7 @@ import Banner from './components/Banner.vue'
 
 import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css'
 import 'virtual:group-icons.css'
+// import { yandexMetrika } from '@hywax/vitepress-yandex-metrika'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
@@ -37,14 +36,14 @@ export default Object.assign({}, VPTheme, {
     app.component('ScrimbaLink', ScrimbaLink)
     // app.component('TextAd', TextAd)
 
-    yandexMetrika(ctx, {
-      enabled: import.meta.env.MODE === 'production',
-      counter: {
-        id: 97196107,
-        initParams: {
-          trustedDomains: ['ru.vuejs.org']
-        },
-      },
-    })
+    // yandexMetrika(ctx, {
+    //   enabled: import.meta.env.MODE === 'production',
+    //   counter: {
+    //     id: 97196107,
+    //     initParams: {
+    //       trustedDomains: ['ru.vuejs.org']
+    //     },
+    //   },
+    // })
   }
 })
