@@ -132,6 +132,6 @@ export default {
 
 </div>
 
-### Bundle for NPM
+### Сборка для NPM
 
-If you further want to build and publish your plugin for others to use, see [Vite's section on Library Mode](https://vitejs.dev/guide/build.html#library-mode).
+Если вы хотите разработать и опубликовать свой плагин для использования другими, смотрите [раздел документации Vite о режиме Library Mode](https://vitejs.dev/guide/build.html#library-mode).
