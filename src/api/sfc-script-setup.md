@@ -548,7 +548,7 @@ import genericComponent from '../generic-component.vue';
 
 import type { ComponentExposed } from 'vue-component-type-helpers';
 
-// Works for a component without generics
+// Работает для компонента без дженериков
 ref<InstanceType<typeof componentWithoutGenerics>>();
 
 ref<ComponentExposed<typeof genericComponent>>();
