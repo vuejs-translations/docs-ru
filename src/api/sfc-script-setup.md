@@ -483,8 +483,8 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 
 ## Import Statements {#imports-statements}
 
-Import statements in vue follow [ECMAScript module specification](https://nodejs.org/api/esm.html).
-In addition, you can use aliases defined in your build tool configuration:
+Во Vue import statements следуют [спецификации модулей ECMAScript](https://nodejs.org/api/esm.html).
+Кроме того, вы можете использовать алиасы, определённые в конфигурации вашего инструмента сборки.:
 
 ```vue
 <script setup>
@@ -524,7 +524,7 @@ defineProps<{
 </script>
 ```
 
-You can use `@vue-generic` the directive to pass in explicit types, for when the type cannot be inferred:
+Вы можете использовать директиву `@vue-generic` для передачи явных типов, когда система не может вывести их автоматически:
 
 ```vue
 <template>
@@ -536,7 +536,7 @@ You can use `@vue-generic` the directive to pass in explicit types, for when the
 </template>
 ```
 
-In order to use a reference to a generic component in a `ref` you need to use the [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) library as `InstanceType` won't work.
+Чтобы использовать ссылку на generic-компонент в `ref`, необходима библиотека [`vue-component-type-helpers`](https://www.npmjs.com/package/), так как `InstanceType` в этом случае неприменим.
 
 ```vue
 <script
@@ -548,13 +548,13 @@ import genericComponent from '../generic-component.vue';
 
 import type { ComponentExposed } from 'vue-component-type-helpers';
 
-// Works for a component without generics
+// Работает для компонента без дженериков
 ref<InstanceType<typeof componentWithoutGenerics>>();
 
 ref<ComponentExposed<typeof genericComponent>>();
 ```
 
-## Restrictions {#restrictions}
+## Ограничения {#restrictions}
 
 - Из-за разницы в семантике выполнения модулей код внутри `<script setup>` полагается на контекст SFC. Если перенести их во внешние файлы `.js` или `.ts`, это может привести к путанице как для разработчиков, так и для инструментов. Поэтому **`<script setup>`** нельзя использовать с атрибутом `src`.
 - `<script setup>` не поддерживает шаблон корневого компонента In-DOM. ([Связанные обсуждения](https://github.com/vuejs/core/issues/8391))
