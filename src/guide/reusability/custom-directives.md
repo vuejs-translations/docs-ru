@@ -217,7 +217,7 @@ const myDirective = {
 ```js
 {
   arg: 'foo',
-  modifiers: { bar: true },
+  modifiers: { foo: true, bar: true },
   value: /* значение `baz` */,
   oldValue: /* значение `baz` из предыдущего обновления */
 }
