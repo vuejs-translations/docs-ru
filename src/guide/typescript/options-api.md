@@ -294,3 +294,7 @@ declare module 'vue' {
 См. также:
 
 - [Модульные тесты TypeScript для расширений типов компонентов](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
+
+## Typing Global Custom Directives {#typing-global-custom-directives}
+
+See: [Typing Custom Global Directives](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />

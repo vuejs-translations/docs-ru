@@ -22,7 +22,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 :::tip Предварительные условия
 - Знакомство с командной строкой
-- Установленная [Node.js](https://nodejs.org/) 18.3 версии или выше
+- Установленная [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
 :::
 
 В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
