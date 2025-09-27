@@ -54,7 +54,6 @@ const nav: ThemeConfig['nav'] = [
         text: 'Ресурсы',
         items: [
           { text: 'Партнёры', link: '/partners/' },
-          { text: 'Разработчики', link: '/developers/' },
           { text: 'Темы', link: '/ecosystem/themes' },
           { text: 'UI компоненты', link: 'https://ui-libs.vercel.app/' },
           {
