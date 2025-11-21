@@ -272,14 +272,14 @@
     },
     {
       "name": "Berry Vue3 Admin Dashboard",
-      "price": 59,
+      "price": 69,
       "description": "Откройте для себя нашу визуально захватывающую тему административной панели Vue 3!",
       "url": "https://codedthemes.com/item/berry-vue-admin-dashboard/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Berry-pro-vue.png"
     },
     {
       "name": "Mantis Vue3 Admin Dashboard",
-      "price": 59,
+      "price": 69,
       "description": "Простой, но надежный способ начать любую разработку с помощью новейших Vue.js и Vuetify",
       "url": "https://codedthemes.com/item/mantis-vue-admin-template/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Mantis-pro-vue.png"
@@ -307,13 +307,27 @@
       },
       {
         "name": "Datta Able Vue + Bootstrap Admin Template",
-      "price": 59,
+      "price": 69,
       "description": "Premium VueJs + Bootstrap + Vite + Typescript Admin Template",
       "url": "https://codedthemes.com/item/datta-able-vue-admin-template/?ref=evan.vuejs",
       "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Datta+able-pro-vue.png"
-    }
-  ]
-},
+    },
+  {
+"name": "Able Pro Vue3 + Vuetify Dashboard",
+        "price": 69,
+        "description": "Vue3 + Vite + Vuetify + Typescript Dashboard Template",
+        "url": "https://codedthemes.com/item/able-pro-vuejs-admin-dashboard/?ref=evan.vuejs",
+        "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Able+pro-pro-vue.png"
+      },
+       {
+        "name": "Able Pro Vue Laravel Admin Dashboard Template",
+        "price": 69,
+        "description": "A powerful Vue + Laravel Dashboard Theme",
+        "url": "https://codedthemes.com/item/able-pro-vue-laravel-admin-dashboard/?ref=evan.vuejs",
+        "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Able+pro-pro-vue-laravel.png"
+      }
+    ]
+  },
   {
     "name": "ThemeSelection",
     "description": "Check out the admin [dashboard templates](https://themeselection.com/item/category/admin-templates/?ref=14) built by our partners from ThemeSelection.\n\nThey provide production-ready and highly customizable Free & Premium [Vue Admin Template](https://themeselection.com/item/category/vuejs-admin-templates/?ref=14), Vue + Laravel & NuxtJS Admin Templates to build modern web applications in no time!",

@@ -43,7 +43,7 @@ Sponsoring Vue gives you great exposure to over **2 million** Vue developers aro
 - **Global Special Sponsor**:
   - Limited to **one** sponsor globally. <span v-if="!data?.special">Currently vacant. [Get in touch](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Currently filled)</span>
   - (Exclusive) **Above the fold** logo placement on the front page of [vuejs.org](/).
-  - (Exclusive) Special shoutout and regular retweets of major product launches via [Vue's official X account](https://twitter.com/vuejs) (320k followers).
+  - (Exclusive) Special shoutout and regular retweets of major product launches via [Vue's official X account](https://x.com/vuejs) (320k followers).
   - Most prominent logo placement in all locations from tiers below.
 - **Платина (USD$2,000/месяц)**:
   - Заметное размещение логотипа на главной странице сайта [vuejs.org](/).
