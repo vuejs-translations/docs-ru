@@ -765,6 +765,9 @@ export default defineConfigWithTheme<ThemeConfig>({
       indexName: 'ru-vuejs',
       appId: '5RTQ6TI35H',
       apiKey: 'c4095d6d1e93c25ca93b3ca0030338ef',
+      searchParameters: {
+        facetFilters: ['version:v3']
+      }
     },
 
     // carbonAds: {
