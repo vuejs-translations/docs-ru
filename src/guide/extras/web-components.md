@@ -79,7 +79,7 @@ module.exports = {
 
 ### defineCustomElement {#definecustomelement}
 
-Vue позволяет создавать пользовательские элементы с точно таким же же API компонентов Vue с помощью метода [`defineCustomElement`](/api/custom-elements#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
+Vue позволяет создавать пользовательские элементы с точно таким же API компонентов Vue с помощью метода [`defineCustomElement`](/api/custom-elements#definecustomelement). Метод принимает такой же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо этого будет возвращать конструктор пользовательского элемента, расширяющего `HTMLElement`:
 
 ```vue-html
 <my-vue-element></my-vue-element>
