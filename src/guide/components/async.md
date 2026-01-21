@@ -107,19 +107,19 @@ const AsyncComp = defineAsyncComponent({
 
 Если предоставлен компонент ошибки, он будет отображаться, когда Promise, возвращаемый функцией загрузчиком, будет отклонён. Вы также можете указать время ожидания для отображения компонента ошибки, если запрос занимает слишком много времени.
 
-## Lazy Hydration <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
+## Ленивая гидратация <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
 
-> This section only applies if you are using [Server-Side Rendering](/guide/scaling-up/ssr).
+> Данный раздел актуален только для тех, кто использует [Server-Side Rendering](/guide/scaling-up/ssr).
 
-In Vue 3.5+, async components can control when they are hydrated by providing a hydration strategy.
+В Vue 3.5+, асинхронные компоненты могут контролировать время гидратации, предоставляя стратегию гидратации.
 
-- Vue provides a number of built-in hydration strategies. These built-in strategies need to be individually imported so they can be tree-shaken if not used.
+- Vue предоставляет несколько встроенных стратегий гидратации. Эти встроенные стратегии нужно импортировать явно - это позволяет исключить неиспользуемый код при tree-shaking.
 
-- The design is intentionally low-level for flexibility. Compiler syntax sugar can potentially be built on top of this in the future either in core or in higher level solutions (e.g. Nuxt).
+- Дизайн намеренно сделан низкоуровневым для гибкости. В будущем поверх этой основы можно будет добавить синтаксический сахар — или в ядро фреймворка, или в более высокоуровневые решения. (например, Nuxt).
 
-### Hydrate on Idle {#hydrate-on-idle}
+### Гидратация в фоновом режиме {#hydrate-on-idle}
 
-Hydrates via `requestIdleCallback`:
+Гидратация происходит с помощью `requestIdleCallback`:
 
 ```js
 import { defineAsyncComponent, hydrateOnIdle } from 'vue'
@@ -130,9 +130,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydrate on Visible {#hydrate-on-visible}
+### Гидратация при отображении {#hydrate-on-visible}
 
-Hydrate when element(s) become visible via `IntersectionObserver`.
+Гидратация происходит при появлении элемента(ов) в области видимости с помощью `IntersectionObserver`.
 
 ```js
 import { defineAsyncComponent, hydrateOnVisible } from 'vue'
@@ -143,15 +143,15 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Can optionally pass in an options object value for the observer:
+Можно дополнительно передать объект с настройками для наблюдателя (observer):
 
 ```js
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### Hydrate on Media Query {#hydrate-on-media-query}
+### Гидратация на медиазапросе {#hydrate-on-media-query}
 
-Hydrates when the specified media query matches.
+Гидратация происходит при соответствии указанному медиазапросу.
 
 ```js
 import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
@@ -162,9 +162,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Hydrate on Interaction {#hydrate-on-interaction}
+### Гидратация при взаимодействии {#hydrate-on-interaction}
 
-Hydrates when specified event(s) are triggered on the component element(s). The event that triggered the hydration will also be replayed once hydration is complete.
+Гидратация происходит при срабатывании указанных событий на элементе(ах) компонента. Событие, вызвавшее гидратацию, будет повторно воспроизведено после её завершения.
 
 ```js
 import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
@@ -175,13 +175,13 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Can also be a list of multiple event types:
+Также поддерживается список из нескольких типов событий:
 
 ```js
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### Custom Strategy {#custom-strategy}
+### Кастомная стратегия {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
