@@ -135,7 +135,7 @@
 
   `defineComponent()` также имеет альтернативный синтаксис, для совместного использования Composition API и [рендер-функций или JSX](/guide/extras/render-function.html).
 
-  Вместо объекта с опциями первым аргументом `defineComponent()` может принимать функцию. Эта функция выполняется точно так же, как и [`setup()`](/api/composition-api-setup#composition-api-setup) из Composition API, принимая props и context в качестве аргументов. Ожидается, что эта функция вернёт JSX или рендер-функцию с `h()` - оба варианта поддерживаются:
+  Вместо объекта с опциями первым аргументом `defineComponent()` может принимать функцию. Эта функция выполняется точно так же, как и [`setup()`](/api/composition-api-setup#composition-api-setup) из Composition API, принимая props и context в качестве аргументов. Ожидается, что эта функция вернёт JSX или рендер-функцию с `h()` — оба варианта поддерживаются:
 
   ```js
   import { ref, h } from 'vue'

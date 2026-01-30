@@ -16,7 +16,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - Если уже знакомы с Node.js и концепцией инструментов сборки, то можно попробовать полноценное окружение с шагом сборки прямо в браузере на [StackBlitz](https://vite.new/vue).
 
-- Чтобы получить пошаговое руководство по рекомендуемой настройке, посмотрите этот интерактивный учебник [Scrimba](http://scrimba.com/links/vue-quickstart), который покажет вам, как запустить, отредактировать и развернуть ваше первое приложение Vue.
+- Чтобы получить пошаговое руководство по рекомендуемой настройке, посмотрите этот интерактивный учебник [Scrimba](http://scrimba.com/links/vue-quickstart), который покажет вам, как запустить, отредактировать и развёрнуть ваше первое приложение Vue.
 
 ## Создание приложения Vue {#creating-a-vue-application}
 
@@ -25,7 +25,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - Установленная [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
 :::
 
-В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
+В этом разделе разберёмся, как развёрнуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
 
 Убедитесь, что установлена актуальная версия [Node.js](https://nodejs.org/), после чего выполните следующую команду в командной строке (символ `$` вводить не нужно):
 
@@ -55,7 +55,7 @@ $ bun create vue@latest
 ```
 :::
 
-Команда установит и запустит [create-vue](https://github.com/vuejs/create-vue) — официальный инструмент для развёртывания проектов Vue. Также после запуска будут выводиться подсказки для возможности выбора ряда дополнительных функций, таких как TypeScript или поддержка тестирования:
+Команда установит и запустит [create-vue](https://github.com/vuejs/create-vue) — официальный инструмент для развёртывания проектов Vue. Также после запуска будут выводиться подсказки для выбора ряда дополнительных функций, таких как TypeScript или поддержка тестирования:
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add TypeScript? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
