@@ -181,7 +181,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### Custom Strategy {#custom-strategy}
+### Пользовательская стратегия {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
