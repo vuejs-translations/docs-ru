@@ -94,7 +94,7 @@
 
 Регистрирует коллбэк, который будет вызван при размонтировании компонента.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface App {
@@ -367,7 +367,7 @@ console.log(app.config)
     errorHandler?: (
       err: unknown,
       instance: ComponentPublicInstance | null,
-      // `info` - это специфическая для Vue информация об ошибке,
+      // `info` — это специфическая для Vue информация об ошибке,
       // например, в каком хуке жизненного цикла возникла ошибка
       info: string
     ) => void

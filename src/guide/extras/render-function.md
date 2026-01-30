@@ -26,7 +26,7 @@ const vnode = h(
 )
 ```
 
-`h()` это сокращение от **hyperscript**, что означает "JavaScript, который создает HTML (hypertext markup language)". Это название унаследовано от соглашений, общих для многих реализаций виртуального DOM. Более точным названием может быть`createVNode()`, но короткое название удобнее, когда приходится вызывать эту функцию много раз в render-функции.
+`h()` — это сокращение от **hyperscript**, что означает "JavaScript, который создает HTML (hypertext markup language)". Это название унаследовано от соглашений, общих для многих реализаций виртуального DOM. Более точным названием может быть `createVNode()`, но короткое название удобнее, когда приходится вызывать эту функцию много раз в render-функции.
 
 Функция `h()` спроектирована очень гибко:
 
@@ -219,7 +219,7 @@ function render() {
 
 ## JSX / TSX {#jsx-tsx}
 
-[JSX](https://facebook.github.io/jsx/) - это XML-подобное расширение для JavaScript, позволяющее писать такой код:
+[JSX](https://facebook.github.io/jsx/) — это XML-подобное расширение для JavaScript, позволяющее писать такой код:
 
 ```jsx
 const vnode = <div>hello</div>
@@ -241,7 +241,7 @@ const vnode = <div id={dynamicId}>hello, {userName}</div>
 Определение типов Vue обеспечивает определение типов для использования TSX. При использовании TSX обязательно укажите `"jsx": "preserve"` в файле `tsconfig.json`, чтобы TypeScript оставлял синтаксис JSX нетронутым для его обработки JSX-преобразованием Vue.
 
 
-### JSX Type Inference {#jsx-type-inference}
+### Вывод типов в JSX {#jsx-type-inference}
 
 Подобно преобразованию, JSX Vue также нуждается в других определениях типов.
 
@@ -320,7 +320,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 ```js
 h(
   'ul',
-  // предполагается, что `items` - это ref, который содержит массив
+  // предполагается, что `items` — это ref, который содержит массив
   items.value.map(({ id, text }) => {
     return h('li', { key: id }, text)
   })
@@ -710,7 +710,7 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-With the Composition API, when using [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" />  template refs are created by passing the string value as prop to the vnode:
+С Composition API при использовании [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> ссылки на шаблон создаются передачей строкового значения в качестве пропа в vnode:
 
 ```js
 import { h, useTemplateRef } from 'vue'
@@ -726,9 +726,9 @@ export default {
 ```
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
-In versions before 3.5 where useTemplateRef() was not introduced, template refs are created by passing the ref() itself as a prop to the vnode:
+В версиях до 3.5, где useTemplateRef() ещё не был введён, ссылки на шаблон создаются передачей самого ref() в качестве пропа в vnode:
 
 ```js
 import { h, ref } from 'vue'
@@ -761,7 +761,7 @@ export default {
 
 ## Функциональные Компоненты {#functional-components}
 
-Функциональные компоненты - это альтернативная форма компонентов, не имеющая собственного состояния. Они действуют как чистые функции: входные параметры на входе, vnodes на выходе. Они отображаются без создания экземпляра компонента (т.е. без `this`) и без обычных хуков жизненного цикла компонента.
+Функциональные компоненты — это альтернативная форма компонентов, не имеющая собственного состояния. Они действуют как чистые функции: входные параметры на входе, vnodes на выходе. Они отображаются без создания экземпляра компонента (т.е. без `this`) и без обычных хуков жизненного цикла компонента.
 
 Для создания функционального компонента мы используем не объект options, а обычную функцию. Функция фактически является функцией `render` для компонента.
 

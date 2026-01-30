@@ -72,7 +72,7 @@ const props = defineProps<Props>()
 
 ### Значения по умолчанию входных параметров {#props-default-values}
 
-When using type-based declaration, we lose the ability to declare default values for the props. This can be resolved by using [Reactive Props Destructure](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />:
+При объявлении на основе типов мы теряем возможность задавать значения по умолчанию для входных параметров. Это решается с помощью [реактивной деструктуризации входных параметров](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />:
 
 ```ts
 interface Props {
@@ -83,7 +83,7 @@ interface Props {
 const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
 ```
 
-In 3.4 and below, Reactive Props Destructure is not enabled by default. An alternative is to use the `withDefaults` compiler macro:
+В версиях 3.4 и ниже реактивная деструктуризация входных параметров по умолчанию отключена. Альтернатива — макрос компилятора `withDefaults`:
 
 ```ts
 interface Props {
@@ -100,7 +100,7 @@ const props = withDefaults(defineProps<Props>(), {
 Это будет скомпилировано во время выполнения в эквивалентные параметры `по умолчанию`. Кроме того, помощник `withDefaults` обеспечивает проверку типов для значений по умолчанию и гарантирует, что в возвращаемом типе `props` будут удалены необязательные флаги для свойств, для которых объявлены значения по умолчанию.
 
 :::info
-Note that default values for mutable reference types (like arrays or objects) should be wrapped in functions when using `withDefaults` to avoid accidental modification and external side effects. This ensures each component instance gets its own copy of the default value. This is **not** necessary when using default values with destructure.
+Обратите внимание: значения по умолчанию для изменяемых ссылочных типов (массивы, объекты) при использовании `withDefaults` следует оборачивать в функции, чтобы избежать случайного изменения и побочных эффектов. Так каждый экземпляр компонента получит свою копию значения по умолчанию. При использовании значений по умолчанию с деструктуризацией это **не** требуется.
 :::
 
 ### Без `<script setup>` {#without-script-setup}
@@ -374,16 +374,16 @@ const foo = inject('foo') as string
 
 ## Типизация ссылок на шаблоны {#typing-template-refs}
 
-With Vue 3.5 and `@vue/language-tools` 2.1 (powering both the IDE language service and `vue-tsc`), the type of refs created by `useTemplateRef()` in SFCs can be **automatically inferred** for static refs based on what element the matching `ref` attribute is used on.
+В Vue 3.5 и `@vue/language-tools` 2.1 (используется в языковой службе IDE и в `vue-tsc`) тип ссылок, создаваемых `useTemplateRef()` в SFC, может **автоматически выводиться** для статических ref по тому, на какой элемент указывает атрибут `ref`.
 
-In cases where auto-inference is not possible, you can still cast the template ref to an explicit type via the generic argument:
+Если автоматический вывод невозможен, тип ссылки на шаблон можно задать явно через аргумент дженерика:
 
 ```ts
 const el = useTemplateRef<HTMLInputElement>('el')
 ```
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
 Шаблонные ссылки должны создаваться с явным аргументом типа generic и начальным значением `null`:
 
@@ -411,11 +411,11 @@ onMounted(() => {
 
 ## Типизация ссылок на шаблоны компонентов {#typing-component-template-refs}
 
-With Vue 3.5 and `@vue/language-tools` 2.1 (powering both the IDE language service and `vue-tsc`), the type of refs created by `useTemplateRef()` in SFCs can be **automatically inferred** for static refs based on what element or component the matching `ref` attribute is used on.
+В Vue 3.5 и `@vue/language-tools` 2.1 (используется в языковой службе IDE и в `vue-tsc`) тип ссылок, создаваемых `useTemplateRef()` в SFC, может **автоматически выводиться** для статических ref по тому, на какой элемент или компонент указывает атрибут `ref`.
 
-In cases where auto-inference is not possible (e.g. non-SFC usage or dynamic components), you can still cast the template ref to an explicit type via the generic argument.
+Если автоматический вывод невозможен (например, использование вне SFC или динамические компоненты), тип ссылки на шаблон можно задать явно через аргумент дженерика.
 
-In order to get the instance type of an imported component, we need to first get its type via `typeof`, then use TypeScript's built-in `InstanceType` utility to extract its instance type:
+Чтобы получить тип экземпляра импортированного компонента, нужно сначала получить его тип через `typeof`, затем воспользоваться встроенной утилитой TypeScript `InstanceType`:
 
 ```vue{6,7} [App.vue]
 <script setup lang="ts">
@@ -476,11 +476,11 @@ const openModal = () => {
 </script>
 ```
 
-Note that with `@vue/language-tools` 2.1+, static template refs' types can be automatically inferred and the above is only needed in edge cases.
+Обратите внимание: в `@vue/language-tools` 2.1+ типы статических ссылок на шаблон выводятся автоматически, описанный выше подход нужен только в особых случаях.
 
-## Typing Global Custom Directives {#typing-global-custom-directives}
+## Типизация глобальных пользовательских директив {#typing-global-custom-directives}
 
-In order to get type hints and type checking for global custom directives declared with `app.directive()`, you can extend `ComponentCustomProperties`
+Чтобы получить подсказки типов и проверку типов для глобальных пользовательских директив, объявленных через `app.directive()`, можно расширить интерфейс `ComponentCustomProperties`
 
 ```ts [src/directives/highlight.ts]
 import type { Directive } from 'vue'
@@ -508,7 +508,7 @@ const app = createApp(App)
 app.directive('highlight', highlight)
 ```
 
-Usage in component
+Использование в компоненте:
 
 ```vue [App.vue]
 <template>

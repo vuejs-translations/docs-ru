@@ -15,18 +15,18 @@ onMounted(load)
 
 # Станьте спонсором Vue.js {#become-a-vue-js-sponsor}
 
-Vue.js - это проект с открытым исходным кодом по лицензии MIT и совершенно бесплатный для использования.
+Vue.js — это проект с открытым исходным кодом по лицензии MIT и совершенно бесплатный для использования.
 Огромные усилия, необходимые для поддержания такой большой экосистемы и разработки новых возможностей для проекта, становятся возможными только благодаря щедрой финансовой поддержке наших спонсоров.
 
 ## Как спонсировать? {#how-to-sponsor}
 
 Спонсировать можно через [GitHub Sponsors](https://github.com/sponsors/yyx990803) или [OpenCollective](https://opencollective.com/vuejs). Счета можно получить через платежную систему GitHub. Принимаются как ежемесячные спонсорские взносы, так и единовременные пожертвования. Повторяющиеся спонсорские взносы дают право на размещение логотипа, согласно [Уровням спонсорства](#tier-benefits).
 
-Если у вас есть вопросы, касаемо уровней, логистики платежей или данных об экспозиции спонсоров, обращайтесь по адресу [sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry).
+Если у вас есть вопросы, касательно уровней, логистики платежей или данных об экспозиции спонсоров, обращайтесь по адресу [sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry).
 
 ## Спонсирование Vue как бизнес {#sponsoring-vue-as-a-business}
 
-Sponsoring Vue gives you great exposure to over **2 million** Vue developers around the world through our website and GitHub project READMEs. This not only directly generates leads, but also improves your brand recognition as a business that cares about Open Source. This is an intangible but extremely important asset for companies building products for developers, as it improves your conversion rate.
+Спонсирование Vue даёт широкую аудиторию — более **2 миллионов** разработчиков Vue по всему миру через наш сайт и README проектов на GitHub. Это не только напрямую привлекает лиды, но и укрепляет узнаваемость бренда как компании, заботящейся об открытом коде. Это нематериальный, но крайне важный актив для компаний, создающих продукты для разработчиков, так как повышает конверсию.
 
 Если вы используете Vue для создания продукта, приносящего доход, то спонсирование разработки Vue имеет смысл для бизнеса: **это гарантирует, что проект, на который опирается ваш продукт, останется здоровым и будет активно поддерживаться.** Экспозиция и положительный образ бренда в сообществе Vue также облегчает привлечение и набор Vue-разработчиков.
 
@@ -40,11 +40,11 @@ Sponsoring Vue gives you great exposure to over **2 million** Vue developers aro
 
 ## Преимущества за уровень {#tier-benefits}
 
-- **Global Special Sponsor**:
-  - Limited to **one** sponsor globally. <span v-if="!data?.special">Currently vacant. [Get in touch](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Currently filled)</span>
-  - (Exclusive) **Above the fold** logo placement on the front page of [vuejs.org](/).
-  - (Exclusive) Special shoutout and regular retweets of major product launches via [Vue's official X account](https://x.com/vuejs) (320k followers).
-  - Most prominent logo placement in all locations from tiers below.
+- **Global Special Sponsor** (особый глобальный спонсор):
+  - Не более **одного** спонсора в мире. <span v-if="!data?.special">Сейчас свободно. [Связаться с нами](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)!</span><span v-else>(Занято)</span>
+  - (Эксклюзивно) Размещение логотипа **above the fold** на главной странице [vuejs.org](/).
+  - (Эксклюзивно) Упоминание и ретвиты крупных анонсов в [официальном аккаунте Vue в X](https://x.com/vuejs) (320k подписчиков).
+  - Наиболее заметное размещение логотипа во всех местах по сравнению с уровнями ниже.
 - **Платина (USD$2,000/месяц)**:
   - Заметное размещение логотипа на главной странице сайта [vuejs.org](/).
   - Заметное размещение логотипа на боковой панели на всех контентных страницах.

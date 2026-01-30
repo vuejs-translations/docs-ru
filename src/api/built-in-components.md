@@ -285,9 +285,8 @@ h(Transition, {
      */
     disabled?: boolean
     /**
-     * When `true`, the Teleport will defer until other
-     * parts of the application have been mounted before
-     * resolving its target. (3.5+)
+     * Если `true`, Teleport отложит разрешение целевого контейнера
+     * до тех пор, пока остальные части приложения не будут смонтированы. (3.5+)
      */
     defer?: boolean
   }

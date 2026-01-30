@@ -22,7 +22,7 @@ function update() {
 </script>
 
 <template>
-  <div>Родительский связанный v-model - это: {{ model }}</div>
+  <div>Родительский связанный v-model — это: {{ model }}</div>
   <button @click="update">Увеличение</button>
 </template>
 ```
@@ -54,7 +54,7 @@ const model = defineModel()
 
 ### Под капотом {#under-the-hood}
 
-`defineModel` - это удобный макрос. Компилятор раскрывает его в следующее:
+`defineModel` — это удобный макрос. Компилятор раскрывает его в следующее:
 
 - Свойство с именем `modelValue`, значение которого синхронизировано со значением локальной `ref`;
 - Событие с именем `update:modelValue`, которое возникает при изменении значения локальной `ref`.

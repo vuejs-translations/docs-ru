@@ -223,20 +223,20 @@ Runtime API, используемый для получения объекта �
 
 ## data-allow-mismatch <sup class="vt-badge" data-text="3.5+" /> {#data-allow-mismatch}
 
-A special attribute that can be used to suppress [hydration mismatch](/guide/scaling-up/ssr#hydration-mismatch) warnings.
+Специальный атрибут для подавления предупреждений о [несоответствии гидратации](/guide/scaling-up/ssr#hydration-mismatch).
 
-- **Example**
+- **Пример**
 
   ```html
   <div data-allow-mismatch="text">{{ data.toLocaleString() }}</div>
   ```
 
-  The value can limit the allowed mismatch to a specific type. Allowed values are:
+  Значение атрибута может ограничить допустимое несоответствие определённым типом. Допустимые значения:
 
   - `text`
-  - `children` (only allows mismatch for direct children)
+  - `children` (только несоответствие для прямых потомков)
   - `class`
   - `style`
   - `attribute`
 
-  If no value is provided, all types of mismatches will be allowed.
+  Если значение не указано, допускаются несоответствия всех типов.

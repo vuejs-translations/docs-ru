@@ -111,9 +111,9 @@ app.directive('highlight', {
 })
 ```
 
-It is possible to type global custom directives by extending the `ComponentCustomProperties` interface from `vue`
+Глобальные пользовательские директивы можно типизировать, расширив интерфейс `ComponentCustomProperties` из `vue`.
 
-More Details: [Typing Custom Global Directives](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
+Подробнее: [Типизация глобальных пользовательских директив](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
 
 ## Когда использовать пользовательские директивы {#when-to-use}
 

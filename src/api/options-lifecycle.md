@@ -121,7 +121,7 @@
   **Этот хук не вызывается во время отрисовки на стороне сервера.**
 
   :::warning Предупреждение
-  Не изменяйте состояние компонента в хуке updated - это может привести к бесконечному циклу обновления!
+  Не изменяйте состояние компонента в хуке updated — это может привести к бесконечному циклу обновления!
   :::
 
 ## beforeUnmount {#beforeunmount}
@@ -215,11 +215,11 @@
 
   - Хук `errorCaptured` может возвращать значение `false`, чтобы предотвратить дальнейшее распространение ошибки. По сути, это означает, что "эта ошибка была обработана и должна быть проигнорирована". Это предотвратит вызов дополнительных хуков `errorCaptured` или `app.config.errorHandler` для этой ошибки.
 
-  **Error Capturing Caveats**
+  **Особенности перехвата ошибок**
   
-  - In components with async `setup()` function (with top-level `await`) Vue **will always** try to render component template, even if `setup()` throwed error. This will likely cause more errors because during render component's template might try to access non-existing properties of failed `setup()` context. When capturing errors in such components, be ready to handle errors from both failed async `setup()` (they will always come first) and failed render process.
+  - В компонентах с асинхронной функцией `setup()` (с `await` на верхнем уровне) Vue **всегда** пытается отрендерить шаблон компонента, даже если `setup()` выбросила ошибку. Это может привести к дополнительным ошибкам, так как при рендере шаблон может обращаться к несуществующим свойствам неудачного контекста `setup()`. При перехвате ошибок в таких компонентах учитывайте ошибки и от неудачного асинхронного `setup()` (они приходят первыми), и от неудачного рендера.
 
-  - <sup class="vt-badge" data-text="SSR only"></sup> Replacing errored child component in parent component deep inside `<Suspense>` will cause hydration mismatches in SSR. Instead, try to separate logic that can possibly throw from child `setup()` into separate function and execute it in the parent component's `setup()`, where you can safely `try/catch` the execution process and make replacement if needed before rendering the actual child component.
+  - <sup class="vt-badge" data-text="SSR only"></sup> Замена дочернего компонента с ошибкой в родительском компоненте глубоко внутри `<Suspense>` приведёт к несоответствиям гидратации при SSR. Лучше вынести логику, которая может выбросить ошибку, из дочернего `setup()` в отдельную функцию и вызывать её в `setup()` родителя, где можно безопасно обернуть выполнение в `try/catch` и при необходимости заменить компонент до рендера дочернего компонента.
 
 ## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
@@ -318,7 +318,7 @@
 
   Если хук возвращает Promise, то серверный рендерер будет ждать разрешения Promise перед отрисовкой компонента.
 
-  Этот хук вызывается только во время отрисовки на стороне сервера и может быть использован получения данных только на стороне сервера.
+  Этот хук вызывается только во время отрисовки на стороне сервера и может быть использован для получения данных только на стороне сервера.
 
   Этот хук вызывается только во время рендеринга на стороне сервера и может использоваться для выборки данных только на сервере.
 

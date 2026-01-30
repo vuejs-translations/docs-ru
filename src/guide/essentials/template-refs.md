@@ -184,7 +184,7 @@ export default {
 
 </div>
 
-<span class="composition-api">Если дочерний компонент использует Options API или не использует `<script setup>`, то экземпляр </span> <span class="options-api">Экземпляр</span> ссылки будет идентичен экземпляру дочернего компонента `this`, что означает, что родительский компонент будет иметь полный доступ к каждому свойству и методу дочернего компонента. Это позволяет легко создавать тесно связанные детали реализации между родительским и дочерним компонентами, поэтому ссылки на компонент следует использовать только в случае крайней необходимости - в большинстве случаев необходимо попытаться реализовать взаимодействие родителя и ребенка, используя стандартные интерфейсы props и emit.
+<span class="composition-api">Если дочерний компонент использует Options API или не использует `<script setup>`, то экземпляр </span> <span class="options-api">Экземпляр</span> ссылки будет идентичен экземпляру дочернего компонента `this`, что означает, что родительский компонент будет иметь полный доступ к каждому свойству и методу дочернего компонента. Это упрощает тесную связь реализации родительского и дочернего компонентов, поэтому ссылки на компонент следует использовать только в случае крайней необходимости — в большинстве случаев рекомендуется реализовать взаимодействие родительского и дочернего компонента через стандартные интерфейсы props и emit.
 
 <div class="composition-api">
 
@@ -240,13 +240,13 @@ export default {
 
 </div>
 
-## Refs inside `v-for` {#refs-inside-v-for}
+## Ссылки внутри `v-for` {#refs-inside-v-for}
 
-> Requires v3.5 or above
+> Требуется v3.5 или выше
 
 <div class="composition-api">
 
-When `ref` is used inside `v-for`, the corresponding ref should contain an Array value, which will be populated with the elements after mount:
+Когда `ref` используется внутри `v-for`, соответствующая ссылка должна содержать значение типа Array, которое будет заполнено элементами после монтирования:
 
 ```vue
 <script setup>
@@ -273,9 +273,9 @@ onMounted(() => console.log(itemRefs.value))
 [Try it in the Playground](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
 
 <details>
-<summary>Usage before 3.5</summary>
+<summary>Использование до версии 3.5</summary>
 
-In versions before 3.5 where `useTemplateRef()` was not introduced, we need to declare a ref with a name that matches the template ref attribute's value. The ref should also contain an array value:
+В версиях до 3.5, где `useTemplateRef()` ещё не был введён, нужно объявить ref с именем, совпадающим со значением атрибута ref в шаблоне. Ссылка также должна содержать значение типа массив:
 
 ```vue
 <script setup>
@@ -304,7 +304,7 @@ onMounted(() => console.log(itemRefs.value))
 </div>
 <div class="options-api">
 
-When `ref` is used inside `v-for`, the resulting ref value will be an array containing the corresponding elements:
+Когда `ref` используется внутри `v-for`, результирующее значение ссылки будет массивом, содержащим соответствующие элементы:
 
 ```vue
 <script>
@@ -335,14 +335,14 @@ export default {
 
 </div>
 
-It should be noted that the ref array does **not** guarantee the same order as the source array.
+Следует иметь в виду, что массив ссылок **не** гарантирует тот же порядок, что и исходный массив.
 
-## Function Refs {#function-refs}
+## Ссылки-функции {#function-refs}
 
-Instead of a string key, the `ref` attribute can also be bound to a function, which will be called on each component update and gives you full flexibility on where to store the element reference. The function receives the element reference as the first argument:
+Вместо строкового ключа атрибут `ref` можно привязать к функции, которая будет вызываться при каждом обновлении компонента и даёт полную свободу в выборе места хранения ссылки на элемент. Функция получает ссылку на элемент в качестве первого аргумента:
 
 ```vue-html
-<input :ref="(el) => { /* assign el to a property or ref */ }">
+<input :ref="(el) => { /* присвоить el свойству или ref */ }">
 ```
 
-Note we are using a dynamic `:ref` binding so we can pass it a function instead of a ref name string. When the element is unmounted, the argument will be `null`. You can, of course, use a method instead of an inline function.
+Обратите внимание: мы используем динамическую привязку `:ref`, поэтому можно передать функцию вместо строки с именем ссылки. Когда элемент размонтирован, аргумент будет `null`. Разумеется, вместо инлайновой функции можно использовать метод.

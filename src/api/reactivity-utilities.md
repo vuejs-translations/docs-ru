@@ -200,7 +200,7 @@
 
   const stateAsRefs = toRefs(state)
   /*
-  Type of stateAsRefs: {
+  Тип stateAsRefs: {
     foo: Ref<number>,
     bar: Ref<number>
   }
