@@ -134,4 +134,4 @@ export default {
 
 ### Сборка для NPM
 
-Если вы хотите разработать и опубликовать свой плагин для использования другими, смотрите [раздел документации Vite о режиме Library Mode](https://vitejs.dev/guide/build.html#library-mode).
+Если вы хотите разработать и опубликовать свой плагин для использования другими, смотрите [раздел документации Vite о режиме Library Mode](https://vite.dev/guide/build.html#library-mode).

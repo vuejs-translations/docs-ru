@@ -32,8 +32,8 @@
 
 Дополнительные ссылки:
 
-- [Руководство по сборке Vite для production](https://vitejs.dev/guide/build.html)
-- [Руководство по развёртыванию Vite](https://vitejs.dev/guide/static-deploy.html)
+- [Руководство по сборке Vite для production](https://vite.dev/guide/build.html)
+- [Руководство по развёртыванию Vite](https://vite.dev/guide/static-deploy.html)
 - [Руководство по развёртыванию Vue CLI](https://cli.vuejs.org/guide/deployment.html)
 
 ## Отслеживание ошибок времени выполнения {#tracking-runtime-errors}

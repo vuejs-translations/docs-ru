@@ -480,7 +480,7 @@ const openModal = () => {
 
 ## Типизация глобальных пользовательских директив {#typing-global-custom-directives}
 
-Чтобы получить подсказки типов и проверку типов для глобальных пользовательских директив, объявленных через `app.directive()`, можно расширить интерфейс `ComponentCustomProperties`
+Чтобы получить подсказки типов и проверку типов для глобальных пользовательских директив, объявленных через `app.directive()`, можно расширить интерфейс `GlobalDirectives`
 
 ```ts [src/directives/highlight.ts]
 import type { Directive } from 'vue'
@@ -488,7 +488,7 @@ import type { Directive } from 'vue'
 export type HighlightDirective = Directive<HTMLElement, string>
 
 declare module 'vue' {
-  export interface ComponentCustomProperties {
+  export interface GlobalDirectives {
     // prefix with v (v-highlight)
     vHighlight: HighlightDirective
   }

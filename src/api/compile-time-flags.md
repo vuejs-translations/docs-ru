@@ -38,7 +38,7 @@ Vue будет работать, даже если эти флаги не буд
 
 ### Vite {#vite}
 
-`@vitejs/plugin-vue` автоматически предоставляет значения по умолчанию для этих флагов. Для того чтобы изменить значения по умолчанию, используйте опцию Vite [`define` config](https://vitejs.dev/config/shared-options.html#define):
+`@vitejs/plugin-vue` автоматически предоставляет значения по умолчанию для этих флагов. Для того чтобы изменить значения по умолчанию, используйте опцию Vite [`define` config](https://vite.dev/config/shared-options.html#define):
 
 ```js [vite.config.js]
 import { defineConfig } from 'vite'

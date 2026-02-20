@@ -25,7 +25,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - Установленная [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
 :::
 
-В этом разделе разберёмся, как развёрнуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
+В этом разделе разберёмся, как развёрнуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vite.dev/), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
 
 Убедитесь, что установлена актуальная версия [Node.js](https://nodejs.org/), после чего выполните следующую команду в командной строке (символ `$` вводить не нужно):
 
@@ -106,7 +106,7 @@ $ bun run dev
 
 - Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling#ide-support).
 - Больше информации об инструментарии, включая интеграцию с бэкенд-фреймворками, обсуждается в разделе [Инструментарий](/guide/scaling-up/tooling).
-- Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vite.dev).
+- Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vite.dev/).
 - Если решили использовать TypeScript, ознакомьтесь с инструкцией по [использованию TypeScript](typescript/overview).
 
 Когда будете готовы опубликовать приложение в production, выполните команду:
