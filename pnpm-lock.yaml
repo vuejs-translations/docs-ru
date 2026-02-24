@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@hywax/vitepress-yandex-metrika':
         specifier: ^1.0.0
-        version: 1.0.0(vitepress@2.0.0-alpha.15(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3))
+        version: 1.0.0(vitepress@2.0.0-alpha.16(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3))
       '@vue/repl':
         specifier: ^4.7.1
         version: 4.7.1
@@ -1574,9 +1574,9 @@ snapshots:
   '@esbuild/win32-x64@0.27.2':
     optional: true
 
-  '@hywax/vitepress-yandex-metrika@1.0.0(vitepress@2.0.0-alpha.15(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3))':
+  '@hywax/vitepress-yandex-metrika@1.0.0(vitepress@2.0.0-alpha.16(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3))':
     dependencies:
-      vitepress: 2.0.0-alpha.15(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3)
+      vitepress: 2.0.0-alpha.16(@types/node@24.10.9)(esbuild@0.27.2)(oxc-minify@0.111.0)(postcss@8.5.6)(typescript@5.9.3)
 
   '@iconify-json/logos@1.2.10':
     dependencies:
