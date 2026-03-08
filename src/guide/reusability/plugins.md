@@ -132,6 +132,6 @@ export default {
 
 </div>
 
-### Сборка для NPM
+### Сборка для NPM {#bundle-for-npm}
 
 Если вы хотите разработать и опубликовать свой плагин для использования другими, смотрите [раздел документации Vite о режиме Library Mode](https://vite.dev/guide/build.html#library-mode).
