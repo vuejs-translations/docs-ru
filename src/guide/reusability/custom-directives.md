@@ -111,6 +111,10 @@ app.directive('highlight', {
 })
 ```
 
+Глобальные пользовательские директивы можно типизировать, расширив интерфейс `GlobalDirectives` из `vue`.
+
+Подробнее: [Типизация глобальных пользовательских директив](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
+
 ## Когда использовать пользовательские директивы {#when-to-use}
 
 Пользовательские директивы следует использовать только тогда, когда желаемая функциональность может быть достигнута только через прямое манипулирование DOM.
@@ -217,7 +221,7 @@ const myDirective = {
 ```js
 {
   arg: 'foo',
-  modifiers: { bar: true },
+  modifiers: { foo: true, bar: true },
   value: /* значение `baz` */,
   oldValue: /* значение `baz` из предыдущего обновления */
 }

@@ -153,7 +153,7 @@ useCssModule()
 useCssModule('classes')
 ```
 
-- **Example**
+- **Пример**
 
 ```vue
 <script setup lang="ts">

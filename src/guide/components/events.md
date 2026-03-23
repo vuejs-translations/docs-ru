@@ -4,7 +4,7 @@ import { onMounted } from 'vue'
 if (typeof window !== 'undefined') {
   const hash = window.location.hash
 
-  // The docs for v-model used to be part of this page. Attempt to redirect outdated links.
+  // Раньше документация по v-model была на этой странице. Перенаправляем устаревшие ссылки.
   if ([
     '#usage-with-v-model',
     '#v-model-arguments',

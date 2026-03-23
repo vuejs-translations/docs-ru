@@ -2,7 +2,7 @@
 
 ## Обзор {#overview}
 
-Однофайловый компонент Vue (SFC), условно использующий расширение файла `*.vue`, - это пользовательский формат файла, использующий HTML-подобный синтаксис для описания компонента Vue. Синтаксически Vue SFC совместим с HTML.
+Однофайловый компонент Vue (SFC), условно использующий расширение файла `*.vue`, — это пользовательский формат файла, использующий HTML-подобный синтаксис для описания компонента Vue. Синтаксически Vue SFC совместим с HTML.
 
 Каждый файл `*.vue` состоит из трёх типов языковых секций верхнего уровня: `<template>`, `<script>`, и `<style>`, а также может содержать дополнительные пользовательские секции:
 
@@ -105,7 +105,7 @@ p {{ msg }}
 
 Обратите внимание, что интеграция с различными пре-процессорами может отличаться в зависимости от инструментария. Примеры можно найти в соответствующей документации:
 
-- [Vite](https://vitejs.dev/guide/features#css-pre-processors)
+- [Vite](https://vite.dev/guide/features#css-pre-processors)
 - [Vue CLI](https://cli.vuejs.org/guide/css#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors#using-pre-processors)
 
@@ -136,8 +136,8 @@ p {{ msg }}
 </unit-test>
 ```
 
-:::warning Note
-While using aliases in `src`, don't start with `~`, anything after it is interpreted as a module request. This means you can reference assets inside node modules:
+:::warning Примечание
+При использовании алиасов в `src` не начинайте путь с `~`: всё после него воспринимается как запрос модуля. Таким образом можно ссылаться на ресурсы внутри node modules:
 ```vue
 <img src="~some-npm-package/foo.png">
 ```

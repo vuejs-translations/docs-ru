@@ -16,16 +16,16 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - Если уже знакомы с Node.js и концепцией инструментов сборки, то можно попробовать полноценное окружение с шагом сборки прямо в браузере на [StackBlitz](https://vite.new/vue).
 
-- Чтобы получить пошаговое руководство по рекомендуемой настройке, посмотрите этот интерактивный учебник [Scrimba](http://scrimba.com/links/vue-quickstart), который покажет вам, как запустить, отредактировать и развернуть ваше первое приложение Vue.
+- Чтобы получить пошаговое руководство по рекомендуемой настройке, посмотрите этот интерактивный учебник [Scrimba](http://scrimba.com/links/vue-quickstart), который покажет вам, как запустить, отредактировать и развёрнуть ваше первое приложение Vue.
 
 ## Создание приложения Vue {#creating-a-vue-application}
 
 :::tip Предварительные условия
 - Знакомство с командной строкой
-- Установленная [Node.js](https://nodejs.org/) 18.3 версии или выше
+- Установленная [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
 :::
 
-В этом разделе разберёмся как развернуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vitejs.dev), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
+В этом разделе разберёмся, как развёрнуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vite.dev/), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
 
 Убедитесь, что установлена актуальная версия [Node.js](https://nodejs.org/), после чего выполните следующую команду в командной строке (символ `$` вводить не нужно):
 
@@ -40,13 +40,13 @@ $ pnpm create vue@latest
 ```
 
 ```sh [yarn]
-# For Yarn (v1+)
+# Для Yarn (v1+)
 $ yarn create vue
 
-# For Yarn Modern (v2+)
+# Для Yarn Modern (v2+)
 $ yarn create vue@latest
   
-# For Yarn ^v4.11
+# Для Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
 
@@ -55,7 +55,7 @@ $ bun create vue@latest
 ```
 :::
 
-Команда установит и запустит [create-vue](https://github.com/vuejs/create-vue) — официальный инструмент для развёртывания проектов Vue. Также после запуска будут выводиться подсказки для возможности выбора ряда дополнительных функций, таких как TypeScript или поддержка тестирования:
+Команда установит и запустит [create-vue](https://github.com/vuejs/create-vue) — официальный инструмент для развёртывания проектов Vue. Также после запуска будут выводиться подсказки для выбора ряда дополнительных функций, таких как TypeScript или поддержка тестирования:
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add TypeScript? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
@@ -106,7 +106,7 @@ $ bun run dev
 
 - Рекомендуемая конфигурация IDE — [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если используете другие редакторы, ознакомьтесь с разделом [поддержка IDE](/guide/scaling-up/tooling#ide-support).
 - Больше информации об инструментарии, включая интеграцию с бэкенд-фреймворками, обсуждается в разделе [Инструментарий](/guide/scaling-up/tooling).
-- Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vitejs.dev).
+- Чтобы узнать больше об используемом инструменте сборки Vite, ознакомьтесь с [документацией Vite](https://vite.dev/).
 - Если решили использовать TypeScript, ознакомьтесь с инструкцией по [использованию TypeScript](typescript/overview).
 
 Когда будете готовы опубликовать приложение в production, выполните команду:

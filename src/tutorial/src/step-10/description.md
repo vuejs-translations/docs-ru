@@ -10,7 +10,7 @@ import { ref, watch } from 'vue'
 const count = ref(0)
 
 watch(count, (newCount) => {
-  // да, console.log() - это сайд эффект
+  // да, console.log() — это сайд эффект
   console.log(`новое количество: ${newCount}`)
 })
 ```
@@ -29,7 +29,7 @@ export default {
   },
   watch: {
     count(newCount) {
-      // да, console.log() - это сайд эффект
+      // да, console.log() — это сайд эффект
       console.log(`новое количество: ${newCount}`)
     }
   }

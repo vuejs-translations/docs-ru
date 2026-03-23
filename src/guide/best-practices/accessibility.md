@@ -44,7 +44,7 @@
 }
 ```
 
-Once a user changes route, bring focus back to the very beginning of the page, right before the skip link. This can be achieved by calling focus on the `backToTop` template ref (assuming usage of `vue-router`):
+При смене маршрута пользователем возвращайте фокус в самое начало страницы, непосредственно перед ссылкой «перейти к содержанию». Это можно сделать, вызвав focus на ссылке шаблона `backToTop` (при использовании `vue-router`):
 
 <div class="options-api">
 

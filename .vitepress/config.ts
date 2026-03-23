@@ -1,12 +1,19 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme, type HeadConfig, type Plugin } from 'vitepress'
+import {
+  defineConfigWithTheme,
+  type HeadConfig,
+  type Plugin
+} from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import llmstxt from 'vitepress-plugin-llms'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 // import { textAdPlugin } from './textAdMdPlugin'
-import { groupIconMdPlugin,groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import {
+  groupIconMdPlugin,
+  groupIconVitePlugin
+} from 'vitepress-plugin-group-icons'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -47,9 +54,12 @@ const nav: ThemeConfig['nav'] = [
         text: 'Ресурсы',
         items: [
           { text: 'Партнёры', link: '/partners/' },
-          { text: 'Разработчики', link: '/developers/' },
           { text: 'Темы', link: '/ecosystem/themes' },
           { text: 'UI компоненты', link: 'https://ui-libs.vercel.app/' },
+          {
+            text: 'Plugins Collection',
+            link: 'https://www.vue-plugins.org/'
+          },
           {
             text: 'Сертификация',
             link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
@@ -97,7 +107,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'Новости',
         items: [
           { text: 'Блог', link: 'https://blog.vuejs.org/' },
-          { text: 'Twitter', link: 'https://twitter.com/vuejs' },
+          { text: 'Twitter', link: 'https://x.com/vuejs' },
           { text: 'События', link: 'https://events.vuejs.org/' },
           { text: 'Рассылка', link: '/ecosystem/newsletters' }
         ]
@@ -128,13 +138,9 @@ const nav: ThemeConfig['nav'] = [
     link: '/sponsor/'
   },
   {
-    text: 'Эксперты',
-    badge: { text: 'NEW' },
-    activeMatch: `^/(partners|developers)/`,
-    items: [
-      { text: 'Партнёры', link: '/partners/' },
-      { text: 'Разработчики', link: '/developers/', badge: { text: 'NEW' } }
-    ]
+    text: 'Партнёры',
+    activeMatch: `^/partners/`,
+    link: '/partners/'
   }
 ]
 
@@ -497,7 +503,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'List with Transitions',
           link: '/examples/#list-transition'
-        },
+        }
       ]
     },
     {
@@ -666,11 +672,10 @@ export default defineConfigWithTheme<ThemeConfig>({
     [
       'script',
       {
-        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
+        src: 'https://media.bitterbrains.com/main.js?from=vuejs&type=top',
         async: 'true'
       }
-    ],
-    inlineScript('perfops.js')
+    ]
   ],
 
   themeConfig: {
@@ -747,7 +752,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       {
         link: 'https://pl.vuejs.org',
         text: 'Polski',
-        repo: 'https://github.com/vuejs-translations/docs-pl',
+        repo: 'https://github.com/vuejs-translations/docs-pl'
       },
       {
         link: '/translations/',
@@ -759,7 +764,10 @@ export default defineConfigWithTheme<ThemeConfig>({
     algolia: {
       indexName: 'ru-vuejs',
       appId: '5RTQ6TI35H',
-      apiKey: 'c4095d6d1e93c25ca93b3ca0030338ef',
+      apiKey: '6c41323bbf7fa04b372c087ed69cc3ba',
+      searchParameters: {
+        facetFilters: ['version:v3']
+      }
     },
 
     // carbonAds: {
@@ -769,7 +777,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
-      { icon: 'twitter', link: 'https://twitter.com/vuejs' },
+      { icon: 'twitter', link: 'https://x.com/vuejs' },
       { icon: 'discord', link: 'https://discord.com/invite/vue' }
     ],
 
@@ -790,8 +798,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   markdown: {
     theme: 'github-dark',
     config(md) {
-      md.use(headerPlugin)
-        .use(groupIconMdPlugin)
+      md.use(headerPlugin).use(groupIconMdPlugin)
       // .use(textAdPlugin)
     }
   },

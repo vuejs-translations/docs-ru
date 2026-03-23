@@ -55,7 +55,7 @@
 
 - **Подробности**
 
-  Аргумент может быть либо фактическим элементом DOM, либо селектором CSS (будет использоваться первый соответствующий элемент). Аргумент вернет корневой экземпляр компонента.
+  Аргумент может быть либо фактическим элементом DOM, либо селектором CSS (будет использоваться первый соответствующий элемент). Аргумент вернёт корневой экземпляр компонента.
 
   Если для компонента определен шаблон или функция рендеринга, он заменит все существующие узлы DOM внутри контейнера. В противном случае, если доступен runtime компилятор, в качестве шаблона будет использоваться `innerHTML`.
 
@@ -94,7 +94,7 @@
 
 Регистрирует коллбэк, который будет вызван при размонтировании компонента.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface App {
@@ -367,7 +367,7 @@ console.log(app.config)
     errorHandler?: (
       err: unknown,
       instance: ComponentPublicInstance | null,
-      // `info` - это специфическая для Vue информация об ошибке,
+      // `info` — это специфическая для Vue информация об ошибке,
       // например, в каком хуке жизненного цикла возникла ошибка
       info: string
     ) => void
@@ -400,6 +400,11 @@ console.log(app.config)
     // обработка ошибки, например, передать в сервис логирования
   }
   ```
+
+- **Default**
+
+  The default error handler will re-throw errors during development and log errors during production.
+  You can configure this using the [throwUnhandledErrorInProduction](#app-config-throwunhandlederrorinproduction) property.
 
 ## app.config.warnHandler {#app-config-warnhandler}
 

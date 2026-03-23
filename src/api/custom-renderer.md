@@ -66,7 +66,7 @@
     // ...
   })
 
-  // `render` - это низкоуровневый API
+  // `render` — это низкоуровневый API
   // `createApp` возвращает экземпляр приложения
   export { render, createApp }
 

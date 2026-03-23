@@ -12,7 +12,7 @@ outline: deep
 
 <VueSchoolLink href="https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api" title="Free Composition API Lesson"/>
 
-Composition API - это набор API, который позволяет нам создавать компоненты Vue, используя импортированные функции вместо объявления опций. Это обобщающий термин, который охватывает следующие API:
+Composition API — это набор API, который позволяет нам создавать компоненты Vue, используя импортированные функции вместо объявления опций. Это обобщающий термин, который охватывает следующие API:
 
 - [Reactivity API](/api/reactivity-core), например `ref()` и `reactive()`, что позволяет нам напрямую создавать реактивное состояние, вычисляемое состояние, и наблюдатели.
 

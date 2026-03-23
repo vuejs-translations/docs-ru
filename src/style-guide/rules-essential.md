@@ -4,8 +4,7 @@
 Это руководство по стилю Vue.js устарело и нуждается в пересмотре. Если у вас есть вопросы или предложения, пожалуйста, [откройте проблему](https://github.com/vuejs-translations/docs-ru/issues/new).
 :::
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
-Эти правила помогают избегать ошибок, поэтому выучите и соблюдайте их во что бы то ни стало. Исключения могут присутствовать, но очень редко и совершаться теми, кто обладает высокой экспертизой насчет JavaScript и Vue.
+Эти правила помогают избегать ошибок, поэтому выучите и соблюдайте их во что бы то ни стало. Исключения могут присутствовать, но очень редко и совершаться теми, кто обладает высокой экспертизой в области JavaScript и Vue.
 
 ## Используйте несколько слов в именах компонентов {#use-multi-word-component-names}
 

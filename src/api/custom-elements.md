@@ -2,9 +2,9 @@
 
 ## defineCustomElement() {#definecustomelement}
 
-This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) class constructor.
+Этот метод принимает тот же аргумент, что и [`defineComponent`](#definecomponent), но возвращает нативный конструктор класса [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
 
-- **Type**
+- **Тип**
 
   ```ts
   function defineCustomElement(
@@ -26,21 +26,21 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   }
   ```
 
-  > Type is simplified for readability.
+  > Тип упрощён для удобства чтения.
 
-- **Details**
+- **Подробности**
 
-  In addition to normal component options, `defineCustomElement()` also supports a number of options that are custom-elements-specific:
+  В дополнение к обычным опциям компонента, `defineCustomElement()` также поддерживает ряд опций, специфичных для пользовательских элементов:
 
-  - **`styles`**: an array of inlined CSS strings for providing CSS that should be injected into the element's shadow root.
+  - **`styles`**: массив инлайновых CSS-строк для подключения CSS, который будет внедрён в shadow root элемента.
 
-  - **`configureApp`** <sup class="vt-badge" data-text="3.5+"/>: a function that can be used to configure the Vue app instance for the custom element.
+  - **`configureApp`** <sup class="vt-badge" data-text="3.5+"/>: функция для настройки экземпляра приложения Vue пользовательского элемента.
 
-  - **`shadowRoot`** <sup class="vt-badge" data-text="3.5+"/>: `boolean`, defaults to `true`. Set to `false` to render the custom element without a shadow root. This means `<style>` in custom element SFCs will no longer be encapsulated.
+  - **`shadowRoot`** <sup class="vt-badge" data-text="3.5+"/>: `boolean`, по умолчанию `true`. Установите `false`, чтобы рендерить пользовательский элемент без shadow root. В этом случае `<style>` в SFC пользовательских элементов больше не будут инкапсулированы.
 
-  - **`nonce`** <sup class="vt-badge" data-text="3.5+"/>: `string`, if provided, will be set as the `nonce` attribute on style tags injected to the shadow root.
+  - **`nonce`** <sup class="vt-badge" data-text="3.5+"/>: `string`, если указан, будет установлен как атрибут `nonce` на тегах `<style>`, внедряемых в shadow root.
 
-  Note that instead of being passed as part of the component itself, these options can also be passed via a second argument:
+  Обратите внимание, что эти опции можно передавать не только как часть самого компонента, но и вторым аргументом:
 
   ```js
   import Element from './MyElement.ce.vue'
@@ -52,9 +52,9 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   })
   ```
 
-  The return value is a custom element constructor that can be registered using [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
+  Возвращаемое значение — конструктор пользовательского элемента, который можно зарегистрировать с помощью [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
 
-- **Example**
+- **Пример**
 
   ```js
   import { defineCustomElement } from 'vue'
@@ -63,24 +63,24 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
     /* component options */
   })
 
-  // Register the custom element.
+  // Регистрируем пользовательский элемент.
   customElements.define('my-vue-element', MyVueElement)
   ```
 
-- **See also**
+- **См. также**
 
-  - [Guide - Building Custom Elements with Vue](/guide/extras/web-components#building-custom-elements-with-vue)
+  - [Руководство — Создание пользовательских элементов с Vue](/guide/extras/web-components#building-custom-elements-with-vue)
 
-  - Also note that `defineCustomElement()` requires [special config](/guide/extras/web-components#sfc-as-custom-element) when used with Single-File Components.
+  - Также обратите внимание, что для `defineCustomElement()` требуется [особая настройка](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами.
 
 ## useHost() <sup class="vt-badge" data-text="3.5+"/> {#usehost}
 
-A Composition API helper that returns the host element of the current Vue custom element.
+Вспомогательная функция Composition API, возвращающая хост-элемент текущего пользовательского элемента Vue.
 
 ## useShadowRoot() <sup class="vt-badge" data-text="3.5+"/> {#useshadowroot}
 
-A Composition API helper that returns the shadow root of the current Vue custom element.
+Вспомогательная функция Composition API, возвращающая shadow root текущего пользовательского элемента Vue.
 
 ## this.$host <sup class="vt-badge" data-text="3.5+"/> {#this-host}
 
-An Options API property that exposes the host element of the current Vue custom element.
+Свойство Options API, предоставляющее доступ к хост-элементу текущего пользовательского элемента Vue.

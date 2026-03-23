@@ -175,7 +175,7 @@ export default defineComponent({
 })
 ```
 
-Явные аннотации также могут потребоваться в некоторых случаях, когда TypeScript не может вывести тип вычисляемого свойства из-за циклических циклов вывода.
+Явные аннотации также могут потребоваться в некоторых случаях, когда TypeScript не может вывести тип вычисляемого свойства из-за циклических зависимостей вывода.
 
 ## Типизация обработчиков событий {#typing-event-handlers}
 
@@ -294,3 +294,7 @@ declare module 'vue' {
 См. также:
 
 - [Модульные тесты TypeScript для расширений типов компонентов](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
+
+## Типизация глобальных пользовательских директив {#typing-global-custom-directives}
+
+См.: [Типизация глобальных пользовательских директив](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
