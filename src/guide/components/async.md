@@ -117,9 +117,9 @@ const AsyncComp = defineAsyncComponent({
 
 - API намеренно сделан низкоуровневым для гибкости. В будущем поверх него могут быть добавлены синтаксические упрощения — как в ядре, так и в решениях верхнего уровня (например, Nuxt).
 
-### Гидрация по бездействию {#hydrate-on-idle}
+### Гидратация по бездействию {#hydrate-on-idle}
 
-Гидрация через `requestIdleCallback`:
+Гидратация через `requestIdleCallback`:
 
 ```js
 import { defineAsyncComponent, hydrateOnIdle } from 'vue'
@@ -130,9 +130,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Гидрация при видимости {#hydrate-on-visible}
+### Гидратация при видимости {#hydrate-on-visible}
 
-Гидрация, когда элемент(ы) становятся видимыми через `IntersectionObserver`.
+Гидратация, когда элемент(ы) становятся видимыми через `IntersectionObserver`.
 
 ```js
 import { defineAsyncComponent, hydrateOnVisible } from 'vue'
@@ -143,15 +143,15 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Можно передать объект опций для наблюдателя:
+Можно дополнительно передать объект опций для наблюдателя (observer):
 
 ```js
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### Гидрация по media query {#hydrate-on-media-query}
+### Гидратация на медиазапросе {#hydrate-on-media-query}
 
-Гидрация, когда указанный media query срабатывает.
+Гидратация при срабатывании указанного медиазапроса.
 
 ```js
 import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
@@ -162,9 +162,9 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Гидрация по взаимодействию {#hydrate-on-interaction}
+### Гидратация при взаимодействии {#hydrate-on-interaction}
 
-Гидрация при срабатывании указанного(ых) события(ий) на элементе(ах) компонента. Событие, вызвавшее гидрацию, будет воспроизведено повторно после её завершения.
+Гидратация происходит при срабатывании указанных событий на элементе(ах) компонента. Событие, вызвавшее гидратацию, будет повторно воспроизведено после её завершения.
 
 ```js
 import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
