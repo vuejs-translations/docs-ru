@@ -56,9 +56,9 @@ Vue не имеет фиксированного релизного цикла.
 
 ## Пререлиз {#pre-releases}
 
-Минорные релизы обычно проходят через нефиксированное количество бета-релизов. Крупные релизы проходят через альфа-фазу и бета-фазу.
+Minor and major releases typically go through a series of pre-release phases: **alpha**, **beta**, and **release candidate (RC)**. The number and type of pre-releases depend on the scope of changes. For example, a minor release with limited updates may only have a beta phase, while a major release will usually include all three phases to allow for thorough testing and community feedback.
 
-Кроме того, каждую неделю мы публикуем на GitHub канареечные релизы из веток `main` и `minor`. Они публикуются в виде разных пакетов, чтобы не раздувать метаданные npm у стабильного канала. Вы можете установить их через `npx install-vue@canary` или `npx install-vue@canary-minor`, соответственно.
+You can install the latest pre-releases from npm using `npx install-vue@alpha`, `npx install-vue@beta`, or `npx install-vue@rc`. For testing changes not yet included in tagged pre-releases, every commit to the [vuejs/core](https://github.com/vuejs/core) repository is published as a temporary continuous-release preview, which you can install using `npx install-vue@edge`.
 
 Пререлизы предназначены для интеграции / тестирования стабильности, а также для ранних пользователей, чтобы предоставить обратную связь для нестабильных функций. Не используйте предварительные версии в продакшене. Все пререлизы считаются нестабильными, и в них могут быть внесены изменения, поэтому при использовании пререлизов всегда привязывайтесь к конкретным версиям.
 
