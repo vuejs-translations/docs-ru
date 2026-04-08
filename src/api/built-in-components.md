@@ -310,12 +310,16 @@ h(Transition, {
   </Teleport>
   ```
 
-  Defer target resolution <sup class="vt-badge" data-text="3.5+" />:
+  Использование с `defer` <sup class="vt-badge" data-text="3.5+" />:
+  Атрибут `defer` говорит фреймворку не пытаться найти DOM-узел `#late-div` прямо в момент рендера самого `<Teleport>`.
+  Поиск откладывается до того момента, пока не отрисуется весь текущий шаблон.
+  Без этого атрибута код бы сломался, так как в момент монтирования Телепорта целевого `div`,
+  находящегося ниже по коду, еще не существует в DOM-дереве.
 
   ```vue-html
   <Teleport defer to="#late-div">...</Teleport>
 
-  <!-- somewhere later in the template -->
+  <!-- где-то дальше в шаблоне -->
   <div id="late-div"></div>
   ```
 
