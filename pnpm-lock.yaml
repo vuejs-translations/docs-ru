@@ -11,6 +11,9 @@ importers:
 
   .:
     dependencies:
+      '@hywax/vitepress-yandex-metrika':
+        specifier: ^1.0.0
+        version: 1.0.0(vitepress@2.0.0-alpha.17(@types/node@25.5.2)(oxc-minify@0.124.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(postcss@8.5.8)(typescript@5.9.3))
       '@vue/repl':
         specifier: ^4.7.1
         version: 4.7.1
@@ -193,6 +196,11 @@ packages:
 
   '@emnapi/wasi-threads@1.2.0':
     resolution: {integrity: sha512-N10dEJNSsUx41Z6pZsXU8FjPjpBEplgH24sfkmITrBED1/U2Esum9F3lfLrMjKHHjmi557zQn7kR9R+XWXu5Rg==}
+
+  '@hywax/vitepress-yandex-metrika@1.0.0':
+    resolution: {integrity: sha512-vhUStdPAliWuR6and8lL2mPGTyjcf4S4hEwcBG1Df38hYVJvrBRE88xB3gzn7UN6yPP8+85pWDpUN72CMTV95A==}
+    peerDependencies:
+      vitepress: ^1.6.3
 
   '@iconify-json/logos@1.2.11':
     resolution: {integrity: sha512-fOo4pGEatuyuCFNL+cwquYMa2Im0oJHRHV7lt/Qqs5Ode/lPImHCQcfTtPzZj7qYMPb/h8YHN3TG54uEowrjNQ==}
@@ -1534,6 +1542,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
+
+  '@hywax/vitepress-yandex-metrika@1.0.0(vitepress@2.0.0-alpha.17(@types/node@25.5.2)(oxc-minify@0.124.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(postcss@8.5.8)(typescript@5.9.3))':
+    dependencies:
+      vitepress: 2.0.0-alpha.17(@types/node@25.5.2)(oxc-minify@0.124.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1))(postcss@8.5.8)(typescript@5.9.3)
 
   '@iconify-json/logos@1.2.11':
     dependencies:
