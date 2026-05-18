@@ -99,11 +99,11 @@ console.log(count.value) // 1
 import { ref } from 'vue'
 
 export default {
-  // `setup` это специальный хук, предназначенный для Сomposition API.
+  // `setup` это специальный хук, предназначенный для написания кода в стиле Сomposition API.
   setup() {
     const count = ref(0)
 
-    // передайте состояние шаблону
+    // возвращаем count из setup() чтобы использовать count в шаблоне
     return {
       count
     }
@@ -139,7 +139,7 @@ export default {
       count.value++
     }
 
-    // не забудьте также передать функцию.
+    // не забудьте также вернуть функцию.
     return {
       count,
       increment
