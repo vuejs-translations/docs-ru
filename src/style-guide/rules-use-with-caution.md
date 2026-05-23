@@ -156,7 +156,7 @@ app.component('TodoItem', {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue
 <script setup>
@@ -183,16 +183,16 @@ const props = defineProps({
 })
 
 function renameTodo() {
-  // Mutates the parent's reactive object via the prop
-  // In other words, the child is reaching into and changing parent-owned state.
-  props.todo.text = 'renamed by child'
+  // Мутирует реактивный объект родителя через проп
+  // Другими словами, дочерний компонент вмешивается в состояние, принадлежащее родителю.
+  props.todo.text = 'переименовано дочерним компонентом'
 }
 </script>
 
 <template>
   <span>
     {{ todo.text }}
-    <button @click="renameTodo">rename</button>
+    <button @click="renameTodo">переименовать</button>
   </span>
 </template>
 ```
@@ -200,7 +200,7 @@ function renameTodo() {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue
 <script setup>
@@ -231,15 +231,15 @@ const props = defineProps({
 const emit = defineEmits(['update:todo'])
 
 function renameTodo() {
-  // Emit a new object — the parent owns the update.
-  emit('update:todo', { ...props.todo, text: 'renamed by parent' })
+  // Эмитит новый объект — обновление контролирует родитель.
+  emit('update:todo', { ...props.todo, text: 'переименовано родителем' })
 }
 </script>
 
 <template>
   <span>
     {{ todo.text }}
-    <button @click="renameTodo">rename</button>
+    <button @click="renameTodo">переименовать</button>
   </span>
 </template>
 ```
