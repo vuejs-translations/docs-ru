@@ -1,9 +1,5 @@
 # Правила приоритета B: Настоятельно рекомендуются {#priority-b-rules-strongly-recommended}
 
-::: warning Примечание
-Это руководство по стилю Vue.js устарело и нуждается в пересмотре. Если у вас есть вопросы или предложения, пожалуйста, [откройте проблему](https://github.com/vuejs-translations/docs-ru/issues/new).
-:::
-
 Эти правила помогают улучшить читаемость и/или опыт разработчика в большинстве проектов. Ваш код все равно выполнится, если вы их нарушите, но эти нарушения должны быть редкими и обоснованными.
 
 ## Файлы компонентов {#component-files}
@@ -101,23 +97,15 @@ components/
 
 - Поскольку имена компонентов всегда должны состоять из нескольких слов, это соглашение избавляет вас от необходимости выбрать произвольных префикс для простых компонентов-оберток (например, `MyButton`, `VueButton`).
 
-- Поскольку эти компоненты часто используются, вы, возможно, захотите сделать их глобальными, вместо того, чтобы импортировать их везде. Префикс позволяет сделать это в Webpack:
+- Поскольку эти компоненты часто используются, вы, возможно, захотите сделать их глобальными, вместо того, чтобы импортировать их везде. Префикс позволяет сделать это в Vite:
 
   ```js
-  const requireComponent = require.context(
-    './src',
-    true,
-    /Base[A-Z]\w+\.(vue|js)$/
-  )
-  requireComponent.keys().forEach(function (fileName) {
-    let baseComponentConfig = requireComponent(fileName)
-    baseComponentConfig =
-      baseComponentConfig.default || baseComponentConfig
-    const baseComponentName =
-      baseComponentConfig.name ||
-      fileName.replace(/^.+\//, '').replace(/\.\w+$/, '')
-    app.component(baseComponentName, baseComponentConfig)
-  })
+  const modules = import.meta.glob('./src/**/Base*.vue', { eager: true })
+  for (const path in modules) {
+    const config = modules[path].default
+    const name = config.name || path.match(/Base[A-Z]\w+/)[0]
+    app.component(name, config)
+  }
   ```
 
   :::
@@ -317,7 +305,7 @@ components/
 
 Самозакрывающиеся компоненты не только говорят о том, что у них нет контента, но и **подразумевают**, что не должны иметь контента. Это разница между пустой страницей в книге и пустой страницей с подписью "Эта страница намеренно пустая." Ваш код становится также чище без ненужного закрытия тега.
 
-К сожалению, HTML не разрешает пользовательским элементам быть самозакрывающимися - только [официальные самозакрывающиеся элементы](https://www.w3.org/TR/html/syntax.html#void-elements). Вот почему это правило возможно только при помощи компилятора шаблонов самого Vue - он "подгоняет" к соответствующему спецификации HTML шаблону.
+К сожалению, HTML не разрешает пользовательским элементам быть самозакрывающимися - только [официальные самозакрывающиеся элементы](https://html.spec.whatwg.org/multipage/syntax.html#void-elements). Вот почему это правило возможно только при помощи компилятора шаблонов самого Vue - он "подгоняет" к соответствующему спецификации HTML шаблону.
 
 <div class="style-example style-example-bad">
 <h3>Плохо</h3>
