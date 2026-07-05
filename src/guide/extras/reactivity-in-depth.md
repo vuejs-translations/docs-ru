@@ -314,7 +314,7 @@ count.value++
 
 <div class="options-api">
 
-Computed debugging options are only available via the Composition API `computed()` function.
+Опции отладки вычисляемых свойств доступны только через функцию `computed()` Composition API.
 
 </div>
 
@@ -348,7 +348,7 @@ watchEffect(callback, {
 
 <div class="options-api">
 
-Watchers declared with the object syntax also support the `onTrack` and `onTrigger` options:
+Наблюдатели, объявленные объектным синтаксисом, тоже поддерживают опции `onTrack` и `onTrigger`:
 
 ```js
 export default {

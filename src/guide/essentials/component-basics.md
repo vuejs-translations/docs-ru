@@ -6,7 +6,7 @@
 
 Компоненты позволяют нам разделить пользовательский интерфейс на независимые и многократно используемые части и думать о каждой части в отдельности. Обычно приложение организовано в виде дерева вложенных друг в друга компонентов:
 
-![Diagram showing a component tree structure with a root component branching into multiple child and nested sub-child components](./images/components.png)
+![Дерево компонентов: корневой компонент и вложенные дочерние](./images/components.png)
 
 <!-- https://www.figma.com/file/qa7WHDQRWuEZNRs7iZRZSI/components -->
 

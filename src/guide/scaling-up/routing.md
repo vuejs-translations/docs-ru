@@ -23,7 +23,7 @@ Vue хорошо подходит для создания SPA. Для больш
 
 Если вам нужна только очень простая маршрутизация и вы не хотите привлекать полнофункциональный роутер, то можно обойтись [динамическими компонентами](/guide/essentials/component-basics#dynamic-components) и обновлять текущее состояние компонента, прослушивая [`hashchange` события](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) браузера или используя [History API](https://developer.mozilla.org/en-US/docs/Web/API/History).
 
-Here's a bare-bones example:
+Приведём простой пример:
 
 <div class="composition-api">
 

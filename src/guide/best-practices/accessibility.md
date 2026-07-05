@@ -229,10 +229,10 @@ watch(
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
-When this pattern is used inside a reusable component, generate the IDs with
-[`useId()`](/api/composition-api-helpers.html#useid) instead of hard-coding
-them. This keeps each component instance's `id` values unique while still
-linking the visible text to the form control:
+Если этот паттерн используется внутри переиспользуемого компонента, генерируйте ID с помощью
+[`useId()`](/api/composition-api-helpers.html#useid) вместо жёстко заданных значений.
+Так `id` каждого экземпляра компонента остаётся уникальным, а видимый текст
+связан с элементом формы:
 
 ```vue
 <script setup>
@@ -244,9 +244,9 @@ const nameId = useId()
 
 <template>
   <section class="form-section">
-    <h2 :id="sectionId">Billing</h2>
+    <h2 :id="sectionId">Платёжная информация</h2>
 
-    <label :id="nameId" :for="`${nameId}-input`">Name: </label>
+    <label :id="nameId" :for="`${nameId}-input`">Имя: </label>
     <input
       :id="`${nameId}-input`"
       type="text"

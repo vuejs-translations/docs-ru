@@ -338,28 +338,28 @@ const post = {
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
-### Merge Behavior When Combining Bindings {#merge-behavior-when-combining-bindings}
+### Поведение при объединении привязок {#merge-behavior-when-combining-bindings}
 
-When `v-bind` is used alongside explicit bindings on the same component, Vue internally calls `mergeProps()` to combine them. The merging strategy depends on the key type:
+Когда `v-bind` используется вместе с явными привязками на одном компоненте, Vue внутренне вызывает `mergeProps()` для их объединения. Стратегия объединения зависит от типа ключа:
 
-- **Regular props** — the last value wins:
+- **Обычные входные параметры** — побеждает последнее значение:
 
 ```vue-html
 <!-- title === 'bar' -->
 <BlogPost title="foo" v-bind="{ title: 'bar' }" />
 ```
 
-- **Event listeners** — when passing listeners in a `v-bind` object, [use the `onEventName` key convention](/guide/extras/render-function#v-on). All handlers for the same event will be called (see [`v-on` Listener Inheritance](/guide/components/attrs#v-on-listener-inheritance)):
+- **Слушатели событий** — при передаче слушателей в объекте `v-bind` [используйте соглашение ключей `onEventName`](/guide/extras/render-function#v-on). Все обработчики одного события будут вызваны (см. [Наследование слушателей `v-on`](/guide/components/attrs#v-on-listener-inheritance)):
 
 ```vue-html
 <!-- logs 1 and 2 -->
 <BlogPost @click="console.log(1)" v-bind="{ onClick: () => console.log(2) }" />
 ```
 
-- **`class` and `style`** follow a similar merge strategy (see [`class` and `style` Merging](/guide/components/attrs#class-and-style-merging)).
+- **`class` и `style`** следуют похожей стратегии объединения (см. [Объединение `class` и `style`](/guide/components/attrs#class-and-style-merging)).
 
 :::tip
-The full merging rules are described in the [`mergeProps()`](/api/render-function#mergeprops) API reference.
+Полные правила объединения описаны в справочнике API [`mergeProps()`](/api/render-function#mergeprops).
 :::
 
 ## Однонаправленный поток данных {#one-way-data-flow}
@@ -509,7 +509,7 @@ defineProps({
   // Функция с значением по умолчанию
   propH: {
     type: Function,
-    // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, 
+    // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция,
     // служащая в качестве значения по умолчанию
     default() {
       return 'Функция по умолчанию'
@@ -569,7 +569,7 @@ export default {
     // Функция с значением по умолчанию
     propH: {
       type: Function,
-      // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция, 
+      // В отличие от объекта или массива по умолчанию, это не фабричная функция — это функция,
       // служащая в качестве значения по умолчанию
       default() {
         return 'Функция по умолчанию'

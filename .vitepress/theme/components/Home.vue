@@ -83,24 +83,24 @@ onMounted(load)
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>Универсальный</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        Богатая, постепенно внедряемая экосистема. Масштабируется от
+        библиотеки до полнофункционального фреймворка.
       </p>
     </div>
     <div class="vt-box">
-      <h2>User-friendly</h2>
+      <h2>Удобный</h2>
       <p>
-        Построен на стандартах HTML, CSS и JavaScript. Интуитивно понятное
-        API и отличная документация.
+        Построен на стандартах HTML, CSS и JavaScript. Интуитивное API и
+        отличная документация.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Efficient</h2>
+      <h2>Производительный</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        По-настоящему реактивная система отрисовки, оптимизированная
+        компилятором. Ручная оптимизация почти не нужна.
       </p>
     </div>
   </section>

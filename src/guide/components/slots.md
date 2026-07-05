@@ -26,7 +26,7 @@
 
 Элемент `<slot>` указывает, где должно быть выведено **содержимое родительского слота**.
 
-![Diagram showing slot content from the parent being injected into the slot outlet in the child component](./images/slots.png)
+![Диаграмма слота](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
@@ -207,7 +207,7 @@ function FancyButton(slotContent) {
 
 `v-slot` имеет специальное сокращение `#`, поэтому `<template v-slot:header>` можно сократить до `<template #header>`. Думайте об этом как о "рендеринге этого фрагмента шаблона в слоте 'header' дочернего компонента".
 
-![Diagram showing multiple named slots in a layout component, with content from the parent being directed to the corresponding header, main, and footer slots](./images/named-slots.png)
+![Диаграмма именованного слота](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
@@ -302,7 +302,7 @@ function BaseLayout(slots) {
 
 Вы можете использовать свойство [$slots](/api/component-instance.html#slots) в сочетании с [v-if](/guide/essentials/conditional.html#v-if) для достижения этой цели.
 
-В приведенном ниже примере мы определяем компонент Card с тремя условными слотами: `header`, `footer` и `default`. 
+В приведенном ниже примере мы определяем компонент Card с тремя условными слотами: `header`, `footer` и `default`.
 Когда контент для header / footer / default присутствует, мы хотим обернуть его, чтобы добавить дополнительные стили:
 
 ```vue-html
@@ -311,11 +311,11 @@ function BaseLayout(slots) {
     <div v-if="$slots.header" class="card-header">
       <slot name="header" />
     </div>
-    
+
     <div v-if="$slots.default" class="card-content">
       <slot />
     </div>
-    
+
     <div v-if="$slots.footer" class="card-footer">
       <slot name="footer" />
     </div>
@@ -367,7 +367,7 @@ function BaseLayout(slots) {
 </MyComponent>
 ```
 
-![Diagram showing a scoped slot where the child component passes data back to the parent-provided slot content](./images/scoped-slots.svg)
+![Слот с областью видимости](./images/scoped-slots.svg)
 
 <!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
 

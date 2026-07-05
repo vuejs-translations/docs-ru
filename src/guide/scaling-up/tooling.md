@@ -34,15 +34,15 @@ $ npm create vue@latest
 ```sh [pnpm]
 $ pnpm create vue@latest
 ```
-  
+
 ```sh [yarn]
 # Для Yarn Modern (v2+)
 $ yarn create vue@latest
-  
+
 # Для Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
-  
+
 ```sh [bun]
 $ bun create vue@latest
 ```
@@ -186,8 +186,8 @@ $ bun create vue@latest
 - [Vue на Codepen](https://codepen.io/pen/editor/vue)
 - [Vue на WebComponents.dev](https://webcomponents.dev/create/cevue)
 
-## Backend Framework Integrations {#backend-framework-integrations}
+## Интеграция с backend-фреймворками {#backend-framework-integrations}
 
-If you are using Vue with [Laravel](https://laravel.com/), the framework ships an official [Vite plugin](https://laravel.com/docs/vite) that handles asset bundling and hot-module replacement out of the box.
+Если вы используете Vue с [Laravel](https://laravel.com/), фреймворк поставляет официальный [плагин Vite](https://laravel.com/docs/vite), который из коробки берёт на себя сборку ресурсов и hot-module replacement.
 
-For any other backend, refer to Vite's [Backend Integration guide](https://vite.dev/guide/backend-integration.html) to wire it up manually.
+Для любого другого backend обратитесь к [руководству по интеграции с backend](https://vite.dev/guide/backend-integration.html) в документации Vite.
