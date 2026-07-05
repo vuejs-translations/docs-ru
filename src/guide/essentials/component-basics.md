@@ -1,7 +1,7 @@
 # Основы компонентов {#components-basics}
 
-<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Free Vue.js Components Basics Lesson" type="scrimba">
-  Watch an interactive video lesson on Scrimba
+<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Бесплатный урок по основам компонентов Vue.js" type="scrimba">
+  Интерактивный видеоурок на Scrimba
 </ScrimbaLink>
 
 Компоненты позволяют нам разделить пользовательский интерфейс на независимые и многократно используемые части и думать о каждой части в отдельности. Обычно приложение организовано в виде дерева вложенных друг в друга компонентов:

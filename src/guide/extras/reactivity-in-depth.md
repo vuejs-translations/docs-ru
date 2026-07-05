@@ -299,7 +299,7 @@ const plusOne = computed(() => count.value + 1, {
   }
 })
 
-// доступ plusOne, должен сработать onTrack
+// обращение к plusOne, должен сработать onTrack
 console.log(plusOne.value)
 
 // мутация count.value, должна сработать onTrigger
@@ -314,7 +314,7 @@ count.value++
 
 <div class="options-api">
 
-Опции отладки вычисляемых свойств доступны только через функцию `computed()` Composition API.
+Опции отладки вычисляемых свойств есть только у `computed()` из Composition API.
 
 </div>
 

@@ -10,7 +10,7 @@ outline: deep
 
 ## Что такое Composition API? {#what-is-composition-api}
 
-<VueSchoolLink href="https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api" title="Free Composition API Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api" title="Бесплатный урок по Composition API"/>
 
 Composition API — это набор API, который позволяет нам создавать компоненты Vue, используя импортированные функции вместо объявления опций. Это обобщающий термин, который охватывает следующие API:
 

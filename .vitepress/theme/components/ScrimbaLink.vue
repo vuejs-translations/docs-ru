@@ -6,7 +6,7 @@
       rel="sponsored noopener"
       :title="title"
     >
-      <slot>Watch a free interactive tutorial on Scrimba</slot>
+      <slot>Бесплатный интерактивный урок на Scrimba</slot>
     </a>
   </div>
 </template>
@@ -56,4 +56,4 @@ export default {
   border-bottom: 5px solid transparent;
   border-left: 8px solid #fff;
 }
-</style> 
+</style>

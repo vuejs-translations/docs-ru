@@ -1,7 +1,7 @@
 # v-model {#component-v-model}
 
-<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Free Vue.js Component v-model Lesson" type="scrimba">
-  Watch an interactive video lesson on Scrimba
+<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Бесплатный урок по v-model в компонентах Vue.js" type="scrimba">
+  Интерактивный видеоурок на Scrimba
 </ScrimbaLink>
 
 ## Базовое использование {#basic-usage}

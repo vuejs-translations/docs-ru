@@ -1,7 +1,7 @@
 # Синтаксис шаблонов {#template-syntax}
 
-<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Free Vue.js Template Syntax Lesson" type="scrimba">
-  Watch an interactive video lesson on Scrimba
+<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Бесплатный урок по синтаксису шаблонов Vue.js" type="scrimba">
+  Интерактивный видеоурок на Scrimba
 </ScrimbaLink>
 
 Vue использует синтаксис шаблонов, основанный на HTML. Он позволяет декларативно связывать отрисованный DOM с данными экземпляра компонента. Все шаблоны Vue являются синтаксически валидным HTML, который могут распарсить все HTML-парсеры и браузеры, соответствующих спецификации.

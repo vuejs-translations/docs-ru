@@ -188,6 +188,6 @@ $ bun create vue@latest
 
 ## Интеграция с backend-фреймворками {#backend-framework-integrations}
 
-Если вы используете Vue с [Laravel](https://laravel.com/), фреймворк поставляет официальный [плагин Vite](https://laravel.com/docs/vite), который из коробки берёт на себя сборку ресурсов и hot-module replacement.
+Vue с [Laravel](https://laravel.com/) подключают через официальный [плагин Vite](https://laravel.com/docs/vite): сборка и hot-module replacement уже настроены.
 
-Для любого другого backend обратитесь к [руководству по интеграции с backend](https://vite.dev/guide/backend-integration.html) в документации Vite.
+Для других backend смотрите [руководство по интеграции с backend](https://vite.dev/guide/backend-integration.html) в документации Vite.

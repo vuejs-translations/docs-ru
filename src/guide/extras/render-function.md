@@ -236,12 +236,12 @@ const vnode = h('button', ['Hello'])
 </template>
 ```
 
-A vnode object has been declared in `setup()`, you can use it like a normal component for rendering.
+Объект vnode объявлен в `setup()` — его можно использовать для отрисовки как обычный компонент.
 
 :::warning
-A vnode represents an already created render output, not a component definition. Using a vnode in `<template>` does not create a new component instance, and the vnode will be rendered as-is.
+Vnode — уже готовый результат отрисовки, а не определение компонента. Если подставить vnode в `<template>`, новый экземпляр компонента не создастся: vnode отрисуется как есть.
 
-This pattern should be used with care and is not a replacement for normal components.
+Подход требует осторожности и не заменяет обычные компоненты.
 :::
 
 ## JSX / TSX {#jsx-tsx}
@@ -639,7 +639,7 @@ export default {
 
 ```jsx
 <MyComponent>{{
-  default: ({ text }) => <p>{ text }</p>  
+  default: ({ text }) => <p>{ text }</p>
 }}</MyComponent>
 ```
 

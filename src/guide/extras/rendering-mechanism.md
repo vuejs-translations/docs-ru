@@ -45,7 +45,7 @@ const vnode = {
 
 3. **Patch**: При изменении зависимости, используемой при монтировании, эффект запускается повторно. На этот раз создается новое, обновленное виртуальное дерево DOM. Рендерер во время исполнения обращается к новому дереву, сравнивает его со старым и применяет необходимые обновления к реальному DOM.
 
-![render pipeline](./images/render-pipeline.png)
+![Цепочка рендеринга](./images/render-pipeline.png)
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 

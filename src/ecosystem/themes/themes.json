@@ -1,13 +1,13 @@
 [
   {
     "name": "Nuxt UI",
-    "description": "[Nuxt UI](https://ui.nuxt.com/) is an intuitive, open-source UI library for Vue and Nuxt applications. Built with Tailwind CSS and Reka UI, it provides 100+ beautifully crafted, accessible components with a flexible CSS-first design system.",
+    "description": "[Nuxt UI](https://ui.nuxt.com/) — библиотека компонентов с открытым исходным кодом для Vue и Nuxt. На Tailwind CSS и Reka UI: более 100 готовых доступных компонентов и гибкая система дизайна на CSS.",
     "seeMoreUrl": "https://ui.nuxt.com",
     "products": [
       {
-        "name": "Dashboard",
+        "name": "Панель управления",
         "price": 0,
-        "description": "Professional Vue Dashboard Template showcasing Nuxt UI capabilities.",
+        "description": "Шаблон Vue-панели управления на базе Nuxt UI.",
         "url": "https://vue-dashboard-template.nuxt.dev",
         "image": "https://res.cloudinary.com/nuxt/image/upload/v1742036101/nuxt-ui/nuxt-ui-dashboard-social-card_kpeysq.png"
       }
@@ -231,7 +231,7 @@
       {
         "name": "MaterialPro Vue3 Admin Dashboard",
         "price": 49,
-        "description": "Vue 3 + Vuetify 3 + Vite + Typescript",
+        "description": "Vue 3, Vuetify 3, Vite и TypeScript",
         "url": "https://www.wrappixel.com/templates/materialpro-vuetify-admin/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2020/05/materialpro-vuejs-dashboard-template-20.jpg"
       },
@@ -252,7 +252,7 @@
       {
         "name": "AdminPro Vue3 + Vuetify Dashboard",
         "price": 49,
-        "description": "Vue3 + Vite + Vuetify + Typescript",
+        "description": "Vue 3, Vite, Vuetify и TypeScript",
         "url": "https://www.wrappixel.com/templates/adminpro-vuetify-dashboard/?ref=320",
         "image": "https://www.wrappixel.com/wp-content/uploads/edd/2020/10/adminpro-vuetify-dasboard-template-y.jpg"
       }
@@ -260,7 +260,7 @@
   },
   {
     "name": "CodedThemes",
-    "description": "Изучите шаблоны административных панелей Vue.js, созданные нашими партнерами из [CodedThemes](https://codedthemes.com) с учетом пожеланий разработчиков. Скачайте их прямо сейчас, чтобы ускорить разработку ваших веб-приложений в реальном времени и сэкономить бесчисленное количество часов на проектирование и разработку.",
+    "description": "Шаблоны административных панелей Vue.js от партнёров [CodedThemes](https://codedthemes.com). Скачайте, чтобы быстрее собрать интерфейс и не тратить время на вёрстку с нуля.",
     "seeMoreUrl": "https://codedthemes.com/item/category/templates/vue-template/",
     "products": [
       {
@@ -273,7 +273,7 @@
       {
         "name": "Административная панель Berry Vue 3",
         "price": 69,
-        "description": "Откройте для себя нашу визуально захватывающую тему административной панели Vue 3!",
+        "description": "Тема административной панели Vue 3 от Berry",
         "url": "https://codedthemes.com/item/berry-vue-admin-dashboard/?ref=evan.vuejs",
         "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Berry-pro-vue.png"
       },
@@ -330,7 +330,7 @@
   },
   {
     "name": "ThemeSelection",
-    "description": "Check out the admin [dashboard templates](https://themeselection.com/item/category/admin-templates/?ref=14) built by our partners from ThemeSelection.\n\nThey provide production-ready and highly customizable Free & Premium [Vue Admin Template](https://themeselection.com/item/category/vuejs-admin-templates/?ref=14), Vue + Laravel & NuxtJS Admin Templates to build modern web applications in no time!",
+    "description": "Посмотрите [шаблоны административных панелей](https://themeselection.com/item/category/admin-templates/?ref=14) от партнёров [ThemeSelection](https://themeselection.com).\n\nУ них есть бесплатные и платные [шаблоны Vue Admin](https://themeselection.com/item/category/vuejs-admin-templates/?ref=14), а также панели на Vue + Laravel и NuxtJS — готовые к продакшену и с широкими настройками.",
     "seeMoreUrl": "https://themeselection.com/item/category/vuejs-admin-templates/?ref=14",
     "products": [
       {

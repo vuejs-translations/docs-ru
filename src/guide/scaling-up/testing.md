@@ -286,8 +286,8 @@ E2E-тесты проверяют многие уровни приложения
   <a href="https://lambdatest.com" target="_blank">
     <img src="/images/lambdatest.svg">
     <div>
-      <div class="testing-partner">Testing Sponsor</div>
-      <div>Lambdatest is a cloud platform for running E2E, accessibility, and visual regression tests across all major browsers and real devices, with AI assisted test generation!</div>
+      <div class="testing-partner">Спонсор раздела о тестировании</div>
+      <div>Lambdatest — облачная платформа для E2E-, accessibility- и визуальных регрессионных тестов во всех основных браузерах и на реальных устройствах, с генерацией тестов на базе ИИ.</div>
     </div>
   </a>
 </div>

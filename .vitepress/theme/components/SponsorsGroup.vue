@@ -100,7 +100,7 @@ function resolveList(data: SponsorData) {
       href="/sponsor/#tier-benefits"
       class="spsr-item action"
       @click="track(true)"
-      >Inquire about Special Sponsorship</a
+      >Узнать об особом спонсорстве</a
     >
   </div>
 </template>

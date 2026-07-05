@@ -1,7 +1,7 @@
 # TypeScript с Composition API {#typescript-with-composition-api}
 
-<ScrimbaLink href="https://scrimba.com/links/vue-ts-composition-api" title="Free Vue.js TypeScript with Composition API Lesson" type="scrimba">
-  Watch an interactive video lesson on Scrimba
+<ScrimbaLink href="https://scrimba.com/links/vue-ts-composition-api" title="Бесплатный урок по TypeScript и Composition API во Vue.js" type="scrimba">
+  Интерактивный видеоурок на Scrimba
 </ScrimbaLink>
 
 > На этой странице предполагается, что вы уже прочитали обзор по [использованию Vue с TypeScript](./overview).

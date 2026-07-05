@@ -227,12 +227,11 @@ watch(
 </form>
 ```
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
+![DevTools в Chrome: accessible name поля из aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
-Если этот паттерн используется внутри переиспользуемого компонента, генерируйте ID с помощью
-[`useId()`](/api/composition-api-helpers.html#useid) вместо жёстко заданных значений.
-Так `id` каждого экземпляра компонента остаётся уникальным, а видимый текст
-связан с элементом формы:
+В переиспользуемом компоненте не задавайте `id` вручную — вызывайте
+[`useId()`](/api/composition-api-helpers.html#useid). У каждого экземпляра
+свои значения, а подпись по-прежнему попадает в accessible name поля:
 
 ```vue
 <script setup>
