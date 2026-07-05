@@ -59,7 +59,7 @@ setTimeout(() => {
 
 Ниже представлена диаграмма жизненного цикла экземпляра. Необязательно запоминать всё полностью прямо сейчас, но, по мере изучения и практики разработки, будет полезно к ней обращаться.
 
-![Диаграмма жизненного цикла компонента](./images/lifecycle.png)
+![Diagram showing the full lifecycle of a Vue component, from creation to destruction, including all major lifecycle hooks and the internal processes like template compilation and mounting](./images/lifecycle.png)
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 

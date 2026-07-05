@@ -278,7 +278,7 @@ type DebuggerEvent = {
 
 ### Отладка вычислений {#computed-debugging}
 
-<!-- TODO options API equivalent -->
+<div class="composition-api">
 
 Мы можем отладить вычисляемые свойства, передав `computed()`второй объект параметров с обратными вызовами `onTrack` и `onTrigger`:
 
@@ -310,9 +310,17 @@ count.value++
 Вычисляемые параметры `onTrack` и `onTrigger` работают только в режиме разработки.
 :::
 
+</div>
+
+<div class="options-api">
+
+Computed debugging options are only available via the Composition API `computed()` function.
+
+</div>
+
 ### Отладка наблюдателя {#watcher-debugging}
 
-<!-- TODO options API equivalent -->
+<div class="composition-api">
 
 Подобно `computed()`, наблюдатели также поддерживают опции `onTrack` и `onTrigger`:
 
@@ -335,6 +343,32 @@ watchEffect(callback, {
   }
 })
 ```
+
+</div>
+
+<div class="options-api">
+
+Watchers declared with the object syntax also support the `onTrack` and `onTrigger` options:
+
+```js
+export default {
+  watch: {
+    source: {
+      handler() {
+        // ...
+      },
+      onTrack(e) {
+        debugger
+      },
+      onTrigger(e) {
+        debugger
+      }
+    }
+  }
+}
+```
+
+</div>
 
 :::tip Совет
 Опции наблюдателя `onTrack` и `onTrigger` работают только в режиме разработки.

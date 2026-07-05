@@ -229,6 +229,34 @@ watch(
 
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
+When this pattern is used inside a reusable component, generate the IDs with
+[`useId()`](/api/composition-api-helpers.html#useid) instead of hard-coding
+them. This keeps each component instance's `id` values unique while still
+linking the visible text to the form control:
+
+```vue
+<script setup>
+import { useId } from 'vue'
+
+const sectionId = useId()
+const nameId = useId()
+</script>
+
+<template>
+  <section class="form-section">
+    <h2 :id="sectionId">Billing</h2>
+
+    <label :id="nameId" :for="`${nameId}-input`">Name: </label>
+    <input
+      :id="`${nameId}-input`"
+      type="text"
+      name="name"
+      :aria-labelledby="`${sectionId} ${nameId}`"
+    />
+  </section>
+</template>
+```
+
 #### `aria-describedby` {#aria-describedby}
 
 Атрибут [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) используется аналогично `aria-labelledby`, но предоставляет дополнительную информацию, которая может потребоваться пользователю. Его можно использовать для описания критериев любых полей:

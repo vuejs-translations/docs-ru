@@ -186,4 +186,8 @@ $ bun create vue@latest
 - [Vue на Codepen](https://codepen.io/pen/editor/vue)
 - [Vue на WebComponents.dev](https://webcomponents.dev/create/cevue)
 
-<!-- TODO ## Backend Framework Integrations -->
+## Backend Framework Integrations {#backend-framework-integrations}
+
+If you are using Vue with [Laravel](https://laravel.com/), the framework ships an official [Vite plugin](https://laravel.com/docs/vite) that handles asset bundling and hot-module replacement out of the box.
+
+For any other backend, refer to Vite's [Backend Integration guide](https://vite.dev/guide/backend-integration.html) to wire it up manually.

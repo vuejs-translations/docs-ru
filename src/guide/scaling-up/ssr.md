@@ -196,7 +196,7 @@ server.get('/', (req, res) => {
 
 1. Раздавать клиентские файлы, добавив `server.use(express.static('.'))` в `server.js`.
 2. Загрузить клиент добавив `<script type="module" src="/client.js"></script>` в шаблон HTML.
-3. Поддержать использование, такое как `import * from 'vue'` в браузере, добавив [Import Map](https://github.com/WICG/import-maps) в шаблон HTML.
+3. Поддержать использование, такое как `import * from 'vue'` в браузере, добавив [Import Map](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps) в шаблон HTML.
 
 [Попробуйте выполнить пример на StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). Кнопка теперь интерактивна!
 

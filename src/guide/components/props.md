@@ -338,6 +338,30 @@ const post = {
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
+### Merge Behavior When Combining Bindings {#merge-behavior-when-combining-bindings}
+
+When `v-bind` is used alongside explicit bindings on the same component, Vue internally calls `mergeProps()` to combine them. The merging strategy depends on the key type:
+
+- **Regular props** — the last value wins:
+
+```vue-html
+<!-- title === 'bar' -->
+<BlogPost title="foo" v-bind="{ title: 'bar' }" />
+```
+
+- **Event listeners** — when passing listeners in a `v-bind` object, [use the `onEventName` key convention](/guide/extras/render-function#v-on). All handlers for the same event will be called (see [`v-on` Listener Inheritance](/guide/components/attrs#v-on-listener-inheritance)):
+
+```vue-html
+<!-- logs 1 and 2 -->
+<BlogPost @click="console.log(1)" v-bind="{ onClick: () => console.log(2) }" />
+```
+
+- **`class` and `style`** follow a similar merge strategy (see [`class` and `style` Merging](/guide/components/attrs#class-and-style-merging)).
+
+:::tip
+The full merging rules are described in the [`mergeProps()`](/api/render-function#mergeprops) API reference.
+:::
+
 ## Однонаправленный поток данных {#one-way-data-flow}
 
 Все входные параметры образуют **одностороннюю привязку** между дочерним свойством и родительским: когда родительское свойство обновляется — оно будет передаваться дочернему, но не наоборот. Это предотвращает случайное изменение дочерними компонентами родительского состояния, что может затруднить понимание потока данных приложения.

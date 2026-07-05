@@ -289,6 +289,6 @@ data() {
 
 И, наконец, визуализация полного синтаксиса директивы:
 
-![Синтаксический граф директивы](./images/directive.png)
+![Diagram visualizing the full directive syntax, including directive name, argument, modifiers, and value](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->

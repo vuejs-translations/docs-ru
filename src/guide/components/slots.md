@@ -26,7 +26,7 @@
 
 Элемент `<slot>` указывает, где должно быть выведено **содержимое родительского слота**.
 
-![Диаграмма слота](./images/slots.png)
+![Diagram showing slot content from the parent being injected into the slot outlet in the child component](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
@@ -207,7 +207,7 @@ function FancyButton(slotContent) {
 
 `v-slot` имеет специальное сокращение `#`, поэтому `<template v-slot:header>` можно сократить до `<template #header>`. Думайте об этом как о "рендеринге этого фрагмента шаблона в слоте 'header' дочернего компонента".
 
-![Диаграмма именованного слота](./images/named-slots.png)
+![Diagram showing multiple named slots in a layout component, with content from the parent being directed to the corresponding header, main, and footer slots](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
@@ -367,7 +367,7 @@ function BaseLayout(slots) {
 </MyComponent>
 ```
 
-![scoped slots diagram](./images/scoped-slots.svg)
+![Diagram showing a scoped slot where the child component passes data back to the parent-provided slot content](./images/scoped-slots.svg)
 
 <!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
 

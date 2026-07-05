@@ -6,7 +6,7 @@
 
 Обычно для передачи данных от родительского компонента в дочерний используются [входные параметры](/guide/components/props). Представьте структуру, в которой будет несколько глубоко вложенных компонентов и потребуется что-то от родительского компонента в глубоко вложенном дочернем. В таком случае необходимо передавать входные параметры вниз по всей цепочке компонентов, что может быть очень неудобным.
 
-![Диаграмма пробрасывания входных параметров](./images/prop-drilling.png)
+![Diagram showing props being passed through multiple levels of components just to reach a deeply nested child](./images/prop-drilling.png)
 
 <!-- https://www.figma.com/file/yNDTtReM2xVgjcGVRzChss/prop-drilling -->
 
@@ -14,7 +14,7 @@
 
 В таких случаях можно использовать пару `provide` и `inject`. Родительские компоненты могут служить **провайдерами зависимостей** для всех своих потомков. Любой компонент в дереве-потомке, независимо от его глубины, может **внедрить** зависимости, предоставляемые компонентами, расположенными выше в его родительской цепочке.
 
-![Схема provide/inject](./images/provide-inject.png)
+![Diagram showing the provide/inject mechanism where a parent component provides a dependency that can be directly injected by a deeply nested child, bypassing intermediate components](./images/provide-inject.png)
 
 <!-- https://www.figma.com/file/PbTJ9oXis5KUawEOWdy2cE/provide-inject -->
 
