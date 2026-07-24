@@ -45,7 +45,7 @@ $ yarn create vue
 
 # Для Yarn Modern (v2+)
 $ yarn create vue@latest
-  
+
 # Для Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
@@ -396,22 +396,22 @@ export default {
 
 Как можно заметить, шаблон импортируемого компонента указан как строка JavaScript. При использовании VS Code можно установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и добавить к этой строке префикс комментарием `/*html*/` чтобы получить подсветку синтаксиса в них.
 
-## Frameworks {#frameworks}
+## Фреймворки {#frameworks}
 
-There are Vue frameworks which support [SSR](/guide/scaling-up/ssr) and other features out-of-the-box:
+Vue-фреймворки со встроенной поддержкой [SSR](/guide/scaling-up/ssr) и других возможностей:
 - [Nuxt](https://nuxt.com/)
 - [Vike](https://vike.dev/)
 - [Astro](https://astro.build/)
 - [Quasar](https://quasar.dev/)
 
 :::tip
-The general recommendation is to use a framework only if you need SSR.
+Берите фреймворк, только если нужен SSR.
 
-If you don't need SSR, you can simply use [Vite](https://vite.dev/) (this is what the section above [Creating a Vue Application](#creating-a-vue-application) scaffolds).
+Если SSR не нужен, достаточно [Vite](https://vite.dev/) — его создаёт раздел [Создание приложения Vue](#creating-a-vue-application) выше.
 :::
 
 :::info
-Vue frameworks typically use Vite under the hood, so directly using Vite instead of a Vue framework is a simpler setup if you don't need SSR. That said, frameworks also support extra features, such as UI themes, which can also be a reason to favor a Vue framework instead of just using Vite.
+Vue-фреймворки обычно используют Vite под капотом, поэтому без SSR проще взять Vite напрямую. Фреймворки добавляют UI-темы и другое — иногда это повод выбрать фреймворк вместо чистого Vite.
 :::
 
 ## Следующие шаги {#next-steps}

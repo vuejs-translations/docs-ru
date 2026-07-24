@@ -350,25 +350,25 @@ function BaseLayout(slots) {
 
 Однако бывают случаи, когда содержимое слота может использовать данные как из родительской, так и из дочерней области. Для этого нам нужен способ, с помощью которого дочерняя область может передавать данные слоту при его рендеринге.
 
-In fact, we can do exactly that - we can pass attributes to a slot outlet just like passing props to a component. The parent template receives slot props with `v-slot`, while the child template passes props to the slot outlet when rendering:
+Можно передавать атрибуты в outlet слота так же, как props в компонент. Родительский шаблон получает props слота через `v-slot`, дочерний передаёт props в outlet при рендеринге:
 
 ```vue-html
-<!-- Parent template (usage) -->
+<!-- Родительский шаблон (использование) -->
 <ChildComponent v-slot="receivedProps">
   {{ receivedProps.text }} {{ receivedProps.count }}
 </ChildComponent>
 ```
 
 ```vue-html
-<!-- Child template (slot definition) -->
-<!-- render with props! -->
+<!-- Дочерний шаблон (определение слота) -->
+<!-- рендер с props! -->
 <slot
   text="hello"
   :count="1"
 />
 ```
 
-Receiving the slot props is a bit different when using a single default slot vs. using named slots. The example above receives props using a single default slot, by using `v-slot` directly on the `ChildComponent` tag.
+Получение props слота отличается для слота по умолчанию и для именованных слотов. В примере выше props принимают через слот по умолчанию: `v-slot` стоит прямо на теге `ChildComponent`.
 
 ![Слот с областью видимости](./images/scoped-slots.svg)
 

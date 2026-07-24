@@ -214,7 +214,7 @@ server.get('/', (req, res) => {
 
 - Универсально управлять маршрутизацией, загрузкой данных и состоянием хранилища.
 
-A complete implementation would be quite complex and depends on the build toolchain you have chosen to work with. Therefore, we highly recommend using [Vue frameworks](/guide/quick-start#frameworks) if you need SSR since they often have built-in SSR support.
+Полная реализация сложна и зависит от выбранного инструментария сборки. Если нужен SSR, лучше взять [Vue-фреймворк](/guide/quick-start#frameworks) — у них часто есть встроенная поддержка SSR.
 
 ## Написание SSR-совместимого кода {#writing-ssr-friendly-code}
 

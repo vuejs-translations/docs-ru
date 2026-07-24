@@ -27,7 +27,7 @@ aside: false
 - [العربية / Arabic](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 - [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[source](https://github.com/icarusgk/vuejs-spanish-docs)]
 
-## Contributing to Translations {#contributing-to-translations}
+## Участие в переводах {#contributing-to-translations}
 
 Документация Vue недавно подверглась серьезному пересмотру, поэтому переводы на другие языки пока отсутствуют или находятся в процессе разработки.
 
