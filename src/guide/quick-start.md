@@ -22,7 +22,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 :::tip Предварительные условия
 - Знакомство с командной строкой
-- Установленная [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
+- Установленная [Node.js](https://nodejs.org/) версии `^22.18.0 || >=24.12.0`
 :::
 
 В этом разделе разберёмся, как развёрнуть на локальной машине [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue. Созданный проект будет использовать шаг сборки с помощью [Vite](https://vite.dev/), и позволит использовать во Vue [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
@@ -395,6 +395,24 @@ export default {
 Для запуска локального HTTP-сервера для начала нужно установить [Node.js](https://nodejs.org/en/), а затем запустить команду `npx serve` в том же каталоге, где находится HTML-файл. Можно использовать и любой другой HTTP-сервер, который умеет хостить статические файлы с правильными MIME-типами.
 
 Как можно заметить, шаблон импортируемого компонента указан как строка JavaScript. При использовании VS Code можно установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и добавить к этой строке префикс комментарием `/*html*/` чтобы получить подсветку синтаксиса в них.
+
+## Frameworks {#frameworks}
+
+There are Vue frameworks which support [SSR](/guide/scaling-up/ssr) and other features out-of-the-box:
+- [Nuxt](https://nuxt.com/)
+- [Vike](https://vike.dev/)
+- [Astro](https://astro.build/)
+- [Quasar](https://quasar.dev/)
+
+:::tip
+The general recommendation is to use a framework only if you need SSR.
+
+If you don't need SSR, you can simply use [Vite](https://vite.dev/) (this is what the section above [Creating a Vue Application](#creating-a-vue-application) scaffolds).
+:::
+
+:::info
+Vue frameworks typically use Vite under the hood, so directly using Vite instead of a Vue framework is a simpler setup if you don't need SSR. That said, frameworks also support extra features, such as UI themes, which can also be a reason to favor a Vue framework instead of just using Vite.
+:::
 
 ## Следующие шаги {#next-steps}
 

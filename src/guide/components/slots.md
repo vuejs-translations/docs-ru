@@ -350,22 +350,25 @@ function BaseLayout(slots) {
 
 Однако бывают случаи, когда содержимое слота может использовать данные как из родительской, так и из дочерней области. Для этого нам нужен способ, с помощью которого дочерняя область может передавать данные слоту при его рендеринге.
 
-На самом деле, мы можем делать именно это — мы можем передавать атрибуты в слот точно так же, как передавать входные параметры в компонент:
+In fact, we can do exactly that - we can pass attributes to a slot outlet just like passing props to a component. The parent template receives slot props with `v-slot`, while the child template passes props to the slot outlet when rendering:
 
 ```vue-html
-<!-- <MyComponent> template -->
-<div>
-  <slot :text="greetingMessage" :count="1"></slot>
-</div>
+<!-- Parent template (usage) -->
+<ChildComponent v-slot="receivedProps">
+  {{ receivedProps.text }} {{ receivedProps.count }}
+</ChildComponent>
 ```
-
-Получение входных параметров слота немного отличается при использовании одного слота по умолчанию от использования именованных слотов. Сначала мы покажем, как получать входные параметры с помощью одного слота по умолчанию, используя `v-slot` непосредственно в теге дочернего компонента:
 
 ```vue-html
-<MyComponent v-slot="slotProps">
-  {{ slotProps.text }} {{ slotProps.count }}
-</MyComponent>
+<!-- Child template (slot definition) -->
+<!-- render with props! -->
+<slot
+  text="hello"
+  :count="1"
+/>
 ```
+
+Receiving the slot props is a bit different when using a single default slot vs. using named slots. The example above receives props using a single default slot, by using `v-slot` directly on the `ChildComponent` tag.
 
 ![Слот с областью видимости](./images/scoped-slots.svg)
 
@@ -373,12 +376,12 @@ function BaseLayout(slots) {
 
 <div class="composition-api">
 
-[Попробовать в песочнице](https://play.vuejs.org/#eNp9kMEKgzAMhl8l9OJlU3aVOhg7C3uAXsRlTtC2tFE2pO++dA5xMnZqk+b/8/2dxMnadBxQ5EL62rWWwCMN9qh021vjCMrn2fBNoya4OdNDkmarXhQnSstsVrOOC8LedhVhrEiuHca97wwVSsTj4oz1SvAUgKJpgqWZEj4IQoCvZm0Gtgghzss1BDvIbFkqdmID+CNdbbQnaBwitbop0fuqQSgguWPXmX+JePe1HT/QMtJBHnE51MZOCcjfzPx04JxsydPzp2Szxxo7vABY1I/p)
+[Попробовать в песочнице](https://play.vuejs.org/#eJxlj00Kg0AMha8SsnHTKt2KDhQv0ANkUzTFgfljJkpBvHsZhYK6fS+878uCzxDKeWKssUl91EEgsUxBkdM2+CjQjdoMnbfBO3YCn+gtFGV1jPNEQa6p9g1FjlwjbIN5CytyAM1pZ74n46UljNyznnl4RR8S4XYMsCxwKErhr8C6XoveTy43G+SkpbLSXwNveLXOjx9Fs9cukZkt4cjGeMI9qzdeS/jYk+rEWH9AQHet)
 
 </div>
 <div class="options-api">
 
-[Попробовать в песочнице](https://play.vuejs.org/#eNqFkNFqxCAQRX9l8CUttAl9DbZQ+rzQD/AlJLNpwKjoJGwJ/nvHpAnusrAg6FzHO567iE/nynlCUQsZWj84+lBmGJ31BKffL8sng4bg7O0IRVllWnpWKAOgDF7WBx2em0kTLElt975QbwLkhkmIyvCS1TGXC8LR6YYwVSTzH8yvQVt6VyJt3966oAR38XhaFjjEkvBCECNcia2d2CLyOACZQ7CDrI6h4kXcAF7lcg+za6h5et4JPdLkzV4B9B6RBtOfMISmxxqKH9TarrGtATxMgf/bDfM/qExEUCdEDuLGXAmoV06+euNs2JK7tyCrzSNHjX9aurQf)
+[Попробовать в песочнице](https://play.vuejs.org/#eJxlkMEKgzAMhl8l5LLLpuwqKoy9wB4gl6GRCTUtNYogffdRywbq9f+Tfl+64sO5bJ4YCyzHxvdOa5J+cNYrPD+9aZ92cFZYFDpvB7hk+T6OyxcSEl62pZa792QUVhKA5jc1FimAw6MxCySBpMz/eJJSeXDmrVzHgfIgMt9GY7Ui9NxwP3P78taNhHUirCvsikx5UQjhXDR2kthskMNddVT6a+AVz2fHP9uLRq8kEZkV4YeNsYQpKzZeRXhPSX5ghC8NDY0G)
 
 </div>
 
@@ -387,35 +390,32 @@ function BaseLayout(slots) {
 Вы можете думать о слоте с областью видимости как о функции, передаваемой дочернему компоненту. Затем дочерний компонент вызывает его, передавая входные параметры в качестве аргументов:
 
 ```js
-MyComponent({
+ChildComponent({
   // передача слота по умолчанию, но в качестве функции
-  default: (slotProps) => {
-    return `${slotProps.text} ${slotProps.count}`
+  default: (receivedProps) => {
+    return `${receivedProps.text} ${receivedProps.count}`
   }
 })
 
-function MyComponent(slots) {
-  const greetingMessage = 'hello'
-  return `<div>${
-    // вызов функции слота с входными параметрами!
-    slots.default({ text: greetingMessage, count: 1 })
-  }</div>`
+function ChildComponent(slots) {
+  // вызов функции слота с входными параметрами!
+  return slots.default({ text: 'hello', count: 1 })
 }
 ```
 
 На самом деле, это очень похоже на то, как компилируются слоты с областью видимости и как вы будете использовать слоты с областью видимости при использовании вручную написанных [рендер функций](/guide/extras/render-function.html).
 
-Обратите внимание, как `v-slot="slotProps"` соответствует сигнатуре функции слота. Как и в случае с аргументами функции, мы можем использовать деструктуризацию в `v-slot`:
+Обратите внимание, как `v-slot="receivedProps"` соответствует сигнатуре функции слота. Как и в случае с аргументами функции, мы можем использовать деструктуризацию в `v-slot`:
 
 ```vue-html
-<MyComponent v-slot="{ text, count }">
+<ChildComponent v-slot="{ text, count }">
   {{ text }} {{ count }}
-</MyComponent>
+</ChildComponent>
 ```
 
 ### Именованные слоты с ограниченной областью видимости {#named-scoped-slots}
 
-Именованные слоты с ограниченной областью видимости работают аналогичным образом - входные параметры слота доступны как значение `v-slot` директивы: `v-slot:name="slotProps"`. При использовании сокращения это выглядит следующим образом:
+Именованные слоты с ограниченной областью видимости работают аналогичным образом - входные параметры слота доступны как значение `v-slot` директивы: `v-slot:name="receivedProps"`. При использовании сокращения это выглядит следующим образом:
 
 ```vue-html
 <MyComponent>
@@ -436,7 +436,7 @@ function MyComponent(slots) {
 Передача входных параметров в именованный слот:
 
 ```vue-html
-<slot name="header" message="hello"></slot>
+<slot name="header" message="hello" />
 ```
 
 Обратите внимание, что `name` слота не будет включено во входные параметры, поскольку оно зарезервировано - таким образом, результирующий `headerProps` будет `{ message: 'hello' }`.
@@ -446,7 +446,7 @@ function MyComponent(slots) {
 ```vue-html
 <!-- <MyComponent> template -->
 <div>
-  <slot :message="hello"></slot>
+  <slot message="hello" />
   <slot name="footer" />
 </div>
 ```
@@ -497,7 +497,7 @@ function MyComponent(slots) {
 ```vue-html
 <ul>
   <li v-for="item in items">
-    <slot name="item" v-bind="item"></slot>
+    <slot name="item" v-bind="item" />
   </li>
 </ul>
 ```

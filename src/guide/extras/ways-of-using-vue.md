@@ -33,7 +33,7 @@ SPA, как правило, требуют, чтобы бэкенд открыв
 
 Vue предоставляет первоклассные API для "рендеринга" приложения Vue в HTML-строки на сервере. Это позволяет серверу отправлять обратно уже отрендеренный HTML, что позволяет конечным пользователям видеть содержимое сразу же, пока загружается JavaScript. Затем Vue "гидратирует" приложение на стороне клиента, делая его интерактивным. Это называется [Серверный рендеринг (SSR)](/guide/scaling-up/ssr) и значительно улучшает такие показатели [Largest Contentful Paint (LCP)](https://web.dev/lcp/).
 
-На основе этой парадигмы построены более высокоуровневые фреймворки на базе Vue, например [Nuxt](https://nuxt.com/), которые позволяют разрабатывать полнофункциональные приложения с использованием Vue и JavaScript.
+There are also higher level [Vue frameworks](/guide/quick-start#frameworks), which are built on top of this paradigm and provide built-in support for SSR for developing full stack applications.
 
 ## JAMStack / SSG {#jamstack-ssg}
 
@@ -47,7 +47,7 @@ Vue предоставляет первоклассные API для "ренде
 
 Одностраничные SSG лучше использовать, если предполагается нетривиальная интерактивность, большая продолжительность сеанса или сохранение элементов/состояния при переходе. В противном случае лучше использовать многостраничные SSG.
 
-Команда Vue также поддерживает генератор статических сайтов под названием [VitePress](https://vitepress.dev/), на котором работает этот сайт, который вы сейчас читаете! VitePress поддерживает оба варианта SSG. [Nuxt](https://nuxt.com/) также поддерживает SSG. Вы даже можете смешивать SSR и SSG для различных маршрутов в одном приложении Nuxt.
+The Vue team maintains a static-site generator called [VitePress](https://vitepress.dev/), which powers this website you are reading right now and support boths flavors of SSG! In addition, be sure to check out other [Vue frameworks](/guide/quick-start#frameworks) that usually support SSG.
 
 ## За пределами веба {#beyond-the-web}
 

@@ -523,7 +523,7 @@ export default {
 Для привязок `v-model` с аргументами и модификаторами, сгенерированное имя входного параметра будет `arg + "Modifiers"`. Например:
 
 ```vue-html
-<MyComponent v-model:title.capitalize="myText">
+<MyComponent v-model:title.capitalize="myText" />
 ```
 
 Соответствующие объявления должны быть следующими:

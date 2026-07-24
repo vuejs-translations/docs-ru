@@ -115,7 +115,7 @@ const AsyncComp = defineAsyncComponent({
 
 - Vue предоставляет ряд встроенных стратегий гидратации. Их нужно импортировать по отдельности, чтобы при неиспользовании они могли быть исключены при сборке (tree-shaking).
 
-- API намеренно сделан низкоуровневым для гибкости. В будущем поверх него могут быть добавлены синтаксические упрощения — как в ядре, так и в решениях верхнего уровня (например, Nuxt).
+- The design is intentionally low-level for flexibility. Compiler syntax sugar can potentially be built on top of this in the future either in core or in higher level solutions such as [Vue frameworks](/guide/quick-start#frameworks).
 
 ### Гидратация по бездействию {#hydrate-on-idle}
 

@@ -580,7 +580,7 @@ export default {
 export default {
   created() {
     // каждый экземпляр теперь имеет свою собственную копию
-    this.debouncedClick = _.debounce(this.click, 500)
+    this.debouncedClick = debounce(this.click, 500)
   },
   unmounted() {
     // также хорошая идея отменять таймер
