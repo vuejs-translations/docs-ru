@@ -30,7 +30,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Руководство по ошибкам', link: '/error-reference/' },
       {
         text: 'Документация для Vue 2',
-        link: 'https://ru.vuejs.org/'
+        link: 'https://v2.vuejs.org/'
       },
       {
         text: 'Руководство по миграции с Vue 2',
