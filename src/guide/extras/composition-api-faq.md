@@ -5,7 +5,7 @@ outline: deep
 # Composition API FAQ {#composition-api-faq}
 
 :::tip Совет
-Данный FAQ предполагает наличие опыта работы с Vue - в частности, опыта работы с Vue 2 при преимущественном использовании API Options.
+Данный FAQ предполагает наличие опыта работы с Vue, в частности, опыта работы с Vue 2 при преимущественном использовании API Options.
 :::
 
 ## Что такое Composition API? {#what-is-composition-api}
