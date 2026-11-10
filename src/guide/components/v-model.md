@@ -175,7 +175,7 @@ export default {
 
 [Попробовать в песочнице](https://play.vuejs.org/#eNqFkctqwzAQRX9lEAEn4Np744aWrvoD3URdiHiSGvRCHpmC8b93JDfGKYGCkJjXvTrSJF69r8aIohHtcA69p6O0vfEuELzFgZx5tz4SXIIzUFT1JpfGCmmlxe/c3uFFRU0wSQtwdqxh0dLQwHSnNJep3ilS+8PSCxCQYrC3CMDgMKgrNlB8odaOXVJ2TgdvvNp6vSwHhMZrRcgRQLs1G5+M61A/S/ErKQXUR5immwXMWW1VEKX4g3j3Mo9QfXCeKU9FtvpQmp/lM0Oi6RP/qYieebHZNvyL0acLLODNmGYSxCogxVJ6yW1c2iWz/QOnEnY48kdUpMIVGSllD8t8zVZb+PkHqPG4iw==)
 
-Другой способ реализации `v-model` в этом компоненте - использовать вычисляемое свойство `computed` с геттером и сеттером. Метод `get` должен возвращать свойство `modelValue`, а метод `set` должен вызывать соответствующее событие:
+Другой способ реализации `v-model` в этом компоненте — использовать вычисляемое свойство `computed` с геттером и сеттером. Метод `get` должен возвращать свойство `modelValue`, а метод `set` должен вызывать соответствующее событие:
 
 ```vue [CustomInput.vue]
 <script>
@@ -376,7 +376,7 @@ export default {
 
 ## Работа с модификаторами `v-model` {#handling-v-model-modifiers}
 
-Когда мы изучали привязки ввода формы, мы видели, что `v-model` имеет [встроенные модификаторы](/guide/essentials/forms#modifiers) - `.trim`, `.number` и `.lazy`. В некоторых случаях вам также может потребоваться, чтобы `v-model` в вашем компоненте ввода поддерживал пользовательские модификаторы.
+Когда мы изучали привязки ввода формы, мы видели, что `v-model` имеет [встроенные модификаторы](/guide/essentials/forms#modifiers): `.trim`, `.number` и `.lazy`. В некоторых случаях вам также может потребоваться, чтобы `v-model` в вашем компоненте ввода поддерживал пользовательские модификаторы.
 
 Давайте создадим пример пользовательского модификатора `capitalize`, который преобразует в верхний регистр первую букву строки, предоставленной привязкой `v-model`:
 
@@ -481,7 +481,7 @@ export default {
 </template>
 ```
 
-Обратите внимание, что свойство компонента `modelModifiers` содержит `capitalize` и его значение - `true`, потому что оно установлено в связке `v-model` как `v-model.capitalize="myText"`.
+Обратите внимание, что свойство компонента `modelModifiers` содержит `capitalize` и его значение — `true`, потому что оно установлено в связке `v-model` как `v-model.capitalize="myText"`.
 
 Теперь, когда у нас есть настроенное свойство, мы можем проверить ключи объекта `modelModifiers` и написать обработчик для изменения переданного значения. В следующем коде мы преобразуем строку в верхний регистр при каждом срабатывании события `input` элемента `<input />`:
 
