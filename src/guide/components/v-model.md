@@ -115,7 +115,7 @@ const myRef = ref()
 </template>
 ```
 
-Also, when using `withDefaults` with `defineProps`, default values for mutable reference types (like arrays or objects) should be wrapped in functions in `defineModel` to avoid accidental modification and external side effects.
+Кроме того, при использовании `withDefaults` вместе с `defineProps` значения по умолчанию для изменяемых ссылочных типов (например, массивов или объектов) должны быть обёрнуты в функции при использовании `defineModel`, чтобы избежать случайной модификации и внешних побочных эффектов.
 :::
 
 </div>
