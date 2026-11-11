@@ -79,10 +79,10 @@ $ bun create vue@latest
 
 ## Поддержка IDE {#ide-support}
 
-- Рекомендуемая настройка IDE - [VS Code](https://code.visualstudio.com/) + расширение [Vue — официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (ранее Volar). Обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
+- Рекомендуемая настройка IDE — [VS Code](https://code.visualstudio.com/) + расширение [Vue — официальное расширение](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (ранее Volar). Обеспечивает подсветку синтаксиса, поддержку TypeScript и автодополнения для шаблонных выражений и входных параметров компонентов.
 
   :::tip Совет
-  Vue - Официальная замена (https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VS Code для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
+  Vue — Официальная замена (https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VS Code для Vue 2. Если у вас установлено расширение Vetur, не забудьте отключить его в проектах Vue 3.
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) также предоставляет отличную встроенную поддержку однофайловых компонентов Vue.

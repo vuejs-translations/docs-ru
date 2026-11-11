@@ -47,7 +47,7 @@
 
 ## renderToNodeStream() {#rendertonodestream}
 
-Выводит входные данные в виде [Node.js Readable stream](https://nodejs.org/api/stream#stream_class_stream_readable).
+Выводит входные данные в виде [Node.js Readable stream](https://nodejs.org/docs/latest/api/stream.html#class-streamreadable).
 
 - **Экспортируется из `vue/server-renderer`**
 
@@ -73,7 +73,7 @@
 
 ## pipeToNodeWritable() {#pipetonodewritable}
 
-Отрисовка и передача данных в существующий экземпляр [Node.js Writable stream](https://nodejs.org/api/stream#stream_writable_streams).
+Отрисовка и передача данных в существующий экземпляр [Node.js Writable stream](https://nodejs.org/docs/latest/api/stream.html#class-streamwritable).
 
 - **Экспортируется из `vue/server-renderer`**
 
